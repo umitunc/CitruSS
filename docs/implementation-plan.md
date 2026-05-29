@@ -71,31 +71,53 @@ citruss/
 │   │   └── _mixins.scss        # Glass effect, glowing effects, and responsive utilities
 │   ├── layout/
 │   │   ├── _grid.scss          # Flexible grid and flexbox-based layout engine (Tailwind-like)
-│   │   ├── _navigation.scss    # Navbar, sticky headers, and breadcrumbs
-│   │   └── _dashboard.scss     # Standard & Pro Admin Panel skeleton layout (Layout Wrapper)
+│   │   ├── _navigation.scss    # Navbar, sticky headers, and responsive behaviors
+│   │   └── _dashboard.scss     # Standard & Pro Admin Panel skeleton layout
 │   ├── components/
-│   │   ├── _buttons.scss       # Radiant, semi-transparent, and glass-effect buttons & groups
-│   │   ├── _cards.scss         # Frosted Glass content, statistic, and premium metric cards
-│   │   ├── _sidebar.scss       # Left navigation, vertical menu, and profile area components
-│   │   ├── _inputs.scss        # Form elements, floating labels, selects, toggles, and sliders
-│   │   ├── _dropdown.scss      # Layered, high z-index dropdown panels
-│   │   ├── _modals.scss        # Glassmorphic modals, SweetAlert-like popup styles, and wizards (Pro)
-│   │   ├── _tables.scss        # Frosted glass tables with responsive data cards
-│   │   ├── _badges.scss        # Glowing badges, tags, and status indicator dots
-│   │   ├── _alerts.scss        # Glass notification banners, toasts, and alerts
-│   │   ├── _progress.scss      # Translucent progress bars and glowing radial trackers
-│   │   └── _tooltips.scss      # High-fidelity tooltip and popover overlays
+│   │   ├── _accordion.scss     # Expandable panels and FAQs
+│   │   ├── _alerts.scss        # Glass notification banners and stackable toasts
+│   │   ├── _avatars.scss       # User profiles, avatar groups, and status dots
+│   │   ├── _badges.scss        # Glowing badges, tags, and chips
+│   │   ├── _breadcrumbs.scss   # Navigational breadcrumbs
+│   │   ├── _buttons.scss       # Radiant, glass-effect buttons & FABs
+│   │   ├── _cards.scss         # Frosted Glass content and metric cards
+│   │   ├── _carousel.scss      # Image and content sliders
+│   │   ├── _context-menu.scss  # Custom right-click floating menus
+│   │   ├── _drawer.scss        # Offcanvas sliding panels and bottom sheets
+│   │   ├── _dropdown.scss      # Layered dropdowns and comboboxes
+│   │   ├── _inputs.scss        # Form elements, toggles, sliders, and file uploads
+│   │   ├── _list-group.scss    # Standardized list layouts
+│   │   ├── _modals.scss        # Glassmorphic modals and dialogs
+│   │   ├── _pagination.scss    # Data pagination controls
+│   │   ├── _popovers.scss      # Rich content popups
+│   │   ├── _progress.scss      # Progress bars, skeletons, and spinners
+│   │   ├── _sidebar.scss       # Vertical menus and app sidebars
+│   │   ├── _tables.scss        # Frosted glass tables and data grids
+│   │   ├── _tabs.scss          # Segmented controls and tabbed navigation
+│   │   ├── _timeline.scss      # Vertical and horizontal event trackers
+│   │   ├── _tooltips.scss      # High-fidelity tooltips
+│   │   ├── _treeview.scss      # Hierarchical list structures
+│   │   └── _wizard.scss        # Multi-step forms and steppers
 │   ├── js/
-│   │   ├── _dialog.js          # SweetAlert-like programmatic alert and confirm engine
-│   │   ├── _wizard.js          # Programmatic multi-step form wizard controller
-│   │   └── index.js            # Main JS entry point exposing CitruSS global API
+│   │   ├── _accordion.js       # Accordion collapse/expand logic
+│   │   ├── _carousel.js        # Slider navigation and swipe support
+│   │   ├── _context-menu.js    # Custom right-click interceptor
+│   │   ├── _dialog.js          # Programmatic alert and confirm engine
+│   │   ├── _drawer.js          # Offcanvas panel triggers
+│   │   ├── _dropdown.js        # Searchable and multi-select dropdowns
+│   │   ├── _popover.js         # Popover positioning engine
+│   │   ├── _tabs.js            # Tab switching state management
+│   │   ├── _toast.js           # Stackable toast manager
+│   │   ├── _validation.js      # Declarative form validation
+│   │   ├── _wizard.js          # Multi-step wizard controller
+│   │   └── index.js            # Main JS entry point exposing CitruSS API
 │   └── citruss.scss            # Main entry point merging all SCSS modules
 ├── dist/
 │   ├── citruss.css             # Raw, debuggable CSS output
 │   ├── citruss.min.css         # Optimized and minified CDN CSS output
-│   ├── citruss.js              # Full development companion JavaScript bundle
-│   └── citruss.min.js          # Minified production companion JavaScript bundle
-└── package.json                # Dependencies, scripts, and npm publishing configuration
+│   ├── citruss.js              # Development Javascript bundle
+│   └── citruss.min.js          # Minified production Javascript bundle
+└── package.json                # Dependencies, scripts, and npm config
 ```
 
 ---
@@ -193,14 +215,16 @@ To ensure high contrast and maximum depth in both modes, CSS variables switch dy
 
 ---
 
-## 7. Component Specifications (Modern & Pro UI Catalog)
+## 7. Component Specifications (Comprehensive Modern & Pro UI Catalog)
 
-All components are designed to react seamlessly to Light/Dark color shifts since they rely entirely on the semantic variables declared in Section 6.
+The CitruSS component catalog has been massively expanded to include every UI pattern required by modern web applications, enterprise dashboards, and desktop software. All components are designed to react seamlessly to Light/Dark color shifts since they rely entirely on the semantic variables declared in Section 6.
 
-### A. Core Interactive Elements
+### A. Core Form & Interactive Elements
 
-#### 1. Buttons & Button Groups (`src/components/_buttons.scss`)
-Premium translucent glass action buttons with active micro-scaling and hover glow.
+<details open>
+<summary><strong>1. Buttons, Button Groups & FABs (`src/components/_buttons.scss`)</strong></summary>
+Premium translucent glass action buttons with active micro-scaling, hover glow, and Floating Action Button (FAB) variants.
+
 ```scss
 .citruss-btn {
     font-family: var(--citruss-font-family);
@@ -272,9 +296,12 @@ Premium translucent glass action buttons with active micro-scaling and hover glo
     }
 }
 ```
+</details>
 
-#### 2. Advanced Form Controls, Floating Labels & Input Validation (`src/components/_inputs.scss`)
-Tailwind-style floating label inputs wrapped in frosted glass border layouts, featuring complete native and custom form validation styling natively (valid/invalid feedback layers).
+<details>
+<summary><strong>2. Advanced Form Controls & Floating Labels (`src/components/_inputs.scss`)</strong></summary>
+Tailwind-style floating label inputs wrapped in frosted glass border layouts, featuring complete native and custom form validation styling. Supports textareas, checkboxes, and radio buttons.
+
 ```scss
 .citruss-input-group {
     position: relative;
@@ -365,9 +392,12 @@ Tailwind-style floating label inputs wrapped in frosted glass border layouts, fe
 .citruss-invalid-feedback { color: #ff4d4d; }
 .citruss-valid-feedback { color: var(--citruss-lime); }
 ```
+</details>
 
-##### Client-Side Form Validation Companion Engine (`src/js/_validation.js`)
-Zero-dependency utility allowing declaratively validating fields and displaying elegant glassmorphic alert hints inside the component structure.
+<details>
+<summary><strong>3. Client-Side Form Validation Engine (`src/js/_validation.js`)</strong></summary>
+Zero-dependency utility for declarative validation, showing elegant glassmorphic alert hints inside the component structure.
+
 ```javascript
 export const CitruSSValidator = {
     validateForm: function(formSelector) {
@@ -442,13 +472,524 @@ export const CitruSSValidator = {
     }
 };
 ```
+</details>
+
+<details>
+<summary><strong>4. Toggle Switches & Glowing Range Sliders (`src/components/_inputs.scss`)</strong></summary>
+Custom styled input ranges and checkbox-based toggle switches.
+
+```scss
+/* Custom Toggle Switch */
+.citruss-toggle {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    
+    input { display: none; }
+    
+    .toggle-track {
+        width: 48px;
+        height: 24px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--citruss-glass-border);
+        border-radius: 50px;
+        position: relative;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+        
+        &::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--citruss-text-muted);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    }
+    
+    input:checked + .toggle-track {
+        background: rgba(255, 159, 67, 0.15);
+        border-color: var(--citruss-tangerine);
+        
+        &::after {
+            left: 26px;
+            background: var(--citruss-tangerine);
+            box-shadow: 0 0 10px var(--citruss-tangerine);
+        }
+    }
+}
+
+/* Glowing range selectors */
+.citruss-range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.05);
+    outline: none;
+    backdrop-filter: blur(4px);
+    
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--citruss-tangerine);
+        border: 2px solid var(--citruss-bg-surface);
+        box-shadow: 0 0 10px var(--citruss-tangerine);
+        cursor: pointer;
+        transition: transform 0.1s ease;
+        
+        &:hover { transform: scale(1.2); }
+    }
+}
+```
+</details>
+
+<details>
+<summary><strong>5. Drag & Drop Premium File Upload Area (`src/components/_inputs.scss`)</strong></summary>
+Drag-and-drop zone featuring dynamic drop validation state hooks.
+
+```scss
+.citruss-upload-zone {
+    border: 2px dashed var(--citruss-glass-border);
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    .upload-icon {
+        font-size: 2.5rem;
+        color: var(--citruss-tangerine);
+        margin-bottom: 12px;
+        transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: var(--citruss-tangerine);
+        .upload-icon { transform: translateY(-4px); }
+    }
+    
+    &.dragover {
+        border-color: var(--citruss-lime);
+        background: rgba(29, 209, 161, 0.05);
+        box-shadow: inset 0 0 20px rgba(29, 209, 161, 0.1);
+    }
+}
+```
+</details>
 
 ---
 
-### B. Rich Specialized Controls (Advanced Dropdowns & Custom Selects)
+### B. Navigation & Layout Modules
 
-#### 1. Premium Searchable Selects & Multi-Select dropdowns (`src/components/_dropdown.scss` & `src/js/_dropdown.js`)
-Zero-dependency, gorgeous custom glassmorphic dropdown wrapper featuring multi-select, searchable list filter, keyboard accessible focus, and dynamic chip creation.
+*   **1. Sidebars & Navbars (`src/components/_sidebar.scss`)**: Responsive, collapsing vertical menus and sticky top navigation bars built with glass layers.
+*   **2. Offcanvas Drawers (`src/components/_drawer.scss`, `src/js/_drawer.js`)**: Slide-in panels from the left, right, or bottom. Managed by a JS controller that handles backdrop overlays and escape-key closures.
+*   **3. Breadcrumbs (`src/components/_breadcrumbs.scss`)**: Clean, chevron-separated hierarchical links for deep navigation.
+*   **4. Pagination (`src/components/_pagination.scss`)**: Numbered page navigators with active glowing states, next/prev arrows, and disabled modes.
+
+<details>
+<summary><strong>5. Segmented Controls / Tabs (`src/components/_tabs.scss`, `src/js/_tabs.js`)</strong></summary>
+Glow-accented horizontal tab controls that transition active focus indices gracefully. Includes a JS controller to manage pane visibility.
+
+```scss
+.citruss-tabs-wrapper {
+    border-bottom: 1px solid var(--citruss-glass-border);
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+    
+    .citruss-tab-link {
+        padding: 12px 4px;
+        color: var(--citruss-text-muted);
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.2s ease;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: transparent;
+            box-shadow: none;
+            transition: all 0.3s ease;
+        }
+        
+        &:hover {
+            color: var(--citruss-text-main);
+        }
+        
+        &.active {
+            color: var(--citruss-tangerine);
+            &::after {
+                background: var(--citruss-tangerine);
+                box-shadow: 0 0 10px var(--citruss-tangerine);
+            }
+        }
+    }
+}
+```
+</details>
+
+<details>
+<summary><strong>6. Multi-Step Glass Wizards & Steppers (`src/components/_wizard.scss`, `src/js/_wizard.js`)</strong></summary>
+A premium wizard constructor supporting dynamic step-validation, linear progress glow tracks, and sliding window step-transitions.
+
+```javascript
+// Native implementation inside src/js/_wizard.js
+export class CitruSSWizard {
+    constructor(elementId, options = {}) {
+        this.container = document.getElementById(elementId);
+        this.steps = Array.from(this.container.querySelectorAll('.citruss-wizard-step'));
+        this.currentStep = 0;
+        this.progressBar = this.container.querySelector('.citruss-progress-bar .progress-fill');
+        this.init();
+    }
+    
+    init() {
+        this.showStep(0);
+        this.container.querySelector('.wizard-next').addEventListener('click', () => this.next());
+        this.container.querySelector('.wizard-prev').addEventListener('click', () => this.prev());
+    }
+    
+    showStep(index) {
+        this.steps.forEach((step, i) => {
+            step.style.display = i === index ? 'block' : 'none';
+        });
+        this.currentStep = index;
+        
+        // Update progress glow width
+        const progressPercentage = ((index + 1) / this.steps.length) * 100;
+        if (this.progressBar) {
+            this.progressBar.style.width = `${progressPercentage}%`;
+        }
+    }
+    
+    next() {
+        if (this.currentStep < this.steps.length - 1) {
+            this.showStep(this.currentStep + 1);
+        }
+    }
+    
+    prev() {
+        if (this.currentStep > 0) {
+            this.showStep(this.currentStep - 1);
+        }
+    }
+}
+```
+</details>
+
+---
+
+### C. Data Display & Metrics
+
+*   **1. Tables & Data Grids (`src/components/_tables.scss`)**: Responsive frosted glass tables, hover-row highlights, sticky headers, and striped variants.
+*   **2. List Groups (`src/components/_list-group.scss`)**: Structured vertical lists suitable for settings menus, task lists, or contact directories.
+*   **3. Timelines (`src/components/_timeline.scss`)**: Vertical event trackers with glowing dots and connecting lines. Ideal for activity logs.
+*   **4. TreeViews (`src/components/_treeview.scss`)**: Nested, collapsible folder structures for file explorers or deep categories.
+*   **5. Avatars (`src/components/_avatars.scss`)**: Circular profile images with online/offline status indicator dots, grouped avatar stacks.
+*   **6. Badges (`src/components/_badges.scss`)**: Small glowing indicator tags for labels, counts, and status indicators.
+
+<details open>
+<summary><strong>7. Premium Frosted Glass Metric Cards (`src/components/_cards.scss`)</strong></summary>
+Base structural units for dashboards. Features hover-lift animations and glowing borders.
+
+```scss
+.citruss-card {
+    background: var(--citruss-glass-bg);
+    border: 1px solid var(--citruss-glass-border);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 32px 0 var(--citruss-glass-shadow);
+    color: var(--citruss-text-main);
+    backdrop-filter: blur(var(--citruss-glass-blur));
+    -webkit-backdrop-filter: blur(var(--citruss-glass-blur));
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.25s ease, 
+                box-shadow 0.25s ease;
+    
+    overflow: hidden; 
+    
+    &:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 159, 67, 0.3); 
+        box-shadow: 0 12px 40px 0 rgba(255, 107, 0, 0.15);
+    }
+}
+```
+</details>
+
+<details>
+<summary><strong>8. Accordions & FAQ Collapse (`src/components/_accordion.scss`, `src/js/_accordion.js`)</strong></summary>
+Nested accordions utilizing micro-animations to toggle content drawers with smooth height transition frames.
+
+```scss
+.citruss-accordion {
+    border: 1px solid var(--citruss-glass-border);
+    border-radius: 8px;
+    background: var(--citruss-glass-bg);
+    overflow: hidden;
+    margin-bottom: 12px;
+    backdrop-filter: blur(8px);
+    
+    .accordion-header {
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: var(--citruss-text-main);
+        transition: background 0.25s ease;
+        
+        &:hover { background: rgba(255, 255, 255, 0.02); }
+        
+        .arrow {
+            transition: transform 0.3s ease;
+            color: var(--citruss-text-muted);
+        }
+    }
+    
+    .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+        padding: 0 20px;
+        color: var(--citruss-text-muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    &.active {
+        border-color: rgba(255, 159, 67, 0.3);
+        .accordion-header {
+            color: var(--citruss-tangerine);
+            .arrow { transform: rotate(180deg); color: var(--citruss-tangerine); }
+        }
+        .accordion-body {
+            max-height: 500px;
+            padding-bottom: 20px;
+        }
+    }
+}
+```
+</details>
+
+---
+
+### D. Overlays, Popups & Feedback
+
+*   **1. Carousels & Sliders (`src/components/_carousel.scss`, `src/js/_carousel.js`)**: Smooth, glassmorphic image and content sliders with dot indicators, prev/next navigation, and touch swipe support.
+
+<details open>
+<summary><strong>2. Glassmorphic Modals & Programmatic Dialogs (`src/components/_modals.scss`, `src/js/_dialog.js`)</strong></summary>
+Programmatically summon modal screens on the fly.
+
+```scss
+/* Programmatic alert containers in SCSS */
+.citruss-swal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 12, 18, 0.55);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    &.active {
+        opacity: 1;
+    }
+}
+
+.citruss-swal-box {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    &.show {
+        transform: scale(1);
+    }
+}
+```
+
+```javascript
+// Zero-dependency pure JavaScript implementation in src/js/_dialog.js
+export const CitruSS = {
+    fire: function({ title, text, icon = 'info', showCancelButton = false, confirmButtonText = 'OK' }) {
+        return new Promise((resolve) => {
+            const backdrop = document.createElement('div');
+            backdrop.className = 'citruss-swal-container';
+            
+            backdrop.innerHTML = `
+                <div class="citruss-swal-box">
+                    <div class="citruss-swal-icon citruss-swal-icon-${icon}"></div>
+                    <h3 style="color: var(--citruss-text-main); margin-bottom: 8px;">${title}</h3>
+                    <p style="color: var(--citruss-text-muted); margin-bottom: 24px;">${text}</p>
+                    <div style="display:flex; gap:12px; justify-content:center;">
+                        ${showCancelButton ? `<button class="citruss-btn" id="citruss-swal-cancel">Cancel</button>` : ''}
+                        <button class="citruss-btn btn-primary" id="citruss-swal-confirm">${confirmButtonText}</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(backdrop);
+            
+            // Trigger entry animation
+            setTimeout(() => {
+                backdrop.classList.add('active');
+                backdrop.querySelector('.citruss-swal-box').classList.add('show');
+            }, 10);
+            
+            const close = (isConfirmed) => {
+                backdrop.classList.remove('active');
+                backdrop.querySelector('.citruss-swal-box').classList.remove('show');
+                setTimeout(() => {
+                    backdrop.remove();
+                    resolve({ isConfirmed });
+                }, 300);
+            };
+            
+            backdrop.querySelector('#citruss-swal-confirm').onclick = () => close(true);
+            if (showCancelButton) {
+                backdrop.querySelector('#citruss-swal-cancel').onclick = () => close(false);
+            }
+        });
+    },
+    
+    confirm: function(title, text) {
+        return this.fire({ title, text, icon: 'warning', showCancelButton: true, confirmButtonText: 'Yes, proceed!' });
+    }
+};
+```
+</details>
+
+<details>
+<summary><strong>3. Stacked Glass Toast System (`src/components/_alerts.scss`, `src/js/_toast.js`)</strong></summary>
+Gorgeously stacked neon status toast alerts programmatically managed so you can trigger feedback natively.
+
+```scss
+.citruss-toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+}
+
+.citruss-toast {
+    width: 320px;
+    background: rgba(20, 24, 38, 0.9);
+    border-left: 4px solid var(--citruss-orange);
+    border-top: 1px solid var(--citruss-glass-border);
+    border-right: 1px solid var(--citruss-glass-border);
+    border-bottom: 1px solid var(--citruss-glass-border);
+    padding: 16px;
+    border-radius: 4px 8px 8px 4px;
+    color: var(--citruss-text-main);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    transform: translateX(120%);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    &.show {
+        transform: translateX(0);
+    }
+    
+    .toast-body {
+        flex: 1;
+        .toast-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .toast-message { font-size: 0.85rem; color: var(--citruss-text-muted); }
+    }
+    
+    .toast-close {
+        cursor: pointer;
+        font-size: 1.1rem;
+        line-height: 1;
+        color: var(--citruss-text-muted);
+        &:hover { color: var(--citruss-text-main); }
+    }
+    
+    &.toast-success { border-left-color: var(--citruss-lime); }
+    &.toast-error { border-left-color: #ff4d4d; }
+    &.toast-info { border-left-color: var(--citruss-tangerine); }
+}
+```
+
+```javascript
+export const CitruSSToast = {
+    show: function({ title, message, type = 'info', duration = 4000 }) {
+        let container = document.querySelector('.citruss-toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'citruss-toast-container';
+            document.body.appendChild(container);
+        }
+        
+        const toast = document.createElement('div');
+        toast.className = `citruss-toast toast-${type}`;
+        toast.innerHTML = `
+            <div class="toast-body">
+                <div class="toast-title">${title}</div>
+                <div class="toast-message">${message}</div>
+            </div>
+            <div class="toast-close">×</div>
+        `;
+        
+        container.appendChild(toast);
+        
+        // Trigger show animation
+        setTimeout(() => toast.classList.add('show'), 50);
+        
+        const closeToast = () => {
+            toast.classList.remove('show');
+            toast.style.transform = 'translateX(120%)';
+            setTimeout(() => toast.remove(), 400);
+        };
+        
+        toast.querySelector('.toast-close').onclick = closeToast;
+        
+        // Auto dismiss
+        setTimeout(closeToast, duration);
+    }
+};
+```
+</details>
+
+<details>
+<summary><strong>4. Advanced Dropdowns & Comboboxes (`src/components/_dropdown.scss`, `src/js/_dropdown.js`)</strong></summary>
+Zero-dependency custom glassmorphic dropdown wrapper featuring multi-select, searchable list filter, keyboard accessible focus, and dynamic chip creation.
+
 ```scss
 .citruss-select-wrapper {
     position: relative;
@@ -564,7 +1105,6 @@ Zero-dependency, gorgeous custom glassmorphic dropdown wrapper featuring multi-s
 }
 ```
 
-##### Companion Javascript Select Controller (`src/js/_dropdown.js`)
 ```javascript
 export class CitruSSDropdown {
     constructor(element, options = {}) {
@@ -717,422 +1257,12 @@ export class CitruSSDropdown {
     }
 }
 ```
+</details>
 
----
+<details>
+<summary><strong>5. Tooltips, Popovers & Context Menus (`src/components/_tooltips.scss`, `src/js/_popover.js`, `src/js/_context-menu.js`)</strong></summary>
+CSS-only vibrant tooltips, rich HTML popovers, and custom context menus.
 
-### C. Advanced UI Layout & Dynamic Overlay Panels
-
-#### 1. Stacked Glass Toast System (`src/components/_alerts.scss` & `src/js/_toast.js`)
-Gorgeously stacked neon status toast alerts programmatically managed so you can trigger feedback natively.
-```scss
-.citruss-toast-container {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 9999;
-}
-
-.citruss-toast {
-    width: 320px;
-    background: rgba(20, 24, 38, 0.9);
-    border-left: 4px solid var(--citruss-orange);
-    border-top: 1px solid var(--citruss-glass-border);
-    border-right: 1px solid var(--citruss-glass-border);
-    border-bottom: 1px solid var(--citruss-glass-border);
-    padding: 16px;
-    border-radius: 4px 8px 8px 4px;
-    color: var(--citruss-text-main);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(16px);
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    transform: translateX(120%);
-    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    &.show {
-        transform: translateX(0);
-    }
-    
-    .toast-body {
-        flex: 1;
-        .toast-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
-        .toast-message { font-size: 0.85rem; color: var(--citruss-text-muted); }
-    }
-    
-    .toast-close {
-        cursor: pointer;
-        font-size: 1.1rem;
-        line-height: 1;
-        color: var(--citruss-text-muted);
-        &:hover { color: var(--citruss-text-main); }
-    }
-    
-    &.toast-success { border-left-color: var(--citruss-lime); }
-    &.toast-error { border-left-color: #ff4d4d; }
-    &.toast-info { border-left-color: var(--citruss-tangerine); }
-}
-```
-
-##### Companion Javascript Programmatic Toast API:
-```javascript
-export const CitruSSToast = {
-    show: function({ title, message, type = 'info', duration = 4000 }) {
-        let container = document.querySelector('.citruss-toast-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.className = 'citruss-toast-container';
-            document.body.appendChild(container);
-        }
-        
-        const toast = document.createElement('div');
-        toast.className = `citruss-toast toast-${type}`;
-        toast.innerHTML = `
-            <div class="toast-body">
-                <div class="toast-title">${title}</div>
-                <div class="toast-message">${message}</div>
-            </div>
-            <div class="toast-close">×</div>
-        `;
-        
-        container.appendChild(toast);
-        
-        // Trigger show animation
-        setTimeout(() => toast.classList.add('show'), 50);
-        
-        const closeToast = () => {
-            toast.classList.remove('show');
-            toast.style.transform = 'translateX(120%)';
-            setTimeout(() => toast.remove(), 400);
-        };
-        
-        toast.querySelector('.toast-close').onclick = closeToast;
-        
-        // Auto dismiss
-        setTimeout(closeToast, duration);
-    }
-};
-```
-
----
-
-#### 2. Drag & Drop Premium File Upload Area (`src/components/_inputs.scss`)
-Drag-and-drop zone featuring dynamic drop validation state hooks.
-```scss
-.citruss-upload-zone {
-    border: 2px dashed var(--citruss-glass-border);
-    background: rgba(255, 255, 255, 0.01);
-    border-radius: 12px;
-    padding: 32px;
-    text-align: center;
-    cursor: pointer;
-    backdrop-filter: blur(8px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    .upload-icon {
-        font-size: 2.5rem;
-        color: var(--citruss-tangerine);
-        margin-bottom: 12px;
-        transition: transform 0.3s ease;
-    }
-    
-    &:hover {
-        background: rgba(255, 255, 255, 0.03);
-        border-color: var(--citruss-tangerine);
-        .upload-icon { transform: translateY(-4px); }
-    }
-    
-    &.dragover {
-        border-color: var(--citruss-lime);
-        background: rgba(29, 209, 161, 0.05);
-        box-shadow: inset 0 0 20px rgba(29, 209, 161, 0.1);
-    }
-}
-```
-
----
-
-#### 3. Glassmorphic Modal & Multi-Step Wizard Engine (`src/components/_modals.scss` & `src/js/_dialog.js` & `src/js/_wizard.js`)
-Programmatically summon modal screens on the fly, eliminating the need to install external libraries like SweetAlert2.
-
-```scss
-/* Programmatic alert containers in SCSS */
-.citruss-swal-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(10, 12, 18, 0.55);
-    backdrop-filter: blur(10px);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    
-    &.active {
-        opacity: 1;
-    }
-}
-
-.citruss-swal-box {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(20px);
-    border-radius: 16px;
-    padding: 32px;
-    text-align: center;
-    max-width: 420px;
-    width: 90%;
-    transform: scale(0.9);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    &.show {
-        transform: scale(1);
-    }
-}
-```
-
-##### Programmatic JS API Sample:
-```javascript
-// Zero-dependency pure JavaScript implementation in src/js/_dialog.js
-export const CitruSS = {
-    fire: function({ title, text, icon = 'info', showCancelButton = false, confirmButtonText = 'OK' }) {
-        return new Promise((resolve) => {
-            const backdrop = document.createElement('div');
-            backdrop.className = 'citruss-swal-container';
-            
-            backdrop.innerHTML = `
-                <div class="citruss-swal-box">
-                    <div class="citruss-swal-icon citruss-swal-icon-${icon}"></div>
-                    <h3 style="color: var(--citruss-text-main); margin-bottom: 8px;">${title}</h3>
-                    <p style="color: var(--citruss-text-muted); margin-bottom: 24px;">${text}</p>
-                    <div style="display:flex; gap:12px; justify-content:center;">
-                        ${showCancelButton ? `<button class="citruss-btn" id="citruss-swal-cancel">Cancel</button>` : ''}
-                        <button class="citruss-btn btn-primary" id="citruss-swal-confirm">${confirmButtonText}</button>
-                    </div>
-                </div>
-            `;
-            
-            document.body.appendChild(backdrop);
-            
-            // Trigger entry animation
-            setTimeout(() => {
-                backdrop.classList.add('active');
-                backdrop.querySelector('.citruss-swal-box').classList.add('show');
-            }, 10);
-            
-            const close = (isConfirmed) => {
-                backdrop.classList.remove('active');
-                backdrop.querySelector('.citruss-swal-box').classList.remove('show');
-                setTimeout(() => {
-                    backdrop.remove();
-                    resolve({ isConfirmed });
-                }, 300);
-            };
-            
-            backdrop.querySelector('#citruss-swal-confirm').onclick = () => close(true);
-            if (showCancelButton) {
-                backdrop.querySelector('#citruss-swal-cancel').onclick = () => close(false);
-            }
-        });
-    },
-    
-    confirm: function(title, text) {
-        return this.fire({ title, text, icon: 'warning', showCancelButton: true, confirmButtonText: 'Yes, proceed!' });
-    }
-};
-```
-
----
-
-#### 4. Interactive Multi-Step Glass Wizards (`src/js/_wizard.js` & `src/components/_modals.scss`)
-A premium wizard constructor supporting dynamic step-validation, linear progress glow tracks, and sliding window step-transitions.
-
-```javascript
-// Native implementation inside src/js/_wizard.js
-export class CitruSSWizard {
-    constructor(elementId, options = {}) {
-        this.container = document.getElementById(elementId);
-        this.steps = Array.from(this.container.querySelectorAll('.citruss-wizard-step'));
-        this.currentStep = 0;
-        this.progressBar = this.container.querySelector('.citruss-progress-bar .progress-fill');
-        this.init();
-    }
-    
-    init() {
-        this.showStep(0);
-        this.container.querySelector('.wizard-next').addEventListener('click', () => this.next());
-        this.container.querySelector('.wizard-prev').addEventListener('click', () => this.prev());
-    }
-    
-    showStep(index) {
-        this.steps.forEach((step, i) => {
-            step.style.display = i === index ? 'block' : 'none';
-        });
-        this.currentStep = index;
-        
-        // Update progress glow width
-        const progressPercentage = ((index + 1) / this.steps.length) * 100;
-        if (this.progressBar) {
-            this.progressBar.style.width = `${progressPercentage}%`;
-        }
-    }
-    
-    next() {
-        if (this.currentStep < this.steps.length - 1) {
-            this.showStep(this.currentStep + 1);
-        }
-    }
-    
-    prev() {
-        if (this.currentStep > 0) {
-            this.showStep(this.currentStep - 1);
-        }
-    }
-}
-```
-
----
-
-#### 5. Premium Frosted Glass Metric Cards & Panels (`src/components/_cards.scss`)
-```scss
-.citruss-card {
-    background: var(--citruss-glass-bg);
-    border: 1px solid var(--citruss-glass-border);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 8px 32px 0 var(--citruss-glass-shadow);
-    color: var(--citruss-text-main);
-    backdrop-filter: blur(var(--citruss-glass-blur));
-    -webkit-backdrop-filter: blur(var(--citruss-glass-blur));
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-                border-color 0.25s ease, 
-                box-shadow 0.25s ease;
-    
-    overflow: hidden; 
-    
-    &:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255, 159, 67, 0.3); 
-        box-shadow: 0 12px 40px 0 rgba(255, 107, 0, 0.15);
-    }
-}
-```
-
----
-
-### D. Utility & Feedback Components
-
-#### 1. Premium Dynamic Segmented Controls / Tabs (`src/components/_navigation.scss`)
-Glow-accented horizontal tab controls that transition active focus indices gracefully.
-```scss
-.citruss-tabs-wrapper {
-    border-bottom: 1px solid var(--citruss-glass-border);
-    display: flex;
-    gap: 24px;
-    margin-bottom: 20px;
-    
-    .citruss-tab-link {
-        padding: 12px 4px;
-        color: var(--citruss-text-muted);
-        font-weight: 600;
-        cursor: pointer;
-        position: relative;
-        transition: color 0.2s ease;
-        
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: transparent;
-            box-shadow: none;
-            transition: all 0.3s ease;
-        }
-        
-        &:hover {
-            color: var(--citruss-text-main);
-        }
-        
-        &.active {
-            color: var(--citruss-tangerine);
-            &::after {
-                background: var(--citruss-tangerine);
-                box-shadow: 0 0 10px var(--citruss-tangerine);
-            }
-        }
-    }
-}
-```
-
----
-
-#### 2. Accordions & FAQ Collapse Components (`src/components/_modals.scss`)
-Nested accordions utilizing micro-animations to toggle content drawers with smooth height transition frames.
-```scss
-.citruss-accordion {
-    border: 1px solid var(--citruss-glass-border);
-    border-radius: 8px;
-    background: var(--citruss-glass-bg);
-    overflow: hidden;
-    margin-bottom: 12px;
-    backdrop-filter: blur(8px);
-    
-    .accordion-header {
-        padding: 16px 20px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 600;
-        color: var(--citruss-text-main);
-        transition: background 0.25s ease;
-        
-        &:hover { background: rgba(255, 255, 255, 0.02); }
-        
-        .arrow {
-            transition: transform 0.3s ease;
-            color: var(--citruss-text-muted);
-        }
-    }
-    
-    .accordion-body {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
-        padding: 0 20px;
-        color: var(--citruss-text-muted);
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-    
-    &.active {
-        border-color: rgba(255, 159, 67, 0.3);
-        .accordion-header {
-            color: var(--citruss-tangerine);
-            .arrow { transform: rotate(180deg); color: var(--citruss-tangerine); }
-        }
-        .accordion-body {
-            max-height: 500px;
-            padding-bottom: 20px;
-        }
-    }
-}
-```
-
----
-
-#### 3. Custom Glass Tooltips & Popovers (`src/components/_tooltips.scss`)
-Vibrant tooltips triggered programmatically or via pure styling selectors.
 ```scss
 [data-citruss-tooltip] {
     position: relative;
@@ -1165,83 +1295,12 @@ Vibrant tooltips triggered programmatically or via pure styling selectors.
     }
 }
 ```
+</details>
 
----
+<details>
+<summary><strong>6. Loading Spinners & Skeleton Overlays (`src/components/_progress.scss`)</strong></summary>
+Animated loading states.
 
-#### 4. Custom Slide Toggle & Glowing Range Slider (`src/components/_inputs.scss`)
-```scss
-/* Custom Toggle Switch */
-.citruss-toggle {
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    
-    input { display: none; }
-    
-    .toggle-track {
-        width: 48px;
-        height: 24px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--citruss-glass-border);
-        border-radius: 50px;
-        position: relative;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(4px);
-        
-        &::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--citruss-text-muted);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-    }
-    
-    input:checked + .toggle-track {
-        background: rgba(255, 159, 67, 0.15);
-        border-color: var(--citruss-tangerine);
-        
-        &::after {
-            left: 26px;
-            background: var(--citruss-tangerine);
-            box-shadow: 0 0 10px var(--citruss-tangerine);
-        }
-    }
-}
-
-/* Glowing range selectors */
-.citruss-range {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 6px;
-    border-radius: 3px;
-    background: rgba(255,255,255,0.05);
-    outline: none;
-    backdrop-filter: blur(4px);
-    
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background: var(--citruss-tangerine);
-        border: 2px solid var(--citruss-bg-surface);
-        box-shadow: 0 0 10px var(--citruss-tangerine);
-        cursor: pointer;
-        transition: transform 0.1s ease;
-        
-        &:hover { transform: scale(1.2); }
-    }
-}
-```
-
----
-
-#### 5. Loading Spinners & Skeleton Overlays (`src/components/_progress.scss`)
 ```scss
 /* Skeleton Loader */
 .citruss-skeleton {
@@ -1278,8 +1337,7 @@ Vibrant tooltips triggered programmatically or via pure styling selectors.
     to { transform: rotate(360deg); }
 }
 ```
-
----
+</details>
 
 ## 8. Electron.js Desktop Integration Strategy
 
