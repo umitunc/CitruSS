@@ -10,9 +10,10 @@ This document contains the comprehensive coding, architecture, and integration s
 **CitruSS**, taking its name and spirit from the vibrancy of citrus fruits, is an interface library aiming for the highest level of visual performance. Going beyond traditional flat or material designs, it standardizes the **Frosted Glass** effect, which features layered structure, light transmittance, and a sense of depth, combining the utility-first structural power of Tailwind with the robust pre-built component patterns of Bootstrap.
 
 ### Core Architectural Principles
-*   **Lightweight and Fast (Zero-Dependency):** It operates purely using raw CSS/SCSS and HTML, without depending on any JavaScript library (React, Vue, etc.) or external design engines. The targeted CDN size after Gzip compression is **< 20KB**.
+*   **Lightweight and Fast (Zero-Dependency):** It operates purely using raw CSS/SCSS and HTML, bundled with a tiny vanilla JS companion script (`citruss.js`) for dynamic components. The targeted combined CDN size after Gzip compression is **< 25KB**.
 *   **Zero-Latency Native Dark & Light Modes:** Fully integrated at the core layer. All colors, blur values, border opacities, and spacing metrics are managed via CSS Custom Properties (Variables). Switching between Dark and Light themes is instant, triggered via HTML DOM attributes or automated through system media queries.
 *   **Universal Web-First Compatibility (Framework-Agnostic):** Although optimized for Electron.js desktop applications, CitruSS is designed as a drop-in universal stylesheet for all web ecosystems. It integrates seamlessly with single-page applications (React, Vue, Svelte, Angular), static site generators (Astro, Next.js, Nuxt), server-rendered backends (Laravel, Django, ASP.NET), or simple vanilla HTML websites.
+*   **Built-in SweetAlert-like Programmatic JS API:** Eliminates the need for external popup/dialog libraries (like SweetAlert2 or Toastr). Includes a native, lightweight JS utility (`CitruSS.fire()`) to programmatically summon gorgeous glassmorphic alerts, prompt dialogs, confirms, and multi-step layout wizards.
 *   **Desktop (Electron.js) Native Experience:** By leveraging the hardware-accelerated (GPU-accelerated) layer creation capabilities of the Chromium rendering engine, it delivers an OS-level transparency feel in desktop applications without lag or stuttering.
 *   **Premium Component Universe:** Includes not only basic elements but also enterprise-grade, "Pro" component layouts (glowing metrical charts, floating glass modals, interactive glass drawers, and nested dropdown dashboards).
 
@@ -57,26 +58,9 @@ Because CitruSS is a zero-dependency compiled CSS file, integrating it into mode
 
 ---
 
-## 4. Technical Stack and Build Pipeline
+## 4. Folder and File Structure (SCSS & JS Architecture)
 
-The compilation, compression, and distribution processes of the project will be fully automated in compliance with modern web standards:
-
-```
-+------------------+      +-------------------+      +--------------------+      +------------------+
-|  Sass (SCSS)     | ---> | PostCSS           | ---> | Lightning CSS      | ---> | Distribution     |
-|  Source Code     |      | Autoprefixer / v4 |      | Minify & Optimize  |      | NPM / jsDelivr   |
-+------------------+      +-------------------+      +--------------------+      +------------------+
-```
-
-*   **Sass (SCSS):** The codebase is managed with modular structures (`@use`, `@forward`) using the `Dart-Sass` library.
-*   **PostCSS & Autoprefixer:** Automatically adds browser and engine compatibility prefixes (such as `-webkit-backdrop-filter`) to modern CSS rules.
-*   **Lightning CSS:** Minifies the CSS file, removes unused rules, and reduces color definitions to their most optimized format (e.g., using oklch or rgba instead of hex).
-
----
-
-## 5. Folder and File Structure (SCSS Architecture)
-
-To support a massive catalog of premium components while maintaining a clean, modular structure, the 7-1 architectural model has been tailored:
+To support a massive catalog of premium components and dynamic JS modules while maintaining a clean, modular structure, the 7-1 architectural model has been tailored:
 
 ```
 citruss/
@@ -95,17 +79,41 @@ citruss/
 │   │   ├── _sidebar.scss       # Left navigation, vertical menu, and profile area components
 │   │   ├── _inputs.scss        # Form elements, floating labels, selects, toggles, and sliders
 │   │   ├── _dropdown.scss      # Layered, high z-index dropdown panels
-│   │   ├── _modals.scss        # Glassmorphic modals, dialogs, and slide-over drawers (Pro)
+│   │   ├── _modals.scss        # Glassmorphic modals, SweetAlert-like popup styles, and wizards (Pro)
 │   │   ├── _tables.scss        # Frosted glass tables with responsive data cards
 │   │   ├── _badges.scss        # Glowing badges, tags, and status indicator dots
 │   │   ├── _alerts.scss        # Glass notification banners, toasts, and alerts
 │   │   ├── _progress.scss      # Translucent progress bars and glowing radial trackers
 │   │   └── _tooltips.scss      # High-fidelity tooltip and popover overlays
-│   └── citruss.scss            # Main entry point merging all sub-modules
+│   ├── js/
+│   │   ├── _dialog.js          # SweetAlert-like programmatic alert and confirm engine
+│   │   ├── _wizard.js          # Programmatic multi-step form wizard controller
+│   │   └── index.js            # Main JS entry point exposing CitruSS global API
+│   └── citruss.scss            # Main entry point merging all SCSS modules
 ├── dist/
-│   ├── citruss.css             # Raw, debuggable output for development
-│   └── citruss.min.css         # Optimized and minified CDN output for production
+│   ├── citruss.css             # Raw, debuggable CSS output
+│   ├── citruss.min.css         # Optimized and minified CDN CSS output
+│   ├── citruss.js              # Full development companion JavaScript bundle
+│   └── citruss.min.js          # Minified production companion JavaScript bundle
 └── package.json                # Dependencies, scripts, and npm publishing configuration
+```
+
+---
+
+## 5. Technical Stack and Build Pipeline
+
+The compilation, compression, and distribution processes of the project will be fully automated in compliance with modern web standards:
+
+```
+                  +------------------+      +-------------------+      +--------------------+      +------------------+
+CSS (Styles)      |  Sass (SCSS)     | ---> | PostCSS           | ---> | Lightning CSS      | ---> | Dist (CSS)       |
+                  |  Source Codes    |      | Autoprefixer / v4 |      | Minify & Optimize  |      | CDN / jsDelivr   |
+                  +------------------+      +-------------------+      +--------------------+      +------------------+
+
+                  +------------------+      +-------------------+      +--------------------+
+JS (Interactions) |  ES6 Modules     | ---> | Rollup / esbuild  | ---> | Terser / Minifier  | ---> | Dist (JS)        |
+                  |  Source (src/js) |      | Tree-shaking      |      | Minify Bundle      |      | CDN / jsDelivr   |
+                  +------------------+      +-------------------+      +--------------------+
 ```
 
 ---
@@ -283,49 +291,147 @@ Bootstrap-style statistics cards with customizable visual hierarchy, glowing sta
 }
 ```
 
-#### 2. Floating Modals & Slide-Over Drawers (`src/components/_modals.scss`)
-Premium overlay windows and drawers utilizing layered z-indexes and dynamic backdrop blur states for deep visual hierarchies.
+#### 2. Native Dynamic SweetAlert-like Modal API (`src/components/_modals.scss` & `src/js/_dialog.js`)
+Programmatically summon modal screens on the fly, eliminating the need to install external libraries like SweetAlert2.
+
 ```scss
-.citruss-modal-backdrop {
+/* Programmatic alert containers in SCSS */
+.citruss-swal-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(10, 12, 18, 0.6);
-    backdrop-filter: blur(8px);
-    z-index: 1050;
+    background: rgba(10, 12, 18, 0.55);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    &.active {
+        opacity: 1;
+    }
 }
 
-.citruss-modal {
+.citruss-swal-box {
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    max-width: 500px;
-    width: 90%;
-    padding: 32px;
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 420px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    &.show {
+        transform: scale(1);
+    }
 }
 ```
 
-#### 3. High z-index Dropdowns & Popovers (`src/components/_dropdown.scss`)
-Tailwind UI-inspired popovers that contextually align and overlap content gracefully.
+#### Programmatic JS API Sample:
+```javascript
+// Zero-dependency pure JavaScript implementation in src/js/_dialog.js
+export const CitruSS = {
+    fire: function({ title, text, icon = 'info', showCancelButton = false, confirmButtonText = 'OK' }) {
+        return new Promise((resolve) => {
+            const backdrop = document.createElement('div');
+            backdrop.className = 'citruss-swal-container';
+            
+            backdrop.innerHTML = `
+                <div class="citruss-swal-box">
+                    <div class="citruss-swal-icon citruss-swal-icon-${icon}"></div>
+                    <h3 style="color: var(--citruss-text-main); margin-bottom: 8px;">${title}</h3>
+                    <p style="color: var(--citruss-text-muted); margin-bottom: 24px;">${text}</p>
+                    <div style="display:flex; gap:12px; justify-content:center;">
+                        ${showCancelButton ? `<button class="citruss-btn" id="citruss-swal-cancel">Cancel</button>` : ''}
+                        <button class="citruss-btn btn-primary" id="citruss-swal-confirm">${confirmButtonText}</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(backdrop);
+            
+            // Trigger entry animation
+            setTimeout(() => {
+                backdrop.classList.add('active');
+                backdrop.querySelector('.citruss-swal-box').classList.add('show');
+            }, 10);
+            
+            const close = (isConfirmed) => {
+                backdrop.classList.remove('active');
+                backdrop.querySelector('.citruss-swal-box').classList.remove('show');
+                setTimeout(() => {
+                    backdrop.remove();
+                    resolve({ isConfirmed });
+                }, 300);
+            };
+            
+            backdrop.querySelector('#citruss-swal-confirm').onclick = () => close(true);
+            if (showCancelButton) {
+                backdrop.querySelector('#citruss-swal-cancel').onclick = () => close(false);
+            }
+        });
+    },
+    
+    confirm: function(title, text) {
+        return this.fire({ title, text, icon: 'warning', showCancelButton: true, confirmButtonText: 'Yes, proceed!' });
+    }
+};
+```
 
-```scss
-.citruss-dropdown-menu {
-    position: absolute;
-    z-index: 1000;
-    min-width: 240px;
-    background: rgba(17, 20, 32, 0.85);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 8px;
-    backdrop-filter: blur(16px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+---
+
+#### 3. Interactive Multi-Step Glass Wizards (`src/js/_wizard.js` & `src/components/_modals.scss`)
+A premium wizard constructor supporting dynamic step-validation, linear progress glow tracks, and sliding window step-transitions.
+
+```javascript
+// Native implementation inside src/js/_wizard.js
+export class CitruSSWizard {
+    constructor(elementId, options = {}) {
+        this.container = document.getElementById(elementId);
+        this.steps = Array.from(this.container.querySelectorAll('.citruss-wizard-step'));
+        this.currentStep = 0;
+        this.progressBar = this.container.querySelector('.citruss-progress-bar .progress-fill');
+        this.init();
+    }
+    
+    init() {
+        this.showStep(0);
+        this.container.querySelector('.wizard-next').addEventListener('click', () => this.next());
+        this.container.querySelector('.wizard-prev').addEventListener('click', () => this.prev());
+    }
+    
+    showStep(index) {
+        this.steps.forEach((step, i) => {
+            step.style.display = i === index ? 'block' : 'none';
+        });
+        this.currentStep = index;
+        
+        // Update progress glow width
+        const progressPercentage = ((index + 1) / this.steps.length) * 100;
+        if (this.progressBar) {
+            this.progressBar.style.width = `${progressPercentage}%`;
+        }
+    }
+    
+    next() {
+        if (this.currentStep < this.steps.length - 1) {
+            this.showStep(this.currentStep + 1);
+        }
+    }
+    
+    prev() {
+        if (this.currentStep > 0) {
+            this.showStep(this.currentStep - 1);
+        }
+    }
 }
 ```
 
@@ -467,9 +573,9 @@ In frameless windows, custom CSS rules are assigned to the left menu or top head
 | Phase | Scope / Activity | Technical Output / Performance Metric |
 | --- | --- | --- |
 | **Phase 1: Core** | Setting up the SCSS infrastructure, defining CSS Custom Properties, modern reset rules, and the citrus color palette. | Zero external dependencies, global theme variable architecture. |
-| **Phase 2: Components** | Coding the full catalog of components (Buttons, Inputs, Cards, Sidebar, Modals, Tables, Badges, Progress Bars). | Hardware-accelerated layer optimizations (`will-change`). |
+| **Phase 2: Components & JS API** | Coding the full catalog of components and the dynamic JS Alert/Confirm/Wizard modules (`citruss.js`). | Hardware-accelerated layer optimizations and clean programmatic bindings. |
 | **Phase 3: Desktop Integration** | Testing window dragging and analyzing performance on prototype windows (frameless and transparent) built with Electron.js. | Stable 60+ FPS performance during window moving or resizing. |
-| **Phase 4: Optimization & Deployment** | Setting up build automation with PostCSS and Lightning CSS. Deployment to npm and jsDelivr networks via GitHub Actions. | Package size < 20KB after Gzip compression. |
+| **Phase 4: Optimization & Deployment** | Setting up build automation with PostCSS, Lightning CSS, and Rollup/esbuild for CSS and JS bundling. | CSS < 20KB, JS < 5KB after Gzip compression. |
 
 ---
 
