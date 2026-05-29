@@ -16,17 +16,31 @@
   --citruss-info: #2e90ff;
 
   /* === DEFAULT: DARK MODE === */
-  --citruss-bg-main: #060913;
-  --citruss-bg-surface: #0e1220;
+  --citruss-bg-main: #060813;
+  --citruss-bg-surface: rgba(14, 18, 32, 0.4);
   
-  /* Glassmorphism Configuration (Dark) */
-  --citruss-glass-bg: rgb(255 255 255 / 2.5%);
-  --citruss-glass-bg-hover: rgb(255 255 255 / 5%);
-  --citruss-glass-border: rgb(255 255 255 / 6%);
-  --citruss-glass-border-hover: rgb(255 255 255 / 15%);
-  --citruss-glass-blur: 14px;
-  --citruss-glass-shadow: rgb(0 0 0 / 45%);
-  --citruss-glass-glow: 0 0 15px 0 rgb(255 255 255 / 1%);
+  /* Liquid Glass Configuration (Dark) */
+  --citruss-glass-bg: rgba(255, 255, 255, 0.035);
+  --citruss-glass-bg-hover: rgba(255, 255, 255, 0.07);
+  --citruss-glass-border: rgba(255, 255, 255, 0.08);
+  --citruss-glass-border-hover: rgba(255, 255, 255, 0.2);
+  --citruss-glass-blur: 24px;
+  --citruss-glass-saturate: 180%;
+  --citruss-glass-contrast: 100%;
+  --citruss-glass-shadow: rgba(0, 0, 0, 0.55);
+  --citruss-glass-glow: 0 0 25px 0 rgba(255, 255, 255, 0.02);
+  --citruss-glass-highlight: rgba(255, 255, 255, 0.15);
+  --citruss-glass-highlight-hover: rgba(255, 255, 255, 0.28);
+  
+  /* Squircle Corner Radii */
+  --citruss-radius-sm: 10px;
+  --citruss-radius-md: 18px;
+  --citruss-radius-lg: 26px;
+  --citruss-radius-xl: 36px;
+
+  /* Organic Spring Easing Curve */
+  --citruss-spring-bezier: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --citruss-spring-smooth: cubic-bezier(0.25, 1, 0.4, 1);
   
   /* Typography & Text (Dark) */
   --citruss-text-main: #f8fafc;
@@ -45,17 +59,21 @@
 
 /* === LIGHT MODE ALTERNATIVE === */
 @mixin light-theme-properties {
-  --citruss-bg-main: #f4f6fa;
-  --citruss-bg-surface: #fff;
+  --citruss-bg-main: #f0f2f8;
+  --citruss-bg-surface: rgba(255, 255, 255, 0.45);
   
-  /* Glassmorphism Configuration (Light) */
-  --citruss-glass-bg: rgb(15 23 42 / 2%);
-  --citruss-glass-bg-hover: rgb(15 23 42 / 4%);
-  --citruss-glass-border: rgb(15 23 42 / 7%);
-  --citruss-glass-border-hover: rgb(15 23 42 / 15%);
-  --citruss-glass-blur: 12px;
-  --citruss-glass-shadow: rgb(0 0 0 / 6%);
-  --citruss-glass-glow: 0 0 15px 0 rgb(0 0 0 / 1%);
+  /* Liquid Glass Configuration (Light) */
+  --citruss-glass-bg: rgba(15, 23, 42, 0.03);
+  --citruss-glass-bg-hover: rgba(15, 23, 42, 0.06);
+  --citruss-glass-border: rgba(15, 23, 42, 0.09);
+  --citruss-glass-border-hover: rgba(15, 23, 42, 0.18);
+  --citruss-glass-blur: 20px;
+  --citruss-glass-saturate: 160%;
+  --citruss-glass-contrast: 95%;
+  --citruss-glass-shadow: rgba(15, 23, 42, 0.08);
+  --citruss-glass-glow: 0 0 25px 0 rgba(15, 23, 42, 0.02);
+  --citruss-glass-highlight: rgba(255, 255, 255, 0.65);
+  --citruss-glass-highlight-hover: rgba(255, 255, 255, 0.85);
   
   /* Typography & Text (Light) */
   --citruss-text-main: #0f172a;
