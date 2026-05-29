@@ -3,19 +3,19 @@ export default {
 };
 
 const backgroundsHTML = `
-<!-- 1. Pure CSS Mesh Gradient Background -->
-<div class="citruss-bg-pure-citrus" style="position: relative; width: 100%; min-height: 350px; border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+<!-- 1. Pure CSS Mesh Gradient Background (Oceanic Example) -->
+<div class="citruss-bg-pure-oceanic" style="position: relative; width: 100%; min-height: 350px; border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--citruss-glass-border);">
   <!-- Inner Glass Panel -->
   <div class="citruss-card" style="width: 80%; max-width: 400px;">
     <div class="card-content" style="text-align: center;">
       <h3 style="margin-bottom: 8px; color: var(--citruss-text-main);">Glassmorphism Match</h3>
-      <p style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 0;">Perfect harmony on Citrus Mesh background.</p>
+      <p style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 0;">Perfect harmony on Oceanic currents background.</p>
     </div>
   </div>
 </div>
 
-<!-- 2. Dynamic Floating Orb Background -->
-<div class="citruss-bg-wrapper" style="min-height: 400px;">
+<!-- 2. Dynamic Floating Orb Background (Citrus Example) -->
+<div class="citruss-bg-wrapper theme-citrus" style="min-height: 400px;">
   <!-- Orbs (Animated) -->
   <div class="citruss-orb orb-md orb-orange animate-float-slow-1" style="top: 10%; left: 15%;"></div>
   <div class="citruss-orb orb-lg orb-lime animate-float-slow-2" style="bottom: 5%; right: 10%;"></div>
@@ -30,7 +30,7 @@ const backgroundsHTML = `
       <div class="card-content" style="text-align: center;">
         <h3 style="margin-bottom: 12px; color: var(--citruss-text-main); font-weight: 700;">Dynamic Mesh & Tech Grid</h3>
         <p style="color: var(--citruss-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
-          By placing absolute glowing orbs inside a wrapper, they float organically behind the frosted panel creating a state-of-the-art SaaS product design.
+          Absolute glowing orbs float organically behind the glass panel, adapting automatically to light/dark themes.
         </p>
       </div>
     </div>
@@ -46,7 +46,7 @@ export const DynamicOrbs = () => {
           ✨ Glassmorphism-Ready Backgrounds
         </h1>
         <p style="color: var(--citruss-text-muted); font-size: 1.1rem; max-width: 800px; line-height: 1.6; margin-bottom: 0;">
-          Glassmorphism requires a contrast-rich, colorful, or structured background to showcase the frosted glass blur and border effects. Here is a curated collection of pure CSS mesh gradients and animated float orbs.
+          Glassmorphism requires a contrast-rich, colorful, or structured background to showcase the frosted glass blur and border effects. Here is a curated collection of dynamic animated float orbs with custom wrappers.
         </p>
       </div>
 
@@ -55,7 +55,7 @@ export const DynamicOrbs = () => {
         <h2 style="color: var(--citruss-orange); font-family: var(--citruss-font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
           <span>🍊</span> Citrus Glow (Dynamic Orbs)
         </h2>
-        <div class="citruss-bg-wrapper" style="min-height: 380px;">
+        <div class="citruss-bg-wrapper theme-citrus" style="min-height: 380px;">
           <!-- Floating Orbs -->
           <div class="citruss-orb orb-md orb-orange animate-float-slow-1" style="top: -10%; left: 10%;"></div>
           <div class="citruss-orb orb-lg orb-tangerine animate-float-bounce" style="bottom: -20%; right: 5%;"></div>
@@ -72,7 +72,7 @@ export const DynamicOrbs = () => {
                 <span style="font-size: 0.8rem; font-weight: 800; color: var(--citruss-orange); letter-spacing: 0.1em; text-transform: uppercase;">Premium Showcase</span>
                 <h3 style="margin: 8px 0 12px 0; color: var(--citruss-text-main); font-weight: 800;">Tangerine & Lemon Orbit</h3>
                 <p style="color: var(--citruss-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
-                  Notice how the cards blend perfectly with the background orbs floating underneath them.
+                  Warm, organic citrus colors float gracefully to enhance frosted card panels. Perfect for modern landing pages.
                 </p>
               </div>
             </div>
@@ -83,9 +83,9 @@ export const DynamicOrbs = () => {
       <!-- Theme 2: Cyberpunk & Neon Glow -->
       <div style="margin-bottom: 48px;">
         <h2 style="color: var(--citruss-info); font-family: var(--citruss-font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-          <span>👾</span> Cyberpunk & Purple Glow
+          <span>👾</span> Cyberpunk & Neon Glow
         </h2>
-        <div class="citruss-bg-wrapper" style="min-height: 380px;">
+        <div class="citruss-bg-wrapper theme-cyberpunk" style="min-height: 380px;">
           <!-- Floating Orbs -->
           <div class="citruss-orb orb-lg orb-cyan animate-float-slow-1" style="top: -15%; right: 10%;"></div>
           <div class="citruss-orb orb-md orb-magenta animate-float-bounce" style="bottom: -10%; left: 5%;"></div>
@@ -100,7 +100,7 @@ export const DynamicOrbs = () => {
                 <span style="font-size: 0.8rem; font-weight: 800; color: var(--citruss-info); letter-spacing: 0.1em; text-transform: uppercase;">Cyberpunk Vibe</span>
                 <h3 style="margin: 8px 0 12px 0; color: var(--citruss-text-main); font-weight: 800;">Electric Indigo & Cyan</h3>
                 <p style="color: var(--citruss-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
-                  Cyan and magenta gas-cloud styles make the frosted container look futuristic and high-tech.
+                  Cyan and magenta gas-cloud styles make the frosted container look futuristic, energetic, and high-tech.
                 </p>
               </div>
             </div>
@@ -108,12 +108,12 @@ export const DynamicOrbs = () => {
         </div>
       </div>
 
-      <!-- Technical Grid Overlay Showcase -->
+      <!-- Theme 3: Oceanic Earth Currents -->
       <div style="margin-bottom: 48px;">
-        <h2 style="color: var(--citruss-lime); font-family: var(--citruss-font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-          <span>🌴</span> Oceanic & Green Mesh (Animated)
+        <h2 style="color: #1dd1a1; font-family: var(--citruss-font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+          <span>🌐</span> Oceanic & Earth Currents
         </h2>
-        <div class="citruss-bg-wrapper" style="min-height: 380px;">
+        <div class="citruss-bg-wrapper theme-oceanic" style="min-height: 380px;">
           <!-- Floating Orbs -->
           <div class="citruss-orb orb-lg orb-lime animate-float-slow-1" style="top: -10%; left: -10%;"></div>
           <div class="citruss-orb orb-md orb-cyan animate-float-slow-2" style="bottom: 10%; right: 10%;"></div>
@@ -125,10 +125,10 @@ export const DynamicOrbs = () => {
           <div class="citruss-bg-content">
             <div class="citruss-card" style="max-width: 480px;">
               <div class="card-content" style="text-align: center;">
-                <span style="font-size: 0.8rem; font-weight: 800; color: var(--citruss-lime); letter-spacing: 0.1em; text-transform: uppercase;">Oceanic Breeze</span>
+                <span style="font-size: 0.8rem; font-weight: 800; color: #1dd1a1; letter-spacing: 0.1em; text-transform: uppercase;">Oceanic Breeze</span>
                 <h3 style="margin: 8px 0 12px 0; color: var(--citruss-text-main); font-weight: 800;">Mint Lime & Turquoise</h3>
                 <p style="color: var(--citruss-text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
-                  A clean, refreshing mint and turquoise glow style with dot matrices instead of lines.
+                  Deep water current flows and turquoise-lime highlights. Perfect for ecological, digital-twin, or global platforms.
                 </p>
               </div>
             </div>
@@ -163,7 +163,7 @@ export const PureCSSMeshGradients = () => {
 
       <div class="citruss-row">
         <!-- citrus -->
-        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg">
+        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg" style="margin-bottom: 24px;">
           <h3 style="color: var(--citruss-orange); margin-bottom: 12px; font-weight: 700;">🍊 Citrus Punch</h3>
           <div class="citruss-bg-pure-citrus" style="height: 250px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--citruss-glass-border); overflow: hidden; position: relative;">
             <div class="citruss-tech-grid"></div>
@@ -177,7 +177,7 @@ export const PureCSSMeshGradients = () => {
         </div>
 
         <!-- cyberpunk -->
-        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg">
+        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg" style="margin-bottom: 24px;">
           <h3 style="color: var(--citruss-info); margin-bottom: 12px; font-weight: 700;">👾 Cyberpunk Glow</h3>
           <div class="citruss-bg-pure-cyberpunk" style="height: 250px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--citruss-glass-border); overflow: hidden; position: relative;">
             <div class="citruss-tech-grid"></div>
@@ -190,8 +190,22 @@ export const PureCSSMeshGradients = () => {
           </div>
         </div>
 
+        <!-- oceanic -->
+        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg" style="margin-bottom: 24px;">
+          <h3 style="color: #1dd1a1; margin-bottom: 12px; font-weight: 700;">🌐 Oceanic Earth</h3>
+          <div class="citruss-bg-pure-oceanic" style="height: 250px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--citruss-glass-border); overflow: hidden; position: relative;">
+            <div class="citruss-tech-grid"></div>
+            <div class="citruss-card" style="width: 80%;">
+              <div class="card-content" style="text-align: center; padding: 12px;">
+                <h4 style="color: var(--citruss-text-main); margin-bottom: 4px;">Oceanic Panel</h4>
+                <p style="color: var(--citruss-text-muted); font-size: 0.85rem; margin: 0;">.citruss-bg-pure-oceanic</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- aurora -->
-        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg">
+        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg" style="margin-bottom: 24px;">
           <h3 style="color: var(--citruss-success); margin-bottom: 12px; font-weight: 700;">🌌 Aurora Borealis</h3>
           <div class="citruss-bg-pure-aurora" style="height: 250px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--citruss-glass-border); overflow: hidden; position: relative;">
             <div class="citruss-tech-grid"></div>
@@ -205,7 +219,7 @@ export const PureCSSMeshGradients = () => {
         </div>
 
         <!-- sunset -->
-        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg">
+        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg" style="margin-bottom: 24px;">
           <h3 style="color: var(--citruss-danger); margin-bottom: 12px; font-weight: 700;">🌅 Deep Sunset</h3>
           <div class="citruss-bg-pure-sunset" style="height: 250px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--citruss-glass-border); overflow: hidden; position: relative;">
             <div class="citruss-tech-grid"></div>
@@ -219,8 +233,8 @@ export const PureCSSMeshGradients = () => {
         </div>
 
         <!-- forest -->
-        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg">
-          <h3 style="color: #1dd1a1; margin-bottom: 12px; font-weight: 700;">🌿 Mystic Forest</h3>
+        <div class="citruss-col-12 citruss-col-md-6 citruss-mb-lg" style="margin-bottom: 24px;">
+          <h3 style="color: #20bf6b; margin-bottom: 12px; font-weight: 700;">🌿 Mystic Forest</h3>
           <div class="citruss-bg-pure-forest" style="height: 250px; border-radius: 16px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--citruss-glass-border); overflow: hidden; position: relative;">
             <div class="citruss-tech-grid"></div>
             <div class="citruss-card" style="width: 80%;">
@@ -243,3 +257,4 @@ DynamicOrbs.parameters = {
     },
   },
 };
+
