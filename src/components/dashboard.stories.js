@@ -87,8 +87,9 @@ export const AdminPanelDashboard = () => {
       <!-- 1. LATERAL SIDEBAR -->
       <aside class="citruss-sidebar" id="dashboard-sidebar">
         <div class="sidebar-header">
-          <div class="citruss-logo-area">
-            🍋 CitruSS<span>Pro</span>
+          <div class="citruss-logo-area" style="display: flex; align-items: center; gap: 8px;">
+            <img src="./logos/citruss_logo_transparent.png" alt="CitruSS Logo" style="height: 32px; width: auto; object-fit: contain;">
+            <span style="font-size: 1.25rem; font-weight: 800; color: var(--citruss-tangerine); margin-left: 2px;">Pro</span>
           </div>
         </div>
         <div class="sidebar-nav">

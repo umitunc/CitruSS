@@ -1,4 +1,4 @@
-# 🍋 CitruSS UI
+# <img src="./docs/logos/citruss_logo_transparent.png" alt="CitruSS UI Logo" height="60" style="vertical-align: middle; margin-right: 10px;"> CitruSS UI
 
 > **Vibrant Frosted Glassmorphic UI Kit inspired by citrus fruits.**  
 > A modern, high-performance, and zero-dependency glassmorphic (frosted glass) UI library inspired by the colors and freshness of citrus fruits.
