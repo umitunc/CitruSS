@@ -21,7 +21,7 @@ export const StandardContextMenu = () => {
         You can trigger the custom glassmorphic menu by <strong>right-clicking</strong> anywhere inside the area below.
       </p>
 
-      {/* Target trigger area */}
+      <!-- Target trigger area -->
       <div id="context-menu-trigger-zone" style="
         height: 250px; 
         max-width: 500px;
@@ -39,7 +39,7 @@ export const StandardContextMenu = () => {
         Right-click here!
       </div>
 
-      {/* Context Menu Panel */}
+      <!-- Context Menu Panel -->
       <div id="demo-context-menu" class="citruss-context-menu" style="display: none; position: fixed; z-index: 9999;">
         <div class="context-item">
           <span>📂</span> File Details
