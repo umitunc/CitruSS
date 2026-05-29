@@ -1,0 +1,67 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-wizard-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--citruss-spacing-lg);
+  
+  .citruss-wizard-steps-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      left: 16px;
+      z-index: 0;
+      height: 2px;
+      content: '';
+      background: var(--citruss-glass-border);
+      transform: translateY(-50%);
+    }
+  }
+  
+  .wizard-step-node {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--citruss-text-muted);
+    background: var(--citruss-bg-surface);
+    border: 2px solid var(--citruss-glass-border);
+    border-radius: 50%;
+
+    @include transition-all(0.3s);
+    
+    &.active {
+      color: var(--citruss-tangerine);
+      border-color: var(--citruss-tangerine);
+      box-shadow: 0 0 15px var(--citruss-tangerine-glow);
+    }
+    
+    &.completed {
+      color: var(--citruss-bg-main);
+      background: var(--citruss-lime);
+      border-color: var(--citruss-lime);
+      box-shadow: 0 0 15px var(--citruss-lime-glow);
+    }
+  }
+  
+  .citruss-wizard-step {
+    animation: citruss-wizard-slide 0.35s ease;
+  }
+}
+
+@keyframes citruss-wizard-slide {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}

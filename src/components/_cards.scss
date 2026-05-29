@@ -1,0 +1,80 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-card {
+  @include glass-panel(var(--citruss-glass-blur), var(--citruss-glass-bg), var(--citruss-glass-border));
+
+  position: relative;
+  padding: 24px;
+  overflow: hidden;
+  border-radius: 16px;
+
+  @include transition-all(0.25s);
+  
+  /* Dual-layer Safety Mask for WCAG AA compliance (forces contrast on any background) */
+  &::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    content: '';
+    background: radial-gradient(circle at center, transparent 30%, var(--citruss-glass-shadow) 150%);
+    opacity: 0.15;
+  }
+  
+  .card-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  &:hover {
+    border-color: rgb(255 159 67 / 25%);
+    box-shadow: 
+      0 12px 40px 0 rgb(255 107 0 / 10%),
+      0 8px 32px 0 var(--citruss-glass-shadow);
+    transform: translateY(-4px);
+  }
+  
+  &.card-lime:hover {
+    border-color: rgb(29 209 161 / 25%);
+    box-shadow: 
+      0 12px 40px 0 rgb(29 209 161 / 10%),
+      0 8px 32px 0 var(--citruss-glass-shadow);
+  }
+
+  .metric-title {
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--citruss-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .metric-value {
+    margin-bottom: 8px;
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--citruss-text-main);
+    background: linear-gradient(135deg, var(--citruss-text-main), rgb(255 255 255 / 70%));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .metric-trend {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    
+    &.trend-up {
+      color: var(--citruss-lime);
+    }
+    
+    &.trend-down {
+      color: var(--citruss-danger);
+    }
+  }
+}

@@ -1,0 +1,122 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-btn {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-family: var(--citruss-font-family);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--citruss-text-main);
+  cursor: pointer;
+  user-select: none;
+  background: var(--citruss-glass-bg);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 8px;
+
+  @include transition-all(0.2s);
+  
+  &:hover {
+    background: var(--citruss-glass-bg-hover);
+    border-color: var(--citruss-glass-border-hover);
+  }
+  
+  &:active {
+    transform: scale(0.97);
+  }
+  
+  &.btn-primary {
+    background: linear-gradient(135deg, rgb(255 107 0 / 15%), rgb(255 159 67 / 15%));
+    border: 1px solid rgb(255 159 67 / 30%);
+    
+    &:hover {
+      background: linear-gradient(135deg, rgb(255 107 0 / 25%), rgb(255 159 67 / 25%));
+
+      @include hover-glow(var(--citruss-orange), 0.25);
+    }
+  }
+  
+  &.btn-success {
+    color: var(--citruss-lime);
+    background: linear-gradient(135deg, rgb(29 209 161 / 10%), rgb(29 209 161 / 20%));
+    border: 1px solid rgb(29 209 161 / 35%);
+    
+    &:hover {
+      color: var(--citruss-text-main);
+      background: linear-gradient(135deg, rgb(29 209 161 / 20%), rgb(29 209 161 / 30%));
+
+      @include hover-glow(var(--citruss-lime), 0.25);
+    }
+  }
+
+  &.btn-danger {
+    color: var(--citruss-danger);
+    background: linear-gradient(135deg, rgb(255 94 87 / 10%), rgb(255 94 87 / 20%));
+    border: 1px solid rgb(255 94 87 / 35%);
+    
+    &:hover {
+      color: var(--citruss-text-main);
+      background: linear-gradient(135deg, rgb(255 94 87 / 20%), rgb(255 94 87 / 30%));
+
+      @include hover-glow(var(--citruss-danger), 0.25);
+    }
+  }
+  
+  &.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+  }
+  
+  &.btn-lg {
+    padding: 14px 28px;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+}
+
+/* Button Group */
+.citruss-btn-group {
+  display: inline-flex;
+  overflow: hidden;
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 8px;
+  
+  .citruss-btn {
+    background: rgb(255 255 255 / 1%);
+    backdrop-filter: none;
+    border: none;
+    border-right: 1px solid var(--citruss-glass-border);
+    border-radius: 0;
+    
+    &:last-child {
+      border-right: none;
+    }
+    
+    &:hover {
+      background: var(--citruss-glass-bg-hover);
+    }
+    
+    &.active {
+      font-weight: 700;
+      color: var(--citruss-tangerine);
+      background: rgb(255 159 67 / 15%);
+    }
+  }
+}
+
+/* Floating Action Button (FAB) */
+.citruss-btn-fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50% !important;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 40%) !important;
+}

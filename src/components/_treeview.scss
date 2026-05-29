@@ -1,0 +1,51 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-treeview {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-left: 20px;
+    margin-top: 4px;
+    border-left: 1px dashed var(--citruss-glass-border);
+  }
+  
+  .tree-node {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 6px;
+
+    @include transition-all(0.2s);
+    
+    .node-toggle {
+      font-size: 0.8rem;
+      color: var(--citruss-text-muted);
+
+      @include transition-all(0.2s);
+      
+      &.expanded {
+        transform: rotate(90deg);
+      }
+    }
+    
+    .node-icon {
+      color: var(--citruss-tangerine);
+    }
+    
+    &:hover {
+      color: var(--citruss-tangerine);
+      background: var(--citruss-glass-bg-hover);
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+/* Stackable Toasts container */
+.citruss-toast-container {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.citruss-toast {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 320px;
+  padding: 16px;
+  color: var(--citruss-text-main);
+  background: rgb(14 18 32 / 95%);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--citruss-glass-border);
+  border-right: 1px solid var(--citruss-glass-border);
+  border-bottom: 1px solid var(--citruss-glass-border);
+  border-left: 4px solid var(--citruss-orange);
+  border-radius: 4px 8px 8px 4px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 40%);
+  transform: translateX(120%);
+
+  @include transition-all(0.35s, cubic-bezier(0.34, 1.56, 0.64, 1));
+  
+  &.show {
+    transform: translateX(0);
+  }
+  
+  .toast-body {
+    flex: 1;
+    .toast-title { margin-bottom: 4px; font-size: 0.9rem; font-weight: 700; color: var(--citruss-text-main); }
+    .toast-message { font-size: 0.8rem; color: var(--citruss-text-muted); }
+  }
+  
+  .toast-close {
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1;
+    color: var(--citruss-text-muted);
+    cursor: pointer;
+    &:hover { color: var(--citruss-text-main); }
+  }
+  
+  &.toast-success { border-left-color: var(--citruss-lime); }
+  &.toast-error { border-left-color: var(--citruss-danger); }
+  &.toast-info { border-left-color: var(--citruss-tangerine); }
+  &.toast-warning { border-left-color: var(--citruss-warning); }
+}
+
+/* Glass static alerts */
+.citruss-alert {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  color: var(--citruss-text-main);
+  background: var(--citruss-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 8px;
+  
+  &.alert-success {
+    color: var(--citruss-lime);
+    background: rgb(29 209 161 / 5%);
+    border-color: rgb(29 209 161 / 20%);
+  }
+
+  &.alert-danger {
+    color: var(--citruss-danger);
+    background: rgb(255 94 87 / 5%);
+    border-color: rgb(255 94 87 / 20%);
+  }
+
+  &.alert-info {
+    color: var(--citruss-tangerine);
+    background: rgb(255 159 67 / 5%);
+    border-color: rgb(255 159 67 / 20%);
+  }
+}

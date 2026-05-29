@@ -1,0 +1,68 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-accordion {
+  margin-bottom: 12px;
+  overflow: hidden;
+  background: var(--citruss-glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 8px;
+
+  @include transition-all(0.25s);
+  
+  .accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    font-weight: 600;
+    color: var(--citruss-text-main);
+    cursor: pointer;
+    user-select: none;
+
+    @include transition-all(0.2s);
+    
+    &:hover {
+      background: var(--citruss-glass-bg-hover);
+    }
+    
+    .arrow {
+      @include transition-all(0.3s);
+
+      font-weight: bold;
+      color: var(--citruss-text-muted);
+    }
+  }
+  
+  .accordion-body {
+    max-height: 0;
+    padding: 0 20px;
+    overflow: hidden;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--citruss-text-muted);
+
+    @include transition-all(0.3s, cubic-bezier(0.4, 0, 0.2, 1));
+  }
+  
+  &.active {
+    background: rgb(255 255 255 / 3%);
+    border-color: rgb(255 159 67 / 25%);
+    
+    .accordion-header {
+      color: var(--citruss-tangerine);
+      
+      .arrow {
+        color: var(--citruss-tangerine);
+        transform: rotate(180deg);
+      }
+    }
+    
+    .accordion-body {
+      max-height: 400px;
+      padding-top: 4px;
+      padding-bottom: 20px;
+    }
+  }
+}

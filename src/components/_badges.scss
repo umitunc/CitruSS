@@ -1,0 +1,47 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+/* Badges */
+.citruss-badge {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--citruss-text-main);
+  text-transform: uppercase;
+  background: var(--citruss-glass-bg);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 4px;
+  
+  &.badge-success {
+    color: var(--citruss-lime);
+    background: rgb(29 209 161 / 10%);
+    border-color: rgb(29 209 161 / 30%);
+    box-shadow: 0 0 10px rgb(29 209 161 / 15%);
+  }
+  
+  &.badge-warning {
+    color: var(--citruss-warning);
+    background: rgb(255 190 15 / 10%);
+    border-color: rgb(255 190 15 / 30%);
+    box-shadow: 0 0 10px rgb(255 190 15 / 15%);
+  }
+  
+  &.badge-danger {
+    color: var(--citruss-danger);
+    background: rgb(255 94 87 / 10%);
+    border-color: rgb(255 94 87 / 30%);
+    box-shadow: 0 0 10px rgb(255 94 87 / 15%);
+  }
+  
+  &.badge-primary {
+    color: var(--citruss-orange);
+    background: rgb(255 107 0 / 10%);
+    border-color: rgb(255 107 0 / 30%);
+    box-shadow: 0 0 10px rgb(255 107 0 / 15%);
+  }
+}

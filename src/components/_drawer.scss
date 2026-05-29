@@ -1,0 +1,111 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  visibility: hidden;
+  background: rgb(6 9 19 / 60%);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+
+  @include transition-all(0.3s);
+  
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.citruss-drawer {
+  position: fixed;
+  top: 0;
+  z-index: 1045;
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  max-width: 100%;
+  height: 100vh;
+  box-shadow: 0 0 50px rgb(0 0 0 / 55%);
+
+  @include glass-panel(20px, rgba(255, 255, 255, 0.03), var(--citruss-glass-border));
+  @include transition-all(0.35s, cubic-bezier(0.4, 0, 0.2, 1));
+  
+  &.drawer-right {
+    right: 0;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    transform: translateX(100%);
+  }
+  
+  &.drawer-left {
+    left: 0;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    transform: translateX(-100%);
+  }
+  
+  &.drawer-bottom {
+    top: auto;
+    bottom: 0;
+    width: 100vw;
+    height: 300px;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    transform: translateY(100%);
+  }
+  
+  &.show {
+    transform: translate(0, 0);
+  }
+  
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid var(--citruss-glass-border);
+    
+    .drawer-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--citruss-text-main);
+    }
+    
+    .drawer-close {
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--citruss-text-muted);
+      cursor: pointer;
+
+      @include transition-all(0.2s);
+      
+      &:hover {
+        color: var(--citruss-text-main);
+      }
+    }
+  }
+  
+  .drawer-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--citruss-text-muted);
+  }
+  
+  .drawer-footer {
+    display: flex;
+    gap: 12px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--citruss-glass-border);
+  }
+}

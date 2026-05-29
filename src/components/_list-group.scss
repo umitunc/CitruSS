@@ -1,0 +1,42 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-list-group {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--citruss-glass-bg);
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 8px;
+  
+  .list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    color: var(--citruss-text-main);
+    text-decoration: none;
+    border-bottom: 1px solid var(--citruss-glass-border);
+
+    @include transition-all(0.2s);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &.interactive {
+      cursor: pointer;
+      
+      &:hover {
+        color: var(--citruss-tangerine);
+        background: var(--citruss-glass-bg-hover);
+      }
+      
+      &.active {
+        font-weight: 600;
+        color: var(--citruss-tangerine);
+        background: rgb(255 159 67 / 8%);
+      }
+    }
+  }
+}

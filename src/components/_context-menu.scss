@@ -1,0 +1,38 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-context-menu {
+  position: fixed;
+  z-index: 10000;
+  display: none;
+  min-width: 160px;
+  padding: 6px 0;
+  background: rgb(14 18 32 / 96%);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
+  animation: citruss-context-fade 0.15s ease-out;
+  
+  .context-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    color: var(--citruss-text-main);
+    cursor: pointer;
+
+    @include transition-all(0.15s);
+    
+    &:hover {
+      color: var(--citruss-tangerine);
+      background: rgb(255 255 255 / 5%);
+    }
+  }
+}
+
+@keyframes citruss-context-fade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

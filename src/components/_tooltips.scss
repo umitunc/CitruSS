@@ -1,0 +1,69 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+[data-citruss-tooltip] {
+  position: relative;
+  
+  &::before {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    z-index: 1100;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--citruss-text-main);
+    white-space: nowrap;
+    visibility: hidden;
+    content: attr(data-citruss-tooltip);
+    background: rgb(14 18 32 / 95%);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--citruss-glass-border);
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgb(0 0 0 / 35%);
+    opacity: 0;
+    transform: translateX(-50%) translateY(4px);
+
+    @include transition-all(0.2s);
+  }
+  
+  &:hover::before {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Rich Popovers */
+.citruss-popover {
+  position: absolute;
+  z-index: 1060;
+  max-width: 240px;
+  padding: 16px;
+  visibility: hidden;
+  background: rgb(14 18 32 / 95%);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 35%);
+  opacity: 0;
+
+  @include transition-all(0.2s);
+  
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .popover-title {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  
+  .popover-body {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    color: var(--citruss-text-muted);
+  }
+}

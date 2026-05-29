@@ -1,0 +1,104 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--citruss-glass-border);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--citruss-glass-shadow);
+  
+  .carousel-inner {
+    display: flex;
+    width: 100%;
+    height: 300px;
+
+    @include transition-all(0.5s, ease-in-out);
+  }
+  
+  .carousel-item {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .carousel-caption {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 24px;
+      color: var(--citruss-text-main);
+      background: linear-gradient(to top, rgb(6 9 19 / 80%), transparent);
+      backdrop-filter: blur(4px);
+      
+      h4 { margin-bottom: 6px; font-size: 1.15rem; font-weight: 800; }
+      p { font-size: 0.85rem; color: var(--citruss-text-muted); }
+    }
+  }
+  
+  /* Navigation controls */
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--citruss-text-main);
+    cursor: pointer;
+    background: rgb(255 255 255 / 5%);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--citruss-glass-border);
+    border-radius: 50%;
+    transform: translateY(-50%);
+
+    @include transition-all(0.2s);
+    
+    &:hover {
+      color: var(--citruss-tangerine);
+      background: var(--citruss-glass-bg-hover);
+      border-color: var(--citruss-tangerine);
+    }
+    
+    &.control-prev { left: 16px; }
+    &.control-next { right: 16px; }
+  }
+  
+  /* Indicators */
+  .carousel-indicators {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    transform: translateX(-50%);
+    
+    .indicator-dot {
+      width: 8px;
+      height: 8px;
+      cursor: pointer;
+      background: rgb(255 255 255 / 30%);
+      border-radius: 50%;
+
+      @include transition-all(0.2s);
+      
+      &.active {
+        width: 20px;
+        background: var(--citruss-tangerine);
+        border-radius: 4px;
+        box-shadow: 0 0 8px var(--citruss-tangerine);
+      }
+    }
+  }
+}
