@@ -214,42 +214,86 @@ Premium translucent glass action buttons with active micro-scaling and hover glo
     justify-content: center;
     gap: 8px;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--citruss-glass-border);
+    background: var(--citruss-glass-bg);
+    color: var(--citruss-text-main);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    &:active {
+        transform: scale(0.96);
+    }
     
     &.btn-primary {
         background: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(255, 159, 67, 0.15));
         border: 1px solid rgba(255, 159, 67, 0.35);
-        color: var(--citruss-text-main);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
         
         &:hover {
             background: linear-gradient(135deg, rgba(255, 107, 0, 0.3), rgba(255, 159, 67, 0.3));
             border-color: var(--citruss-tangerine);
             box-shadow: 0 0 25px 0 rgba(255, 107, 0, 0.35);
         }
-        &:active {
-            transform: scale(0.96);
+    }
+    
+    &.btn-success {
+        background: linear-gradient(135deg, rgba(29, 209, 161, 0.1), rgba(29, 209, 161, 0.2));
+        border: 1px solid rgba(29, 209, 161, 0.3);
+        color: var(--citruss-lime);
+        
+        &:hover {
+            background: linear-gradient(135deg, rgba(29, 209, 161, 0.2), rgba(29, 209, 161, 0.35));
+            border-color: var(--citruss-lime);
+            box-shadow: 0 0 25px 0 rgba(29, 209, 161, 0.35);
+        }
+    }
+}
+
+/* Button Group Wrapper */
+.citruss-btn-group {
+    display: inline-flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--citruss-glass-border);
+    backdrop-filter: blur(4px);
+    
+    .citruss-btn {
+        border-radius: 0;
+        border: none;
+        border-right: 1px solid var(--citruss-glass-border);
+        
+        &:last-child {
+            border-right: none;
         }
     }
 }
 ```
 
-#### 2. Advanced Form Controls & Floating Labels (`src/components/_inputs.scss`)
-Tailwind-style floating label inputs wrapped in frosted glass border layouts.
+#### 2. Advanced Form Controls, Floating Labels & Input Validation (`src/components/_inputs.scss`)
+Tailwind-style floating label inputs wrapped in frosted glass border layouts, featuring complete native and custom form validation styling natively (valid/invalid feedback layers).
 ```scss
-.citruss-input-wrapper {
+.citruss-input-group {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     
     .citruss-input {
         width: 100%;
-        padding: 14px 16px;
+        padding: 16px;
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid var(--citruss-glass-border);
         border-radius: 8px;
         color: var(--citruss-text-main);
         backdrop-filter: blur(8px);
+        font-size: 0.95rem;
         transition: all 0.25s ease;
+        
+        &::placeholder {
+            color: transparent;
+        }
         
         &:focus {
             outline: none;
@@ -258,40 +302,560 @@ Tailwind-style floating label inputs wrapped in frosted glass border layouts.
             background: rgba(255, 255, 255, 0.05);
         }
     }
+    
+    .citruss-label {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--citruss-text-muted);
+        pointer-events: none;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 0.95rem;
+    }
+    
+    /* Floating Label Animations */
+    .citruss-input:focus ~ .citruss-label,
+    .citruss-input:not(:placeholder-shown) ~ .citruss-label {
+        top: 0;
+        left: 12px;
+        transform: translateY(-50%) scale(0.85);
+        background: var(--citruss-bg-surface);
+        padding: 0 8px;
+        color: var(--citruss-tangerine);
+        border-radius: 4px;
+    }
+    
+    /* Validation States */
+    &.is-invalid {
+        .citruss-input {
+            border-color: #ff4d4d !important;
+            box-shadow: 0 0 15px 0 rgba(255, 77, 77, 0.25) !important;
+        }
+        .citruss-label {
+            color: #ff4d4d !important;
+        }
+        .citruss-invalid-feedback {
+            display: block;
+        }
+    }
+    
+    &.is-valid {
+        .citruss-input {
+            border-color: var(--citruss-lime) !important;
+            box-shadow: 0 0 15px 0 rgba(29, 209, 161, 0.25) !important;
+        }
+        .citruss-label {
+            color: var(--citruss-lime) !important;
+        }
+        .citruss-valid-feedback {
+            display: block;
+        }
+    }
+}
+
+.citruss-invalid-feedback,
+.citruss-valid-feedback {
+    display: none;
+    font-size: 0.8rem;
+    margin-top: 6px;
+    margin-left: 4px;
+    font-weight: 500;
+}
+.citruss-invalid-feedback { color: #ff4d4d; }
+.citruss-valid-feedback { color: var(--citruss-lime); }
+```
+
+##### Client-Side Form Validation Companion Engine (`src/js/_validation.js`)
+Zero-dependency utility allowing declaratively validating fields and displaying elegant glassmorphic alert hints inside the component structure.
+```javascript
+export const CitruSSValidator = {
+    validateForm: function(formSelector) {
+        const form = document.querySelector(formSelector);
+        if (!form) return false;
+        
+        let isValid = true;
+        const inputs = form.querySelectorAll('[required], [data-citruss-rules]');
+        
+        inputs.forEach(input => {
+            const wrapper = input.closest('.citruss-input-group');
+            if (!wrapper) return;
+            
+            let fieldValid = true;
+            let errorMessage = '';
+            
+            // Required Check
+            if (input.hasAttribute('required') && !input.value.trim()) {
+                fieldValid = false;
+                errorMessage = 'This field is required.';
+            }
+            
+            // Custom Rules Check
+            const rules = input.getAttribute('data-citruss-rules');
+            if (fieldValid && rules && input.value) {
+                const ruleList = rules.split('|');
+                for (let rule of ruleList) {
+                    if (rule === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+                        fieldValid = false;
+                        errorMessage = 'Please enter a valid email address.';
+                        break;
+                    }
+                    if (rule.startsWith('min:')) {
+                        const minVal = parseInt(rule.split(':')[1]);
+                        if (input.value.length < minVal) {
+                            fieldValid = false;
+                            errorMessage = `Must be at least ${minVal} characters.`;
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            if (!fieldValid) {
+                isValid = false;
+                wrapper.classList.remove('is-valid');
+                wrapper.classList.add('is-invalid');
+                let feedback = wrapper.querySelector('.citruss-invalid-feedback');
+                if (!feedback) {
+                    feedback = document.createElement('div');
+                    feedback.className = 'citruss-invalid-feedback';
+                    wrapper.appendChild(feedback);
+                }
+                feedback.textContent = errorMessage;
+            } else {
+                wrapper.classList.remove('is-invalid');
+                wrapper.classList.add('is-valid');
+            }
+        });
+        
+        return isValid;
+    },
+    
+    bind: function(formSelector) {
+        const form = document.querySelector(formSelector);
+        if (!form) return;
+        form.addEventListener('submit', (e) => {
+            if (!this.validateForm(formSelector)) {
+                e.preventDefault();
+            }
+        });
+    }
+};
+```
+
+---
+
+### B. Rich Specialized Controls (Advanced Dropdowns & Custom Selects)
+
+#### 1. Premium Searchable Selects & Multi-Select dropdowns (`src/components/_dropdown.scss` & `src/js/_dropdown.js`)
+Zero-dependency, gorgeous custom glassmorphic dropdown wrapper featuring multi-select, searchable list filter, keyboard accessible focus, and dynamic chip creation.
+```scss
+.citruss-select-wrapper {
+    position: relative;
+    width: 100%;
+    
+    .citruss-select-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--citruss-glass-border);
+        border-radius: 8px;
+        color: var(--citruss-text-main);
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        transition: all 0.25s ease;
+        
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--citruss-glass-border);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            
+            .remove-btn {
+                cursor: pointer;
+                color: var(--citruss-text-muted);
+                &:hover { color: #ff4d4d; }
+            }
+        }
+    }
+    
+    .citruss-dropdown-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        width: 100%;
+        background: rgba(20, 24, 38, 0.95);
+        border: 1px solid var(--citruss-glass-border);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        border-radius: 8px;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+        
+        &.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-search-box {
+            padding: 8px;
+            border-bottom: 1px solid var(--citruss-glass-border);
+            input {
+                width: 100%;
+                background: rgba(255,255,255,0.03);
+                border: 1px solid var(--citruss-glass-border);
+                padding: 8px;
+                border-radius: 4px;
+                color: var(--citruss-text-main);
+                font-size: 0.85rem;
+                &:focus { outline: none; border-color: var(--citruss-tangerine); }
+            }
+        }
+        
+        .dropdown-options {
+            max-height: 220px;
+            overflow-y: auto;
+        }
+        
+        .dropdown-item {
+            padding: 10px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--citruss-text-main);
+            transition: all 0.25s ease;
+            
+            &:hover, &.highlighted {
+                background: rgba(255, 255, 255, 0.05);
+                color: var(--citruss-tangerine);
+            }
+            
+            &.selected {
+                background: rgba(255, 159, 67, 0.15);
+                color: var(--citruss-tangerine);
+                font-weight: 600;
+                
+                &::after {
+                    content: '✓';
+                    font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
+```
+
+##### Companion Javascript Select Controller (`src/js/_dropdown.js`)
+```javascript
+export class CitruSSDropdown {
+    constructor(element, options = {}) {
+        this.element = element;
+        this.options = options;
+        this.isMulti = options.multiple || false;
+        this.searchable = options.searchable || false;
+        this.selectedValues = new Set();
+        this.highlightedIndex = -1;
+        
+        this.init();
+    }
+    
+    init() {
+        this.trigger = this.element.querySelector('.citruss-select-trigger');
+        this.menu = this.element.querySelector('.citruss-dropdown-menu');
+        this.searchField = this.element.querySelector('.dropdown-search-box input');
+        this.items = Array.from(this.element.querySelectorAll('.dropdown-item'));
+        
+        // Event Listeners
+        this.trigger.addEventListener('click', () => this.toggle());
+        
+        if (this.searchField) {
+            this.searchField.addEventListener('input', (e) => this.filterOptions(e.target.value));
+        }
+        
+        this.items.forEach((item, index) => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.selectItem(item);
+            });
+        });
+        
+        // Keyboard Accessibility
+        this.element.addEventListener('keydown', (e) => this.handleKeydown(e));
+        
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!this.element.contains(e.target)) {
+                this.close();
+            }
+        });
+    }
+    
+    toggle() {
+        this.menu.classList.toggle('active');
+        if (this.menu.classList.contains('active') && this.searchField) {
+            this.searchField.focus();
+        }
+    }
+    
+    close() {
+        this.menu.classList.remove('active');
+        this.highlightedIndex = -1;
+        this.items.forEach(i => i.classList.remove('highlighted'));
+    }
+    
+    selectItem(item) {
+        const val = item.getAttribute('data-value');
+        const label = item.textContent.trim().replace('✓', '').trim();
+        
+        if (this.isMulti) {
+            if (this.selectedValues.has(val)) {
+                this.selectedValues.delete(val);
+                item.classList.remove('selected');
+            } else {
+                this.selectedValues.add(val);
+                item.classList.add('selected');
+            }
+            this.updateTriggerMulti();
+        } else {
+            this.selectedValues.clear();
+            this.selectedValues.add(val);
+            this.items.forEach(i => i.classList.remove('selected'));
+            item.classList.add('selected');
+            this.trigger.querySelector('.trigger-text').textContent = label;
+            this.close();
+        }
+        
+        if (this.options.onChange) {
+            this.options.onChange(Array.from(this.selectedValues));
+        }
+    }
+    
+    updateTriggerMulti() {
+        const container = this.trigger.querySelector('.chips-container');
+        container.innerHTML = '';
+        
+        if (this.selectedValues.size === 0) {
+            container.innerHTML = `<span class="trigger-text">${this.options.placeholder || 'Select options'}</span>`;
+            return;
+        }
+        
+        this.selectedValues.forEach(val => {
+            const item = this.items.find(i => i.getAttribute('data-value') === val);
+            const label = item.textContent.trim().replace('✓', '').trim();
+            const chip = document.createElement('span');
+            chip.className = 'chip';
+            chip.innerHTML = `${label} <span class="remove-btn" data-val="${val}">×</span>`;
+            
+            chip.querySelector('.remove-btn').onclick = (e) => {
+                e.stopPropagation();
+                this.selectedValues.delete(val);
+                item.classList.remove('selected');
+                this.updateTriggerMulti();
+            };
+            container.appendChild(chip);
+        });
+    }
+    
+    filterOptions(query) {
+        this.items.forEach(item => {
+            const txt = item.textContent.toLowerCase();
+            if (txt.includes(query.toLowerCase())) {
+                item.style.display = 'flex';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+    
+    handleKeydown(e) {
+        if (!this.menu.classList.contains('active')) return;
+        const visibleItems = this.items.filter(i => i.style.display !== 'none');
+        
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            this.highlightedIndex = (this.highlightedIndex + 1) % visibleItems.length;
+            this.updateHighlight(visibleItems);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            this.highlightedIndex = (this.highlightedIndex - 1 + visibleItems.length) % visibleItems.length;
+            this.updateHighlight(visibleItems);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (this.highlightedIndex >= 0 && this.highlightedIndex < visibleItems.length) {
+                this.selectItem(visibleItems[this.highlightedIndex]);
+            }
+        } else if (e.key === 'Escape') {
+            this.close();
+        }
+    }
+    
+    updateHighlight(visibleItems) {
+        this.items.forEach(i => i.classList.remove('highlighted'));
+        if (visibleItems[this.highlightedIndex]) {
+            visibleItems[this.highlightedIndex].classList.add('highlighted');
+            visibleItems[this.highlightedIndex].scrollIntoView({ block: 'nearest' });
+        }
+    }
 }
 ```
 
 ---
 
-### B. Containers & Overlay Panels (Pro Level)
+### C. Advanced UI Layout & Dynamic Overlay Panels
 
-#### 1. Pro Metric Cards (`src/components/_cards.scss`)
-Bootstrap-style statistics cards with customizable visual hierarchy, glowing status dots, and subtle gradient shifts on hover.
+#### 1. Stacked Glass Toast System (`src/components/_alerts.scss` & `src/js/_toast.js`)
+Gorgeously stacked neon status toast alerts programmatically managed so you can trigger feedback natively.
 ```scss
-.citruss-card {
-    background: var(--citruss-glass-bg);
-    border: 1px solid var(--citruss-glass-border);
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 8px 32px 0 var(--citruss-glass-shadow);
+.citruss-toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+}
+
+.citruss-toast {
+    width: 320px;
+    background: rgba(20, 24, 38, 0.9);
+    border-left: 4px solid var(--citruss-orange);
+    border-top: 1px solid var(--citruss-glass-border);
+    border-right: 1px solid var(--citruss-glass-border);
+    border-bottom: 1px solid var(--citruss-glass-border);
+    padding: 16px;
+    border-radius: 4px 8px 8px 4px;
     color: var(--citruss-text-main);
-    backdrop-filter: blur(var(--citruss-glass-blur));
-    -webkit-backdrop-filter: blur(var(--citruss-glass-blur));
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-                border-color 0.25s ease, 
-                box-shadow 0.25s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px);
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    transform: translateX(120%);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     
-    overflow: hidden; 
+    &.show {
+        transform: translateX(0);
+    }
+    
+    .toast-body {
+        flex: 1;
+        .toast-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .toast-message { font-size: 0.85rem; color: var(--citruss-text-muted); }
+    }
+    
+    .toast-close {
+        cursor: pointer;
+        font-size: 1.1rem;
+        line-height: 1;
+        color: var(--citruss-text-muted);
+        &:hover { color: var(--citruss-text-main); }
+    }
+    
+    &.toast-success { border-left-color: var(--citruss-lime); }
+    &.toast-error { border-left-color: #ff4d4d; }
+    &.toast-info { border-left-color: var(--citruss-tangerine); }
+}
+```
+
+##### Companion Javascript Programmatic Toast API:
+```javascript
+export const CitruSSToast = {
+    show: function({ title, message, type = 'info', duration = 4000 }) {
+        let container = document.querySelector('.citruss-toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'citruss-toast-container';
+            document.body.appendChild(container);
+        }
+        
+        const toast = document.createElement('div');
+        toast.className = `citruss-toast toast-${type}`;
+        toast.innerHTML = `
+            <div class="toast-body">
+                <div class="toast-title">${title}</div>
+                <div class="toast-message">${message}</div>
+            </div>
+            <div class="toast-close">×</div>
+        `;
+        
+        container.appendChild(toast);
+        
+        // Trigger show animation
+        setTimeout(() => toast.classList.add('show'), 50);
+        
+        const closeToast = () => {
+            toast.classList.remove('show');
+            toast.style.transform = 'translateX(120%)';
+            setTimeout(() => toast.remove(), 400);
+        };
+        
+        toast.querySelector('.toast-close').onclick = closeToast;
+        
+        // Auto dismiss
+        setTimeout(closeToast, duration);
+    }
+};
+```
+
+---
+
+#### 2. Drag & Drop Premium File Upload Area (`src/components/_inputs.scss`)
+Drag-and-drop zone featuring dynamic drop validation state hooks.
+```scss
+.citruss-upload-zone {
+    border: 2px dashed var(--citruss-glass-border);
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    .upload-icon {
+        font-size: 2.5rem;
+        color: var(--citruss-tangerine);
+        margin-bottom: 12px;
+        transition: transform 0.3s ease;
+    }
     
     &:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255, 159, 67, 0.3); 
-        box-shadow: 0 12px 40px 0 rgba(255, 107, 0, 0.15);
+        background: rgba(255, 255, 255, 0.03);
+        border-color: var(--citruss-tangerine);
+        .upload-icon { transform: translateY(-4px); }
+    }
+    
+    &.dragover {
+        border-color: var(--citruss-lime);
+        background: rgba(29, 209, 161, 0.05);
+        box-shadow: inset 0 0 20px rgba(29, 209, 161, 0.1);
     }
 }
 ```
 
-#### 2. Native Dynamic SweetAlert-like Modal API (`src/components/_modals.scss` & `src/js/_dialog.js`)
+---
+
+#### 3. Glassmorphic Modal & Multi-Step Wizard Engine (`src/components/_modals.scss` & `src/js/_dialog.js` & `src/js/_wizard.js`)
 Programmatically summon modal screens on the fly, eliminating the need to install external libraries like SweetAlert2.
 
 ```scss
@@ -335,7 +899,7 @@ Programmatically summon modal screens on the fly, eliminating the need to instal
 }
 ```
 
-#### Programmatic JS API Sample:
+##### Programmatic JS API Sample:
 ```javascript
 // Zero-dependency pure JavaScript implementation in src/js/_dialog.js
 export const CitruSS = {
@@ -388,7 +952,7 @@ export const CitruSS = {
 
 ---
 
-#### 3. Interactive Multi-Step Glass Wizards (`src/js/_wizard.js` & `src/components/_modals.scss`)
+#### 4. Interactive Multi-Step Glass Wizards (`src/js/_wizard.js` & `src/components/_modals.scss`)
 A premium wizard constructor supporting dynamic step-validation, linear progress glow tracks, and sliding window step-transitions.
 
 ```javascript
@@ -437,81 +1001,281 @@ export class CitruSSWizard {
 
 ---
 
-### C. Data & Feedback Components
-
-#### 1. Responsive Frosted Glass Tables (`src/components/_tables.scss`)
-A premium, scroll-friendly glass table design styled with thin borders and micro-interactions on rows.
+#### 5. Premium Frosted Glass Metric Cards & Panels (`src/components/_cards.scss`)
 ```scss
-.citruss-table-container {
+.citruss-card {
     background: var(--citruss-glass-bg);
     border: 1px solid var(--citruss-glass-border);
-    border-radius: 12px;
-    overflow: hidden;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 32px 0 var(--citruss-glass-shadow);
+    color: var(--citruss-text-main);
     backdrop-filter: blur(var(--citruss-glass-blur));
+    -webkit-backdrop-filter: blur(var(--citruss-glass-blur));
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.25s ease, 
+                box-shadow 0.25s ease;
     
-    .citruss-table {
-        width: 100%;
-        border-collapse: collapse;
+    overflow: hidden; 
+    
+    &:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 159, 67, 0.3); 
+        box-shadow: 0 12px 40px 0 rgba(255, 107, 0, 0.15);
+    }
+}
+```
+
+---
+
+### D. Utility & Feedback Components
+
+#### 1. Premium Dynamic Segmented Controls / Tabs (`src/components/_navigation.scss`)
+Glow-accented horizontal tab controls that transition active focus indices gracefully.
+```scss
+.citruss-tabs-wrapper {
+    border-bottom: 1px solid var(--citruss-glass-border);
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+    
+    .citruss-tab-link {
+        padding: 12px 4px;
+        color: var(--citruss-text-muted);
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.2s ease;
         
-        th {
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--citruss-text-muted);
-            padding: 16px;
-            font-size: 0.85rem;
-            text-transform: uppercase;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: transparent;
+            box-shadow: none;
+            transition: all 0.3s ease;
         }
         
-        td {
-            padding: 16px;
-            border-top: 1px solid var(--citruss-glass-border);
+        &:hover {
             color: var(--citruss-text-main);
-            transition: background 0.2s ease;
         }
         
-        tr:hover td {
-            background: rgba(255, 255, 255, 0.015);
+        &.active {
+            color: var(--citruss-tangerine);
+            &::after {
+                background: var(--citruss-tangerine);
+                box-shadow: 0 0 10px var(--citruss-tangerine);
+            }
         }
     }
 }
 ```
 
-#### 2. Glowing Status Badges & Indicators (`src/components/_badges.scss`)
-Vibrant status indicators styling glowing dots and neon glass backgrounds for system feeds.
+---
+
+#### 2. Accordions & FAQ Collapse Components (`src/components/_modals.scss`)
+Nested accordions utilizing micro-animations to toggle content drawers with smooth height transition frames.
 ```scss
-.citruss-badge {
+.citruss-accordion {
+    border: 1px solid var(--citruss-glass-border);
+    border-radius: 8px;
+    background: var(--citruss-glass-bg);
+    overflow: hidden;
+    margin-bottom: 12px;
+    backdrop-filter: blur(8px);
+    
+    .accordion-header {
+        padding: 16px 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        color: var(--citruss-text-main);
+        transition: background 0.25s ease;
+        
+        &:hover { background: rgba(255, 255, 255, 0.02); }
+        
+        .arrow {
+            transition: transform 0.3s ease;
+            color: var(--citruss-text-muted);
+        }
+    }
+    
+    .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+        padding: 0 20px;
+        color: var(--citruss-text-muted);
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+    
+    &.active {
+        border-color: rgba(255, 159, 67, 0.3);
+        .accordion-header {
+            color: var(--citruss-tangerine);
+            .arrow { transform: rotate(180deg); color: var(--citruss-tangerine); }
+        }
+        .accordion-body {
+            max-height: 500px;
+            padding-bottom: 20px;
+        }
+    }
+}
+```
+
+---
+
+#### 3. Custom Glass Tooltips & Popovers (`src/components/_tooltips.scss`)
+Vibrant tooltips triggered programmatically or via pure styling selectors.
+```scss
+[data-citruss-tooltip] {
+    position: relative;
+    
+    &::before {
+        content: attr(data-citruss-tooltip);
+        position: absolute;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%) translateY(4px);
+        background: rgba(20, 24, 38, 0.95);
+        border: 1px solid var(--citruss-glass-border);
+        color: var(--citruss-text-main);
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1100;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        backdrop-filter: blur(10px);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    &:hover::before {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+```
+
+---
+
+#### 4. Custom Slide Toggle & Glowing Range Slider (`src/components/_inputs.scss`)
+```scss
+/* Custom Toggle Switch */
+.citruss-toggle {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
+    cursor: pointer;
     
-    &.badge-success {
-        background: rgba(29, 209, 161, 0.1);
-        border: 1px solid rgba(29, 209, 161, 0.3);
-        color: var(--citruss-lime);
-        box-shadow: 0 0 10px rgba(29, 209, 161, 0.15);
+    input { display: none; }
+    
+    .toggle-track {
+        width: 48px;
+        height: 24px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--citruss-glass-border);
+        border-radius: 50px;
+        position: relative;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+        
+        &::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--citruss-text-muted);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    }
+    
+    input:checked + .toggle-track {
+        background: rgba(255, 159, 67, 0.15);
+        border-color: var(--citruss-tangerine);
+        
+        &::after {
+            left: 26px;
+            background: var(--citruss-tangerine);
+            box-shadow: 0 0 10px var(--citruss-tangerine);
+        }
+    }
+}
+
+/* Glowing range selectors */
+.citruss-range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.05);
+    outline: none;
+    backdrop-filter: blur(4px);
+    
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--citruss-tangerine);
+        border: 2px solid var(--citruss-bg-surface);
+        box-shadow: 0 0 10px var(--citruss-tangerine);
+        cursor: pointer;
+        transition: transform 0.1s ease;
+        
+        &:hover { transform: scale(1.2); }
     }
 }
 ```
 
-#### 3. Glowing Progress Tracks & Loading Skeletons (`src/components/_progress.scss`)
-Pro-level loaders with subtle neon animations that bring apps to life.
+---
+
+#### 5. Loading Spinners & Skeleton Overlays (`src/components/_progress.scss`)
 ```scss
-.citruss-progress-bar {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.05);
+/* Skeleton Loader */
+.citruss-skeleton {
+    background: linear-gradient(90deg, 
+        rgba(255,255,255,0.03) 25%, 
+        rgba(255,255,255,0.08) 50%, 
+        rgba(255,255,255,0.03) 75%
+    );
+    background-size: 200% 100%;
+    animation: citruss-skeleton-loading 1.5s infinite;
     border-radius: 4px;
-    overflow: hidden;
-    
-    .progress-fill {
-        height: 100%;
-        background: linear-gradient(90deg, var(--citruss-orange), var(--citruss-tangerine));
-        box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
-        border-radius: 4px;
-        transition: width 0.4s ease;
-    }
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+}
+
+@keyframes citruss-skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Radial Loading Circle */
+.citruss-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 159, 67, 0.1);
+    border-top-color: var(--citruss-tangerine);
+    border-radius: 50%;
+    animation: citruss-spin 0.8s linear infinite;
+    filter: drop-shadow(0 0 5px var(--citruss-tangerine-glow));
+}
+
+@keyframes citruss-spin {
+    to { transform: rotate(360deg); }
 }
 ```
 
@@ -573,13 +1337,13 @@ In frameless windows, custom CSS rules are assigned to the left menu or top head
 | Phase | Scope / Activity | Technical Output / Performance Metric |
 | --- | --- | --- |
 | **Phase 1: Core** | Setting up the SCSS infrastructure, defining CSS Custom Properties, modern reset rules, and the citrus color palette. | Zero external dependencies, global theme variable architecture. |
-| **Phase 2: Components & JS API** | Coding the full catalog of components and the dynamic JS Alert/Confirm/Wizard modules (`citruss.js`). | Hardware-accelerated layer optimizations and clean programmatic bindings. |
+| **Phase 2: Components & JS API** | Coding the full catalog of components and the dynamic JS Alert/Confirm/Wizard/Validation/Toast/Select modules (`citruss.js`). | Hardware-accelerated layer optimizations and clean programmatic bindings. |
 | **Phase 3: Desktop Integration** | Testing window dragging and analyzing performance on prototype windows (frameless and transparent) built with Electron.js. | Stable 60+ FPS performance during window moving or resizing. |
-| **Phase 4: Optimization & Deployment** | Setting up build automation with PostCSS, Lightning CSS, and Rollup/esbuild for CSS and JS bundling. | CSS < 20KB, JS < 5KB after Gzip compression. |
+| **Phase 4: Optimization & Deployment** | Setting up build automation with PostCSS, Lightning CSS, and Rollup/esbuild for CSS and JS bundling. | CSS < 25KB, JS < 8KB after Gzip compression. |
 
 ---
 
 ## 10. Performance and Accessibility (WCAG) Standards
 
-* **Preventing Layer Clutter (GPU Protection):** Applying `backdrop-filter: blur()` to more than 5 elements in the same Viewport can cause bottlenecks on older graphics cards. CitruSS only uses blur on main layout layers (`sidebar`, `header`, `.citruss-card`) and prefers non-effect transparent backgrounds for sub-elements inside cards.
+* **Preventing Layer Clutter (GPU Protection):** Applying `backdrop-filter: blur()` to more than 5 elements in the same Viewport can cause bottlenecks on older graphics cards. CitruSS only uses blur on main layout layers (`sidebar`, `header`, `.citruss-card`, `.citruss-swal-container`, custom select menus) and prefers non-effect transparent backgrounds for sub-elements inside cards.
 * **WCAG Contrast Assurance (Enhancing Readability):** The biggest risk in glassmorphic designs is that white text in front of a bright background image becomes unreadable. To solve this problem, CitruSS places an invisible, very light dark shadow mask beneath the glass layer. This ensures that the text contrast ratio always stays above **4.5:1**.
