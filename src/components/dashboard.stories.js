@@ -390,9 +390,73 @@ export const AdminPanelDashboard = () => {
 
           </div>
 
+          <!-- DEVELOPER TOOLS / CODE EXAMPLE SECTION -->
+          <div class="citruss-row" style="margin-top: 32px;">
+            <div class="citruss-col-12">
+              <div class="citruss-card" style="padding: 24px;">
+                <div class="card-content">
+                  <h3 style="font-weight: 800; font-size: 1.1rem; color: var(--citruss-text-main); margin-bottom: 12px;">🛠️ Developer Tools: Pro Dashboard Page Layout</h3>
+                  <p style="color:var(--citruss-text-muted); font-size: 0.85rem; margin-bottom: 16px;">
+                    This dashboard demonstrates how multiple modular CitruSS components integrate together perfectly to create a stunning, fully-responsive Electron-grade workspace shell.
+                  </p>
+                  
+                  <details class="citruss-code-wrapper" style="border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+                    <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+                      💻 View Dashboard Skeleton HTML Code
+                    </summary>
+                    <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto; max-height: 400px;">
+                      <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.85rem; line-height: 1.5;">&lt;div class="citruss-dashboard-shell"&gt;
+  &lt;!-- SIDEBAR NAVIGATION --&gt;
+  &lt;aside class="citruss-sidebar" id="dashboard-sidebar"&gt;
+    &lt;div class="sidebar-header"&gt;...&lt;/div&gt;
+    &lt;div class="sidebar-nav"&gt;...&lt;/div&gt;
+    &lt;div class="sidebar-footer"&gt;...&lt;/div&gt;
+  &lt;/aside&gt;
+
+  &lt;!-- MAIN CONTENT WORKSPACE --&gt;
+  &lt;div class="citruss-dashboard-main"&gt;
+    &lt;!-- TOP NAVBAR --&gt;
+    &lt;nav class="citruss-navbar"&gt;...&lt;/nav&gt;
+
+    &lt;!-- CONTENT INNER --&gt;
+    &lt;div class="citruss-dashboard-content"&gt;
+      &lt;!-- Row with Cards, Tables, Wizards, Timelines, etc. --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </details>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
       
     </div>
   `;
 };
+
+AdminPanelDashboard.parameters = {
+  docs: {
+    source: {
+      code: `<!-- Pro Dashboard Responsive Skeleton -->
+<div class="citruss-dashboard-shell">
+  <aside class="citruss-sidebar" id="dashboard-sidebar">
+    <div class="sidebar-header">...</div>
+    <div class="sidebar-nav">...</div>
+    <div class="sidebar-footer">...</div>
+  </aside>
+
+  <div class="citruss-dashboard-main">
+    <nav class="citruss-navbar">...</nav>
+    <div class="citruss-dashboard-content">
+      <!-- Grid Content -->
+    </div>
+  </div>
+</div>`,
+    },
+  },
+};
+

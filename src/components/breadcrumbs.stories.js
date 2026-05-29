@@ -2,6 +2,17 @@ export default {
   title: 'Navigation/Breadcrumbs',
 };
 
+const breadcrumbsHTML = `
+<!-- Standard Breadcrumbs Navigation -->
+<div class="citruss-breadcrumbs">
+  <a href="#" class="breadcrumb-item">Console</a>
+  <span class="breadcrumb-separator">/</span>
+  <a href="#" class="breadcrumb-item">Settings</a>
+  <span class="breadcrumb-separator">/</span>
+  <a href="#" class="breadcrumb-item active">Profile Options</a>
+</div>
+`.trim();
+
 export const BreadcrumbShowcase = () => {
   return `
     <div style="padding: 30px;">
@@ -38,6 +49,25 @@ export const BreadcrumbShowcase = () => {
           </div>
         </div>
       </div>
+
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML Code Example
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto;">
+          <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.85rem; line-height: 1.5;">${breadcrumbsHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+        </div>
+      </details>
     </div>
   `;
 };
+
+BreadcrumbShowcase.parameters = {
+  docs: {
+    source: {
+      code: breadcrumbsHTML,
+    },
+  },
+};
+

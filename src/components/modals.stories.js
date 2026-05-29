@@ -4,6 +4,36 @@ export default {
   title: 'Interactive/Modals & Dialogs',
 };
 
+const modalHTML = `
+<!-- Static HTML Modal Panel -->
+<div id="demo-static-modal" class="citruss-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h4>Static Glass Modal</h4>
+      <button class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      This modal is located directly in your HTML tree and managed via CSS classes.
+    </div>
+    <div class="modal-footer">
+      <button class="citruss-btn modal-close">Cancel</button>
+      <button class="citruss-btn btn-primary modal-close">Save Changes</button>
+    </div>
+  </div>
+</div>
+`.trim();
+
+const modalJS = `
+// Show modal
+const modal = document.getElementById('demo-static-modal');
+modal.style.display = 'flex';
+setTimeout(() => modal.classList.add('show'), 20);
+
+// Close modal
+modal.classList.remove('show');
+setTimeout(() => modal.style.display = 'none', 300);
+`.trim();
+
 export const ModalsAndDialogs = () => {
   useEffect(() => {
     // Programmatic Dialog Trigger
@@ -57,7 +87,7 @@ export const ModalsAndDialogs = () => {
         CitruSS supports both traditional HTML-based modal structures and programatic confirmation dialogs based on JavaScript Promises.
       </p>
 
-      <div style="display: flex; gap: 16px;">
+      <div style="display: flex; gap: 16px; margin-bottom: 24px;">
         <button class="citruss-btn btn-primary" id="demo-btn-dialog">
           💬 Trigger Programmatic Dialog (confirm)
         </button>
@@ -83,6 +113,31 @@ export const ModalsAndDialogs = () => {
         </div>
       </div>
 
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML & JS Code Examples
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto; display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h5 style="color: var(--citruss-lime); margin: 0 0 8px 0; font-size: 0.85rem;">Modal HTML:</h5>
+            <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${modalHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+          </div>
+          <div>
+            <h5 style="color: var(--citruss-orange); margin: 0 0 8px 0; font-size: 0.85rem;">Control JS:</h5>
+            <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${modalJS.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+          </div>
+        </div>
+      </details>
     </div>
   `;
 };
+
+ModalsAndDialogs.parameters = {
+  docs: {
+    source: {
+      code: `${modalHTML}\n\n/* Javascript */\n${modalJS}`,
+    },
+  },
+};
+

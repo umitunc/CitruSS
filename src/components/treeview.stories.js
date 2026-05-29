@@ -4,6 +4,50 @@ export default {
   title: 'Navigation/Treeview',
 };
 
+const treeviewHTML = `
+<!-- Standard Treeview Navigation -->
+<div class="citruss-treeview">
+  <!-- Folder Node -->
+  <div class="tree-node">
+    <span class="node-toggle expanded">▶</span>
+    <span class="node-icon">📁</span>
+    <span>src</span>
+  </div>
+  
+  <!-- Nested List -->
+  <ul>
+    <div class="tree-node">
+      <span class="node-toggle expanded">▶</span>
+      <span class="node-icon">📁</span>
+      <span>components</span>
+    </div>
+    <ul>
+      <li class="tree-node">
+        <span class="node-icon" style="color:var(--citruss-lime);">📄</span>
+        <span>_accordion.scss</span>
+      </li>
+    </ul>
+  </ul>
+</div>
+`.trim();
+
+const treeviewJS = `
+// Initialize Treeview toggle logic
+document.querySelectorAll('.citruss-treeview .tree-node').forEach(node => {
+  node.onclick = () => {
+    const siblingList = node.nextElementSibling;
+    const toggleIcon = node.querySelector('.node-toggle');
+    if (siblingList && siblingList.tagName === 'UL') {
+      const isCollapsed = siblingList.style.display === 'none';
+      siblingList.style.display = isCollapsed ? 'flex' : 'none';
+      if (toggleIcon) {
+        toggleIcon.classList.toggle('expanded', isCollapsed);
+      }
+    }
+  };
+});
+`.trim();
+
 export const TreeviewShowcase = () => {
   useEffect(() => {
     document.querySelectorAll('.citruss-treeview .tree-node').forEach(node => {
@@ -27,8 +71,7 @@ export const TreeviewShowcase = () => {
         Treeview Component
       </h3>
       
-      <div class="citruss-treeview">
-        
+      <div class="citruss-treeview" style="margin-bottom: 32px;">
         <!-- Folder Node -->
         <div class="tree-node">
           <span class="node-toggle expanded">▶</span>
@@ -38,7 +81,6 @@ export const TreeviewShowcase = () => {
         
         <!-- Nested List -->
         <ul>
-          
           <div class="tree-node">
             <span class="node-toggle expanded">▶</span>
             <span class="node-icon">📁</span>
@@ -72,10 +114,34 @@ export const TreeviewShowcase = () => {
               <span>index.js</span>
             </li>
           </ul>
-
         </ul>
-
       </div>
+
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML & JS Code Examples
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto; display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h5 style="color: var(--citruss-lime); margin: 0 0 8px 0; font-size: 0.85rem;">Treeview HTML:</h5>
+            <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${treeviewHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+          </div>
+          <div>
+            <h5 style="color: var(--citruss-orange); margin: 0 0 8px 0; font-size: 0.85rem;">Toggle Logic JS:</h5>
+            <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${treeviewJS.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+          </div>
+        </div>
+      </details>
     </div>
   `;
 };
+
+TreeviewShowcase.parameters = {
+  docs: {
+    source: {
+      code: `${treeviewHTML}\n\n/* Javascript */\n${treeviewJS}`,
+    },
+  },
+};
+

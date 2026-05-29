@@ -4,6 +4,46 @@ export default {
   title: 'Interactive/Wizard (Multi-Step Form)',
 };
 
+const wizardHTML = `
+<!-- Wizard Shell Container -->
+<div class="citruss-card" id="demo-wizard-standalone">
+  <div class="card-content">
+    
+    <!-- Linear Progress Bar -->
+    <div class="citruss-progress-bar progress-lime">
+      <div class="progress-fill" style="width: 0%;"></div>
+    </div>
+    
+    <!-- Step Node Headers -->
+    <div class="citruss-wizard-steps-header">
+      <div class="wizard-step-node active">1</div>
+      <div class="wizard-step-node">2</div>
+    </div>
+    
+    <!-- Step 1 Content -->
+    <div class="citruss-wizard-step">
+      <h4>Step 1: User Registration</h4>
+      <input type="text" placeholder="Full Name" class="citruss-input" />
+    </div>
+    
+    <!-- Navigation Buttons -->
+    <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+      <button class="citruss-btn btn-sm wizard-prev" style="display: none;">Back</button>
+      <button class="citruss-btn btn-sm btn-primary wizard-next">Next Step</button>
+      <button class="citruss-btn btn-sm btn-success wizard-submit" style="display: none;">Finish</button>
+    </div>
+
+  </div>
+</div>
+`.trim();
+
+const wizardJS = `
+// Instantiate multi-step wizard transition logic
+if (window.CitruSS?.Wizard) {
+  new window.CitruSS.Wizard('demo-wizard-standalone');
+}
+`.trim();
+
 export const WizardShowcase = () => {
   useEffect(() => {
     if (window.CitruSS?.Wizard) {
@@ -17,7 +57,7 @@ export const WizardShowcase = () => {
         Wizard (Multi-Step Installation Wizard)
       </h3>
       
-      <div class="citruss-card" id="demo-wizard-standalone" style="padding: 24px;">
+      <div class="citruss-card" id="demo-wizard-standalone" style="padding: 24px; margin-bottom: 32px;">
         <div class="card-content">
           
           <!-- Progressive linear progress bar -->
@@ -69,6 +109,32 @@ export const WizardShowcase = () => {
 
         </div>
       </div>
+
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML & JS Code Examples
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto; display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <h5 style="color: var(--citruss-lime); margin: 0 0 8px 0; font-size: 0.85rem;">Wizard HTML Structure:</h5>
+            <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${wizardHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+          </div>
+          <div>
+            <h5 style="color: var(--citruss-orange); margin: 0 0 8px 0; font-size: 0.85rem;">Initialization JS:</h5>
+            <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${wizardJS.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+          </div>
+        </div>
+      </details>
     </div>
   `;
 };
+
+WizardShowcase.parameters = {
+  docs: {
+    source: {
+      code: `${wizardHTML}\n\n/* Javascript */\n${wizardJS}`,
+    },
+  },
+};
+

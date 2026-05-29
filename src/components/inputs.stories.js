@@ -285,6 +285,72 @@ export const CompleteFormGallery = () => {
 
       </div>
 
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML Form Code Example
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto; max-height: 350px;">
+          <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.85rem; line-height: 1.5;">&lt;!-- Basic Input Field --&gt;
+&lt;div class="citruss-form-group"&gt;
+  &lt;label class="citruss-form-label"&gt;Full Name&lt;/label&gt;
+  &lt;input type="text" class="citruss-input" placeholder="Jane Doe" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Input with Left Icon --&gt;
+&lt;div class="citruss-input-icon-wrapper icon-left"&gt;
+  &lt;input type="text" class="citruss-input" placeholder="Search..." /&gt;
+  &lt;div class="citruss-icon"&gt;[Icon SVG]&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Floating Label Input --&gt;
+&lt;div class="citruss-input-floating"&gt;
+  &lt;input type="text" class="citruss-input" id="float-input" placeholder=" " /&gt;
+  &lt;label class="citruss-label" for="float-input"&gt;Username&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Custom Checkbox --&gt;
+&lt;label class="citruss-checkbox"&gt;
+  &lt;input type="checkbox" checked /&gt;
+  &lt;span class="control-indicator"&gt;&lt;/span&gt;
+  Label Text
+&lt;/label&gt;
+
+&lt;!-- Rule-Based validation field --&gt;
+&lt;div class="citruss-validation-group"&gt;
+  &lt;input type="email" class="citruss-input" required data-citruss-rules="email" /&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </details>
+
     </div>
   `;
 };
+
+CompleteFormGallery.parameters = {
+  docs: {
+    source: {
+      code: `<!-- CitruSS Form Inputs Showcase -->
+<div class="citruss-form-group">
+  <label class="citruss-form-label">Full Name</label>
+  <input type="text" class="citruss-input" placeholder="e.g. Jane Doe" />
+</div>
+
+<div class="citruss-input-floating">
+  <input type="text" class="citruss-input" id="float-user" placeholder=" " />
+  <label class="citruss-label" for="float-user">Floating Username</label>
+</div>
+
+<label class="citruss-checkbox">
+  <input type="checkbox" checked />
+  <span class="control-indicator"></span>
+  Option One
+</label>
+
+<div class="citruss-validation-group">
+  <input type="email" class="citruss-input" required data-citruss-rules="email" />
+</div>`,
+    },
+  },
+};
+

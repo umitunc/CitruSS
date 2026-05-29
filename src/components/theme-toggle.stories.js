@@ -7,6 +7,28 @@ export default {
   },
 };
 
+const toggleHTML = `
+<!-- CitruSS Premium Glassmorphic Theme Toggle Component -->
+<div class="citruss-theme-toggle" id="theme-switcher">
+  <button class="toggle-btn" data-theme-value="light" aria-label="Switch to Light Theme">
+    <!-- SVG Light Icon -->
+    Light
+  </button>
+  <button class="toggle-btn" data-theme-value="dark" aria-label="Switch to Dark Theme">
+    <!-- SVG Dark Icon -->
+    Dark
+  </button>
+</div>
+`.trim();
+
+const toggleJS = `
+// Instantiate Javascript switch engine
+const el = document.getElementById('theme-switcher');
+if (el) {
+  new CitruSS.ThemeToggle(el);
+}
+`.trim();
+
 export const Default = {
   render: () => {
     // Generate unique ID for binding
@@ -20,7 +42,7 @@ export const Default = {
     }, 100);
 
     return `
-      <div style="text-align: center; font-family: var(--citruss-font-display); padding: 40px;">
+      <div style="text-align: center; font-family: var(--citruss-font-display); padding: 40px; max-width: 600px;">
         <h3 style="color: var(--citruss-text-main); margin-bottom: 24px; font-weight: 800;">
           Interactive Glassmorphic Theme Switcher
         </h3>
@@ -29,7 +51,7 @@ export const Default = {
         </p>
 
         <!-- Premium CitruSS Theme Toggle Component -->
-        <div class="citruss-theme-toggle" id="${toggleId}">
+        <div class="citruss-theme-toggle" id="${toggleId}" style="margin: 0 auto 32px auto;">
           <button class="toggle-btn" data-theme-value="light" aria-label="Switch to Light Theme">
             <svg viewBox="0 0 24 24">
               <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
@@ -43,26 +65,33 @@ export const Default = {
             Dark
           </button>
         </div>
-        
-        <div style="margin-top: 40px; padding: 20px; background: var(--citruss-glass-bg); border: 1px solid var(--citruss-glass-border); border-radius: 12px; max-width: 480px; margin-left: auto; margin-right: auto;">
-          <h4 style="color: var(--citruss-text-main); margin-bottom: 8px; font-weight: 700; font-size: 0.95rem;">
-            Integration Code
-          </h4>
-          <pre style="text-align: left; padding: 12px; background: rgb(0 0 0 / 20%); border-radius: 6px; overflow-x: auto; margin: 0; font-size: 0.8rem; border: 1px solid var(--citruss-glass-border);">
-            <code style="color: var(--citruss-tangerine); font-family: monospace;">
-&lt;div class="citruss-theme-toggle" id="theme-switcher"&gt;
-  &lt;button class="toggle-btn" data-theme-value="light"&gt;Light&lt;/button&gt;
-  &lt;button class="toggle-btn" data-theme-value="dark"&gt;Dark&lt;/button&gt;
-&lt;/div&gt;
 
-&lt;script&gt;
-  // Easily bind JavaScript transition logic
-  new CitruSS.ThemeToggle(document.getElementById('theme-switcher'));
-&lt;/script&gt;
-            </code>
-          </pre>
-        </div>
+        <!-- Code Example Block -->
+        <details class="citruss-code-wrapper" style="text-align: left; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+          <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+            💻 View HTML & JS Code Examples
+          </summary>
+          <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto; display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <h5 style="color: var(--citruss-lime); margin: 0 0 8px 0; font-size: 0.85rem;">Theme Toggle HTML:</h5>
+              <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${toggleHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+            </div>
+            <div>
+              <h5 style="color: var(--citruss-orange); margin: 0 0 8px 0; font-size: 0.85rem;">Initialization JS:</h5>
+              <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${toggleJS.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+            </div>
+          </div>
+        </details>
       </div>
     `;
   },
 };
+
+Default.parameters = {
+  docs: {
+    source: {
+      code: `${toggleHTML}\n\n/* Javascript */\n${toggleJS}`,
+    },
+  },
+};
+

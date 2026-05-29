@@ -2,6 +2,28 @@ export default {
   title: 'Feedback/Progress Indicators',
 };
 
+const progressHTML = `
+<!-- Standard Progress Bar (45%) -->
+<div class="citruss-progress-bar">
+  <div class="progress-fill" style="width: 45%;"></div>
+</div>
+
+<!-- Lime Progress Bar (80%) -->
+<div class="citruss-progress-bar progress-lime">
+  <div class="progress-fill" style="width: 80%;"></div>
+</div>
+
+<!-- Glassmorphic Spinning Loader -->
+<div class="citruss-spinner" style="
+  width: 32px; 
+  height: 32px; 
+  border: 3px solid rgba(255,255,255,0.1); 
+  border-top-color: var(--citruss-tangerine); 
+  border-radius: 50%; 
+  animation: spin 1s linear infinite;
+"></div>
+`.trim();
+
 export const ProgressShowcase = () => {
   return `
     <div style="padding: 30px; max-width: 500px;">
@@ -54,6 +76,16 @@ export const ProgressShowcase = () => {
         </div>
 
       </div>
+
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML Code Example
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto;">
+          <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.85rem; line-height: 1.5;">${progressHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+        </div>
+      </details>
     </div>
     
     <style>
@@ -64,3 +96,12 @@ export const ProgressShowcase = () => {
     </style>
   `;
 };
+
+ProgressShowcase.parameters = {
+  docs: {
+    source: {
+      code: progressHTML,
+    },
+  },
+};
+
