@@ -1,7 +1,7 @@
 # CitruSS — UI CSS Kit: Implementation Plan
 ### Glassmorphism Dashboard & Web App (including Electron.js) Architecture
 
-This document contains the comprehensive coding, architecture, and integration strategies for the **CitruSS** CSS UI Kit project, planned to be developed under **Trunçgil Teknoloji**. CitruSS brings the freshness and aesthetics of citrus fruits into modern digital interfaces. This document serves as a guide for implementing a premium, *Glassmorphism* design system inspired by Tailwind CSS, Bootstrap, and premium enterprise UI kits, optimized for standalone web applications, enterprise admin panels, and **Electron.js**-based desktop software.
+This document contains the comprehensive coding, architecture, and integration strategies for the **CitruSS** CSS UI Kit project, planned to be developed under **Truncgil Technology**. CitruSS brings the freshness and aesthetics of citrus fruits into modern digital interfaces. This document serves as a guide for implementing a premium, *Glassmorphism* design system inspired by Tailwind CSS, Bootstrap, and premium enterprise UI kits, optimized for standalone web applications, enterprise admin panels, and **Electron.js**-based desktop software.
 
 ---
 

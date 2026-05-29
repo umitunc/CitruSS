@@ -10,8 +10,8 @@ export const FormsAndInputs = () => {
       window.CitruSS.Validator.bind('#demo-validation-form', (form) => {
         if (window.CitruSS?.toast) {
           window.CitruSS.toast({
-            title: 'Başarılı!',
-            message: 'Form doğrulaması başarıyla tamamlandı.',
+            title: 'Success!',
+            message: 'Form validation completed successfully.',
             type: 'success'
           });
         } else {
@@ -24,39 +24,39 @@ export const FormsAndInputs = () => {
   return `
     <div style="padding: 30px; max-width: 600px;">
       <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
-        Forms, Inputs & Validation (Form Elemanları ve Doğrulama)
+        Forms, Inputs & Validation
       </h3>
       
       <form id="demo-validation-form" style="display: flex; flex-direction: column; gap: 20px;">
         
-        <!-- Standart Input -->
+        <!-- Standard Input -->
         <div class="citruss-input-group">
           <label style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
-            Kullanıcı Adı (Zorunlu)
+            Username (Required)
           </label>
-          <input type="text" placeholder="Orn: okantruncgil" required class="citruss-input" style="width: 100%; box-sizing: border-box;" />
+          <input type="text" placeholder="e.g. okantruncgil" required class="citruss-input" style="width: 100%; box-sizing: border-box;" />
         </div>
 
-        <!-- E-posta Input ve Özel Doğrulama Kuralları -->
+        <!-- Email Input and Rules -->
         <div class="citruss-input-group">
           <label style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
-            E-posta Adresi (Doğru Format & Zorunlu)
+            Email Address (Valid Format & Required)
           </label>
-          <input type="email" placeholder="Orn: user@citruss.com" required data-citruss-rules="email" class="citruss-input" style="width: 100%; box-sizing: border-box;" />
+          <input type="email" placeholder="e.g. user@citruss.com" required data-citruss-rules="email" class="citruss-input" style="width: 100%; box-sizing: border-box;" />
         </div>
 
-        <!-- Şifre Input (Min Karakter) -->
+        <!-- Password Input -->
         <div class="citruss-input-group">
           <label style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
-            Şifre (En az 6 Karakter)
+            Password (At least 6 Characters)
           </label>
           <input type="password" placeholder="••••••••" required data-citruss-rules="min:6" class="citruss-input" style="width: 100%; box-sizing: border-box;" />
         </div>
 
-        <!-- Select Seçim Elemanı -->
+        <!-- Select Element -->
         <div class="citruss-input-group">
           <label style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
-            Sunucu Bölgesi Seçin
+            Select Server Region
           </label>
           <select class="citruss-input" style="width: 100%; box-sizing: border-box; background: rgba(0,0,0,0.2);">
             <option value="istanbul">Istanbul (TR)</option>
@@ -66,7 +66,7 @@ export const FormsAndInputs = () => {
         </div>
 
         <button type="submit" class="citruss-btn btn-primary" style="margin-top: 10px; width: 100%;">
-          Hesap Oluştur ve Doğrula
+          Create Account and Validate
         </button>
 
       </form>

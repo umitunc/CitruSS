@@ -6,14 +6,14 @@ export const ProgressShowcase = () => {
   return `
     <div style="padding: 30px; max-width: 500px;">
       <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
-        Progress Indicators (İlerleme Çubukları & Yükleniyor Göstergeleri)
+        Progress Indicators
       </h3>
       
       <div style="display: flex; flex-direction: column; gap: 24px;">
         
-        <!-- Standart Tangerine Progress -->
+        <!-- Standard Tangerine Progress -->
         <div>
-          <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 8px;">Standart Tangerine (%45):</h4>
+          <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 8px;">Standard Tangerine (45%):</h4>
           <div class="citruss-progress-bar">
             <div class="progress-fill" style="width: 45%;"></div>
           </div>
@@ -21,15 +21,15 @@ export const ProgressShowcase = () => {
 
         <!-- Lime Progress -->
         <div>
-          <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 8px;">Lime Success (%80):</h4>
+          <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 8px;">Lime Success (80%):</h4>
           <div class="citruss-progress-bar progress-lime">
             <div class="progress-fill" style="width: 80%;"></div>
           </div>
         </div>
 
-        <!-- Yükleniyor Dönen Çember (Spinner) / Animasyonlar -->
+        <!-- Spinning Loaders / Animations -->
         <div>
-          <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 12px;">Yükleme Çemberleri (Spinning Loaders):</h4>
+          <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 12px;">Spinning Loaders:</h4>
           <div style="display: flex; gap: 20px; align-items: center;">
             <div class="citruss-spinner" style="
               width: 32px; 
@@ -49,7 +49,7 @@ export const ProgressShowcase = () => {
               animation: spin 1s linear infinite;
             "></div>
 
-            <span style="color: var(--citruss-text-muted); font-size: 0.9rem;">Sunucu verileri analiz ediliyor...</span>
+            <span style="color: var(--citruss-text-muted); font-size: 0.9rem;">Analyzing server data...</span>
           </div>
         </div>
 

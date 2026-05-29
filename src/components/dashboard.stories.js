@@ -14,7 +14,7 @@ export const AdminPanelDashboard = () => {
         const newTheme = currentTheme === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
         themeToggle.textContent = newTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
-        
+
         window.CitruSS.toast({
           title: 'Theme Switched',
           message: `Interface successfully updated to ${newTheme} mode.`,
@@ -49,7 +49,7 @@ export const AdminPanelDashboard = () => {
       toggleSidebarBtn.onclick = () => {
         sidebar.classList.toggle('open');
       };
-      
+
       // Close sidebar when clicking outside on mobile
       const contentArea = document.querySelector('.citruss-dashboard-main');
       if (contentArea) {
@@ -119,7 +119,7 @@ export const AdminPanelDashboard = () => {
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="User Profile">
           </div>
           <div class="user-details" style="font-size: 0.8rem; overflow: hidden; white-space: nowrap;">
-            <div style="font-weight: 700; color: var(--citruss-text-main);">Ecem Trunçgil</div>
+            <div style="font-weight: 700; color: var(--citruss-text-main);">Ecem Truncgil</div>
             <div style="color: var(--citruss-text-muted); font-size: 0.7rem;">ecem@truncgil.com</div>
           </div>
         </div>
@@ -231,7 +231,7 @@ export const AdminPanelDashboard = () => {
                               <div class="citruss-avatar status-online avatar-sm">
                                 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Av">
                               </div>
-                              <span style="font-weight: 600;">Defne Trunçgil</span>
+                              <span style="font-weight: 600;">Defne Truncgil</span>
                             </div>
                           </td>
                           <td><span class="citruss-badge badge-success">Online</span></td>
@@ -244,7 +244,7 @@ export const AdminPanelDashboard = () => {
                               <div class="citruss-avatar status-online avatar-sm">
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Av">
                               </div>
-                              <span style="font-weight: 600;">Yiğit Trunçgil</span>
+                              <span style="font-weight: 600;">Reva Truncgil</span>
                             </div>
                           </td>
                           <td><span class="citruss-badge badge-success">Online</span></td>
@@ -257,7 +257,7 @@ export const AdminPanelDashboard = () => {
                               <div class="citruss-avatar status-offline avatar-sm">
                                 <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Av">
                               </div>
-                              <span style="font-weight: 600;">Okan Trunçgil</span>
+                              <span style="font-weight: 600;">Ümit Tuncgil</span>
                             </div>
                           </td>
                           <td><span class="citruss-badge badge-danger">Offline</span></td>

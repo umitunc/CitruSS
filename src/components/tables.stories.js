@@ -6,7 +6,7 @@ export const TableShowcase = () => {
   return `
     <div style="padding: 30px; max-width: 800px;">
       <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
-        Tables (Veri Tabloları)
+        Tables
       </h3>
       
       <div class="citruss-table-container">
@@ -26,7 +26,7 @@ export const TableShowcase = () => {
                   <div class="citruss-avatar status-online avatar-sm" style="width: 32px; height: 32px;">
                     <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Defne Profile">
                   </div>
-                  <span style="font-weight: 600; color: var(--citruss-text-main);">Defne Trunçgil</span>
+                  <span style="font-weight: 600; color: var(--citruss-text-main);">Defne Truncgil</span>
                 </div>
               </td>
               <td>🇹🇷 TR-Istanbul</td>
@@ -39,7 +39,7 @@ export const TableShowcase = () => {
                   <div class="citruss-avatar status-online avatar-sm" style="width: 32px; height: 32px;">
                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Yigit Profile">
                   </div>
-                  <span style="font-weight: 600; color: var(--citruss-text-main);">Yiğit Trunçgil</span>
+                  <span style="font-weight: 600; color: var(--citruss-text-main);">Reva Truncgil</span>
                 </div>
               </td>
               <td>🇩🇪 DE-Frankfurt</td>
@@ -52,7 +52,7 @@ export const TableShowcase = () => {
                   <div class="citruss-avatar status-offline avatar-sm" style="width: 32px; height: 32px;">
                     <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Okan Profile">
                   </div>
-                  <span style="font-weight: 600; color: var(--citruss-text-main);">Okan Trunçgil</span>
+                  <span style="font-weight: 600; color: var(--citruss-text-main);">Ümit Tuncgil</span>
                 </div>
               </td>
               <td>🇬🇧 UK-London</td>

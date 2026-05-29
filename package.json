@@ -20,7 +20,7 @@
     "framework-agnostic",
     "electron"
   ],
-  "author": "Trunçgil Teknoloji",
+  "author": "Truncgil Technology",
   "license": "MIT",
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",

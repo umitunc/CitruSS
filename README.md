@@ -117,4 +117,4 @@ To use the glassmorphic card component in your markup:
 This project is licensed under the **MIT** License. See the `package.json` file for more details.
 
 ---
-*Crafted with love and fresh citrus vibes by Trunçgil Teknoloji.* 🍊🍋
+*Crafted with love and fresh citrus vibes by Truncgil Technology.* 🍊🍋

@@ -15,19 +15,19 @@ export const SidebarShowcase = () => {
         <div class="sidebar-nav">
           <a href="#" class="sidebar-link active">
             <span class="sidebar-icon">📊</span>
-            <span>Kontrol Paneli</span>
+            <span>Dashboard</span>
           </a>
           <a href="#" class="sidebar-link">
             <span class="sidebar-icon">🛡️</span>
-            <span>Güvenlik Günlükleri</span>
+            <span>Security Logs</span>
           </a>
           <a href="#" class="sidebar-link">
             <span class="sidebar-icon">⚙️</span>
-            <span>Sistem Ayarları</span>
+            <span>System Settings</span>
           </a>
           <a href="#" class="sidebar-link">
             <span class="sidebar-icon">💡</span>
-            <span>Entegrasyonlar</span>
+            <span>Integrations</span>
           </a>
         </div>
         <div class="sidebar-footer">
@@ -35,7 +35,7 @@ export const SidebarShowcase = () => {
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="User Profile">
           </div>
           <div class="user-details" style="font-size: 0.8rem; overflow: hidden; white-space: nowrap;">
-            <div style="font-weight: 700; color: var(--citruss-text-main);">Ecem Trunçgil</div>
+            <div style="font-weight: 700; color: var(--citruss-text-main);">Ecem Truncgil</div>
             <div style="color: var(--citruss-text-muted); font-size: 0.7rem;">ecem@truncgil.com</div>
           </div>
         </div>
