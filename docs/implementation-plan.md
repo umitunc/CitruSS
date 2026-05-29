@@ -1,104 +1,104 @@
 # CitruSS — UI CSS Kit: Implementation Plan
 ### Glassmorphism Dashboard & Web App (including Electron.js) Architecture
 
-Bu doküman, **Trunçgil Teknoloji** çatısı altında geliştirilmesi planlanan, narenciye tazeliğini ve estetiğini modern dijital arayüzlere taşıyan **CitruSS** CSS UI Kit projesinin kapsamlı kodlama, mimari ve entegrasyon stratejilerini içermektedir. Doküman; hem bağımsız web uygulamaları, hem kurumsal admin panelleri hem de **Electron.js** tabanlı masaüstü yazılımları için optimize edilmiş bir *Glassmorphism (Cam Morfizmi)* tasarım sisteminin hayata geçirilme rehberidir.
+This document contains the comprehensive coding, architecture, and integration strategies for the **CitruSS** CSS UI Kit project, planned to be developed under **Trunçgil Teknoloji**. CitruSS brings the freshness and aesthetics of citrus fruits into modern digital interfaces. This document serves as a guide for implementing a *Glassmorphism* design system optimized for standalone web applications, enterprise admin panels, and **Electron.js**-based desktop software.
 
 ---
 
-## 1. Proje Vizyonu ve Tasarım Felsefesi
+## 1. Project Vision and Design Philosophy
 
-**CitruSS**, adını ve ruhunu turunçgillerin canlılığından alan, en üst düzey görsel performansı hedefleyen bir arayüz kütüphanesidir. Geleneksel düz (flat) veya materyal tasarımların ötesine geçerek; katmanlı, ışık geçirgenliğine sahip ve derinlik hissi barındıran **Frosted Glass (Buzlu Cam)** efektini standartlaştırır.
+**CitruSS**, taking its name and spirit from the vibrancy of citrus fruits, is an interface library aiming for the highest level of visual performance. Going beyond traditional flat or material designs, it standardizes the **Frosted Glass** effect, which features layered structure, light transmittance, and a sense of depth.
 
-### Temel Mimari Prensipler
-*   **Hafiflik ve Hız (Zero-Dependency):** Herhangi bir JavaScript kütüphanesine (React, Vue vb.) veya ek tasarım motoruna bağımlı kalmaksızın, sadece ham CSS ve HTML güçleriyle çalışır. Gzip sıkıştırması sonrası CDN boyutu **< 15KB** olarak hedeflenmiştir.
-*   **Çalışma Zamanı Dinamikliği (Runtime Flexibility):** Tüm renkler, blur oranları ve kenarlık opaklıkları CSS Custom Properties (Özel Özellikler) ile yönetilir. Bu sayede Light/Dark Mode veya marka renk değişimleri DOM manipülasyonu gerekmeden anlık olarak tetiklenebilir.
-*   **Masaüstü (Electron.js) Yerelliği:** Chromium render motorunun donanım ivmeli (GPU Accelerated) katman oluşturma yeteneklerini sonuna kadar kullanarak, masaüstü uygulamalarında kasma veya takılma olmaksızın işletim sistemi seviyesinde şeffaflık hissi sunar.
+### Core Architectural Principles
+*   **Lightweight and Fast (Zero-Dependency):** It operates purely using raw CSS and HTML, without depending on any JavaScript library (React, Vue, etc.) or external design engines. The targeted CDN size after Gzip compression is **< 15KB**.
+*   **Runtime Flexibility:** All colors, blur values, and border opacities are managed via CSS Custom Properties (Variables). This allows Light/Dark Mode or brand color changes to be triggered instantly without requiring DOM manipulation.
+*   **Desktop (Electron.js) Native Experience:** By leveraging the hardware-accelerated (GPU-accelerated) layer creation capabilities of the Chromium rendering engine, it delivers an OS-level transparency feel in desktop applications without lag or stuttering.
 
 ---
 
-## 2. Teknik Stack ve Derleme Hattı (Build Pipeline)
+## 2. Technical Stack and Build Pipeline
 
-Projenin derleme, sıkıştırma ve dağıtım süreçleri tamamen modern web standartlarına uygun şekilde otomatize edilecektir:
+The compilation, compression, and distribution processes of the project will be fully automated in compliance with modern web standards:
 
 ```
 +------------------+      +-------------------+      +--------------------+      +------------------+
-|  Sass (SCSS)     | ---> | PostCSS           | ---> | Lightning CSS      | ---> | Dağıtım (CDN)    |
-|  Kaynak Kodları  |      | Autoprefixer / v4 |      | Minify & Optimize  |      | NPM / jsDelivr   |
+|  Sass (SCSS)     | ---> | PostCSS           | ---> | Lightning CSS      | ---> | Distribution     |
+|  Source Code     |      | Autoprefixer / v4 |      | Minify & Optimize  |      | NPM / jsDelivr   |
 +------------------+      +-------------------+      +--------------------+      +------------------+
 ```
 
-*   **Sass (SCSS):** `Dart-Sass` kütüphanesi kullanılarak modüler yapılar (`@use`, `@forward`) ile kod tabanı yönetilir.
-*   **PostCSS & Autoprefixer:** Yazılan modern CSS kodlarına otomatik olarak `-webkit-backdrop-filter` gibi tarayıcı ve motor uyumluluk ön eklerini ekler.
-*   **Lightning CSS:** CSS dosyasını küçültür, kullanılmayan kuralları eler ve renk tanımlarını en optimize formata (örn. hex yerine oklch veya rgba) indirger.
+*   **Sass (SCSS):** The codebase is managed with modular structures (`@use`, `@forward`) using the `Dart-Sass` library.
+*   **PostCSS & Autoprefixer:** Automatically adds browser and engine compatibility prefixes (such as `-webkit-backdrop-filter`) to modern CSS rules.
+*   **Lightning CSS:** Minifies the CSS file, removes unused rules, and reduces color definitions to their most optimized format (e.g., using oklch or rgba instead of hex).
 
 ---
 
-## 3. Klasör ve Dosya Yapısı (SCSS Architecture)
+## 3. Folder and File Structure (SCSS Architecture)
 
-Projenin sürdürülebilir, genişletilebilir ve modüler olabilmesi için 7-1 mimari modelinin sadeleştirilmiş bir versiyonu kullanılacaktır:
+To ensure the project remains sustainable, extensible, and modular, a simplified version of the 7-1 architectural model will be used:
 
 ```
 citruss/
 ├── src/
 │   ├── core/
-│   │   ├── _reset.scss       # Element sıfırlamaları (Modern Reset / Normalize)
-│   │   ├── _variables.scss   # Çekirdek CSS değişkenleri ve renk paleti
-│   │   └── _mixins.scss      # Cam efekti, responsive yapılar ve animasyon fonksiyonları
+│   │   ├── _reset.scss       # Element resets (Modern Reset / Normalize)
+│   │   ├── _variables.scss   # Core CSS variables and color palette
+│   │   └── _mixins.scss      # Glass effect, responsive structures, and animation functions
 │   ├── components/
-│   │   ├── _buttons.scss     # Işıltılı, yarı şeffaf ve cam efektli buton tasarımları
-│   │   ├── _cards.scss       # Frosted Glass içerik, istatistik ve metrik kartları
-│   │   ├── _sidebar.scss     # Sol navigasyon, dikey menü ve profil alanı bileşenleri
-│   │   ├── _inputs.scss      # Form elemanları, odaklanma (focus) ve hata durumları
-│   │   └── _dropdown.scss    # Katmanlı, z-index hiyerarşisi yüksek açılır paneller
+│   │   ├── _buttons.scss     # Radiant, semi-transparent, and glass-effect button designs
+│   │   ├── _cards.scss       # Frosted Glass content, statistic, and metric cards
+│   │   ├── _sidebar.scss     # Left navigation, vertical menu, and profile area components
+│   │   ├── _inputs.scss      # Form elements, focus states, and error states
+│   │   └── _dropdown.scss    # Layered, high z-index dropdown panels
 │   ├── layout/
-│   │   ├── _grid.scss        # CSS Grid ve Flexbox tabanlı esnek yerleşim motoru
-│   │   └── _dashboard.scss   # Standart Admin Paneli iskelet yerleşimi (Layout Wrapper)
-│   └── citruss.scss          # Tüm alt modülleri birleştiren ana giriş kapısı
+│   │   ├── _grid.scss        # Flexible grid and flexbox-based layout engine
+│   │   └── _dashboard.scss   # Standard Admin Panel skeleton layout (Layout Wrapper)
+│   └── citruss.scss          # Main entry point merging all sub-modules
 ├── dist/
-│   ├── citruss.css           # Geliştirme aşamasında debug edilebilir ham çıktı
-│   └── citruss.min.css       # Production için optimize edilmiş ve sıkıştırılmış CDN çıktısı
-└── package.json              # Bağımlılıklar, scriptler ve npm yayınlama konfigürasyonu
+│   ├── citruss.css           # Raw, debuggable output for development
+│   └── citruss.min.css       # Optimized and minified CDN output for production
+└── package.json              # Dependencies, scripts, and npm publishing configuration
 ```
 
 ---
 
-## 4. Çekirdek Tasarım Sistemi ve Matematiksel Modelleme
+## 4. Core Design System and Mathematical Modeling
 
-Glassmorphism efektinin estetik başarısı, arka plan geçirgenliği (Alpha kanalı), katman gölgesi (Box Shadow) ve bulanıklık yarıçapının (Blur Radius) matematiksel dengesine dayanır. 
+The aesthetic success of the Glassmorphism effect relies on the mathematical balance between background transparency (Alpha channel), layer shadow (Box Shadow), and blur radius (Blur Radius).
 
-Cam efektinin geçirgenlik fonksiyonu:
+Glass effect transmittance function:
 $$G(c) = rgba(c_{red}, c_{green}, c_{blue}, \alpha) + \text{blur}(\beta\text{px})$$
 
-*   Burada $\alpha$ (opaklık) değeri **0.03 ile 0.20** arasında tutulmalıdır. Üst üste binen katmanlarda bu oran birikerek kontrastı artırır.
-*   $\beta$ (bulanıklık yarıçapı) değeri **10px ile 16px** arasında optimize edilmiştir. 10px altındaki değerler arkadaki objeleri çok net göstererek görsel karmaşaya yol açar; 16px üzerindeki değerler ise GPU render maliyetini artırır.
+*   The $\alpha$ (opacity) value should be kept between **0.03 and 0.20**. In overlapping layers, this accumulation increases contrast.
+*   The $\beta$ (blur radius) value is optimized between **10px and 16px**. Values below 10px cause visual clutter by making background objects too clear; values above 16px increase GPU rendering costs.
 
-### Çekirdek Değişken Dosyası (`src/core/_variables.scss`)
+### Core Variables File (`src/core/_variables.scss`)
 
 ```scss
 :root {
-    /* CitruSS Narenciye Renk Paleti (Şirket Mirası) */
+    /* CitruSS Citrus Color Palette (Company Heritage) */
     --citruss-orange: #ff6b00;
     --citruss-tangerine: #ff9f43;
     --citruss-lemon: #feca57;
     --citruss-lime: #1dd1a1;
     
-    /* Derin Koyu Mod Arka Planları (Dashboard Çekirdeği) */
+    /* Deep Dark Mode Backgrounds (Dashboard Core) */
     --citruss-bg-main: #0a0c12;
     --citruss-bg-surface: #111420;
     
-    /* Glassmorphism Çekirdek Değişkenleri */
+    /* Glassmorphism Core Variables */
     --citruss-glass-bg: rgba(255, 255, 255, 0.03);
     --citruss-glass-border: rgba(255, 255, 255, 0.07);
     --citruss-glass-blur: 14px;
     --citruss-glass-shadow: rgba(0, 0, 0, 0.4);
     
-    /* Tipografi ve Yazı Renkleri */
+    /* Typography and Text Colors */
     --citruss-text-main: #f8fafc;
     --citruss-text-muted: #94a3b8;
     --citruss-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
-/* Light Mode Alternatifi (Çalışma Zamanında [data-theme="light"] ile tetiklenir) */
+/* Light Mode Alternative (Triggered at runtime with [data-theme="light"]) */
 [data-theme="light"] {
     --citruss-bg-main: #f4f6fa;
     --citruss-bg-surface: #ffffff;
@@ -113,11 +113,11 @@ $$G(c) = rgba(c_{red}, c_{green}, c_{blue}, \alpha) + \text{blur}(\beta\text{px}
 
 ---
 
-## 5. Temel Bileşen Tasarımları (Component Specifications)
+## 5. Component Specifications
 
-### A. Ana İçerik Kartı (`src/components/_cards.scss`)
+### A. Main Content Card (`src/components/_cards.scss`)
 
-Admin dashboard panellerindeki metrikleri, grafikleri ve listeleri taşıyacak ana elementtir.
+The primary container for carrying metrics, charts, and lists in admin dashboards.
 
 ```scss
 .citruss-card {
@@ -133,21 +133,21 @@ Admin dashboard panellerindeki metrikleri, grafikleri ve listeleri taşıyacak a
                 border-color 0.25s ease, 
                 box-shadow 0.25s ease;
     
-    /* İçeriklerin cam sınırlarından taşmasını engellemek için */
+    /* To prevent content from overflowing the glass boundaries */
     overflow: hidden; 
     
-    /* Hover durumunda narenciye ışıltısı ve derinlik artışı */
+    /* Citrus glow and depth increase on hover */
     &:hover {
         transform: translateY(-4px);
-        border-color: rgba(255, 159, 67, 0.3); /* Tangerine Işıltısı */
+        border-color: rgba(255, 159, 67, 0.3); /* Tangerine Glow */
         box-shadow: 0 12px 40px 0 rgba(255, 107, 0, 0.15);
     }
 }
 ```
 
-### B. Narenciye Aksiyon Butonu (`src/components/_buttons.scss`)
+### B. Citrus Action Button (`src/components/_buttons.scss`)
 
-Cam efektiyle entegre çalışan, tıklandığında mikro-etkileşim sunan modern buton yapısı.
+A modern button integrated with glassmorphism that offers micro-interactions on click.
 
 ```scss
 .citruss-btn {
@@ -185,13 +185,13 @@ Cam efektiyle entegre çalışan, tıklandığında mikro-etkileşim sunan moder
 
 ---
 
-## 6. Electron.js Masaüstü Entegrasyon Stratejisi
+## 6. Electron.js Desktop Integration Strategy
 
-Masaüstü uygulamalarında (Chromium üzerinde) donanım hızlandırmalı cam efektlerinin akıcı çalışabilmesi ve işletim sisteminin yerel estetiğiyle (Windows Acrylic/Mica veya macOS Vibrancy) konuşabilmesi için özel bir yapı kurulmalıdır.
+To ensure hardware-accelerated glass effects run smoothly in desktop applications (on Chromium) and interact nicely with native OS aesthetics (Windows Acrylic/Mica or macOS Vibrancy), a specific setup is required.
 
-### 1. Main Process Yapılandırması (`main.js`)
+### 1. Main Process Configuration (`main.js`)
 
-Electron penceresi oluşturulurken yerel şeffaflık katmanları aktif edilmeli ve işletim sistemi pencere çerçevesi (frameless) kapatılmalıdır:
+When creating the Electron window, native transparency layers should be enabled and the native OS window frame (frameless) should be turned off:
 
 ```javascript
 const { app, BrowserWindow } = require('electron');
@@ -200,9 +200,9 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
         width: 1280,
         height: 800,
-        frame: false,             // Modern üst bar tasarımı için çerçevesiz pencere
-        transparent: true,         // Windows/Linux şeffaflık desteği
-        vibrancy: 'under-window',  // macOS yerel buzlu cam efekti (Safari tarzı)
+        frame: false,             // Frameless window for modern title bar design
+        transparent: true,         // Transparency support for Windows/Linux
+        vibrancy: 'under-window',  // macOS native frosted glass effect (Safari style)
         visualEffectState: 'active',
         webPreferences: {
             nodeIntegration: true,
@@ -216,18 +216,18 @@ function createWindow() {
 app.whenReady().then(createWindow);
 ```
 
-### 2. Sürükleme ve Pencere Kontrolleri (CSS Katmanı)
+### 2. Dragging and Window Controls (CSS Layer)
 
-Çerçevesiz pencerelerde uygulamanın taşınabilmesi ve sürüklenmesi için sol menü veya üst header alanına özel CSS kuralları atanır:
+In frameless windows, custom CSS rules are assigned to the left menu or top header area to allow dragging/moving the application:
 
 ```scss
 .citruss-header {
-    -webkit-app-region: drag; /* Pencerenin bu alandan tutularak sürüklenebilmesini sağlar */
+    -webkit-app-region: drag; /* Enables window dragging from this region */
     height: 60px;
     background: rgba(10, 12, 18, 0.4);
     backdrop-filter: blur(10px);
     
-    /* Butonlar ve etkileşimli alanlar sürükleme alanından muaf tutulmalıdır */
+    /* Buttons and interactive elements must be excluded from dragging */
     .citruss-btn, .search-input {
         -webkit-app-region: no-drag;
     }
@@ -236,18 +236,18 @@ app.whenReady().then(createWindow);
 
 ---
 
-## 7. Uygulama, Test ve Dağıtım Fazları (Roadmap)
+## 7. Implementation, Testing, and Deployment Phases (Roadmap)
 
-| Faz | Kapsam / Aktivite | Teknik Çıktı / Performans Kriteri |
+| Phase | Scope / Activity | Technical Output / Performance Metric |
 | --- | --- | --- |
-| **Faz 1: Çekirdek** | SCSS altyapısının kurulması, CSS Özel Özellikleri'nin, modern reset kurallarının ve narenciye renk paletinin tanımlanması. | Sıfır harici bağımlılık, global tema değişken mimarisi. |
-| **Faz 2: Bileşenler** | Sol dikey menü (Sidebar), içerik kartları, veri tabloları, form girdileri (inputs) ve grafik kapsayıcı panellerinin kodlanması. | Donanım hızlandırmalı katman optimizasyonları (`will-change`). |
-| **Faz 3: Masaüstü Entegrasyon** | Electron.js mimarisine sahip prototip pencerelerde (çerçevesiz ve şeffaf) işletim sistemi sürükleme testleri ve performans analizi. | Pencere taşınırken veya yeniden boyutlandırılırken 60+ FPS kararlılığı. |
-| **Faz 4: Optimizasyon & Dağıtım** | PostCSS ve Lightning CSS ile derleme otomasyonunun kurulması. GitHub Actions üzerinden npm ve jsDelivr ağlarına dağıtım. | Gzip sıkıştırması sonrası paket boyutu < 15KB. |
+| **Phase 1: Core** | Setting up the SCSS infrastructure, defining CSS Custom Properties, modern reset rules, and the citrus color palette. | Zero external dependencies, global theme variable architecture. |
+| **Phase 2: Components** | Coding the left vertical menu (Sidebar), content cards, data tables, form inputs, and chart container panels. | Hardware-accelerated layer optimizations (`will-change`). |
+| **Phase 3: Desktop Integration** | Testing window dragging and analyzing performance on prototype windows (frameless and transparent) built with Electron.js. | Stable 60+ FPS performance during window moving or resizing. |
+| **Phase 4: Optimization & Deployment** | Setting up build automation with PostCSS and Lightning CSS. Deployment to npm and jsDelivr networks via GitHub Actions. | Package size < 15KB after Gzip compression. |
 
 ---
 
-## 8. Performans ve Erişilebilirlik (WCAG) Standartları
+## 8. Performance and Accessibility (WCAG) Standards
 
-* **Katman Karmaşasını Önleme (GPU Koruması):** Aynı görünüm alanında (Viewport) 5'ten fazla elemente `backdrop-filter: blur()` uygulamak eski ekran kartlarında darboğaz yaratabilir. CitruSS, sadece ana layout katmanlarında (`sidebar`, `header`, `.citruss-card`) blur kullanır; kart içi alt elementlerde ise efektsiz transparan arka planlar tercih eder.
-* **WCAG Kontrast Güvencesi (Okunabilirliği Artırma):** Glassmorphic tasarımlarda en büyük risk, parlak bir arka plan görselinin önüne gelen beyaz metinlerin okunamaz hale gelmesidir. CitruSS, bu problemi çözmek için cam katmanının altına görünmez, çok hafif koyu bir gölge maskesi yerleştirir. Bu sayede metin kontrast oranı her zaman **4.5:1** oranının üzerinde kalır.
+* **Preventing Layer Clutter (GPU Protection):** Applying `backdrop-filter: blur()` to more than 5 elements in the same Viewport can cause bottlenecks on older graphics cards. CitruSS only uses blur on main layout layers (`sidebar`, `header`, `.citruss-card`) and prefers non-effect transparent backgrounds for sub-elements inside cards.
+* **WCAG Contrast Assurance (Enhancing Readability):** The biggest risk in glassmorphic designs is that white text in front of a bright background image becomes unreadable. To solve this problem, CitruSS places an invisible, very light dark shadow mask beneath the glass layer. This ensures that the text contrast ratio always stays above **4.5:1**.
