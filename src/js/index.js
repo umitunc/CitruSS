@@ -9,6 +9,7 @@ import { CitruSSCarousel } from './_carousel';
 import { CitruSSDrawers } from './_drawer';
 import { CitruSSContextMenu } from './_context-menu';
 import { CitruSSPopovers } from './_popover';
+import { CitruSSThemeToggle } from './_theme-toggle';
 
 // Bundle styles by importing them so Vite includes styles in compiled assets automatically
 import '../citruss.scss';
@@ -26,7 +27,8 @@ const CitruSS = {
   Carousel: CitruSSCarousel,
   Drawers: CitruSSDrawers,
   ContextMenu: CitruSSContextMenu,
-  Popovers: CitruSSPopovers
+  Popovers: CitruSSPopovers,
+  ThemeToggle: CitruSSThemeToggle
 };
 
 // Mount in browser environments
@@ -62,5 +64,6 @@ export {
   CitruSSCarousel,
   CitruSSDrawers,
   CitruSSContextMenu,
-  CitruSSPopovers
+  CitruSSPopovers,
+  CitruSSThemeToggle
 };

@@ -1,0 +1,94 @@
+/* Storybook Docs & Preview Page Styles Override
+   This aligns Storybook's documentation backgrounds and styles with CitruSS UI's themes!
+*/
+
+// Docs Page Outer Wrapper & Story Canvas Overrides
+.sbdocs,
+.sbdocs-wrapper,
+.sb-show-main {
+  background-color: var(--citruss-bg-main) !important;
+  color: var(--citruss-text-main) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Docs Main Content Area
+.sbdocs-content {
+  background: transparent !important;
+  color: var(--citruss-text-main) !important;
+  max-width: 1000px !important;
+  padding: 40px 20px !important;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--citruss-text-main) !important;
+    font-family: var(--citruss-font-display) !important;
+  }
+
+  p, li, span, code, td, th {
+    color: var(--citruss-text-muted) !important;
+    font-family: var(--citruss-font-body) !important;
+  }
+
+  strong {
+    color: var(--citruss-text-main) !important;
+  }
+
+  // Links styling
+  a {
+    color: var(--citruss-tangerine) !important;
+    text-decoration: none;
+    font-weight: 600;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  // Preformatted Code blocks in Storybook docs
+  pre {
+    background: var(--citruss-bg-surface) !important;
+    border: 1px solid var(--citruss-glass-border) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 15px var(--citruss-glass-shadow) !important;
+    
+    code {
+      color: var(--citruss-tangerine) !important;
+    }
+  }
+
+  // Tables inside Docs
+  table {
+    background: var(--citruss-glass-bg) !important;
+    backdrop-filter: blur(var(--citruss-glass-blur)) !important;
+    border: 1px solid var(--citruss-glass-border) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+
+    th {
+      background: rgba(255, 255, 255, 0.02) !important;
+      color: var(--citruss-text-main) !important;
+      font-weight: 700 !important;
+      border-bottom: 1px solid var(--citruss-glass-border) !important;
+    }
+
+    td {
+      border-bottom: 1px solid var(--citruss-glass-border) !important;
+    }
+
+    tr:last-child td {
+      border-bottom: none !important;
+    }
+  }
+}
+
+// Light theme docs content override
+[data-theme="light"] {
+  .sbdocs-content {
+    h1, h2, h3, h4, h5, h6, strong {
+      color: var(--citruss-text-main) !important;
+    }
+
+    p, li, span, code, td, th {
+      color: var(--citruss-text-muted) !important;
+    }
+  }
+}

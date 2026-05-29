@@ -4,32 +4,32 @@ import { Meta } from '@storybook/blocks';
 
 <style>{`
   .citruss-getstarted-container {
-    color: #f4f6fa !important;
+    color: var(--citruss-text-main) !important;
     font-family: "Outfit", sans-serif !important;
   }
   .citruss-getstarted-container h1 {
     font-family: "Outfit", sans-serif !important;
   }
   .citruss-getstarted-container h2 {
-    color: #ffffff !important;
+    color: var(--citruss-text-main) !important;
     font-family: "Outfit", sans-serif !important;
   }
   .citruss-getstarted-container h3 {
     font-family: "Outfit", sans-serif !important;
   }
   .citruss-getstarted-container h4 {
-    color: #f4f6fa !important;
+    color: var(--citruss-text-main) !important;
     font-family: "Outfit", sans-serif !important;
   }
   .citruss-getstarted-container p {
-    color: #c9d1d9 !important;
+    color: var(--citruss-text-muted) !important;
     font-size: 0.95rem !important;
     line-height: 1.6 !important;
     font-family: "Outfit", sans-serif !important;
   }
   .citruss-getstarted-container pre {
-    background: rgba(0, 0, 0, 0.6) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    background: var(--citruss-bg-main) !important;
+    border: 1px solid var(--citruss-glass-border) !important;
     padding: 16px !important;
     border-radius: 12px !important;
     margin: 0 !important;
@@ -44,27 +44,28 @@ import { Meta } from '@storybook/blocks';
   }
   .citruss-getstarted-code-orange,
   .citruss-getstarted-code-orange code {
-    color: #ff9f43 !important;
+    color: var(--citruss-orange) !important;
   }
   .citruss-getstarted-code-green,
   .citruss-getstarted-code-green code {
-    color: #a3e635 !important;
+    color: var(--citruss-lime) !important;
   }
   .citruss-getstarted-code-blue,
   .citruss-getstarted-code-blue code {
-    color: #38bdf8 !important;
+    color: var(--citruss-info) !important;
   }
 `}</style>
 
 <div className="citruss-getstarted-container" style={{
   padding: '40px',
-  color: '#f4f6fa',
-  background: 'linear-gradient(135deg, #0b0f19 0%, #060913 100%)',
+  color: 'var(--citruss-text-main)',
+  background: 'linear-gradient(135deg, var(--citruss-bg-surface) 0%, var(--citruss-bg-main) 100%)',
   borderRadius: '24px',
-  border: '1px solid rgba(255, 255, 255, 0.05)',
-  boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+  border: '1px solid var(--citruss-glass-border)',
+  boxShadow: '0 20px 40px var(--citruss-glass-shadow)',
   overflow: 'hidden',
-  position: 'relative'
+  position: 'relative',
+  transition: 'all 0.3s ease'
 }}>
   
   {/* Decorative Ambient Background Glows */}
@@ -106,10 +107,10 @@ import { Meta } from '@storybook/blocks';
     </div>
   </div>
 
-  <hr style={{ border: 'none', height: '1px', background: 'rgba(255,255,255,0.08)', margin: '30px 0' }} />
+  <hr style={{ border: 'none', height: '1px', background: 'var(--citruss-glass-border)', margin: '30px 0' }} />
 
   {/* Key Philosophy Cards */}
-  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#ffffff', marginBottom: '20px', letterSpacing: '-0.5px' }}>
+  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: 'var(--citruss-text-main)', marginBottom: '20px', letterSpacing: '-0.5px' }}>
     🍊 Design Philosophy & Features
   </h2>
 
@@ -121,12 +122,13 @@ import { Meta } from '@storybook/blocks';
   }}>
     <div style={{
       padding: '24px',
-      background: 'rgba(255, 255, 255, 0.02)',
+      background: 'var(--citruss-glass-bg)',
+      backdropFilter: 'blur(var(--citruss-glass-blur))',
       borderRadius: '16px',
-      border: '1px solid rgba(255, 255, 255, 0.05)',
-      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)'
+      border: '1px solid var(--citruss-glass-border)',
+      boxShadow: '0 4px 20px var(--citruss-glass-shadow)'
     }}>
-      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: '#ff6b00' }}>
+      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: 'var(--citruss-orange)' }}>
         ✨ Aesthetic Glassmorphism
       </h3>
       <p>A beautiful visual experience adorned with vibrant citrus tones (Tangerine, Lime), translucent panels, and deep ambient shadows.</p>
@@ -134,12 +136,13 @@ import { Meta } from '@storybook/blocks';
 
     <div style={{
       padding: '24px',
-      background: 'rgba(255, 255, 255, 0.02)',
+      background: 'var(--citruss-glass-bg)',
+      backdropFilter: 'blur(var(--citruss-glass-blur))',
       borderRadius: '16px',
-      border: '1px solid rgba(255, 255, 255, 0.05)',
-      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)'
+      border: '1px solid var(--citruss-glass-border)',
+      boxShadow: '0 4px 20px var(--citruss-glass-shadow)'
     }}>
-      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: '#84cc16' }}>
+      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: 'var(--citruss-lime)' }}>
         🚀 Zero-Dependency
       </h3>
       <p>Works directly in vanilla HTML/CSS/JS projects and Electron applications without any React/Vue/Angular dependencies.</p>
@@ -147,12 +150,13 @@ import { Meta } from '@storybook/blocks';
 
     <div style={{
       padding: '24px',
-      background: 'rgba(255, 255, 255, 0.02)',
+      background: 'var(--citruss-glass-bg)',
+      backdropFilter: 'blur(var(--citruss-glass-blur))',
       borderRadius: '16px',
-      border: '1px solid rgba(255, 255, 255, 0.05)',
-      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)'
+      border: '1px solid var(--citruss-glass-border)',
+      boxShadow: '0 4px 20px var(--citruss-glass-shadow)'
     }}>
-      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: '#38bdf8' }}>
+      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: 'var(--citruss-info)' }}>
         📱 Fluid & Fast (60+ FPS)
       </h3>
       <p>Interface transitions are always buttery smooth thanks to optimized rendering layers and selective GPU blur filters.</p>
@@ -160,7 +164,7 @@ import { Meta } from '@storybook/blocks';
   </div>
 
   {/* Quick Start Guide */}
-  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#ffffff', marginBottom: '20px', letterSpacing: '-0.5px' }}>
+  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: 'var(--citruss-text-main)', marginBottom: '20px', letterSpacing: '-0.5px' }}>
     ⚡ Quick Start & Installation
   </h2>
 
@@ -235,8 +239,8 @@ import CitruSS from 'citruss-ui';`}
   </div>
 
   <div style={{
-    background: 'rgba(255, 107, 0, 0.05)',
-    border: '1px solid rgba(255, 107, 0, 0.15)',
+    background: 'var(--citruss-orange-glow)',
+    border: '1px solid var(--citruss-glass-border)',
     borderRadius: '16px',
     padding: '20px',
     display: 'flex',
@@ -244,7 +248,7 @@ import CitruSS from 'citruss-ui';`}
     gap: '16px'
   }}>
     <span style={{ fontSize: '2rem' }}>💡</span>
-    <p style={{ margin: '0', fontSize: '0.95rem', color: '#ff9f43', lineHeight: '1.5' }}><strong>Tip:</strong> Use the left-side menu to explore code examples, configurable properties, and interactive modes for individual components. Each component page contains its own copyable HTML code!</p>
+    <p style={{ margin: '0', fontSize: '0.95rem', color: 'var(--citruss-tangerine)', lineHeight: '1.5' }}><strong>Tip:</strong> Use the left-side menu to explore code examples, configurable properties, and interactive modes for individual components. Each component page contains its own copyable HTML code!</p>
   </div>
 
 </div>

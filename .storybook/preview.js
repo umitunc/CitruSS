@@ -29,6 +29,14 @@ const preview = {
       const bg = context.globals.backgrounds;
       const theme = bg?.value === '#f4f6fa' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', theme);
+      
+      // Sync theme with parent window so that Docs view and Storybook manager shells change themes together
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('citruss-theme', theme);
+        if (window.parent && window.parent.document) {
+          window.parent.document.documentElement.setAttribute('data-theme', theme);
+        }
+      }
       return story();
     }
   ]
