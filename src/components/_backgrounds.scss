@@ -1,0 +1,272 @@
+/* 
+   CitruSS UI — Glassmorphism-Ready Backgrounds
+   A collection of vibrant, premium static and animated backgrounds
+   specifically designed to make glassmorphic components pop!
+*/
+
+@import "../core/variables";
+@import "../core/mixins";
+
+/* Base Wrapper for Dynamic/Animated Mesh Backgrounds */
+.citruss-bg-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  background-color: var(--citruss-bg-main);
+  z-index: 0;
+  border-radius: 20px;
+  border: 1px solid var(--citruss-glass-border);
+  @include transition-all(0.3s);
+
+  /* Dual-layer Safety Mask */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 40%, var(--citruss-bg-main) 100%);
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+
+  &.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    z-index: -10;
+  }
+}
+
+/* Glassmorphism content container on top of backgrounds */
+.citruss-bg-content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Premium Tech Grid Overlay Utility */
+.citruss-tech-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgb(255 255 255 / 1.5%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 1.5%) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
+  z-index: 3;
+  pointer-events: none;
+
+  [data-theme="light"] & {
+    background-image: 
+      linear-gradient(to right, rgb(15 23 42 / 2%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(15 23 42 / 2%) 1px, transparent 1px);
+  }
+}
+
+/* Premium Dot Matrix Grid Overlay Utility */
+.citruss-tech-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgb(255 255 255 / 3%) 1px, transparent 0);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(circle at center, black 70%, transparent 100%);
+  z-index: 3;
+  pointer-events: none;
+
+  [data-theme="light"] & {
+    background-image: radial-gradient(rgb(15 23 42 / 4%) 1.5px, transparent 0);
+  }
+}
+
+/* Floating Orb Blobs */
+.citruss-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.55;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+
+  [data-theme="light"] & {
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    filter: blur(80px);
+  }
+
+  &.orb-sm {
+    width: 250px;
+    height: 250px;
+  }
+
+  &.orb-md {
+    width: 400px;
+    height: 400px;
+  }
+
+  &.orb-lg {
+    width: 600px;
+    height: 600px;
+  }
+
+  /* Core Glow Color Utility Presets */
+  &.orb-orange { background: radial-gradient(circle, var(--citruss-orange) 0%, transparent 80%); }
+  &.orb-tangerine { background: radial-gradient(circle, var(--citruss-tangerine) 0%, transparent 80%); }
+  &.orb-lemon { background: radial-gradient(circle, var(--citruss-lemon) 0%, transparent 80%); }
+  &.orb-lime { background: radial-gradient(circle, var(--citruss-lime) 0%, transparent 80%); }
+  &.orb-cyan { background: radial-gradient(circle, #00f2fe 0%, transparent 80%); }
+  &.orb-purple { background: radial-gradient(circle, #a18cd1 0%, transparent 80%); }
+  &.orb-magenta { background: radial-gradient(circle, #ff0844 0%, transparent 80%); }
+  &.orb-oceanic { background: radial-gradient(circle, #38ef7d 0%, transparent 80%); }
+}
+
+/* Float Animations */
+@keyframes float-diag-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(8%, 12%) scale(1.15); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float-diag-2 {
+  0% { transform: translate(0, 0) scale(1.1); }
+  50% { transform: translate(-10%, -8%) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1.1); }
+}
+
+@keyframes float-circle {
+  0% { transform: rotate(0deg) translate(80px) rotate(0deg); }
+  100% { transform: rotate(360deg) translate(80px) rotate(-360deg); }
+}
+
+@keyframes float-bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.08); }
+}
+
+/* Applying Floating Animations to Orbs */
+.animate-float-slow-1 { animation: float-diag-1 25s infinite ease-in-out; }
+.animate-float-slow-2 { animation: float-diag-2 30s infinite ease-in-out; }
+.animate-float-orbit { animation: float-circle 35s infinite linear; }
+.animate-float-bounce { animation: float-bounce 20s infinite ease-in-out; }
+
+
+/* ========================================== */
+/* PURE CSS MESH GRADIENTS (Single-element) */
+/* ========================================== */
+
+/* Theme 1: Citrus Punch (Vibrant Orange, Yellow, Lime) */
+.citruss-bg-pure-citrus {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgb(255 107 0 / 25%) 0%, transparent 45%),
+    radial-gradient(circle at 90% 10%, rgb(255 159 67 / 20%) 0%, transparent 40%),
+    radial-gradient(circle at 50% 80%, rgb(254 202 87 / 18%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 90%, rgb(29 209 161 / 18%) 0%, transparent 45%);
+  
+  [data-theme="light"] & {
+    background-color: var(--citruss-bg-main);
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgb(255 107 0 / 8%) 0%, transparent 45%),
+      radial-gradient(circle at 90% 10%, rgb(255 159 67 / 10%) 0%, transparent 40%),
+      radial-gradient(circle at 50% 80%, rgb(254 202 87 / 8%) 0%, transparent 50%),
+      radial-gradient(circle at 80% 90%, rgb(29 209 161 / 8%) 0%, transparent 45%);
+  }
+}
+
+/* Theme 2: Cyberpunk Glow (Vibrant Neon Cyan, Pink, Indigo) */
+.citruss-bg-pure-cyberpunk {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 80% 20%, rgb(0 242 254 / 22%) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgb(255 8 68 / 20%) 0%, transparent 50%),
+    radial-gradient(circle at 50% 10%, rgb(161 140 209 / 18%) 0%, transparent 40%),
+    radial-gradient(circle at 90% 90%, rgb(111 66 193 / 15%) 0%, transparent 40%);
+
+  [data-theme="light"] & {
+    background-color: var(--citruss-bg-main);
+    background-image: 
+      radial-gradient(circle at 80% 20%, rgb(0 242 254 / 8%) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgb(255 8 68 / 8%) 0%, transparent 50%),
+      radial-gradient(circle at 50% 10%, rgb(161 140 209 / 10%) 0%, transparent 40%),
+      radial-gradient(circle at 90% 90%, rgb(111 66 193 / 7%) 0%, transparent 40%);
+  }
+}
+
+/* Theme 3: Aurora Borealis (Ethereal Emerald, Teal, Violet) */
+.citruss-bg-pure-aurora {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 30% 10%, rgb(56 239 125 / 18%) 0%, transparent 45%),
+    radial-gradient(circle at 80% 70%, rgb(17 153 142 / 20%) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgb(74 0 224 / 22%) 0%, transparent 40%),
+    radial-gradient(circle at 60% 30%, rgb(142 45 226 / 15%) 0%, transparent 45%);
+
+  [data-theme="light"] & {
+    background-color: var(--citruss-bg-main);
+    background-image: 
+      radial-gradient(circle at 30% 10%, rgb(56 239 125 / 8%) 0%, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgb(17 153 142 / 9%) 0%, transparent 50%),
+      radial-gradient(circle at 10% 80%, rgb(74 0 224 / 8%) 0%, transparent 40%),
+      radial-gradient(circle at 60% 30%, rgb(142 45 226 / 7%) 0%, transparent 45%);
+  }
+}
+
+/* Theme 4: Deep Cosmic Sunset (Purple, Hot Crimson, Gold) */
+.citruss-bg-pure-sunset {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 90% 20%, rgb(251 168 15 / 18%) 0%, transparent 45%),
+    radial-gradient(circle at 10% 10%, rgb(253 45 125 / 22%) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgb(106 17 203 / 22%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgb(37 117 252 / 12%) 0%, transparent 40%);
+
+  [data-theme="light"] & {
+    background-color: var(--citruss-bg-main);
+    background-image: 
+      radial-gradient(circle at 90% 20%, rgb(251 168 15 / 8%) 0%, transparent 45%),
+      radial-gradient(circle at 10% 10%, rgb(253 45 125 / 9%) 0%, transparent 50%),
+      radial-gradient(circle at 50% 90%, rgb(106 17 203 / 10%) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgb(37 117 252 / 6%) 0%, transparent 40%);
+  }
+}
+
+/* Theme 5: Mystic Forest (Emerald, Lime, Amber) */
+.citruss-bg-pure-forest {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgb(19 191 156 / 20%) 0%, transparent 45%),
+    radial-gradient(circle at 80% 30%, rgb(29 209 161 / 18%) 0%, transparent 45%),
+    radial-gradient(circle at 50% 70%, rgb(254 202 87 / 15%) 0%, transparent 50%),
+    radial-gradient(circle at 10% 90%, rgb(18 102 67 / 22%) 0%, transparent 40%);
+
+  [data-theme="light"] & {
+    background-color: var(--citruss-bg-main);
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgb(19 191 156 / 8%) 0%, transparent 45%),
+      radial-gradient(circle at 80% 30%, rgb(29 209 161 / 8%) 0%, transparent 45%),
+      radial-gradient(circle at 50% 70%, rgb(254 202 87 / 7%) 0%, transparent 50%),
+      radial-gradient(circle at 10% 90%, rgb(18 102 67 / 8%) 0%, transparent 40%);
+  }
+}
+
+/* Shifting animated core mesh animation */
+@keyframes mesh-pulse {
+  0%, 100% { background-position: 0% 50%, 100% 50%, 50% 0%; }
+  50% { background-position: 100% 50%, 0% 50%, 50% 100%; }
+}
+
+.citruss-bg-mesh-animated {
+  background-size: 200% 200%;
+  animation: mesh-pulse 30s infinite ease-in-out;
+}
