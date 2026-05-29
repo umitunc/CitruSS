@@ -1,4 +1,4 @@
-import { useEffect } from '@storybook/preview-api';
+import { useEffect } from 'storybook/preview-api';
 
 export default {
   title: 'Interactive/Wizard (Multi-Step Form)',

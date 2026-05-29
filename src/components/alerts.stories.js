@@ -1,4 +1,4 @@
-import { useEffect } from '@storybook/preview-api';
+import { useEffect } from 'storybook/preview-api';
 
 export default {
   title: 'Feedback/Alerts & Dialogs',

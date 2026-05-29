@@ -23,14 +23,11 @@
   "author": "Truncgil Technology",
   "license": "MIT",
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.4",
-    "@storybook/addon-essentials": "^8.1.1",
-    "@storybook/addon-interactions": "^8.1.1",
-    "@storybook/addon-links": "^8.1.1",
-    "@storybook/blocks": "^8.1.1",
-    "@storybook/html": "^8.1.1",
-    "@storybook/html-vite": "^8.1.1",
-    "@storybook/test": "^8.1.1",
+    "@chromatic-com/storybook": "^5.2.1",
+    "@storybook/addon-links": "^10.4.1",
+    "@storybook/html": "^10.4.1",
+    "@storybook/html-vite": "^10.4.1",
+    "storybook": "^10.4.1",
     "autoprefixer": "^10.4.19",
     "backstopjs": "^6.3.25",
     "lightningcss": "^1.25.1",
@@ -39,6 +36,7 @@
     "stylelint": "^16.5.0",
     "stylelint-config-recess-order": "^5.0.1",
     "stylelint-config-standard-scss": "^13.1.0",
-    "vite": "^5.2.11"
+    "vite": "^5.2.11",
+    "@storybook/addon-docs": "^10.4.1"
   }
 }

@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url';
+
 /** @type { import('@storybook/html-vite').StorybookConfig } */
 const config = {
   stories: [
@@ -7,13 +9,25 @@ const config = {
   staticDirs: ['../docs'],
   addons: [
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
     "@chromatic-com/storybook",
-    "@storybook/addon-interactions",
+    "@storybook/addon-docs"
   ],
   framework: {
     name: "@storybook/html-vite",
     options: {},
   },
+  async viteFinal(config) {
+    config.plugins = config.plugins || [];
+    config.plugins.push({
+      name: 'resolve-file-url-imports',
+      enforce: 'pre',
+      resolveId(source) {
+        if (source.startsWith('file://')) {
+          return fileURLToPath(source);
+        }
+      }
+    });
+    return config;
+  }
 };
 export default config;

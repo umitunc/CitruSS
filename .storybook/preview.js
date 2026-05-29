@@ -171,7 +171,7 @@ if (typeof window !== 'undefined') {
   }, 400);
 }
 
-/** @type { import('@storybook/html').Preview } */
+/** @type { import('@storybook/html-vite').Preview } */
 const preview = {
   parameters: {
     controls: {
@@ -181,13 +181,13 @@ const preview = {
       },
     },
     backgrounds: {
-      default: 'dark',
-      values: [
-        { name: 'dark', value: '#060913' },
-        { name: 'light', value: '#f4f6fa' }
-      ]
+      options: {
+        dark: { name: 'dark', value: '#060913' },
+        light: { name: 'light', value: '#f4f6fa' }
+      }
     }
   },
+
   decorators: [
     (story, context) => {
       const bg = context.globals.backgrounds;
@@ -203,7 +203,13 @@ const preview = {
       }
       return story();
     }
-  ]
+  ],
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'dark'
+    }
+  }
 };
 
 export default preview;
