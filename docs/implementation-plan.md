@@ -17,7 +17,28 @@ This document contains the comprehensive coding, architecture, and integration s
 
 ---
 
-## 2. Technical Stack and Build Pipeline
+## 2. Glassmorphism Analysis: Advantages, Disadvantages & Engineering Safeguards
+
+While Glassmorphism delivers unparalleled aesthetic value, it introduces distinct design and performance challenges. CitruSS is built specifically to address and mitigate these issues out of the box through strict engineering safeguards.
+
+### 🟢 Advantages (Pros)
+*   **Modern and Aesthetic:** Introduces a futuristic, clean, and highly premium atmosphere to user interfaces, yielding an instant "wow" factor.
+*   **Intuitive Visual Hierarchy:** Mimics real-world physical structures. The layered translucent materials allow users to intuitively understand layout depth—which panels are in the foreground, and which exist in the background.
+*   **Focus & Context Preservation:** Minimizes background visual noise through blur filters, allowing users to focus on primary content without completely blocking out context-rich background images or active canvas elements.
+
+### 🔴 Disadvantages (Cons) & CitruSS Engineering Mitigations
+
+#### 1. Accessibility (WCAG Contrast Compliance) Risks
+*   **The Hazard:** In standard glassmorphic designs, placing white or light metrical text over a bright or multi-colored background canvas reduces contrast below readable thresholds, posing severe readability barriers for visually impaired users.
+*   **CitruSS Mitigation (Contrast Safeguard):** CitruSS implements a dual-layer safety mask. Beneath every text and interactive content layer on a `.citruss-card` or `.citruss-modal`, an ultra-thin, dark semantic backdrop shadow (`--citruss-glass-shadow`) is statically rendered. This guarantees a minimum contrast ratio of **4.5:1** (WCAG AA compliance) regardless of the brightness of the background image behind the glass.
+
+#### 2. Performance Overhead (GPU Darboğaz / Rendering Cost)
+*   **The Hazard:** Applying `backdrop-filter: blur()` forces browser rendering engines to perform heavy pixel-by-pixel calculations. Overusing this filter on dozens of small elements simultaneously causes massive GPU performance drops, window dragging lag in Electron.js, and stuttering scroll rates on mobile devices.
+*   **CitruSS Mitigation (Hardware Optimization):** CitruSS enforces a strict architectural limit of **max 5 backdrop-filter layers per Viewport**. Blur calculations are applied exclusively to container wrappers (such as `sidebar`, `header`, and primary `.citruss-card`). All nested interior components (inner buttons, form inputs, status badges) use highly optimized translucent solid color backdrops (`rgba`) without separate blur calculations, maintaining a consistent **60+ FPS** rendering speed.
+
+---
+
+## 3. Technical Stack and Build Pipeline
 
 The compilation, compression, and distribution processes of the project will be fully automated in compliance with modern web standards:
 
@@ -34,7 +55,7 @@ The compilation, compression, and distribution processes of the project will be 
 
 ---
 
-## 3. Folder and File Structure (SCSS Architecture)
+## 4. Folder and File Structure (SCSS Architecture)
 
 To support a massive catalog of premium components while maintaining a clean, modular structure, the 7-1 architectural model has been tailored:
 
@@ -70,7 +91,7 @@ citruss/
 
 ---
 
-## 4. Core Design System, Dual-Theme Architecture & Mathematical Modeling
+## 5. Core Design System, Dual-Theme Architecture & Mathematical Modeling
 
 The aesthetic success of the Glassmorphism effect relies on the mathematical balance between background transparency (Alpha channel), layer shadow (Box Shadow), and blur radius (Blur Radius) under both lighting profiles.
 
@@ -145,9 +166,9 @@ To ensure high contrast and maximum depth in both modes, CSS variables switch dy
 
 ---
 
-## 5. Component Specifications (Modern & Pro UI Catalog)
+## 6. Component Specifications (Modern & Pro UI Catalog)
 
-All components are designed to react seamlessly to Light/Dark color shifts since they rely entirely on the semantic variables declared in Section 4.
+All components are designed to react seamlessly to Light/Dark color shifts since they rely entirely on the semantic variables declared in Section 5.
 
 ### A. Core Interactive Elements
 
