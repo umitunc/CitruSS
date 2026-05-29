@@ -12,6 +12,7 @@ This document contains the comprehensive coding, architecture, and integration s
 ### Core Architectural Principles
 *   **Lightweight and Fast (Zero-Dependency):** It operates purely using raw CSS/SCSS and HTML, without depending on any JavaScript library (React, Vue, etc.) or external design engines. The targeted CDN size after Gzip compression is **< 20KB**.
 *   **Zero-Latency Native Dark & Light Modes:** Fully integrated at the core layer. All colors, blur values, border opacities, and spacing metrics are managed via CSS Custom Properties (Variables). Switching between Dark and Light themes is instant, triggered via HTML DOM attributes or automated through system media queries.
+*   **Universal Web-First Compatibility (Framework-Agnostic):** Although optimized for Electron.js desktop applications, CitruSS is designed as a drop-in universal stylesheet for all web ecosystems. It integrates seamlessly with single-page applications (React, Vue, Svelte, Angular), static site generators (Astro, Next.js, Nuxt), server-rendered backends (Laravel, Django, ASP.NET), or simple vanilla HTML websites.
 *   **Desktop (Electron.js) Native Experience:** By leveraging the hardware-accelerated (GPU-accelerated) layer creation capabilities of the Chromium rendering engine, it delivers an OS-level transparency feel in desktop applications without lag or stuttering.
 *   **Premium Component Universe:** Includes not only basic elements but also enterprise-grade, "Pro" component layouts (glowing metrical charts, floating glass modals, interactive glass drawers, and nested dropdown dashboards).
 
@@ -32,13 +33,31 @@ While Glassmorphism delivers unparalleled aesthetic value, it introduces distinc
 *   **The Hazard:** In standard glassmorphic designs, placing white or light metrical text over a bright or multi-colored background canvas reduces contrast below readable thresholds, posing severe readability barriers for visually impaired users.
 *   **CitruSS Mitigation (Contrast Safeguard):** CitruSS implements a dual-layer safety mask. Beneath every text and interactive content layer on a `.citruss-card` or `.citruss-modal`, an ultra-thin, dark semantic backdrop shadow (`--citruss-glass-shadow`) is statically rendered. This guarantees a minimum contrast ratio of **4.5:1** (WCAG AA compliance) regardless of the brightness of the background image behind the glass.
 
-#### 2. Performance Overhead (GPU Darboğaz / Rendering Cost)
-*   **The Hazard:** Applying `backdrop-filter: blur()` forces browser rendering engines to perform heavy pixel-by-pixel calculations. Overusing this filter on dozens of small elements simultaneously causes massive GPU performance drops, window dragging lag in Electron.js, and stuttering scroll rates on mobile devices.
-*   **CitruSS Mitigation (Hardware Optimization):** CitruSS enforces a strict architectural limit of **max 5 backdrop-filter layers per Viewport**. Blur calculations are applied exclusively to container wrappers (such as `sidebar`, `header`, and primary `.citruss-card`). All nested interior components (inner buttons, form inputs, status badges) use highly optimized translucent solid color backdrops (`rgba`) without separate blur calculations, maintaining a consistent **60+ FPS** rendering speed.
+#### 2. Performance Overhead & Cross-Browser Rendering Costs
+*   **The Hazard:** Applying `backdrop-filter: blur()` forces browser rendering engines to perform heavy pixel-by-pixel calculations. Overusing this filter on dozens of small elements simultaneously causes GPU performance drops, window dragging lag in Electron.js, and stuttering scroll rates on mobile web browsers (Safari iOS / Chrome Android).
+*   **CitruSS Mitigation (Hardware Optimization & Progressive Enhancement):**
+    *   **Strict Layer Limit:** CitruSS enforces a strict architectural limit of **max 5 backdrop-filter layers per Viewport**. Blur calculations are applied exclusively to container wrappers (such as `sidebar`, `header`, and primary `.citruss-card`). All nested interior components (inner buttons, form inputs, status badges) use highly optimized translucent solid color backdrops (`rgba`) without separate blur calculations, maintaining a consistent **60+ FPS** rendering speed.
+    *   **Progressive Enhancement Fallbacks:** For legacy web browsers or devices with hardware acceleration disabled (where `@supports not (backdrop-filter: blur(1px))` is true), CitruSS automatically downgrades to clean, high-opacity translucent solid backdrops (`rgba` / `hsla`), ensuring total legibility and smooth scrolling across all target clients.
 
 ---
 
-## 3. Technical Stack and Build Pipeline
+## 3. Universal Web Integration and Responsive Design
+
+To ensure CitruSS operates as a premier library for the general web, the layout system is built from the ground up to support responsive web design and framework-agnostic setups.
+
+### A. Mobile-First Responsive Glass Adapters
+Glassmorphism on small mobile screens requires adjustments due to limited screen space and varying handheld display brightnesses.
+*   **Blur & Padding Scaling:** Using CSS media queries, padding inside `.citruss-card` scales down gracefully on mobile screens, and the blur radius is slightly reduced (e.g., from `14px` to `10px`) to ease the rendering load on mobile GPUs.
+*   **Flexible Mobile Grids:** Contains a built-in light responsive grid system (Flexbox & CSS Grid) modeled after Tailwind utility-classes to facilitate quick dashboard restructuring on tablets and phones.
+
+### B. Modern Web Framework Integration
+Because CitruSS is a zero-dependency compiled CSS file, integrating it into modern frontend pipelines is straightforward:
+*   **Vite / Next.js / Astro:** Simply import the CSS file directly in your main entry file (e.g., `import 'citruss/dist/citruss.min.css'`).
+*   **Tailwind Coexistence:** Designed to coexist with Tailwind CSS. Since all classes are prefixed with `citruss-` (e.g., `.citruss-card`, `.citruss-btn`), there are zero namespace collisions, allowing developers to use Tailwind for layout spacing and CitruSS for premium glassmorphic styling.
+
+---
+
+## 4. Technical Stack and Build Pipeline
 
 The compilation, compression, and distribution processes of the project will be fully automated in compliance with modern web standards:
 
@@ -55,7 +74,7 @@ The compilation, compression, and distribution processes of the project will be 
 
 ---
 
-## 4. Folder and File Structure (SCSS Architecture)
+## 5. Folder and File Structure (SCSS Architecture)
 
 To support a massive catalog of premium components while maintaining a clean, modular structure, the 7-1 architectural model has been tailored:
 
@@ -91,7 +110,7 @@ citruss/
 
 ---
 
-## 5. Core Design System, Dual-Theme Architecture & Mathematical Modeling
+## 6. Core Design System, Dual-Theme Architecture & Mathematical Modeling
 
 The aesthetic success of the Glassmorphism effect relies on the mathematical balance between background transparency (Alpha channel), layer shadow (Box Shadow), and blur radius (Blur Radius) under both lighting profiles.
 
@@ -166,9 +185,9 @@ To ensure high contrast and maximum depth in both modes, CSS variables switch dy
 
 ---
 
-## 6. Component Specifications (Modern & Pro UI Catalog)
+## 7. Component Specifications (Modern & Pro UI Catalog)
 
-All components are designed to react seamlessly to Light/Dark color shifts since they rely entirely on the semantic variables declared in Section 5.
+All components are designed to react seamlessly to Light/Dark color shifts since they rely entirely on the semantic variables declared in Section 6.
 
 ### A. Core Interactive Elements
 
@@ -392,7 +411,7 @@ Pro-level loaders with subtle neon animations that bring apps to life.
 
 ---
 
-## 6. Electron.js Desktop Integration Strategy
+## 8. Electron.js Desktop Integration Strategy
 
 To ensure hardware-accelerated glass effects run smoothly in desktop applications (on Chromium) and interact nicely with native OS aesthetics (Windows Acrylic/Mica or macOS Vibrancy), a specific setup is required.
 
@@ -443,7 +462,7 @@ In frameless windows, custom CSS rules are assigned to the left menu or top head
 
 ---
 
-## 7. Implementation, Testing, and Deployment Phases (Roadmap)
+## 9. Implementation, Testing, and Deployment Phases (Roadmap)
 
 | Phase | Scope / Activity | Technical Output / Performance Metric |
 | --- | --- | --- |
@@ -454,7 +473,7 @@ In frameless windows, custom CSS rules are assigned to the left menu or top head
 
 ---
 
-## 8. Performance and Accessibility (WCAG) Standards
+## 10. Performance and Accessibility (WCAG) Standards
 
 * **Preventing Layer Clutter (GPU Protection):** Applying `backdrop-filter: blur()` to more than 5 elements in the same Viewport can cause bottlenecks on older graphics cards. CitruSS only uses blur on main layout layers (`sidebar`, `header`, `.citruss-card`) and prefers non-effect transparent backgrounds for sub-elements inside cards.
 * **WCAG Contrast Assurance (Enhancing Readability):** The biggest risk in glassmorphic designs is that white text in front of a bright background image becomes unreadable. To solve this problem, CitruSS places an invisible, very light dark shadow mask beneath the glass layer. This ensures that the text contrast ratio always stays above **4.5:1**.
