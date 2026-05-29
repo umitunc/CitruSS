@@ -7,6 +7,10 @@ export default create({
   brandImage: '/logos/citruss_logo_transparent.png',
   brandTarget: '_self',
 
+  // Primary & Secondary Brand Colors (Changing from Storybook Blue to Citrus Orange)
+  colorPrimary: '#ff6b00',
+  colorSecondary: '#ff6b00',
+
   // UI styling matching our gorgeous dark theme
   appBg: '#060913',
   appContentBg: '#0b0f19',
@@ -19,6 +23,6 @@ export default create({
 
   // Toolbar default and active colors
   barTextColor: '#a3a9b6',
-  barSelectedColor: '#ff9800',
+  barSelectedColor: '#ff9f43',
   barBg: '#060913',
 });

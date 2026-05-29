@@ -1,3 +1,4 @@
+@use "sass:math";
 @import "../core/mixins";
 
 /* Container */
@@ -47,7 +48,7 @@
 @for $i from 1 through 12 {
   .citruss-col-#{$i} {
     flex: 0 0 auto;
-    width: percentage(calc($i / 12));
+    width: math.percentage(math.div($i, 12));
   }
 }
 
@@ -56,7 +57,7 @@
   @for $i from 1 through 12 {
     .citruss-col-md-#{$i} {
       flex: 0 0 auto;
-      width: percentage(calc($i / 12));
+      width: math.percentage(math.div($i, 12));
     }
   }
 }
@@ -65,7 +66,7 @@
   @for $i from 1 through 12 {
     .citruss-col-lg-#{$i} {
       flex: 0 0 auto;
-      width: percentage(calc($i / 12));
+      width: math.percentage(math.div($i, 12));
     }
   }
 }

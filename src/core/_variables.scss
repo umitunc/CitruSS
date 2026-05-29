@@ -31,7 +31,9 @@
   /* Typography & Text (Dark) */
   --citruss-text-main: #f8fafc;
   --citruss-text-muted: #94a3b8;
-  --citruss-font-family: 'Outfit', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --citruss-font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --citruss-font-display: 'Outfit', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --citruss-font-family: var(--citruss-font-body);
   
   /* Spacing */
   --citruss-spacing-xs: 4px;
