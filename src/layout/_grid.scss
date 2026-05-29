@@ -1,0 +1,121 @@
+@import "../core/mixins";
+
+/* Container */
+.citruss-container {
+  width: 100%;
+  padding-right: var(--citruss-spacing-md);
+  padding-left: var(--citruss-spacing-md);
+  margin-right: auto;
+  margin-left: auto;
+  
+  @include respond-to(sm) { max-width: 540px; }
+
+  @include respond-to(md) { max-width: 720px; }
+
+  @include respond-to(lg) { max-width: 960px; }
+
+  @include respond-to(xl) { max-width: 1140px; }
+
+  @include respond-to(xxl) { max-width: 1320px; }
+}
+
+/* Flex utilities */
+.citruss-d-flex { display: flex !important; }
+.citruss-flex-column { flex-direction: column !important; }
+.citruss-flex-wrap { flex-wrap: wrap !important; }
+.citruss-align-items-center { align-items: center !important; }
+.citruss-justify-content-between { justify-content: space-between !important; }
+.citruss-justify-content-center { justify-content: center !important; }
+.citruss-flex-grow-1 { flex-grow: 1 !important; }
+
+/* Grid System */
+.citruss-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+[class*="citruss-col-"] {
+  flex-shrink: 0;
+  width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+/* Grid Columns generator */
+@for $i from 1 through 12 {
+  .citruss-col-#{$i} {
+    flex: 0 0 auto;
+    width: percentage(calc($i / 12));
+  }
+}
+
+/* Responsive columns */
+@include respond-to(md) {
+  @for $i from 1 through 12 {
+    .citruss-col-md-#{$i} {
+      flex: 0 0 auto;
+      width: percentage(calc($i / 12));
+    }
+  }
+}
+
+@include respond-to(lg) {
+  @for $i from 1 through 12 {
+    .citruss-col-lg-#{$i} {
+      flex: 0 0 auto;
+      width: percentage(calc($i / 12));
+    }
+  }
+}
+
+/* Custom Grid Utility classes */
+.citruss-grid {
+  display: grid !important;
+  gap: var(--citruss-spacing-md);
+}
+
+.citruss-grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+
+@include respond-to(md) {
+  .citruss-grid-cols-2-md { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+@include respond-to(lg) {
+  .citruss-grid-cols-3-lg { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+  .citruss-grid-cols-4-lg { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+}
+
+/* Gap spacings */
+.citruss-gap-sm { gap: var(--citruss-spacing-sm) !important; }
+.citruss-gap-md { gap: var(--citruss-spacing-md) !important; }
+.citruss-gap-lg { gap: var(--citruss-spacing-lg) !important; }
+
+/* Display & Spacing helpers */
+.citruss-w-100 { width: 100% !important; }
+.citruss-h-100 { height: 100% !important; }
+
+/* Margin & Padding helper generator */
+$spaces: (
+  "0": 0,
+  "xs": var(--citruss-spacing-xs),
+  "sm": var(--citruss-spacing-sm),
+  "md": var(--citruss-spacing-md),
+  "lg": var(--citruss-spacing-lg),
+  "xl": var(--citruss-spacing-xl)
+);
+
+@each $key, $val in $spaces {
+  .citruss-m-#{$key} { margin: $val !important; }
+  .citruss-mt-#{$key} { margin-top: $val !important; }
+  .citruss-mb-#{$key} { margin-bottom: $val !important; }
+  .citruss-ml-#{$key} { margin-left: $val !important; }
+  .citruss-mr-#{$key} { margin-right: $val !important; }
+  
+  .citruss-p-#{$key} { padding: $val !important; }
+  .citruss-pt-#{$key} { padding-top: $val !important; }
+  .citruss-pb-#{$key} { padding-bottom: $val !important; }
+  .citruss-pl-#{$key} { padding-left: $val !important; }
+  .citruss-pr-#{$key} { padding-right: $val !important; }
+}

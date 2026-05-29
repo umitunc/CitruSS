@@ -1,0 +1,35 @@
+/* Responsive Breakpoints */
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == xs {
+    @media (width <= 575.98px) { @content; }
+  } @else if $breakpoint == sm {
+    @media (width >= 576px) { @content; }
+  } @else if $breakpoint == md {
+    @media (width >= 768px) { @content; }
+  } @else if $breakpoint == lg {
+    @media (width >= 992px) { @content; }
+  } @else if $breakpoint == xl {
+    @media (width >= 1200px) { @content; }
+  } @else if $breakpoint == xxl {
+    @media (width >= 1400px) { @content; }
+  }
+}
+
+/* Base Glassmorphic Layout Layer */
+@mixin glass-panel($blur: var(--citruss-glass-blur), $opacity: var(--citruss-glass-bg), $border: var(--citruss-glass-border)) {
+  background: $opacity;
+  backdrop-filter: blur($blur);
+  border: 1px solid $border;
+  box-shadow: 0 8px 32px 0 var(--citruss-glass-shadow);
+}
+
+/* Glowing Border Effect */
+@mixin hover-glow($color: var(--citruss-tangerine), $strength: 0.25) {
+  border-color: rgba($color, 0.4);
+  box-shadow: 0 0 20px 0 rgba($color, $strength), 0 8px 32px 0 var(--citruss-glass-shadow);
+}
+
+/* Micro-interaction transition properties */
+@mixin transition-all($duration: 0.25s, $curve: cubic-bezier(0.4, 0, 0.2, 1)) {
+  transition: all $duration $curve;
+}

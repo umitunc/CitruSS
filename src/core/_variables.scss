@@ -1,0 +1,73 @@
+:root {
+  /* CitruSS Citrus Color Palette */
+  --citruss-orange: #ff6b00;
+  --citruss-orange-glow: rgb(255 107 0 / 15%);
+  --citruss-tangerine: #ff9f43;
+  --citruss-tangerine-glow: rgb(255 159 67 / 15%);
+  --citruss-lemon: #feca57;
+  --citruss-lemon-glow: rgb(254 202 87 / 15%);
+  --citruss-lime: #1dd1a1;
+  --citruss-lime-glow: rgb(29 209 161 / 15%);
+  
+  /* Additional UI Palette */
+  --citruss-success: #1dd1a1;
+  --citruss-warning: #ffbe0f;
+  --citruss-danger: #ff5e57;
+  --citruss-info: #2e90ff;
+
+  /* === DEFAULT: DARK MODE === */
+  --citruss-bg-main: #060913;
+  --citruss-bg-surface: #0e1220;
+  
+  /* Glassmorphism Configuration (Dark) */
+  --citruss-glass-bg: rgb(255 255 255 / 2.5%);
+  --citruss-glass-bg-hover: rgb(255 255 255 / 5%);
+  --citruss-glass-border: rgb(255 255 255 / 6%);
+  --citruss-glass-border-hover: rgb(255 255 255 / 15%);
+  --citruss-glass-blur: 14px;
+  --citruss-glass-shadow: rgb(0 0 0 / 45%);
+  --citruss-glass-glow: 0 0 15px 0 rgb(255 255 255 / 1%);
+  
+  /* Typography & Text (Dark) */
+  --citruss-text-main: #f8fafc;
+  --citruss-text-muted: #94a3b8;
+  --citruss-font-family: 'Outfit', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  
+  /* Spacing */
+  --citruss-spacing-xs: 4px;
+  --citruss-spacing-sm: 8px;
+  --citruss-spacing-md: 16px;
+  --citruss-spacing-lg: 24px;
+  --citruss-spacing-xl: 32px;
+}
+
+/* === LIGHT MODE ALTERNATIVE === */
+@mixin light-theme-properties {
+  --citruss-bg-main: #f4f6fa;
+  --citruss-bg-surface: #fff;
+  
+  /* Glassmorphism Configuration (Light) */
+  --citruss-glass-bg: rgb(15 23 42 / 2%);
+  --citruss-glass-bg-hover: rgb(15 23 42 / 4%);
+  --citruss-glass-border: rgb(15 23 42 / 7%);
+  --citruss-glass-border-hover: rgb(15 23 42 / 15%);
+  --citruss-glass-blur: 12px;
+  --citruss-glass-shadow: rgb(0 0 0 / 6%);
+  --citruss-glass-glow: 0 0 15px 0 rgb(0 0 0 / 1%);
+  
+  /* Typography & Text (Light) */
+  --citruss-text-main: #0f172a;
+  --citruss-text-muted: #627288;
+}
+
+/* Trigger Light Mode explicitly via DOM Attribute */
+[data-theme="light"] {
+  @include light-theme-properties;
+}
+
+/* Auto-switch to Light Mode based on OS/Browser Settings (if no explicit attribute is set) */
+@media (prefers-color-scheme: light) {
+  html:not([data-theme="dark"]) {
+    @include light-theme-properties;
+  }
+}

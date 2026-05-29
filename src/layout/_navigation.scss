@@ -1,0 +1,69 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 var(--citruss-spacing-lg);
+  border-top: none;
+  border-right: none;
+  border-left: none;
+
+  @include glass-panel(var(--citruss-glass-blur), rgba(255, 255, 255, 0.02), var(--citruss-glass-border));
+  
+  /* Support Electron custom window dragging */
+  &.electron-drag {
+    -webkit-app-region: drag;
+    
+    .citruss-btn, 
+    input, 
+    select, 
+    a,
+    .interactive {
+      -webkit-app-region: no-drag;
+    }
+  }
+}
+
+.citruss-logo-area {
+  display: flex;
+  gap: var(--citruss-spacing-sm);
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--citruss-orange), var(--citruss-tangerine));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  span {
+    font-weight: 400;
+    color: var(--citruss-text-muted);
+    -webkit-text-fill-color: initial;
+  }
+}
+
+.citruss-nav-links {
+  display: flex;
+  gap: var(--citruss-spacing-md);
+  align-items: center;
+  
+  .nav-item {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--citruss-text-muted);
+    border-radius: 6px;
+
+    @include transition-all(0.2s);
+    
+    &:hover, &.active {
+      color: var(--citruss-text-main);
+      background: var(--citruss-glass-bg-hover);
+    }
+  }
+}

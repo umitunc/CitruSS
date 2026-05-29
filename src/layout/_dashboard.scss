@@ -1,0 +1,73 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+.citruss-dashboard-shell {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(at 10% 10%, rgb(255 107 0 / 5%) 0, transparent 50%),
+    radial-gradient(at 90% 90%, rgb(29 209 161 / 4%) 0, transparent 50%);
+  background-attachment: fixed;
+}
+
+.citruss-dashboard-main {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.citruss-dashboard-content {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: var(--citruss-spacing-lg);
+  padding: var(--citruss-spacing-lg);
+}
+
+/* Frameless Window Header for Electron.js */
+.citruss-window-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  padding: 0 var(--citruss-spacing-md);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--citruss-text-muted);
+  user-select: none;
+  background: rgb(0 0 0 / 20%);
+  border-bottom: 1px solid var(--citruss-glass-border);
+  -webkit-app-region: drag;
+  
+  .window-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    -webkit-app-region: no-drag;
+    
+    .control-btn {
+      width: 12px;
+      height: 12px;
+      cursor: pointer;
+      background: rgb(255 255 255 / 20%);
+      border-radius: 50%;
+
+      @include transition-all(0.2s);
+      
+      &:hover {
+        opacity: 0.8;
+      }
+      
+      &.btn-close { background: #ff5e57; }
+      &.btn-minimize { background: #ffbe0f; }
+      &.btn-maximize { background: #1dd1a1; }
+    }
+  }
+}
