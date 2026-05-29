@@ -1405,3 +1405,42 @@ In frameless windows, custom CSS rules are assigned to the left menu or top head
 
 * **Preventing Layer Clutter (GPU Protection):** Applying `backdrop-filter: blur()` to more than 5 elements in the same Viewport can cause bottlenecks on older graphics cards. CitruSS only uses blur on main layout layers (`sidebar`, `header`, `.citruss-card`, `.citruss-swal-container`, custom select menus) and prefers non-effect transparent backgrounds for sub-elements inside cards.
 * **WCAG Contrast Assurance (Enhancing Readability):** The biggest risk in glassmorphic designs is that white text in front of a bright background image becomes unreadable. To solve this problem, CitruSS places an invisible, very light dark shadow mask beneath the glass layer. This ensures that the text contrast ratio always stays above **4.5:1**.
+
+---
+
+## 11. Development Directives & Integration Guides
+
+### A. Sass Architecture (SCSS Architecture)
+All components must be written in a modular and reusable structure. All modules must be imported in the main `src/citruss.scss` file using the `@use` directive, and a `citruss-` prefix must be used to prevent styling conflicts.
+- **Variables:** All colors, blur values, and opacities must be defined as CSS Custom Properties within `src/core/_variables.scss`.
+- **Mixins:** Frequently used glassmorphism effects (`backdrop-filter`) and transition effects must be placed inside `src/core/_mixins.scss`.
+
+### B. Storybook (HTML/CSS Support) Documentation
+To isolate, visualize, and document our components, a Storybook HTML setup will be established.
+- **Setup:** The `@storybook/html-vite` framework will be utilized.
+- **Example Structure:** A `src/components/<component-name>.stories.js` file will be created for each component, returning raw HTML string outputs:
+  ```javascript
+  export default {
+    title: 'Components/Button',
+    argTypes: {
+      label: { control: 'text' },
+    },
+  };
+  export const Primary = ({ label }) => `<button class="citruss-btn btn-primary">${label}</button>`;
+  ```
+
+### C. BackstopJS Visual Regression Testing
+BackstopJS integration will be implemented to prevent visual anomalies and regressions.
+- **Configuration (`backstop.json`):**
+  - **Viewports:** Mobile (`320x480`), Tablet (`1024x768`), Desktop (`1920x1080`)
+  - **Scenarios:** Every component's normal, hover, and active states will be tested by referencing the local iframe URLs of Storybook stories.
+- **Commands:**
+  - `npm run test:ref` (Capture reference screenshots)
+  - `npm run test:test` (Run comparison checks against current implementation)
+
+### D. Stylelint Code Quality Automation
+Stylelint will be configured to automatically enforce style conventions and code standards on our SCSS files.
+- **Standards (`.stylelintrc.json`):**
+  - `stylelint-config-standard-scss` rules will be enabled.
+  - `stylelint-config-recess-order` will automate the sorting order of CSS properties (e.g., margins, paddings, colors).
+- **Command:** `npm run lint:css` can be executed to detect all style anomalies.
