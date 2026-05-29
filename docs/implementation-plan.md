@@ -11,7 +11,7 @@ This document contains the comprehensive coding, architecture, and integration s
 
 ### Core Architectural Principles
 *   **Lightweight and Fast (Zero-Dependency):** It operates purely using raw CSS/SCSS and HTML, without depending on any JavaScript library (React, Vue, etc.) or external design engines. The targeted CDN size after Gzip compression is **< 20KB**.
-*   **Runtime Flexibility:** All colors, blur values, border opacities, and spacing metrics are managed via CSS Custom Properties (Variables). This allows Light/Dark Mode, theme switching, or brand color changes to be triggered instantly without requiring DOM manipulation.
+*   **Zero-Latency Native Dark & Light Modes:** Fully integrated at the core layer. All colors, blur values, border opacities, and spacing metrics are managed via CSS Custom Properties (Variables). Switching between Dark and Light themes is instant, triggered via HTML DOM attributes or automated through system media queries.
 *   **Desktop (Electron.js) Native Experience:** By leveraging the hardware-accelerated (GPU-accelerated) layer creation capabilities of the Chromium rendering engine, it delivers an OS-level transparency feel in desktop applications without lag or stuttering.
 *   **Premium Component Universe:** Includes not only basic elements but also enterprise-grade, "Pro" component layouts (glowing metrical charts, floating glass modals, interactive glass drawers, and nested dropdown dashboards).
 
@@ -70,9 +70,9 @@ citruss/
 
 ---
 
-## 4. Core Design System and Mathematical Modeling
+## 4. Core Design System, Dual-Theme Architecture & Mathematical Modeling
 
-The aesthetic success of the Glassmorphism effect relies on the mathematical balance between background transparency (Alpha channel), layer shadow (Box Shadow), and blur radius (Blur Radius).
+The aesthetic success of the Glassmorphism effect relies on the mathematical balance between background transparency (Alpha channel), layer shadow (Box Shadow), and blur radius (Blur Radius) under both lighting profiles.
 
 Glass effect transmittance function:
 $$G(c) = rgba(c_{red}, c_{green}, c_{blue}, \alpha) + \text{blur}(\beta\text{px})$$
@@ -80,7 +80,8 @@ $$G(c) = rgba(c_{red}, c_{green}, c_{blue}, \alpha) + \text{blur}(\beta\text{px}
 *   The $\alpha$ (opacity) value should be kept between **0.03 and 0.20**. In overlapping layers, this accumulation increases contrast.
 *   The $\beta$ (blur radius) value is optimized between **10px and 16px**. Values below 10px cause visual clutter by making background objects too clear; values above 16px increase GPU rendering costs.
 
-### Core Variables File (`src/core/_variables.scss`)
+### Dual-Theme Variables Architecture (`src/core/_variables.scss`)
+To ensure high contrast and maximum depth in both modes, CSS variables switch dynamic properties natively. The default configuration targets Dark Mode (maximizing glass glow aesthetics), while Light Mode softens backgrounds to prevent extreme glare.
 
 ```scss
 :root {
@@ -93,40 +94,60 @@ $$G(c) = rgba(c_{red}, c_{green}, c_{blue}, \alpha) + \text{blur}(\beta\text{px}
     --citruss-lime: #1dd1a1;
     --citruss-lime-glow: rgba(29, 209, 161, 0.15);
     
-    /* Deep Dark Mode Backgrounds (Dashboard Core) */
+    /* === DEFAULT: DARK MODE === */
     --citruss-bg-main: #0a0c12;
     --citruss-bg-surface: #111420;
     
-    /* Glassmorphism Core Variables */
+    /* Glassmorphism Configuration (Dark) */
     --citruss-glass-bg: rgba(255, 255, 255, 0.03);
     --citruss-glass-border: rgba(255, 255, 255, 0.07);
     --citruss-glass-blur: 14px;
     --citruss-glass-shadow: rgba(0, 0, 0, 0.4);
     --citruss-glass-glow: 0 0 15px 0 rgba(255, 255, 255, 0.02);
     
-    /* Typography and Text Colors */
+    /* Typography & Text (Dark) */
     --citruss-text-main: #f8fafc;
     --citruss-text-muted: #94a3b8;
     --citruss-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
-/* Light Mode Alternative (Triggered at runtime with [data-theme="light"]) */
-[data-theme="light"] {
+/* === LIGHT MODE ALTERNATIVE ===
+   Can be triggered explicitly via [data-theme="light"] on <html>
+   or automatically aligned via prefers-color-scheme media-query */
+@mixin light-theme-properties {
     --citruss-bg-main: #f4f6fa;
     --citruss-bg-surface: #ffffff;
+    
+    /* Glassmorphism Configuration (Light) */
     --citruss-glass-bg: rgba(0, 0, 0, 0.02);
     --citruss-glass-border: rgba(0, 0, 0, 0.06);
     --citruss-glass-blur: 12px;
     --citruss-glass-shadow: rgba(0, 0, 0, 0.05);
     --citruss-glass-glow: 0 0 15px 0 rgba(0, 0, 0, 0.01);
+    
+    /* Typography & Text (Light) */
     --citruss-text-main: #0f172a;
     --citruss-text-muted: #64748b;
+}
+
+/* Trigger Light Mode explicitly via DOM Attribute */
+[data-theme="light"] {
+    @include light-theme-properties;
+}
+
+/* Auto-switch to Light Mode based on OS/Browser Settings (if no explicit attribute is set) */
+@media (prefers-color-scheme: light) {
+    html:not([data-theme="dark"]) {
+        @include light-theme-properties;
+    }
 }
 ```
 
 ---
 
 ## 5. Component Specifications (Modern & Pro UI Catalog)
+
+All components are designed to react seamlessly to Light/Dark color shifts since they rely entirely on the semantic variables declared in Section 4.
 
 ### A. Core Interactive Elements
 
@@ -149,7 +170,7 @@ Premium translucent glass action buttons with active micro-scaling and hover glo
     &.btn-primary {
         background: linear-gradient(135deg, rgba(255, 107, 0, 0.15), rgba(255, 159, 67, 0.15));
         border: 1px solid rgba(255, 159, 67, 0.35);
-        color: #ffffff;
+        color: var(--citruss-text-main);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         
