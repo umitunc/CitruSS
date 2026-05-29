@@ -1,0 +1,233 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Welcome/Get Started" />
+
+<div className="citruss-getstarted-container" style={{
+  padding: '40px',
+  fontFamily: '"Outfit", sans-serif',
+  color: '#f4f6fa',
+  background: 'linear-gradient(135deg, #0b0f19 0%, #060913 100%)',
+  borderRadius: '24px',
+  border: '1px solid rgba(255, 255, 255, 0.05)',
+  boxShadow: '0 20px 40px rgba(0,0,0,0.5)',
+  overflow: 'hidden',
+  position: 'relative'
+}}>
+  
+  {/* Decorative Ambient Background Glows */}
+  <div style={{
+    position: 'absolute',
+    top: '-10%',
+    right: '-10%',
+    width: '400px',
+    height: '400px',
+    background: 'radial-gradient(circle, rgba(255, 107, 0, 0.15) 0%, transparent 70%)',
+    pointerEvents: 'none'
+  }} />
+  <div style={{
+    position: 'absolute',
+    bottom: '-10%',
+    left: '-10%',
+    width: '300px',
+    height: '300px',
+    background: 'radial-gradient(circle, rgba(163, 230, 53, 0.1) 0%, transparent 70%)',
+    pointerEvents: 'none'
+  }} />
+
+  {/* Header Section */}
+  <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '32px', flexWrap: 'wrap' }}>
+    <img src="./logos/citruss_logo_transparent.png" alt="CitruSS UI Logo" style={{ height: '70px', width: 'auto', objectFit: 'contain' }} />
+    <div>
+      <h1 style={{
+        fontSize: '2.8rem',
+        fontWeight: '900',
+        margin: '0',
+        background: 'linear-gradient(to right, #ff6b00, #ff9f43)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        letterSpacing: '-1px'
+      }}>
+        CitruSS UI Ecosystem
+      </h1>
+      <p style={{ fontSize: '1.15rem', color: '#a3a9b6', margin: '6px 0 0 0', fontWeight: '400' }}>
+        Modern, ultra-performant, zero-dependency Frosted Glassmorphism UI engine.
+      </p>
+    </div>
+  </div>
+
+  <hr style={{ border: 'none', height: '1px', background: 'rgba(255,255,255,0.08)', margin: '30px 0' }} />
+
+  {/* Key Philosophy Cards */}
+  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#ffffff', marginBottom: '20px', letterSpacing: '-0.5px' }}>
+    🍊 Tasarım Felsefesi & Özellikleri
+  </h2>
+
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: '20px',
+    marginBottom: '40px'
+  }}>
+    <div style={{
+      padding: '24px',
+      background: 'rgba(255, 255, 255, 0.02)',
+      borderRadius: '16px',
+      border: '1px solid rgba(255, 255, 255, 0.05)',
+      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)'
+    }}>
+      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: '#ff6b00' }}>
+        ✨ Estetik Cam Tasarımı (Glassmorphism)
+      </h3>
+      <p style={{ margin: '0', fontSize: '0.92rem', color: '#a3a9b6', lineHeight: '1.6' }}>
+        Canlı narenciye tonları (Tangerine, Lime), yarı saydam paneller ve derin gölgelerle süslenmiş harika bir görsel deneyim.
+      </p>
+    </div>
+
+    <div style={{
+      padding: '24px',
+      background: 'rgba(255, 255, 255, 0.02)',
+      borderRadius: '16px',
+      border: '1px solid rgba(255, 255, 255, 0.05)',
+      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)'
+    }}>
+      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: '#84cc16' }}>
+        🚀 Sıfır Bağımlılık (Zero-Dependency)
+      </h3>
+      <p style={{ margin: '0', fontSize: '0.92rem', color: '#a3a9b6', lineHeight: '1.6' }}>
+        Herhangi bir React/Vue/Angular bağımlılığı olmadan, vanilla HTML/CSS/JS projelerinde, Electron uygulamalarında doğrudan çalışır.
+      </p>
+    </div>
+
+    <div style={{
+      padding: '24px',
+      background: 'rgba(255, 255, 255, 0.02)',
+      borderRadius: '16px',
+      border: '1px solid rgba(255, 255, 255, 0.05)',
+      boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.05)'
+    }}>
+      <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', fontWeight: '700', color: '#38bdf8' }}>
+        📱 Akıcı & Hızlı (60+ FPS)
+      </h3>
+      <p style={{ margin: '0', fontSize: '0.92rem', color: '#a3a9b6', lineHeight: '1.6' }}>
+        Optimize edilmiş render katmanları ve seçici GPU bulanıklık filtreleri sayesinde arayüz geçişleri her zaman akıcıdır.
+      </p>
+    </div>
+  </div>
+
+  {/* Quick Start Guide */}
+  <h2 style={{ fontSize: '1.6rem', fontWeight: '800', color: '#ffffff', marginBottom: '20px', letterSpacing: '-0.5px' }}>
+    ⚡ Hızlı Kurulum & Başlangıç
+  </h2>
+
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '40px' }}>
+    
+    <div>
+      <h4 style={{ margin: '0 0 8px 0', color: '#f4f6fa', fontSize: '1rem', fontWeight: '600' }}>
+        1. Paketi Yükleyin:
+      </h4>
+      <pre style={{
+        background: 'rgba(0, 0, 0, 0.3)',
+        padding: '16px',
+        borderRadius: '12px',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        color: '#ff9f43',
+        fontFamily: 'monospace',
+        fontSize: '0.95rem',
+        margin: '0'
+      }}>
+        npm install citruss-ui
+      </pre>
+    </div>
+
+    <div>
+      <h4 style={{ margin: '8px 0 8px 0', color: '#f4f6fa', fontSize: '1rem', fontWeight: '600' }}>
+        2. Stil ve JS Dosyalarını Projenize Dahil Edin:
+      </h4>
+      <pre style={{
+        background: 'rgba(0, 0, 0, 0.3)',
+        padding: '16px',
+        borderRadius: '12px',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        color: '#84cc16',
+        fontFamily: 'monospace',
+        fontSize: '0.9rem',
+        margin: '0',
+        overflowX: 'auto'
+      }}>
+{`// Stil dosyasını import edin
+import 'citruss-ui/dist/citruss.css';
+
+// JavaScript bileşen motorunu import edin
+import CitruSS from 'citruss-ui';`}
+      </pre>
+    </div>
+
+    <div>
+      <h4 style={{ margin: '8px 0 8px 0', color: '#f4f6fa', fontSize: '1rem', fontWeight: '600' }}>
+        3. Örnek HTML Şablonu:
+      </h4>
+      <pre style={{
+        background: 'rgba(0, 0, 0, 0.3)',
+        padding: '16px',
+        borderRadius: '12px',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        color: '#38bdf8',
+        fontFamily: 'monospace',
+        fontSize: '0.85rem',
+        margin: '0',
+        maxHeight: '350px',
+        overflowY: 'auto'
+      }}>
+{`<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>CitruSS UI Arayüzü</title>
+  <link rel="stylesheet" href="node_modules/citruss-ui/dist/citruss.css">
+</head>
+<body class="citruss-dashboard-shell" style="padding: 24px;">
+
+  <!-- Örnek Kart -->
+  <div class="citruss-card" style="max-width: 450px;">
+    <div class="card-content">
+      <h3 style="color: var(--citruss-tangerine); font-weight: 800;">CitruSS UI Başarılı!</h3>
+      <p style="color: var(--citruss-text-muted); font-size: 0.9rem;">
+        Sıfır bağımlılığa sahip canlı narenciye cam tasarımı projenizde aktif.
+      </p>
+      <button class="citruss-btn btn-primary" id="demo-btn">Etkileşime Geç</button>
+    </div>
+  </div>
+
+  <script src="node_modules/citruss-ui/dist/citruss.js"></script>
+  <script>
+    document.getElementById('demo-btn').onclick = () => {
+      CitruSS.toast({
+        title: 'Harika!',
+        message: 'CitruSS JS motoru sorunsuz çalışıyor.',
+        type: 'success'
+      });
+    };
+  </script>
+</body>
+</html>`}
+      </pre>
+    </div>
+
+  </div>
+
+  <div style={{
+    background: 'rgba(255, 107, 0, 0.05)',
+    border: '1px solid rgba(255, 107, 0, 0.15)',
+    borderRadius: '16px',
+    padding: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '16px'
+  }}>
+    <span style={{ fontSize: '2rem' }}>💡</span>
+    <p style={{ margin: '0', fontSize: '0.92rem', color: '#ff9f43', lineHeight: '1.5' }}>
+      <strong>İpucu:</strong> Sol taraftaki menüyü kullanarak tekil bileşenlerin kod örneklerini, alabileceği parametreleri ve etkileşimli modlarını detaylıca inceleyebilirsiniz. Her bileşen sayfası kendi kopyalanabilir HTML kodunu barındırır!
+    </p>
+  </div>
+
+</div>
