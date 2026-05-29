@@ -14,7 +14,7 @@ export const StandardCarousel = () => {
 
   return `
     <div style="padding: 30px; max-width: 600px;">
-      <h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
+      <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
         Carousel (Slider / Atlıkarınca)
       </h3>
       
@@ -24,7 +24,7 @@ export const StandardCarousel = () => {
           <!-- Slide 1 -->
           <div class="carousel-item active" style="background: linear-gradient(135deg, rgba(255, 107, 0, 0.4) 0%, rgba(255, 159, 67, 0.4) 100%);">
             <div style="padding: 40px; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-              <h3 style="margin: 0 0 10px; color: #fff; font-size: 1.6rem; font-weight: 800;">Akıcı Cam Arayüzü</h3>
+              <h3 style="margin: 0 0 10px; color: var(--citruss-text-main); font-size: 1.6rem; font-weight: 800;">Akıcı Cam Arayüzü</h3>
               <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">CitruSS UI modern ve göz alıcı cam tasarımları sunar.</p>
             </div>
           </div>
@@ -32,7 +32,7 @@ export const StandardCarousel = () => {
           <!-- Slide 2 -->
           <div class="carousel-item" style="background: linear-gradient(135deg, rgba(132, 204, 22, 0.4) 0%, rgba(163, 230, 53, 0.4) 100%);">
             <div style="padding: 40px; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-              <h3 style="margin: 0 0 10px; color: #fff; font-size: 1.6rem; font-weight: 800;">Sıfır Bağımlılık</h3>
+              <h3 style="margin: 0 0 10px; color: var(--citruss-text-main); font-size: 1.6rem; font-weight: 800;">Sıfır Bağımlılık</h3>
               <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">Hiçbir ek kütüphaneye bağımlı olmadan performanslı çalışır.</p>
             </div>
           </div>
@@ -40,7 +40,7 @@ export const StandardCarousel = () => {
           <!-- Slide 3 -->
           <div class="carousel-item" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.4) 0%, rgba(14, 165, 233, 0.4) 100%);">
             <div style="padding: 40px; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-              <h3 style="margin: 0 0 10px; color: #fff; font-size: 1.6rem; font-weight: 800;">Electron & Web Hazır</h3>
+              <h3 style="margin: 0 0 10px; color: var(--citruss-text-main); font-size: 1.6rem; font-weight: 800;">Electron & Web Hazır</h3>
               <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">Masaüstü ve web uygulamaları için en iyi performansı verir.</p>
             </div>
           </div>

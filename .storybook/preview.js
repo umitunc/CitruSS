@@ -24,6 +24,14 @@ const preview = {
       ]
     }
   },
+  decorators: [
+    (story, context) => {
+      const bg = context.globals.backgrounds;
+      const theme = bg?.value === '#f4f6fa' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+      return story();
+    }
+  ]
 };
 
 export default preview;

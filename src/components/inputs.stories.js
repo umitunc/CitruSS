@@ -23,7 +23,7 @@ export const FormsAndInputs = () => {
 
   return `
     <div style="padding: 30px; max-width: 600px;">
-      <h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
+      <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
         Forms, Inputs & Validation (Form Elemanları ve Doğrulama)
       </h3>
       
@@ -31,7 +31,7 @@ export const FormsAndInputs = () => {
         
         <!-- Standart Input -->
         <div class="citruss-input-group">
-          <label style="color: #f4f6fa; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
+          <label style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
             Kullanıcı Adı (Zorunlu)
           </label>
           <input type="text" placeholder="Orn: okantruncgil" required class="citruss-input" style="width: 100%; box-sizing: border-box;" />
@@ -39,7 +39,7 @@ export const FormsAndInputs = () => {
 
         <!-- E-posta Input ve Özel Doğrulama Kuralları -->
         <div class="citruss-input-group">
-          <label style="color: #f4f6fa; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
+          <label style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
             E-posta Adresi (Doğru Format & Zorunlu)
           </label>
           <input type="email" placeholder="Orn: user@citruss.com" required data-citruss-rules="email" class="citruss-input" style="width: 100%; box-sizing: border-box;" />
@@ -47,7 +47,7 @@ export const FormsAndInputs = () => {
 
         <!-- Şifre Input (Min Karakter) -->
         <div class="citruss-input-group">
-          <label style="color: #f4f6fa; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
+          <label style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
             Şifre (En az 6 Karakter)
           </label>
           <input type="password" placeholder="••••••••" required data-citruss-rules="min:6" class="citruss-input" style="width: 100%; box-sizing: border-box;" />
@@ -55,7 +55,7 @@ export const FormsAndInputs = () => {
 
         <!-- Select Seçim Elemanı -->
         <div class="citruss-input-group">
-          <label style="color: #f4f6fa; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
+          <label style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 8px;">
             Sunucu Bölgesi Seçin
           </label>
           <select class="citruss-input" style="width: 100%; box-sizing: border-box; background: rgba(0,0,0,0.2);">

@@ -13,7 +13,7 @@ export const WizardShowcase = () => {
 
   return `
     <div style="padding: 30px; max-width: 600px;">
-      <h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
+      <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
         Wizard (Çok Adımlı Kurulum Sihirbazı)
       </h3>
       
@@ -33,7 +33,7 @@ export const WizardShowcase = () => {
           
           <!-- Step 1 -->
           <div class="citruss-wizard-step">
-            <h4 style="color:#fff; font-weight:700; margin-bottom: 8px;">Adım 1: Kullanıcı Kaydı</h4>
+            <h4 style="color: var(--citruss-text-main); font-weight:700; margin-bottom: 8px;">Adım 1: Kullanıcı Kaydı</h4>
             <p style="color:var(--citruss-text-muted); font-size: 0.88rem; margin-bottom:16px;">
               CitruSS dünyasına katılmak için öncelikle bir hesap profili oluşturun.
             </p>
@@ -42,7 +42,7 @@ export const WizardShowcase = () => {
           
           <!-- Step 2 -->
           <div class="citruss-wizard-step" style="display: none;">
-            <h4 style="color:#fff; font-weight:700; margin-bottom: 8px;">Adım 2: Tema Seçimi</h4>
+            <h4 style="color: var(--citruss-text-main); font-weight:700; margin-bottom: 8px;">Adım 2: Tema Seçimi</h4>
             <p style="color:var(--citruss-text-muted); font-size: 0.88rem; margin-bottom:16px;">
               Arayüzünüzün nasıl görüneceğini belirleyin. CitruSS default olarak karanlık modu (dark-theme) önerir.
             </p>
@@ -54,16 +54,17 @@ export const WizardShowcase = () => {
 
           <!-- Step 3 -->
           <div class="citruss-wizard-step" style="display: none;">
-            <h4 style="color:#fff; font-weight:700; margin-bottom: 8px;">Adım 3: Tebrikler!</h4>
+            <h4 style="color: var(--citruss-text-main); font-weight:700; margin-bottom: 8px;">Adım 3: Tebrikler!</h4>
             <p style="color:var(--citruss-text-muted); font-size: 0.88rem; margin-bottom:16px;">
               Kurulum adımlarını başarıyla tamamladınız. Artık cam arayüz dünyasını keşfedebilirsiniz!
             </p>
           </div>
           
           <!-- Navigation buttons -->
-          <div style="display: flex; gap: 12px; justify-content: flex-end;">
-            <button class="citruss-btn btn-sm wizard-prev">Geri</button>
+          <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px;">
+            <button class="citruss-btn btn-sm wizard-prev" style="display: none;">Geri</button>
             <button class="citruss-btn btn-sm btn-primary wizard-next">İleri Adım</button>
+            <button class="citruss-btn btn-sm btn-success wizard-submit" style="display: none;">Tamamla</button>
           </div>
 
         </div>

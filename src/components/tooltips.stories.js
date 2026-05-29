@@ -13,11 +13,11 @@ export const TooltipsAndPopovers = () => {
 
   return `
     <div style="padding: 30px;">
-      <h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
+      <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
         Tooltips & Popovers (İpuçları ve Zengin İçerik Kutuları)
       </h3>
       
-      <p style="color: #a3a9b6; font-size: 0.95rem; margin-bottom: 24px;">
+      <p style="color: var(--citruss-text-muted); font-size: 0.95rem; margin-bottom: 24px;">
         CitruSS, CSS tabanlı hızlı ipuçlarını (Tooltips) ve JavaScript kontrollü zengin içerikli bilgi kutularını (Popovers) destekler.
       </p>
 

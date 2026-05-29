@@ -5,7 +5,7 @@ export default {
 export const TimelineShowcase = () => {
   return `
     <div style="padding: 30px; max-width: 500px;">
-      <h3 style="color: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
+      <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
         Timeline (Zaman Çizelgesi)
       </h3>
       
