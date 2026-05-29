@@ -28,6 +28,7 @@
     "@storybook/html": "^10.4.1",
     "@storybook/html-vite": "^10.4.1",
     "storybook": "^10.4.1",
+    "@storybook/blocks": "^8.6.14",
     "autoprefixer": "^10.4.19",
     "backstopjs": "^6.3.25",
     "lightningcss": "^1.25.1",

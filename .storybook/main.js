@@ -17,6 +17,18 @@ const config = {
     options: {},
   },
   async viteFinal(config) {
+    config.resolve = config.resolve || {};
+    config.resolve.alias = config.resolve.alias || {};
+    
+    if (Array.isArray(config.resolve.alias)) {
+      config.resolve.alias.push({
+        find: 'storybook/internal/theming',
+        replacement: 'storybook/theming'
+      });
+    } else {
+      config.resolve.alias['storybook/internal/theming'] = 'storybook/theming';
+    }
+
     config.plugins = config.plugins || [];
     config.plugins.push({
       name: 'resolve-file-url-imports',
