@@ -9,8 +9,21 @@
   font-size: 0.85rem;
   font-weight: 500;
   
+  // Enable horizontal swiping/scrolling on mobile & overflow
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  
+  // Hide scrollbar but retain functional scrolling
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  
   .breadcrumb-item {
     color: var(--citruss-text-muted);
+    flex-shrink: 0;
 
     @include transition-all(0.2s);
     
@@ -29,5 +42,6 @@
     color: var(--citruss-text-muted);
     user-select: none;
     opacity: 0.5;
+    flex-shrink: 0;
   }
 }
