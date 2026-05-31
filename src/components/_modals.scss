@@ -104,6 +104,7 @@
   visibility: hidden;
   background: rgba(4, 5, 10, 0.45);
   backdrop-filter: blur(12px) saturate(var(--citruss-glass-saturate));
+  -webkit-backdrop-filter: blur(12px) saturate(var(--citruss-glass-saturate));
   opacity: 0;
 
   @include transition-all(0.4s);
@@ -112,6 +113,10 @@
     visibility: visible;
     opacity: 1;
   }
+
+  [data-theme="light"] & {
+    background: rgba(240, 244, 255, 0.45); /* Elegant translucent white overlay in light mode */
+  }
 }
 
 .citruss-swal-box {
@@ -119,17 +124,27 @@
   max-width: 400px;
   padding: 32px;
   text-align: center;
-  background: var(--citruss-glass-bg);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(var(--citruss-glass-blur)) saturate(var(--citruss-glass-saturate));
+  -webkit-backdrop-filter: blur(var(--citruss-glass-blur)) saturate(var(--citruss-glass-saturate));
   border: 1px solid var(--citruss-glass-border);
   border-radius: var(--citruss-radius-xl);
   box-shadow: 
     inset 0 1.5px 0 0 var(--citruss-glass-highlight),
-    0 25px 60px rgba(0, 0, 0, 0.6),
+    0 25px 60px rgba(0, 0, 0, 0.65),
     0 1px 3px rgba(0, 0, 0, 0.2);
   transform: scale(0.85) translateY(30px);
 
   @include transition-all(0.5s, var(--citruss-spring-bezier));
+
+  [data-theme="light"] & {
+    background: rgba(255, 255, 255, 0.88) !important; /* Premium acrylic white backdrop for light mode */
+    border: 1px solid rgba(15, 23, 42, 0.12) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95),
+      0 30px 70px rgba(15, 23, 42, 0.16),
+      0 1px 3px rgba(15, 23, 42, 0.05) !important;
+  }
   
   &.show {
     transform: scale(1) translateY(0);

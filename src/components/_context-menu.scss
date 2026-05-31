@@ -7,12 +7,19 @@
   display: none;
   min-width: 160px;
   padding: 6px 0;
-  background: rgb(14 18 32 / 96%);
+  background: rgba(14, 18, 32, 0.95);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--citruss-glass-border);
   border-radius: 8px;
   box-shadow: 0 10px 30px rgb(0 0 0 / 50%);
   animation: citruss-context-fade 0.15s ease-out;
+  
+  [data-theme="light"] & {
+    background: rgba(255, 255, 255, 0.92); /* Frosted light acrylic backing */
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  }
   
   .context-item {
     display: flex;
@@ -27,7 +34,11 @@
     
     &:hover {
       color: var(--citruss-tangerine);
-      background: rgb(255 255 255 / 5%);
+      background: rgba(255, 255, 255, 0.06);
+      
+      [data-theme="light"] & {
+        background: rgba(15, 23, 42, 0.05); /* Clean dark-tint hover for light mode */
+      }
     }
   }
 }

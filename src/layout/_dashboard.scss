@@ -21,6 +21,36 @@
   height: 100vh;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  
+  /* Premium Glassmorphic Scrollbar Integration */
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 8px 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 99px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+  }
+  
+  [data-theme="light"] &::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.12);
+    
+    &:hover {
+      background: rgba(15, 23, 42, 0.25);
+    }
+  }
 }
 
 .citruss-dashboard-content {
@@ -29,6 +59,7 @@
   flex-direction: column;
   gap: var(--citruss-spacing-lg);
   padding: var(--citruss-spacing-lg);
+  padding-right: var(--citruss-spacing-xl); /* Generous padding-right near the scrollbar */
 }
 
 /* Frameless Window Header for Electron.js */

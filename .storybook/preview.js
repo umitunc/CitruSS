@@ -36,6 +36,7 @@ if (typeof window !== 'undefined') {
       font-size: 0.85rem !important;
       text-shadow: none !important;
       background: transparent !important;
+      color: #e2e8f0 !important; /* Force highly legible light text on dark code backgrounds */
     }
     
     .citruss-code-wrapper {
