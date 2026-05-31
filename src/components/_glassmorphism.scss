@@ -1,0 +1,85 @@
+/* Glassmorphic Effects Utility Classes */
+.glass-pure, .citruss-glass-pure {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(15px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  
+  /* Specular Highlight Adjustment */
+  --citruss-glass-highlight: rgba(255, 255, 255, 0.25) !important;
+  --citruss-glass-highlight-hover: rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.25),
+    0 12px 40px 0 rgba(0, 0, 0, 0.25),
+    0 1px 3px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+.glass-dark, .citruss-glass-dark {
+  background-color: rgba(17, 25, 40, 0.32) !important;
+  backdrop-filter: blur(15px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  
+  /* Deep shadow for premium dark feel */
+  --citruss-glass-highlight: rgba(255, 255, 255, 0.08) !important;
+  --citruss-glass-highlight-hover: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.08),
+    0 20px 48px 0 rgba(0, 0, 0, 0.65),
+    0 1px 4px 0 rgba(0, 0, 0, 0.3) !important;
+  
+  /* Text adjustments inside dark glass */
+  color: #f8fafc;
+  .metric-title {
+    color: #94a3b8;
+  }
+}
+
+.glass-light, .citruss-glass-light {
+  background-color: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(15px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(15px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  
+  /* Soft shadow for premium light feel */
+  --citruss-glass-highlight: rgba(255, 255, 255, 0.85) !important;
+  --citruss-glass-highlight-hover: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.85),
+    0 10px 30px 0 rgba(15, 23, 42, 0.06),
+    0 1px 3px 0 rgba(15, 23, 42, 0.03) !important;
+  
+  /* Text adjustments inside light glass */
+  color: #0f172a;
+  .metric-title {
+    color: #475569;
+  }
+}
+
+/* Accent Hover Glows specifically designed for glassmorphic elements */
+.citruss-card.glass-pure:hover,
+.citruss-card.citruss-glass-pure:hover {
+  border-color: rgba(255, 159, 67, 0.65) !important;
+  box-shadow: 
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.4),
+    0 20px 48px 0 rgba(255, 107, 0, 0.3),
+    0 12px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.citruss-card.glass-dark:hover,
+.citruss-card.citruss-glass-dark:hover {
+  border-color: rgba(255, 159, 67, 0.5) !important;
+  box-shadow: 
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.15),
+    0 25px 50px 0 rgba(255, 107, 0, 0.25),
+    0 15px 40px 0 rgba(0, 0, 0, 0.75) !important;
+}
+
+.citruss-card.glass-light:hover,
+.citruss-card.citruss-glass-light:hover {
+  border-color: rgba(255, 107, 0, 0.55) !important;
+  box-shadow: 
+    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95),
+    0 15px 35px 0 rgba(255, 107, 0, 0.15),
+    0 8px 24px 0 rgba(15, 23, 42, 0.08) !important;
+}

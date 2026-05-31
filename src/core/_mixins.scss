@@ -19,6 +19,7 @@
 @mixin glass-panel($blur: var(--citruss-glass-blur), $opacity: var(--citruss-glass-bg), $border: var(--citruss-glass-border)) {
   background: $opacity;
   backdrop-filter: blur($blur) saturate(var(--citruss-glass-saturate, 180%)) contrast(var(--citruss-glass-contrast, 100%));
+  -webkit-backdrop-filter: blur($blur) saturate(var(--citruss-glass-saturate, 180%)) contrast(var(--citruss-glass-contrast, 100%));
   border: 1px solid $border;
   /* Top inner edge highlight (Refractive light) + realistic physical shadow drop */
   box-shadow: 
