@@ -23,7 +23,7 @@
     font-family: var(--citruss-font-display) !important;
   }
 
-  p, li, span, code, td, th {
+  p, li, td, th {
     color: var(--citruss-text-muted) !important;
     font-family: var(--citruss-font-body) !important;
   }
@@ -51,8 +51,17 @@
     box-shadow: 0 4px 15px var(--citruss-glass-shadow) !important;
     
     code {
-      color: var(--citruss-tangerine) !important;
+      color: inherit;
     }
+  }
+
+  // Inline code styling
+  :not(pre) > code {
+    color: var(--citruss-tangerine) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    padding: 2px 6px !important;
+    border-radius: 6px !important;
+    font-family: 'Fira Code', monospace !important;
   }
 
   // Tables inside Docs
@@ -87,8 +96,13 @@
       color: var(--citruss-text-main) !important;
     }
 
-    p, li, span, code, td, th {
+    p, li, td, th {
       color: var(--citruss-text-muted) !important;
+    }
+
+    :not(pre) > code {
+      color: #e25c00 !important;
+      background: rgba(15, 23, 42, 0.05) !important;
     }
   }
 }

@@ -121,7 +121,7 @@ import { Meta } from '@storybook/blocks';
   }
 
   [data-theme="light"] code {
-    color: #0284c7 !important; /* Higher legibility dark blue for code tags in light mode */
+    color: #334155 !important; /* Neutral dark slate fallback for light mode to allow nested styling to work */
   }
 
   .code-cmd {
@@ -134,6 +134,10 @@ import { Meta } from '@storybook/blocks';
 
   [data-theme="light"] .code-pkg {
     color: #0f172a !important;
+  }
+
+  .code-comment {
+    color: #64748b !important;
   }
 `}</style>
 
