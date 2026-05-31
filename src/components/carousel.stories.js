@@ -9,40 +9,59 @@ const carouselHTML = `
   <div class="carousel-inner">
     
     <!-- Slide 1 -->
-    <div class="carousel-item active" style="background: linear-gradient(135deg, rgba(255, 107, 0, 0.4) 0%, rgba(255, 159, 67, 0.4) 100%);">
-      <div style="padding: 40px; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <h3 style="margin: 0 0 10px; color: var(--citruss-text-main); font-size: 1.6rem; font-weight: 800;">Fluid Glass Interface</h3>
-        <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">CitruSS UI offers modern and eye-catching glassmorphic designs.</p>
+    <div class="carousel-item active" style="background: linear-gradient(135deg, rgba(255, 107, 0, 0.15) 0%, rgba(255, 159, 67, 0.05) 100%);">
+      <div class="slide-glow-orb" style="background: var(--citruss-orange); top: 10%; left: 10%;"></div>
+      <div class="slide-content-wrapper">
+        <span class="slide-badge">
+          <span class="material-symbols-rounded">auto_awesome</span>
+          Glassmorphism Engine
+        </span>
+        <h3>Fluid Glass Interface</h3>
+        <p>CitruSS UI offers modern, highly realistic frosted glass design tokens that are perfectly synchronized with light and dark mode systems.</p>
       </div>
     </div>
     
     <!-- Slide 2 -->
-    <div class="carousel-item" style="background: linear-gradient(135deg, rgba(132, 204, 22, 0.4) 0%, rgba(163, 230, 53, 0.4) 100%);">
-      <div style="padding: 40px; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <h3 style="margin: 0 0 10px; color: var(--citruss-text-main); font-size: 1.6rem; font-weight: 800;">Zero Dependency</h3>
-        <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">Runs performantly without depending on any external libraries.</p>
+    <div class="carousel-item" style="background: linear-gradient(135deg, rgba(132, 204, 22, 0.15) 0%, rgba(163, 230, 53, 0.05) 100%);">
+      <div class="slide-glow-orb" style="background: var(--citruss-lime); top: 20%; right: 10%;"></div>
+      <div class="slide-content-wrapper">
+        <span class="slide-badge">
+          <span class="material-symbols-rounded">speed</span>
+          Zero Dependency
+        </span>
+        <h3>Pure Performance</h3>
+        <p>Built with vanilla CSS and lightweight, modular JavaScript to run optimally without loading heavy external libraries or frameworks.</p>
       </div>
     </div>
     
     <!-- Slide 3 -->
-    <div class="carousel-item" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.4) 0%, rgba(14, 165, 233, 0.4) 100%);">
-      <div style="padding: 40px; text-align: center; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <h3 style="margin: 0 0 10px; color: var(--citruss-text-main); font-size: 1.6rem; font-weight: 800;">Electron & Web Ready</h3>
-        <p style="margin: 0; color: rgba(255,255,255,0.8); font-size: 0.95rem;">Provides the best performance for desktop and web applications.</p>
+    <div class="carousel-item" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%);">
+      <div class="slide-glow-orb" style="background: #38bdf8; bottom: 10%; left: 30%;"></div>
+      <div class="slide-content-wrapper">
+        <span class="slide-badge">
+          <span class="material-symbols-rounded">desktop_windows</span>
+          Cross-Platform
+        </span>
+        <h3>Electron & Web Ready</h3>
+        <p>Tailored to provide elite frame rates and native-feeling desktop styling for Electron wrapper apps as well as standard web platforms.</p>
       </div>
     </div>
 
   </div>
   
   <!-- Controls -->
-  <button class="control-prev">◀</button>
-  <button class="control-next">▶</button>
+  <button class="carousel-control control-prev" aria-label="Previous Slide">
+    <span class="material-symbols-rounded">chevron_left</span>
+  </button>
+  <button class="carousel-control control-next" aria-label="Next Slide">
+    <span class="material-symbols-rounded">chevron_right</span>
+  </button>
   
   <!-- Indicators -->
   <div class="carousel-indicators">
-    <span class="indicator-dot active"></span>
-    <span class="indicator-dot"></span>
-    <span class="indicator-dot"></span>
+    <button class="indicator-dot active" aria-label="Go to slide 1"></button>
+    <button class="indicator-dot" aria-label="Go to slide 2"></button>
+    <button class="indicator-dot" aria-label="Go to slide 3"></button>
   </div>
 </div>
 `.trim();
@@ -51,7 +70,7 @@ const carouselJS = `
 // Initialize the Carousel component
 const el = document.getElementById('demo-carousel-component');
 if (el && window.CitruSS?.Carousel) {
-  new window.CitruSS.Carousel(el, { interval: 4000 });
+  new window.CitruSS.Carousel(el, { interval: 4500 });
 }
 `.trim();
 
@@ -59,31 +78,31 @@ export const StandardCarousel = () => {
   useEffect(() => {
     const el = document.getElementById('demo-carousel-component');
     if (el && window.CitruSS?.Carousel) {
-      new window.CitruSS.Carousel(el, { interval: 4000 });
+      new window.CitruSS.Carousel(el, { interval: 4500 });
     }
   }, []);
 
   return `
-    <div style="padding: 30px; max-width: 600px;">
-      <h3 style="color: var(--citruss-text-main); font-family: 'Outfit', sans-serif; font-weight: 800; margin-bottom: 20px; font-size: 1.5rem;">
+    <div style="padding: 40px; max-width: 650px; margin: 0 auto; font-family: 'Outfit', sans-serif;">
+      <h3 style="color: var(--citruss-text-main); font-weight: 900; margin-bottom: 24px; font-size: 1.8rem; letter-spacing: -0.03em;">
         Carousel
       </h3>
       
       ${carouselHTML}
 
       <!-- Code Example Block -->
-      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
-        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+      <details class="citruss-code-wrapper">
+        <summary>
           💻 View HTML & JS Code Examples
         </summary>
-        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto; display: flex; flex-direction: column; gap: 16px;">
+        <div>
           <div>
-            <h5 style="color: var(--citruss-lime); margin: 0 0 8px 0; font-size: 0.85rem;">Carousel HTML:</h5>
-            <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${carouselHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+            <h5 style="color: var(--citruss-lime); margin: 18px 18px 8px 18px; font-size: 0.85rem; font-weight: 700; font-family: 'Outfit', sans-serif;">Carousel HTML:</h5>
+            <pre><code class="language-html">${carouselHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
           </div>
-          <div>
-            <h5 style="color: var(--citruss-orange); margin: 0 0 8px 0; font-size: 0.85rem;">Initialization JS:</h5>
-            <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.8rem; line-height: 1.5;">${carouselJS.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+          <div style="border-top: 1px solid rgba(255,255,255,0.06);">
+            <h5 style="color: var(--citruss-orange); margin: 18px 18px 8px 18px; font-size: 0.85rem; font-weight: 700; font-family: 'Outfit', sans-serif;">Initialization JS:</h5>
+            <pre><code class="language-javascript">${carouselJS.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
           </div>
         </div>
       </details>
@@ -98,4 +117,3 @@ StandardCarousel.parameters = {
     },
   },
 };
-
