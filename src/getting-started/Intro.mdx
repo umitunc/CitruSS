@@ -90,13 +90,27 @@ import { Meta } from '@storybook/blocks';
 `}</style>
 
 <div className="citruss-doc-container">
-  <div className="citruss-doc-hero">
-    <h1 className="citruss-doc-title">CitruSS UI</h1>
-    <p className="citruss-doc-subtitle">
-      Welcome to the modern, high-fidelity, and ultra-performant Frosted Glassmorphism UI ecosystem. 
-      CitruSS UI is built from the ground up to empower developers with professional-grade design components, 
-      buttery-smooth animations, and a rich, framework-agnostic design system.
-    </p>
+  <div className="citruss-doc-hero" style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
+    <div style={{
+      background: 'rgba(255, 107, 0, 0.1)',
+      border: '1px solid rgba(255, 107, 0, 0.2)',
+      borderRadius: '20px',
+      padding: '12px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '0 8px 24px rgba(255, 107, 0, 0.1)'
+    }}>
+      <img src="logos/citruss_logo_transparent.png" alt="CitruSS Logo" style={{ height: '80px', width: 'auto', objectFit: 'contain' }} />
+    </div>
+    <div style={{ flex: '1', minWidth: '250px' }}>
+      <h1 className="citruss-doc-title" style={{ margin: 0 }}>CitruSS UI</h1>
+      <p className="citruss-doc-subtitle" style={{ marginTop: '8px' }}>
+        Welcome to the modern, high-fidelity, and ultra-performant Frosted Glassmorphism UI ecosystem. 
+        CitruSS UI is built from the ground up to empower developers with professional-grade design components, 
+        buttery-smooth animations, and a rich, framework-agnostic design system.
+      </p>
+    </div>
   </div>
 
   <h2>Introduction & Design Philosophy</h2>
