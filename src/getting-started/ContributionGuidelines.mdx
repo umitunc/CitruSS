@@ -6,16 +6,38 @@ import { Meta } from '@storybook/blocks';
   .citruss-doc-container {
     color: var(--citruss-text-main, #ffffff) !important;
     font-family: "Outfit", "Inter", sans-serif !important;
-    padding: 40px !important;
-    background-color: #0b0f19 !important;
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
-    border-radius: 24px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    padding: 40px 20px !important;
+    background: transparent !important;
     position: relative;
-    overflow: hidden;
+    overflow: visible !important;
+  }
+
+  .citruss-doc-container h1,
+  .citruss-doc-container h2,
+  .citruss-doc-container h3,
+  .citruss-doc-container h4 {
+    color: #ffffff !important;
+  }
+
+  [data-theme="light"] .citruss-doc-container h1,
+  [data-theme="light"] .citruss-doc-container h2,
+  [data-theme="light"] .citruss-doc-container h3,
+  [data-theme="light"] .citruss-doc-container h4 {
+    color: #0f172a !important;
+  }
+
+  .citruss-tech-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 0);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(circle at center, black 75%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  [data-theme="light"] .citruss-tech-dots {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1.2px, transparent 0);
   }
 
   .citruss-step-list {
@@ -23,16 +45,51 @@ import { Meta } from '@storybook/blocks';
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
+    z-index: 2;
   }
 
   .step-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(17, 25, 40, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 12px;
     padding: 20px 24px;
     display: flex;
     gap: 16px;
     align-items: flex-start;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.08),
+      0 12px 30px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-theme="light"] .step-card {
+    background-color: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.85),
+      0 12px 30px 0 rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .step-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 107, 0, 0.4) !important;
+    background-color: rgba(17, 25, 40, 0.55) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.15),
+      0 16px 40px rgba(255, 107, 0, 0.15),
+      0 8px 24px rgba(0,0,0,0.4) !important;
+  }
+
+  [data-theme="light"] .step-card:hover {
+    background-color: rgba(255, 255, 255, 0.65) !important;
+    border-color: rgba(255, 107, 0, 0.55) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95),
+      0 15px 35px 0 rgba(255, 107, 0, 0.15),
+      0 8px 24px 0 rgba(15, 23, 42, 0.08) !important;
   }
 
   .step-num {
@@ -51,35 +108,46 @@ import { Meta } from '@storybook/blocks';
 
   .step-content {
     flex: 1;
+    text-align: left;
   }
 
   .step-title {
     font-weight: 700;
-    color: #ffffff;
+    color: #ffffff !important;
     margin: 0 0 6px 0;
     font-size: 1.1rem;
   }
 
+  [data-theme="light"] .step-title {
+    color: #0f172a !important;
+  }
+
   .step-desc {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7) !important;
     font-size: 0.95rem;
     line-height: 1.5;
     margin: 0;
   }
+
+  [data-theme="light"] .step-desc {
+    color: rgba(15, 23, 42, 0.75) !important;
+  }
 `}</style>
 
 <div className="citruss-doc-container">
+  <div className="citruss-tech-dots" />
+  
   <h1>Contribution Guidelines</h1>
-  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+  <div style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
     We highly appreciate community contributions! Here is how you can help make CitruSS UI even more amazing:
-  </p>
+  </div>
 
   <div className="citruss-step-list">
     <div className="step-card">
       <div className="step-num">1</div>
       <div className="step-content">
         <h3 className="step-title">Fork & Clone</h3>
-        <p className="step-desc">Fork the repository on GitHub, then clone your fork locally to begin making additions or fixes.</p>
+        <div className="step-desc">Fork the repository on GitHub, then clone your fork locally to begin making additions or fixes.</div>
       </div>
     </div>
 
@@ -87,7 +155,7 @@ import { Meta } from '@storybook/blocks';
       <div className="step-num">2</div>
       <div className="step-content">
         <h3 className="step-title">Create a branch</h3>
-        <p className="step-desc">Always work in a dedicated feature branch named descriptive of your changes (e.g. <code>feature/button-glow</code>).</p>
+        <div className="step-desc">Always work in a dedicated feature branch named descriptive of your changes (e.g. <code>feature/button-glow</code>).</div>
       </div>
     </div>
 
@@ -95,7 +163,7 @@ import { Meta } from '@storybook/blocks';
       <div className="step-num">3</div>
       <div className="step-content">
         <h3 className="step-title">Verify Code Quality</h3>
-        <p className="step-desc">Run Stylelint using <code>npm run lint:css</code> and ensure that your components look pristine in Storybook.</p>
+        <div className="step-desc">Run Stylelint using <code>npm run lint:css</code> and ensure that your components look pristine in Storybook.</div>
       </div>
     </div>
 
@@ -103,7 +171,7 @@ import { Meta } from '@storybook/blocks';
       <div className="step-num">4</div>
       <div className="step-content">
         <h3 className="step-title">Submit Pull Request</h3>
-        <p className="step-desc">Push your branch and submit a detailed Pull Request. We will review and merge it promptly!</p>
+        <div className="step-desc">Push your branch and submit a detailed Pull Request. We will review and merge it promptly!</div>
       </div>
     </div>
   </div>
