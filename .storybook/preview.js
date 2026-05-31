@@ -169,6 +169,139 @@ if (typeof window !== 'undefined') {
       codeEl.classList.add('prism-highlighted');
     });
   }, 400);
+
+  // Inject Premium Floating Background Selector Widget
+  const injectBgSelector = () => {
+    if (document.getElementById('citruss-bg-controller-root')) {
+      // Re-apply background periodically in case story container refreshes
+      const selectEl = document.getElementById('citruss-global-bg-select');
+      if (selectEl) {
+        applyBackground(selectEl.value);
+      }
+      return;
+    }
+
+    const root = document.createElement('div');
+    root.id = 'citruss-bg-controller-root';
+    root.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: "Outfit", sans-serif;';
+    
+    root.innerHTML = `
+      <div class="citruss-floating-bg-selector glass-dark" style="padding: 10px 16px; border-radius: 24px; display: flex; align-items: center; gap: 12px; pointer-events: auto; box-shadow: 0 12px 32px rgba(0,0,0,0.5), inset 0 1.5px 0 rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.08); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);">
+        <span class="citruss-icon" style="color: var(--citruss-tangerine); font-size: 18px; display: flex; align-items: center; user-select: none;">wallpaper</span>
+        <span style="font-size: 0.75rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; user-select: none;">BG:</span>
+        <select id="citruss-global-bg-select" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: #fff; font-size: 0.75rem; padding: 4px 10px; outline: none; font-family: inherit; cursor: pointer; min-width: 140px; font-weight: 600; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);">
+          <optgroup label="Solid Colors" style="background: #090d16;">
+            <option value="solid-dark">Midnight Black</option>
+            <option value="solid-purple">Deep Purple</option>
+            <option value="solid-light">Soft Slate (Light)</option>
+          </optgroup>
+          <optgroup label="Mesh Gradients" style="background: #090d16;">
+            <option value="mesh-citrus">Citrus Neon Mesh</option>
+            <option value="mesh-aurora">Cosmic Aurora Mesh</option>
+            <option value="mesh-amber">Sunset Amber Mesh</option>
+          </optgroup>
+          <optgroup label="Premium Images" style="background: #090d16;">
+            <option value="img-citrus-neon">Citrus Neon</option>
+            <option value="img-citrus-light">Citrus Light</option>
+            <option value="img-cyberpunk-dark">Cyberpunk Dark</option>
+            <option value="img-cyberpunk-light">Cyberpunk Light</option>
+            <option value="img-glassy">Glassy Specular</option>
+            <option value="img-nebula">Cosmic Nebula</option>
+            <option value="img-nordic">Nordic Frost</option>
+            <option value="img-oceanic-dark">Deep Oceanic</option>
+            <option value="img-oceanic-light">Oceanic Light</option>
+            <option value="img-fluid">Abstract Fluid</option>
+          </optgroup>
+        </select>
+      </div>
+    `;
+
+    document.body.appendChild(root);
+
+    const selectEl = document.getElementById('citruss-global-bg-select');
+    if (!selectEl) return;
+
+    selectEl.onchange = (e) => {
+      const val = e.target.value;
+      localStorage.setItem('citruss-storybook-bg', val);
+      applyBackground(val);
+    };
+
+    // Load saved background
+    const savedBg = localStorage.getItem('citruss-storybook-bg') || 'mesh-citrus';
+    selectEl.value = savedBg;
+    applyBackground(savedBg);
+  };
+
+  const applyBackground = (value) => {
+    let bgStyle = '';
+    if (value === 'solid-dark') {
+      bgStyle = '#060813';
+    } else if (value === 'solid-purple') {
+      bgStyle = '#0d0b21';
+    } else if (value === 'solid-light') {
+      bgStyle = '#f3f4f6';
+    } else if (value === 'mesh-citrus') {
+      bgStyle = 'radial-gradient(circle at 10% 20%, rgba(255, 107, 0, 0.15) 0%, transparent 45%), radial-gradient(circle at 90% 80%, rgba(29, 209, 161, 0.15) 0%, transparent 45%), #060813';
+    } else if (value === 'mesh-aurora') {
+      bgStyle = 'radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.18) 0%, transparent 50%), radial-gradient(circle at 20% 80%, rgba(192, 132, 252, 0.18) 0%, transparent 50%), #030712';
+    } else if (value === 'mesh-amber') {
+      bgStyle = 'radial-gradient(circle at 10% 20%, rgba(254, 202, 87, 0.4) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(255, 159, 67, 0.3) 0%, transparent 50%), #f8fafc';
+    } else if (value === 'img-citrus-neon') {
+      bgStyle = 'url("/images/backgrounds/citruss_citrus_bg_1780097443623.png") no-repeat center center fixed';
+    } else if (value === 'img-citrus-light') {
+      bgStyle = 'url("/images/backgrounds/citruss_citrus_light_1780097742029.png") no-repeat center center fixed';
+    } else if (value === 'img-cyberpunk-dark') {
+      bgStyle = 'url("/images/backgrounds/citruss_cyberpunk_bg_1780097474569.png") no-repeat center center fixed';
+    } else if (value === 'img-cyberpunk-light') {
+      bgStyle = 'url("/images/backgrounds/citruss_cyberpunk_light_1780097774317.png") no-repeat center center fixed';
+    } else if (value === 'img-glassy') {
+      bgStyle = 'url("/images/backgrounds/citruss_glassy_bg_1780097594392.png") no-repeat center center fixed';
+    } else if (value === 'img-nebula') {
+      bgStyle = 'url("/images/backgrounds/citruss_nebula_bg_1780097579999.png") no-repeat center center fixed';
+    } else if (value === 'img-nordic') {
+      bgStyle = 'url("/images/backgrounds/citruss_nordic_bg_1780097612851.png") no-repeat center center fixed';
+    } else if (value === 'img-oceanic-dark') {
+      bgStyle = 'url("/images/backgrounds/citruss_oceanic_bg_1780097461326.png") no-repeat center center fixed';
+    } else if (value === 'img-oceanic-light') {
+      bgStyle = 'url("/images/backgrounds/citruss_oceanic_light_1780097758490.png") no-repeat center center fixed';
+    } else if (value === 'img-fluid') {
+      bgStyle = 'url("/images/backgrounds/media__1780097562130.png") no-repeat center center fixed';
+    }
+
+    // Apply to body and storybook root
+    const body = document.body;
+    const root = document.getElementById('storybook-root');
+    const docsRoot = document.querySelector('.docs-story');
+    
+    const elements = [body, root, docsRoot];
+    elements.forEach(el => {
+      if (el) {
+        el.style.setProperty('background', bgStyle, 'important');
+        el.style.setProperty('background-size', 'cover', 'important');
+        el.style.setProperty('background-attachment', 'fixed', 'important');
+      }
+    });
+
+    // Automatically sync theme mode (light/dark) based on selection
+    const isLightBg = value === 'solid-light' || value === 'mesh-amber' || value.includes('light');
+    const newTheme = isLightBg ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    window.localStorage.setItem('citruss-theme', newTheme);
+    
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+      themeBtn.textContent = newTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
+    }
+  };
+
+  // Run on load and periodically in case Storybook reinstantiates the body/shell
+  if (document.readyState === 'complete') {
+    injectBgSelector();
+  } else {
+    window.addEventListener('load', injectBgSelector);
+  }
+  setInterval(injectBgSelector, 1000);
 }
 
 /** @type { import('@storybook/html-vite').Preview } */
