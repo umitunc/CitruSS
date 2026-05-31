@@ -129,6 +129,10 @@
   &.orb-purple { background: radial-gradient(circle, #a18cd1 0%, transparent 80%); }
   &.orb-magenta { background: radial-gradient(circle, #ff0844 0%, transparent 80%); }
   &.orb-oceanic { background: radial-gradient(circle, #38ef7d 0%, transparent 80%); }
+  &.orb-nebula { background: radial-gradient(circle, #8a2be2 0%, transparent 80%); }
+  &.orb-glassy { background: radial-gradient(circle, rgba(230, 235, 255, 0.8) 0%, transparent 80%); }
+  &.orb-nordic { background: radial-gradient(circle, #00d2ff 0%, transparent 80%); }
+  &.orb-dusk { background: radial-gradient(circle, #fc5c9c 0%, transparent 80%); }
 }
 
 /* Float Animations */
@@ -279,6 +283,82 @@
   }
 }
 
+/* Theme 7: Cosmic Nebula (Galaxy Indigo, Magenta, Deep Violet) */
+.citruss-bg-pure-nebula {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgb(138 43 226 / 20%) 0%, transparent 50%),
+    radial-gradient(circle at 90% 90%, rgb(255 8 136 / 18%) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgb(75 0 130 / 15%) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgb(30 144 255 / 15%) 0%, transparent 45%);
+
+  [data-theme="light"] & {
+    background-color: #f7f2ff;
+    background-image: 
+      radial-gradient(circle at 10% 10%, rgb(138 43 226 / 12%) 0%, transparent 50%),
+      radial-gradient(circle at 90% 90%, rgb(255 8 136 / 10%) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgb(75 0 130 / 10%) 0%, transparent 40%),
+      radial-gradient(circle at 80% 20%, rgb(30 144 255 / 10%) 0%, transparent 45%);
+  }
+}
+
+/* Theme 8: Liquid Glass (Cupertino Pearlescent, Light Pink, Metallic Wave) */
+.citruss-bg-pure-glassy {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 30% 20%, rgb(255 182 193 / 15%) 0%, transparent 40%),
+    radial-gradient(circle at 70% 80%, rgb(176 224 230 / 15%) 0%, transparent 40%),
+    radial-gradient(circle at 10% 90%, rgb(220 220 220 / 10%) 0%, transparent 45%),
+    radial-gradient(circle at 90% 10%, rgb(245 245 245 / 12%) 0%, transparent 45%);
+
+  [data-theme="light"] & {
+    background-color: #fafbfc;
+    background-image: 
+      radial-gradient(circle at 30% 20%, rgb(255 182 193 / 18%) 0%, transparent 40%),
+      radial-gradient(circle at 70% 80%, rgb(176 224 230 / 18%) 0%, transparent 40%),
+      radial-gradient(circle at 10% 90%, rgb(220 220 220 / 12%) 0%, transparent 45%),
+      radial-gradient(circle at 90% 10%, rgb(245 245 245 / 14%) 0%, transparent 45%);
+  }
+}
+
+/* Theme 9: Nordic Frost (Glacier Blue, Icy Lavender, Silver) */
+.citruss-bg-pure-nordic {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgb(0 210 255 / 18%) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgb(155 142 226 / 15%) 0%, transparent 45%),
+    radial-gradient(circle at 50% 10%, rgb(224 242 254 / 15%) 0%, transparent 40%),
+    radial-gradient(circle at 90% 30%, rgb(165 242 200 / 12%) 0%, transparent 40%);
+
+  [data-theme="light"] & {
+    background-color: #f2fafd;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgb(0 210 255 / 12%) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgb(155 142 226 / 10%) 0%, transparent 45%),
+      radial-gradient(circle at 50% 10%, rgb(224 242 254 / 10%) 0%, transparent 40%),
+      radial-gradient(circle at 90% 30%, rgb(165 242 200 / 10%) 0%, transparent 40%);
+  }
+}
+
+/* Theme 10: Tokyo Dusk (Vibrant Sunset Crimson, Radiant Gold, Dusk Indigo) */
+.citruss-bg-pure-dusk {
+  background-color: var(--citruss-bg-main);
+  background-image: 
+    radial-gradient(circle at 10% 80%, rgb(252 92 156 / 22%) 0%, transparent 50%),
+    radial-gradient(circle at 90% 20%, rgb(253 150 68 / 18%) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgb(112 111 211 / 15%) 0%, transparent 40%),
+    radial-gradient(circle at 80% 90%, rgb(33 150 243 / 12%) 0%, transparent 40%);
+
+  [data-theme="light"] & {
+    background-color: #fff5fa;
+    background-image: 
+      radial-gradient(circle at 10% 80%, rgb(252 92 156 / 12%) 0%, transparent 50%),
+      radial-gradient(circle at 90% 20%, rgb(253 150 68 / 10%) 0%, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgb(112 111 211 / 10%) 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgb(33 150 243 / 10%) 0%, transparent 40%);
+  }
+}
+
 /* Dedicated Theme Classes for Wrapper Backdrops */
 .citruss-bg-wrapper {
   &.theme-citrus {
@@ -286,7 +366,7 @@
     background-image: radial-gradient(circle at 50% 50%, rgb(255 107 0 / 4%), transparent 80%);
     
     [data-theme="light"] & {
-      background-color: #fffbf7;
+      background-color: #fff9f2;
       background-image: radial-gradient(circle at 50% 50%, rgb(255 107 0 / 6%), transparent 80%);
     }
   }
@@ -296,7 +376,7 @@
     background-image: radial-gradient(circle at 50% 50%, rgb(0 242 254 / 4%), transparent 80%);
     
     [data-theme="light"] & {
-      background-color: #faf9ff;
+      background-color: #f7f5ff;
       background-image: radial-gradient(circle at 50% 50%, rgb(111 66 193 / 6%), transparent 80%);
     }
   }
@@ -306,8 +386,48 @@
     background-image: radial-gradient(circle at 50% 50%, rgb(56 239 125 / 4%), transparent 80%);
     
     [data-theme="light"] & {
-      background-color: #f5fdfd;
+      background-color: #f0fcfc;
       background-image: radial-gradient(circle at 50% 50%, rgb(17 153 142 / 6%), transparent 80%);
+    }
+  }
+
+  &.theme-nebula {
+    background-color: var(--citruss-bg-main);
+    background-image: radial-gradient(circle at 50% 50%, rgb(138 43 226 / 4%), transparent 80%);
+    
+    [data-theme="light"] & {
+      background-color: #f7f2ff;
+      background-image: radial-gradient(circle at 50% 50%, rgb(138 43 226 / 6%), transparent 80%);
+    }
+  }
+
+  &.theme-glassy {
+    background-color: var(--citruss-bg-main);
+    background-image: radial-gradient(circle at 50% 50%, rgb(255 182 193 / 4%), transparent 80%);
+    
+    [data-theme="light"] & {
+      background-color: #fafbfc;
+      background-image: radial-gradient(circle at 50% 50%, rgb(176 224 230 / 6%), transparent 80%);
+    }
+  }
+
+  &.theme-nordic {
+    background-color: var(--citruss-bg-main);
+    background-image: radial-gradient(circle at 50% 50%, rgb(0 210 255 / 4%), transparent 80%);
+    
+    [data-theme="light"] & {
+      background-color: #f2fafd;
+      background-image: radial-gradient(circle at 50% 50%, rgb(0 210 255 / 6%), transparent 80%);
+    }
+  }
+
+  &.theme-dusk {
+    background-color: var(--citruss-bg-main);
+    background-image: radial-gradient(circle at 50% 50%, rgb(252 92 156 / 4%), transparent 80%);
+    
+    [data-theme="light"] & {
+      background-color: #fff5fa;
+      background-image: radial-gradient(circle at 50% 50%, rgb(253 150 68 / 6%), transparent 80%);
     }
   }
 }
