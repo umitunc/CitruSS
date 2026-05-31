@@ -12,6 +12,20 @@ import { Meta } from '@storybook/blocks';
     overflow: hidden;
   }
 
+  .citruss-doc-container h1,
+  .citruss-doc-container h2,
+  .citruss-doc-container h3,
+  .citruss-doc-container h4 {
+    color: #ffffff !important;
+  }
+
+  [data-theme="light"] .citruss-doc-container h1,
+  [data-theme="light"] .citruss-doc-container h2,
+  [data-theme="light"] .citruss-doc-container h3,
+  [data-theme="light"] .citruss-doc-container h4 {
+    color: #0f172a !important;
+  }
+
   .citruss-tech-dots {
     position: absolute;
     inset: 0;
@@ -20,6 +34,10 @@ import { Meta } from '@storybook/blocks';
     mask-image: radial-gradient(circle at center, black 75%, transparent 100%);
     pointer-events: none;
     z-index: 1;
+  }
+
+  [data-theme="light"] .citruss-tech-dots {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1.2px, transparent 0);
   }
 
   .citruss-terminal-card {
@@ -38,9 +56,22 @@ import { Meta } from '@storybook/blocks';
     transition: all 0.3s ease;
   }
 
+  [data-theme="light"] .citruss-terminal-card {
+    background-color: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.85),
+      0 12px 30px 0 rgba(15, 23, 42, 0.08) !important;
+  }
+
   .citruss-terminal-card:hover {
     border-color: rgba(255, 107, 0, 0.4) !important;
     background-color: rgba(17, 25, 40, 0.55) !important;
+  }
+
+  [data-theme="light"] .citruss-terminal-card:hover {
+    border-color: rgba(255, 107, 0, 0.55) !important;
+    background-color: rgba(255, 255, 255, 0.55) !important;
   }
 
   .citruss-terminal-hdr {
@@ -50,6 +81,10 @@ import { Meta } from '@storybook/blocks';
     margin-bottom: 16px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
     padding-bottom: 10px;
+  }
+
+  [data-theme="light"] .citruss-terminal-hdr {
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
   }
 
   .citruss-term-dot {
@@ -69,6 +104,10 @@ import { Meta } from '@storybook/blocks';
     font-family: 'Outfit', sans-serif;
   }
 
+  [data-theme="light"] .citruss-terminal-title {
+    color: rgba(15, 23, 42, 0.5) !important;
+  }
+
   pre {
     background: transparent !important;
     margin: 0 !important;
@@ -81,6 +120,10 @@ import { Meta } from '@storybook/blocks';
     font-size: 0.95rem !important;
   }
 
+  [data-theme="light"] code {
+    color: #0284c7 !important; /* Higher legibility dark blue for code tags in light mode */
+  }
+
   .code-cmd {
     color: #ff6b00 !important;
   }
@@ -88,18 +131,22 @@ import { Meta } from '@storybook/blocks';
   .code-pkg {
     color: #ffffff !important;
   }
+
+  [data-theme="light"] .code-pkg {
+    color: #0f172a !important;
+  }
 `}</style>
 
 <div className="citruss-doc-container">
   <div className="citruss-tech-dots" />
   
-  <h1 style={{ position: 'relative', zIndex: '2' }}>Installing the Kit</h1>
-  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
+  <h1>Installing the Kit</h1>
+  <div style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
     Get up and running with CitruSS UI in seconds. We support multiple installation vectors to suit any project setup.
-  </p>
+  </div>
 
-  <h2 style={{ position: 'relative', zIndex: '2' }}>1. Package Manager (Recommended)</h2>
-  <p style={{ position: 'relative', zIndex: '2' }}>Install the CitruSS package to import components into your build pipelines (Webpack, Vite, Rollup, etc.).</p>
+  <h2>1. Package Manager (Recommended)</h2>
+  <p>Install the CitruSS package to import components into your build pipelines (Webpack, Vite, Rollup, etc.).</p>
 
   <div className="citruss-terminal-card">
     <div className="citruss-terminal-hdr">
@@ -115,7 +162,7 @@ import { Meta } from '@storybook/blocks';
     </pre>
   </div>
 
-  <p style={{ position: 'relative', zIndex: '2' }}>Alternatively, if you use Yarn or PNPM:</p>
+  <p>Alternatively, if you use Yarn or PNPM:</p>
 
   <div className="citruss-terminal-card">
     <div className="citruss-terminal-hdr">
@@ -133,8 +180,8 @@ import { Meta } from '@storybook/blocks';
     </pre>
   </div>
 
-  <h2 style={{ position: 'relative', zIndex: '2' }}>2. Direct Integration & CDN</h2>
-  <p style={{ position: 'relative', zIndex: '2' }}>For quick prototypes or lightweight server-rendered setups, include the compiled distribution assets directly in your HTML header:</p>
+  <h2>2. Direct Integration & CDN</h2>
+  <p>For quick prototypes or lightweight server-rendered setups, include the compiled distribution assets directly in your HTML header:</p>
 
   <div className="citruss-terminal-card">
     <div className="citruss-terminal-hdr">

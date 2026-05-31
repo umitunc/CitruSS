@@ -174,6 +174,14 @@ if (typeof window !== 'undefined') {
     .token.variable {
       color: #ec4899 !important;
     }
+
+    /* Force Storybook Docs view to have a transparent wrapper so body background is visible */
+    .sbdocs,
+    .sbdocs-wrapper,
+    .sbdocs-content,
+    .docs-story {
+      background: transparent !important;
+    }
   `;
   document.head.appendChild(customPrismStyle);
 

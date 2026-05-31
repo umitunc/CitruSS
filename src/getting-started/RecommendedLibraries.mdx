@@ -12,6 +12,20 @@ import { Meta } from '@storybook/blocks';
     overflow: hidden;
   }
 
+  .citruss-doc-container h1,
+  .citruss-doc-container h2,
+  .citruss-doc-container h3,
+  .citruss-doc-container h4 {
+    color: #ffffff !important;
+  }
+
+  [data-theme="light"] .citruss-doc-container h1,
+  [data-theme="light"] .citruss-doc-container h2,
+  [data-theme="light"] .citruss-doc-container h3,
+  [data-theme="light"] .citruss-doc-container h4 {
+    color: #0f172a !important;
+  }
+
   .citruss-tech-dots {
     position: absolute;
     inset: 0;
@@ -20,6 +34,10 @@ import { Meta } from '@storybook/blocks';
     mask-image: radial-gradient(circle at center, black 75%, transparent 100%);
     pointer-events: none;
     z-index: 1;
+  }
+
+  [data-theme="light"] .citruss-tech-dots {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1.2px, transparent 0);
   }
 
   .citruss-lib-card {
@@ -36,6 +54,16 @@ import { Meta } from '@storybook/blocks';
     position: relative;
     z-index: 2;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #ffffff !important;
+  }
+
+  [data-theme="light"] .citruss-lib-card {
+    background-color: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.85),
+      0 12px 30px 0 rgba(15, 23, 42, 0.08) !important;
+    color: #0f172a !important;
   }
 
   .citruss-lib-card:hover {
@@ -46,6 +74,14 @@ import { Meta } from '@storybook/blocks';
       inset 0 1.5px 0 0 rgba(255, 255, 255, 0.15),
       0 16px 40px rgba(255, 107, 0, 0.15),
       0 8px 24px rgba(0,0,0,0.4) !important;
+  }
+
+  [data-theme="light"] .citruss-lib-card:hover {
+    border-color: rgba(255, 107, 0, 0.55) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95),
+      0 15px 35px 0 rgba(255, 107, 0, 0.15),
+      0 8px 24px 0 rgba(15, 23, 42, 0.08) !important;
   }
 
   .lib-title {
@@ -60,45 +96,49 @@ import { Meta } from '@storybook/blocks';
 
   .lib-desc {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.7) !important;
     line-height: 1.5;
     margin: 0;
+  }
+
+  [data-theme="light"] .lib-desc {
+    color: rgba(15, 23, 42, 0.75) !important;
   }
 `}</style>
 
 <div className="citruss-doc-container">
   <div className="citruss-tech-dots" />
   
-  <h1 style={{ position: 'relative', zIndex: '2' }}>Recommended Libraries</h1>
-  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
+  <h1>Recommended Libraries</h1>
+  <div style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
     Boost your productivity and elevate your app's interactions by pairing CitruSS UI with these modern web libraries.
-  </p>
+  </div>
 
   <div className="citruss-lib-card">
     <h3 className="lib-title">⭐ Material Symbols Rounded</h3>
-    <p className="lib-desc">
+    <div className="lib-desc">
       Our default icon system recommendation. It integrates seamlessly with our preconfigured <code>.citruss-icon</code> utility classes, delivering sharp, customizable, and expressive web icons.
-    </p>
+    </div>
   </div>
 
   <div className="citruss-lib-card">
     <h3 className="lib-title">⭐ Lucide Icons</h3>
-    <p className="lib-desc">
+    <div className="lib-desc">
       A beautiful, clean, and highly customizable SVG outline icon library. Perfect if you prefer lightweight SVG icons over icon font packages.
-    </p>
+    </div>
   </div>
 
   <div className="citruss-lib-card">
     <h3 className="lib-title">⭐ GSAP (GreenSock Animation Platform)</h3>
-    <p className="lib-desc">
+    <div className="lib-desc">
       Highly recommended for crafting bespoke micro-interactions, page state transitions, or premium mesh-gradient movements alongside CitruSS glass components.
-    </p>
+    </div>
   </div>
 
   <div className="citruss-lib-card">
     <h3 className="lib-title">⭐ Chart.js / Recharts</h3>
-    <p className="lib-desc">
+    <div className="lib-desc">
       Create gorgeous analytics setups. Our semi-translucent glass panels are exceptionally stunning when holding colorful, responsive bar charts, line graphs, and donut charts.
-    </p>
+    </div>
   </div>
 </div>

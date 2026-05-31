@@ -12,6 +12,20 @@ import { Meta } from '@storybook/blocks';
     overflow: hidden;
   }
 
+  .citruss-doc-container h1,
+  .citruss-doc-container h2,
+  .citruss-doc-container h3,
+  .citruss-doc-container h4 {
+    color: #ffffff !important;
+  }
+
+  [data-theme="light"] .citruss-doc-container h1,
+  [data-theme="light"] .citruss-doc-container h2,
+  [data-theme="light"] .citruss-doc-container h3,
+  [data-theme="light"] .citruss-doc-container h4 {
+    color: #0f172a !important;
+  }
+
   .citruss-tech-dots {
     position: absolute;
     inset: 0;
@@ -20,6 +34,10 @@ import { Meta } from '@storybook/blocks';
     mask-image: radial-gradient(circle at center, black 75%, transparent 100%);
     pointer-events: none;
     z-index: 1;
+  }
+
+  [data-theme="light"] .citruss-tech-dots {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1.2px, transparent 0);
   }
 
   .citruss-resource-card {
@@ -39,6 +57,16 @@ import { Meta } from '@storybook/blocks';
     position: relative;
     z-index: 2;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #ffffff !important;
+  }
+
+  [data-theme="light"] .citruss-resource-card {
+    background-color: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.85),
+      0 12px 30px 0 rgba(15, 23, 42, 0.08) !important;
+    color: #0f172a !important;
   }
 
   .citruss-resource-card:hover {
@@ -49,6 +77,14 @@ import { Meta } from '@storybook/blocks';
       inset 0 1.5px 0 0 rgba(255, 255, 255, 0.15),
       0 16px 40px rgba(255, 107, 0, 0.15),
       0 8px 24px rgba(0,0,0,0.4) !important;
+  }
+
+  [data-theme="light"] .citruss-resource-card:hover {
+    border-color: rgba(255, 107, 0, 0.55) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.95),
+      0 15px 35px 0 rgba(255, 107, 0, 0.15),
+      0 8px 24px 0 rgba(15, 23, 42, 0.08) !important;
   }
 
   .resource-info {
@@ -62,11 +98,19 @@ import { Meta } from '@storybook/blocks';
     color: #ffffff;
   }
 
+  [data-theme="light"] .resource-title {
+    color: #0f172a !important;
+  }
+
   .resource-desc {
     font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.65) !important;
     margin: 0;
     line-height: 1.5;
+  }
+
+  [data-theme="light"] .resource-desc {
+    color: rgba(15, 23, 42, 0.75) !important;
   }
 
   .resource-btn {
@@ -92,15 +136,15 @@ import { Meta } from '@storybook/blocks';
 <div className="citruss-doc-container">
   <div className="citruss-tech-dots" />
   
-  <h1 style={{ position: 'relative', zIndex: '2' }}>Design Resources</h1>
-  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
+  <h1>Design Resources</h1>
+  <div style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
     Access design source files, palette libraries, and styling tokens to accelerate your layout designs and prototypes.
-  </p>
+  </div>
 
   <div className="citruss-resource-card">
     <div className="resource-info">
       <h3 className="resource-title">Figma UI Kit & Component Library</h3>
-      <p className="resource-desc">Duplicate the comprehensive Figma file containing all frosted glass layers, cards, inputs, buttons, and layouts.</p>
+      <div className="resource-desc">Duplicate the comprehensive Figma file containing all frosted glass layers, cards, inputs, buttons, and layouts.</div>
     </div>
     <a href="#" className="resource-btn">Get Figma File</a>
   </div>
@@ -108,7 +152,7 @@ import { Meta } from '@storybook/blocks';
   <div className="citruss-resource-card">
     <div className="resource-info">
       <h3 className="resource-title">CitruSS Style Tokens (JSON / SCSS)</h3>
-      <p className="resource-desc">Raw design token definitions including HSL color coordinates, border radii sizes, and backdrop blur variables.</p>
+      <div className="resource-desc">Raw design token definitions including HSL color coordinates, border radii sizes, and backdrop blur variables.</div>
     </div>
     <a href="#" className="resource-btn">Explore Tokens</a>
   </div>
@@ -116,7 +160,7 @@ import { Meta } from '@storybook/blocks';
   <div className="citruss-resource-card">
     <div className="resource-info">
       <h3 className="resource-title">Mesh Gradient Vector Pack</h3>
-      <p className="resource-desc">A collection of custom vector assets and radial CSS settings configured for dark mode and soft pastel themes.</p>
+      <div className="resource-desc">A collection of custom vector assets and radial CSS settings configured for dark mode and soft pastel themes.</div>
     </div>
     <a href="#" className="resource-btn">Download Asset Pack</a>
   </div>
