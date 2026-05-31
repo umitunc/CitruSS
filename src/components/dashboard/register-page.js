@@ -21,7 +21,7 @@ export const renderRegisterPage = (useEffect) => {
     <div class="citruss-dashboard-shell" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; font-family: 'Outfit', sans-serif;">
       
       <!-- Center Register Card -->
-      <div class="citruss-card animate-fade-in" style="width: 100%; max-width: 460px; padding: 32px; box-shadow: 0 24px 64px rgba(0,0,0,0.5); border:1px solid var(--citruss-glass-border); background:rgba(15,22,42,0.65); backdrop-filter:blur(16px);">
+      <div class="citruss-card animate-fade-in" style="width: 100%; max-width: 460px; padding: 32px; box-shadow: 0 24px 64px var(--citruss-glass-shadow); border: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); backdrop-filter: blur(var(--citruss-glass-blur));">
         <div class="card-content">
           <div style="text-align: center; margin-bottom: 28px;">
             <img src="./logos/citruss_logo_transparent.png" alt="CitruSS Logo" style="height: 54px; margin-bottom: 12px;">
@@ -34,25 +34,25 @@ export const renderRegisterPage = (useEffect) => {
               <div class="citruss-col-12 citruss-col-md-6 citruss-mb-md">
                 <div class="citruss-input-wrapper">
                   <label class="citruss-label">First Name</label>
-                  <input type="text" class="citruss-input" placeholder="Ecem" required style="background:rgba(0,0,0,0.25);">
+                  <input type="text" class="citruss-input" placeholder="Ecem" required>
                 </div>
               </div>
               <div class="citruss-col-12 citruss-col-md-6 citruss-mb-md">
                 <div class="citruss-input-wrapper">
                   <label class="citruss-label">Last Name</label>
-                  <input type="text" class="citruss-input" placeholder="Tuncgil" required style="background:rgba(0,0,0,0.25);">
+                  <input type="text" class="citruss-input" placeholder="Tuncgil" required>
                 </div>
               </div>
             </div>
 
             <div class="citruss-input-wrapper citruss-mb-md">
               <label class="citruss-label">Developer Email</label>
-              <input type="email" class="citruss-input" placeholder="you@domain.com" required style="background:rgba(0,0,0,0.25);">
+              <input type="email" class="citruss-input" placeholder="you@domain.com" required>
             </div>
 
             <div class="citruss-input-wrapper citruss-mb-lg">
               <label class="citruss-label">Create Secure Key</label>
-              <input type="password" class="citruss-input" placeholder="Choose strong passphrase..." required style="background:rgba(0,0,0,0.25);">
+              <input type="password" class="citruss-input" placeholder="Choose strong passphrase..." required>
             </div>
 
             <button type="submit" class="citruss-btn btn-primary" style="width: 100%; padding: 12px; font-weight: 800; margin-bottom: 24px;">
