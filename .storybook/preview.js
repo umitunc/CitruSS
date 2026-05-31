@@ -182,6 +182,49 @@ if (typeof window !== 'undefined') {
     .docs-story {
       background: transparent !important;
     }
+
+    /* Floating BG Selector Theme-Aware Styling */
+    .citruss-floating-bg-selector {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s, border-color 0.3s, box-shadow 0.3s !important;
+    }
+    
+    .citruss-floating-bg-selector.glass-dark {
+      background-color: rgba(17, 25, 40, 0.45) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 1.5px 0 rgba(255, 255, 255, 0.1) !important;
+    }
+    .citruss-floating-bg-selector.glass-dark .citruss-bg-label {
+      color: #ffffff !important;
+    }
+    .citruss-floating-bg-selector.glass-dark select {
+      background: rgba(0, 0, 0, 0.4) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+    }
+    .citruss-floating-bg-selector.glass-dark select optgroup,
+    .citruss-floating-bg-selector.glass-dark select option {
+      background: #090d16 !important;
+      color: #ffffff !important;
+    }
+
+    .citruss-floating-bg-selector.glass-light {
+      background-color: rgba(255, 255, 255, 0.65) !important;
+      border: 1px solid rgba(15, 23, 42, 0.15) !important;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08), inset 0 1.5px 0 rgba(255, 255, 255, 0.8) !important;
+    }
+    .citruss-floating-bg-selector.glass-light .citruss-bg-label {
+      color: #1e293b !important;
+    }
+    .citruss-floating-bg-selector.glass-light select {
+      background: rgba(255, 255, 255, 0.8) !important;
+      border: 1px solid rgba(15, 23, 42, 0.15) !important;
+      color: #0f172a !important;
+    }
+    .citruss-floating-bg-selector.glass-light select optgroup,
+    .citruss-floating-bg-selector.glass-light select option {
+      background: #ffffff !important;
+      color: #0f172a !important;
+    }
   `;
   document.head.appendChild(customPrismStyle);
 
@@ -254,21 +297,21 @@ if (typeof window !== 'undefined') {
     root.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 999999; font-family: "Outfit", sans-serif;';
     
     root.innerHTML = `
-      <div class="citruss-floating-bg-selector glass-dark" style="padding: 10px 16px; border-radius: 24px; display: flex; align-items: center; gap: 12px; pointer-events: auto; box-shadow: 0 12px 32px rgba(0,0,0,0.5), inset 0 1.5px 0 rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.08); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);">
+      <div class="citruss-floating-bg-selector glass-dark" style="padding: 10px 16px; border-radius: 24px; display: flex; align-items: center; gap: 12px; pointer-events: auto;">
         <span class="citruss-icon" style="color: var(--citruss-tangerine); font-size: 18px; display: flex; align-items: center; user-select: none;">wallpaper</span>
-        <span style="font-size: 0.75rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; user-select: none;">BG:</span>
-        <select id="citruss-global-bg-select" style="background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; color: #fff; font-size: 0.75rem; padding: 4px 10px; outline: none; font-family: inherit; cursor: pointer; min-width: 140px; font-weight: 600; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);">
-          <optgroup label="Solid Colors" style="background: #090d16;">
+        <span class="citruss-bg-label" style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block; user-select: none;">BG:</span>
+        <select id="citruss-global-bg-select" style="border-radius: 8px; font-size: 0.75rem; padding: 4px 10px; outline: none; font-family: inherit; cursor: pointer; min-width: 140px; font-weight: 600; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);">
+          <optgroup label="Solid Colors">
             <option value="solid-dark">Midnight Black</option>
             <option value="solid-purple">Deep Purple</option>
             <option value="solid-light">Soft Slate (Light)</option>
           </optgroup>
-          <optgroup label="Mesh Gradients" style="background: #090d16;">
+          <optgroup label="Mesh Gradients">
             <option value="mesh-citrus">Citrus Neon Mesh</option>
             <option value="mesh-aurora">Cosmic Aurora Mesh</option>
             <option value="mesh-amber">Sunset Amber Mesh</option>
           </optgroup>
-          <optgroup label="Premium Images" style="background: #090d16;">
+          <optgroup label="Premium Images">
             <option value="img-citrus-neon">Citrus Neon</option>
             <option value="img-citrus-light">Citrus Light</option>
             <option value="img-cyberpunk-dark">Cyberpunk Dark</option>
@@ -357,6 +400,17 @@ if (typeof window !== 'undefined') {
     document.documentElement.setAttribute('data-theme', newTheme);
     window.localStorage.setItem('citruss-theme', newTheme);
     
+    const bgSelector = document.querySelector('.citruss-floating-bg-selector');
+    if (bgSelector) {
+      if (newTheme === 'light') {
+        bgSelector.classList.remove('glass-dark');
+        bgSelector.classList.add('glass-light');
+      } else {
+        bgSelector.classList.remove('glass-light');
+        bgSelector.classList.add('glass-dark');
+      }
+    }
+
     const themeBtn = document.getElementById('theme-toggle-btn');
     if (themeBtn) {
       themeBtn.textContent = newTheme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode';
