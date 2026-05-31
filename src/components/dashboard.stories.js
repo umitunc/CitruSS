@@ -2,6 +2,9 @@ import { useEffect } from 'storybook/preview-api';
 
 export default {
   title: 'Showcase/Pro Dashboard',
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 // Common Sidebar template generator to organize links by category
@@ -1385,5 +1388,36 @@ if (typeof window !== 'undefined') {
     
     const matchingLinks = document.querySelectorAll(`[data-nav-target="${targetStory}"]`);
     matchingLinks.forEach(lnk => lnk.classList.add('active'));
+
+    // Map targets to story IDs to programmatically switch stories in Storybook
+    const storyMap = {
+      'admin': 'showcase-pro-dashboard--admin-panel-dashboard',
+      'ecommerce': 'showcase-pro-dashboard--e-commerce-storefront',
+      'kanban': 'showcase-pro-dashboard--kanban-project-management',
+      'explorer': 'showcase-pro-dashboard--cloud-explorer',
+      'login': 'showcase-pro-dashboard--login-page',
+      'register': 'showcase-pro-dashboard--register-page',
+      'settings': 'showcase-pro-dashboard--user-settings',
+      'tabbed-settings': 'showcase-pro-dashboard--tabbed-settings'
+    };
+
+    const storyId = storyMap[targetStory];
+    if (storyId) {
+      // 1. Direct preview API channel event (runs in iframe)
+      if (window.__STORYBOOK_ADDONS_CHANNEL__) {
+        window.__STORYBOOK_ADDONS_CHANNEL__.emit('setCurrentStory', { storyId });
+      }
+      
+      // 2. Fallback postMessage to parent Storybook manager window
+      if (window.parent) {
+        window.parent.postMessage({
+          type: 'storybook-channel',
+          event: {
+            type: 'setCurrentStory',
+            args: [{ storyId }]
+          }
+        }, '*');
+      }
+    }
   });
 }
