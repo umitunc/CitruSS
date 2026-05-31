@@ -114,7 +114,9 @@ import { Meta } from '@storybook/blocks';
     color: rgba(15, 23, 42, 0.75) !important;
   }
 
-  .resource-btn {
+  .resource-btn,
+  .sbdocs a.resource-btn,
+  .sbdocs .resource-btn {
     display: inline-flex;
     gap: 8px;
     align-items: center;
@@ -139,13 +141,16 @@ import { Meta } from '@storybook/blocks';
     z-index: 2;
   }
 
-  [data-theme="light"] .resource-btn {
+  [data-theme="light"] .resource-btn,
+  [data-theme="light"] .sbdocs a.resource-btn {
     background: linear-gradient(135deg, rgba(255, 107, 0, 0.9), rgba(255, 159, 67, 0.9)) !important;
     color: #ffffff !important;
     border: 1px solid rgba(255, 107, 0, 0.4) !important;
   }
 
-  .resource-btn:hover {
+  .resource-btn:hover,
+  .sbdocs a.resource-btn:hover {
+    color: #ffffff !important;
     transform: translateY(-2px);
     background: linear-gradient(135deg, rgba(255, 107, 0, 0.95), rgba(255, 159, 67, 0.95)) !important;
     box-shadow: 
@@ -153,7 +158,8 @@ import { Meta } from '@storybook/blocks';
       0 8px 20px 0 rgba(255, 107, 0, 0.35) !important;
   }
 
-  .resource-btn:active {
+  .resource-btn:active,
+  .sbdocs a.resource-btn:active {
     transform: translateY(0) scale(0.96);
   }
 `}</style>
