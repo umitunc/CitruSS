@@ -6,24 +6,41 @@ import { Meta } from '@storybook/blocks';
   .citruss-doc-container {
     color: var(--citruss-text-main, #ffffff) !important;
     font-family: "Outfit", "Inter", sans-serif !important;
-    padding: 40px !important;
-    background-color: #0b0f19 !important;
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
-    border-radius: 24px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    padding: 20px 0 !important;
+    background: transparent !important;
     position: relative;
     overflow: hidden;
   }
 
+  .citruss-tech-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 0);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(circle at center, black 75%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
   .citruss-code-card {
-    background: #060913;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
+    background-color: rgba(17, 25, 40, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px;
     padding: 24px;
     margin-bottom: 24px;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.08),
+      0 12px 36px rgba(0,0,0,0.4) !important;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  .citruss-code-card:hover {
+    border-color: rgba(255, 107, 0, 0.4) !important;
+    background-color: rgba(17, 25, 40, 0.55) !important;
   }
 
   code {
@@ -38,13 +55,15 @@ import { Meta } from '@storybook/blocks';
 `}</style>
 
 <div className="citruss-doc-container">
-  <h1>Using the Kit</h1>
-  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+  <div className="citruss-tech-dots" />
+  
+  <h1 style={{ position: 'relative', zIndex: '2' }}>Using the Kit</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
     Learn how to import the design system tokens, styles, and initialize our dynamic interactive components.
   </p>
 
-  <h2>1. Importing SCSS/CSS</h2>
-  <p>To load the frosted glass styles and fruit-themed color palettes, import the entry stylesheet at the root of your application:</p>
+  <h2 style={{ position: 'relative', zIndex: '2' }}>1. Importing SCSS/CSS</h2>
+  <p style={{ position: 'relative', zIndex: '2' }}>To load the frosted glass styles and fruit-themed color palettes, import the entry stylesheet at the root of your application:</p>
 
   <div className="citruss-code-card">
     <pre>
@@ -57,8 +76,8 @@ import { Meta } from '@storybook/blocks';
     </pre>
   </div>
 
-  <h2>2. Activating the JS Component Engine</h2>
-  <p>Some of CitruSS UI's premium components—such as Toasts, Modals, Drawers, and Carousels—feature dynamic transitions and client-side interactions. Initialize the JS engine globally:</p>
+  <h2 style={{ position: 'relative', zIndex: '2' }}>2. Activating the JS Component Engine</h2>
+  <p style={{ position: 'relative', zIndex: '2' }}>Some of CitruSS UI's premium components—such as Toasts, Modals, Drawers, and Carousels—feature dynamic transitions and client-side interactions. Initialize the JS engine globally:</p>
 
   <div className="citruss-code-card">
     <pre>
@@ -70,8 +89,8 @@ import { Meta } from '@storybook/blocks';
     </pre>
   </div>
 
-  <h2>3. Basic HTML Structure</h2>
-  <p>Wrap your cards or layouts with standard CitruSS utility classes to instantly apply frosted reflections:</p>
+  <h2 style={{ position: 'relative', zIndex: '2' }}>3. Basic HTML Structure</h2>
+  <p style={{ position: 'relative', zIndex: '2' }}>Wrap your cards or layouts with standard CitruSS utility classes to instantly apply frosted reflections:</p>
 
   <div className="citruss-code-card">
     <pre>

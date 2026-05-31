@@ -6,35 +6,36 @@ import { Meta } from '@storybook/blocks';
   .citruss-doc-container {
     color: var(--citruss-text-main, #ffffff) !important;
     font-family: "Outfit", "Inter", sans-serif !important;
-    padding: 40px !important;
-    background-color: #0b0f19 !important;
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
-    border-radius: 24px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    padding: 20px 0 !important;
+    background: transparent !important;
     position: relative;
     overflow: hidden;
   }
 
-  .changelog-release {
-    border-left: 2px solid #ff6b00;
-    padding-left: 24px;
-    margin-bottom: 40px;
-    position: relative;
+  .citruss-tech-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 0);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(circle at center, black 75%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
   }
 
-  .changelog-release::before {
-    content: '';
-    position: absolute;
-    left: -7px;
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    background: #ff6b00;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+  .changelog-release {
+    background-color: rgba(17, 25, 40, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 40px;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.08),
+      0 12px 36px rgba(0,0,0,0.4) !important;
+    position: relative;
+    z-index: 2;
+    border-left: 4px solid #ff6b00 !important;
   }
 
   .changelog-hdr {
@@ -77,8 +78,10 @@ import { Meta } from '@storybook/blocks';
 `}</style>
 
 <div className="citruss-doc-container">
-  <h1>What's New</h1>
-  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+  <div className="citruss-tech-dots" />
+  
+  <h1 style={{ position: 'relative', zIndex: '2' }}>What's New</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
     Stay informed about the latest additions, styling updates, bug fixes, and feature improvements.
   </p>
 

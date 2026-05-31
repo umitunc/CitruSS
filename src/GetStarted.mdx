@@ -6,53 +6,90 @@ import { Meta } from '@storybook/blocks';
   .citruss-welcome-container {
     color: #ffffff !important;
     font-family: "Outfit", sans-serif !important;
-    padding: 60px 40px !important;
-    background-color: #0b0f19 !important;
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
-    border-radius: 24px !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    padding: 20px 0 !important;
+    background: transparent !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-tech-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 0);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(circle at center, black 75%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .citruss-glass-card {
+    background-color: rgba(17, 25, 40, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.12),
+      0 20px 48px 0 rgba(0, 0, 0, 0.5),
+      0 1px 4px 0 rgba(0, 0, 0, 0.2) !important;
+    position: relative;
+    z-index: 2;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    max-width: 750px;
+    margin: 0 auto;
     text-align: center;
   }
 
+  .citruss-glass-card:hover {
+    border-color: rgba(255, 107, 0, 0.45) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.2),
+      0 25px 50px 0 rgba(255, 107, 0, 0.2),
+      0 15px 40px 0 rgba(0, 0, 0, 0.6) !important;
+  }
+
   .citruss-welcome-title {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 900;
     margin: 0 0 16px 0;
     background: linear-gradient(135deg, #ff6b00 0%, #ffa800 50%, #a3e635 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -1px;
   }
 
   .citruss-welcome-subtitle {
     font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.75);
     max-width: 600px;
-    margin: 0 auto 32px auto;
+    margin: 0 auto;
     line-height: 1.6;
   }
 `}</style>
 
 <div className="citruss-welcome-container">
-  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
-    <div style={{
-      background: 'rgba(255, 107, 0, 0.1)',
-      border: '1px solid rgba(255, 107, 0, 0.2)',
-      borderRadius: '24px',
-      padding: '16px',
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      boxShadow: '0 8px 24px rgba(255, 107, 0, 0.15)'
-    }}>
-      <img src="logos/citruss_logo_transparent.png" alt="CitruSS Logo" style={{ height: '96px', width: 'auto', objectFit: 'contain' }} />
+  <div className="citruss-tech-dots" />
+  
+  <div className="citruss-glass-card">
+    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '28px' }}>
+      <div style={{
+        background: 'rgba(255, 107, 0, 0.1)',
+        border: '1px solid rgba(255, 107, 0, 0.2)',
+        borderRadius: '24px',
+        padding: '16px',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: '0 8px 24px rgba(255, 107, 0, 0.15)'
+      }}>
+        <img src="logos/citruss_logo_transparent.png" alt="CitruSS Logo" style={{ height: '96px', width: 'auto', objectFit: 'contain' }} />
+      </div>
     </div>
+    <h1 className="citruss-welcome-title">CitruSS UI</h1>
+    <p className="citruss-welcome-subtitle">
+      Experience the ultimate fruit-inspired glassmorphic design system. 
+      Use the sidebar to explore installation guides, design files, and interactive component libraries.
+    </p>
   </div>
-  <h1 className="citruss-welcome-title">CitruSS UI</h1>
-  <p className="citruss-welcome-subtitle">
-    Experience the ultimate fruit-inspired glassmorphic design system. 
-    Use the sidebar to explore installation guides, design files, and interactive component libraries.
-  </p>
 </div>
