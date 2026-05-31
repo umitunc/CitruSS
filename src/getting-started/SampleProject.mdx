@@ -1,0 +1,96 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Sample project" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-sample-card {
+    background: #060913;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  pre {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  code {
+    font-family: 'Fira Code', 'Courier New', monospace !important;
+    font-size: 0.9rem !important;
+    color: #a3e635 !important;
+  }
+
+  .kw { color: #f43f5e !important; }
+  .str { color: #10b981 !important; }
+  .tag { color: #3b82f6 !important; }
+  .attr { color: #a855f7 !important; }
+  .comment { color: #6b7280 !important; font-style: italic; }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Sample Project</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    Let's build a beautiful, high-fidelity landing card prototype using CitruSS UI in single-file HTML format.
+  </p>
+
+  <h2>Complete index.html Blueprint</h2>
+  <p>Copy and save the code template below as <code>index.html</code> to witness the premium frosted glass and vibrant gradients immediately:</p>
+
+  <div className="citruss-sample-card">
+    <pre>
+      <code>
+        &lt;!<span className="kw">DOCTYPE</span> <span className="attr">html</span>&gt;<br />
+        &lt;<span className="tag">html</span> <span className="attr">lang</span>=<span className="str">"en"</span>&gt;<br />
+        &lt;<span className="tag">head</span>&gt;<br />
+        &nbsp;&nbsp;&lt;<span className="tag">meta</span> <span className="attr">charset</span>=<span className="str">"UTF-8"</span> /&gt;<br />
+        &nbsp;&nbsp;&lt;<span className="tag">meta</span> <span className="attr">name</span>=<span className="str">"viewport"</span> <span className="attr">content</span>=<span className="str">"width=device-width, initial-scale=1.0"</span> /&gt;<br />
+        &nbsp;&nbsp;&lt;<span className="tag">title</span>&gt;CitruSS Quick Prototype&lt;/<span className="tag">title</span>&gt;<br />
+        &nbsp;&nbsp;<span className="comment">&lt;!-- 1. Include CitruSS core CSS styles --&gt;</span><br />
+        &nbsp;&nbsp;&lt;<span className="tag">link</span> <span className="attr">rel</span>=<span className="str">"stylesheet"</span> <span className="attr">href</span>=<span className="str">"https://cdn.jsdelivr.net/npm/citruss-ui/dist/citruss.css"</span> /&gt;<br />
+        &nbsp;&nbsp;&lt;<span className="tag">style</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;body &#123;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background: #060913;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-image: radial-gradient(at 50% 50%, rgba(255, 107, 0, 0.15), transparent 60%);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;min-height: 100vh;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin: 0;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&#125;<br />
+        &nbsp;&nbsp;&lt;/<span className="tag">style</span>&gt;<br />
+        &lt;/<span className="tag">head</span>&gt;<br />
+        &lt;<span className="tag">body</span>&gt;<br /><br />
+        &nbsp;&nbsp;<span className="comment">&lt;!-- 2. Draw a Glass Card --&gt;</span><br />
+        &nbsp;&nbsp;&lt;<span className="tag">div</span> <span className="attr">class</span>=<span className="str">"citruss-card glass-premium"</span> <span className="attr">style</span>=<span className="str">"max-width: 400px;"</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="tag">div</span> <span className="attr">class</span>=<span className="str">"card-header"</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="tag">h3</span> <span className="attr">style</span>=<span className="str">"color: var(--citruss-orange);"</span>&gt;CitruSS Active&lt;/<span className="tag">h3</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className="tag">div</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="tag">div</span> <span className="attr">class</span>=<span className="str">"card-body"</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="tag">p</span>&gt;Your framework-agnostic frosted UI sandbox is successfully running!&lt;/<span className="tag">p</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="tag">button</span> <span className="attr">class</span>=<span className="str">"citruss-btn btn-primary"</span>&gt;Launch App&lt;/<span className="tag">button</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className="tag">div</span>&gt;<br />
+        &nbsp;&nbsp;&lt;/<span className="tag">div</span>&gt;<br /><br />
+        &lt;/<span className="tag">body</span>&gt;<br />
+        &lt;/<span className="tag">html</span>&gt;
+      </code>
+    </pre>
+  </div>
+</div>

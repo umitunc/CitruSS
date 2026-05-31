@@ -1,0 +1,88 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Support and Feedback" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .citruss-feedback-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+    transition: all 0.3s ease;
+  }
+
+  .citruss-feedback-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 107, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .feedback-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .feedback-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #ff6b00;
+  }
+
+  .feedback-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin: 0;
+  }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Support and Feedback</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    We love to hear from our developers! Whether you encountered a rendering bug, want to request a feature, or need styling guidance, we are here to help.
+  </p>
+
+  <div className="citruss-feedback-grid">
+    <div className="citruss-feedback-card">
+      <span className="feedback-icon">🐛</span>
+      <h3 className="feedback-title">Report bugs</h3>
+      <p className="feedback-desc">File an issue on our GitHub repository. Please include detailed steps to reproduce, or a public CodeSandbox link.</p>
+    </div>
+
+    <div className="citruss-feedback-card">
+      <span className="feedback-icon">💡</span>
+      <h3 className="feedback-title">Feature requests</h3>
+      <p className="feedback-desc">Have a cool glassmorphism idea or need a specific layout template? Submit it via our GitHub discussions tab.</p>
+    </div>
+
+    <div className="citruss-feedback-card">
+      <span className="feedback-icon">💬</span>
+      <h3 className="feedback-title">Discord Community</h3>
+      <p className="feedback-desc">Join our official chat server to connect with fellow designers, developers, and the core team in real time.</p>
+    </div>
+  </div>
+</div>

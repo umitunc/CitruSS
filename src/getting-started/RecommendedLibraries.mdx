@@ -1,0 +1,87 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Recommended libraries" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-lib-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .citruss-lib-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 107, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .lib-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #ff6b00;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .lib-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+    margin: 0;
+  }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Recommended Libraries</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    Boost your productivity and elevate your app's interactions by pairing CitruSS UI with these modern web libraries.
+  </p>
+
+  <div className="citruss-lib-card">
+    <h3 className="lib-title">⭐ Material Symbols Rounded</h3>
+    <p className="lib-desc">
+      Our default icon system recommendation. It integrates seamlessly with our preconfigured <code>.citruss-icon</code> utility classes, delivering sharp, customizable, and expressive web icons.
+    </p>
+  </div>
+
+  <div className="citruss-lib-card">
+    <h3 className="lib-title">⭐ Lucide Icons</h3>
+    <p className="lib-desc">
+      A beautiful, clean, and highly customizable SVG outline icon library. Perfect if you prefer lightweight SVG icons over icon font packages.
+    </p>
+  </div>
+
+  <div className="citruss-lib-card">
+    <h3 className="lib-title">⭐ GSAP (GreenSock Animation Platform)</h3>
+    <p className="lib-desc">
+      Highly recommended for crafting bespoke micro-interactions, page state transitions, or premium mesh-gradient movements alongside CitruSS glass components.
+    </p>
+  </div>
+
+  <div className="citruss-lib-card">
+    <h3 className="lib-title">⭐ Chart.js / Recharts</h3>
+    <p className="lib-desc">
+      Create gorgeous analytics setups. Our semi-translucent glass panels are exceptionally stunning when holding colorful, responsive bar charts, line graphs, and donut charts.
+    </p>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Contribution Guidelines" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-step-list {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .step-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    background: linear-gradient(135deg, #ff6b00 0%, #ff8a00 100%);
+    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-title {
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    font-size: 1.1rem;
+  }
+
+  .step-desc {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Contribution Guidelines</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    We highly appreciate community contributions! Here is how you can help make CitruSS UI even more amazing:
+  </p>
+
+  <div className="citruss-step-list">
+    <div className="step-card">
+      <div className="step-num">1</div>
+      <div className="step-content">
+        <h3 className="step-title">Fork & Clone</h3>
+        <p className="step-desc">Fork the repository on GitHub, then clone your fork locally to begin making additions or fixes.</p>
+      </div>
+    </div>
+
+    <div className="step-card">
+      <div className="step-num">2</div>
+      <div className="step-content">
+        <h3 className="step-title">Create a branch</h3>
+        <p className="step-desc">Always work in a dedicated feature branch named descriptive of your changes (e.g. <code>feature/button-glow</code>).</p>
+      </div>
+    </div>
+
+    <div className="step-card">
+      <div className="step-num">3</div>
+      <div className="step-content">
+        <h3 className="step-title">Verify Code Quality</h3>
+        <p className="step-desc">Run Stylelint using <code>npm run lint:css</code> and ensure that your components look pristine in Storybook.</p>
+      </div>
+    </div>
+
+    <div className="step-card">
+      <div className="step-num">4</div>
+      <div className="step-content">
+        <h3 className="step-title">Submit Pull Request</h3>
+        <p className="step-desc">Push your branch and submit a detailed Pull Request. We will review and merge it promptly!</p>
+      </div>
+    </div>
+  </div>
+</div>

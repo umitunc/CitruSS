@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Using the Kit" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-code-card {
+    background: #060913;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  code {
+    font-family: 'Fira Code', 'Courier New', monospace !important;
+    font-size: 0.9rem !important;
+  }
+
+  .keyword { color: #f43f5e; }
+  .string { color: #10b981; }
+  .comment { color: #6b7280; font-style: italic; }
+  .function { color: #3b82f6; }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Using the Kit</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    Learn how to import the design system tokens, styles, and initialize our dynamic interactive components.
+  </p>
+
+  <h2>1. Importing SCSS/CSS</h2>
+  <p>To load the frosted glass styles and fruit-themed color palettes, import the entry stylesheet at the root of your application:</p>
+
+  <div className="citruss-code-card">
+    <pre>
+      <code>
+        <span className="comment">// Import pre-compiled CSS</span><br />
+        <span className="keyword">import</span> <span className="string">'citruss-ui/dist/citruss.css'</span>;<br /><br />
+        <span className="comment">// Or compile directly using SCSS sources</span><br />
+        <span className="keyword">@import</span> <span className="string">'citruss-ui/src/citruss.scss'</span>;
+      </code>
+    </pre>
+  </div>
+
+  <h2>2. Activating the JS Component Engine</h2>
+  <p>Some of CitruSS UI's premium components—such as Toasts, Modals, Drawers, and Carousels—feature dynamic transitions and client-side interactions. Initialize the JS engine globally:</p>
+
+  <div className="citruss-code-card">
+    <pre>
+      <code>
+        <span className="keyword">import</span> <span className="function">CitruSS</span> <span className="keyword">from</span> <span className="string">'citruss-ui'</span>;<br /><br />
+        <span className="comment">// Initialize all interactive components on the page</span><br />
+        <span className="function">CitruSS</span>.<span className="function">init</span>();
+      </code>
+    </pre>
+  </div>
+
+  <h2>3. Basic HTML Structure</h2>
+  <p>Wrap your cards or layouts with standard CitruSS utility classes to instantly apply frosted reflections:</p>
+
+  <div className="citruss-code-card">
+    <pre>
+      <code>
+        &lt;<span className="keyword">div</span> className=<span className="string">"citruss-card glass-premium"</span>&gt;<br />
+        &nbsp;&nbsp;&lt;<span className="keyword">h3</span>&gt;Glassmorphic Title&lt;/<span className="keyword">h3</span>&gt;<br />
+        &nbsp;&nbsp;&lt;<span className="keyword">p</span>&gt;Beautiful backdrop-filter effects are applied seamlessly.&lt;/<span className="keyword">p</span>&gt;<br />
+        &lt;/<span className="keyword">div</span>&gt;
+      </code>
+    </pre>
+  </div>
+</div>

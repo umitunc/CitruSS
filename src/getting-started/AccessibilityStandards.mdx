@@ -1,0 +1,98 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Accessibility standards" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-a11y-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .a11y-badge {
+    background: rgba(163, 230, 53, 0.15);
+    border: 1px solid rgba(163, 230, 53, 0.3);
+    color: #a3e635;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .a11y-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #ffffff;
+  }
+
+  .a11y-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.5;
+  }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Accessibility Standards</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    We believe the web should be usable by everyone. CitruSS UI components are built following high accessibility standards.
+  </p>
+
+  <div className="citruss-a11y-card">
+    <div>
+      <span className="a11y-badge">WCAG 2.1 AA</span>
+    </div>
+    <div>
+      <h3 className="a11y-title">Color contrast & readability</h3>
+      <p className="a11y-desc">
+        We carefully design our text layers, card surfaces, and gradients to guarantee readable text-to-background contrast configurations.
+      </p>
+    </div>
+  </div>
+
+  <div className="citruss-a11y-card">
+    <div>
+      <span className="a11y-badge">ARIA Roles</span>
+    </div>
+    <div>
+      <h3 className="a11y-title">Semantic markup & screen readers</h3>
+      <p className="a11y-desc">
+        Our interactive components (Drawers, Modals, Accordions, Tabs) are configured with appropriate keyboard handling and ARIA attributes.
+      </p>
+    </div>
+  </div>
+
+  <div className="citruss-a11y-card">
+    <div>
+      <span className="a11y-badge">Focus Indicators</span>
+    </div>
+    <div>
+      <h3 className="a11y-title">Interactive keyboard controls</h3>
+      <p className="a11y-desc">
+        We implement vibrant, high-visibility focus states on inputs, buttons, and custom selector controls for keyboard-only visitors.
+      </p>
+    </div>
+  </div>
+</div>

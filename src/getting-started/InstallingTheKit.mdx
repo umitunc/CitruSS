@@ -1,0 +1,135 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Installing the Kit" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-terminal-card {
+    background: #060913;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .citruss-terminal-hdr {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 10px;
+  }
+
+  .citruss-term-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .term-red { background: #ef4444; }
+  .term-yellow { background: #f59e0b; }
+  .term-green { background: #10b981; }
+
+  .citruss-terminal-title {
+    margin-left: 8px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  pre {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  code {
+    font-family: 'Fira Code', 'Courier New', monospace !important;
+    color: #a3e635 !important;
+    font-size: 0.95rem !important;
+  }
+
+  .code-cmd {
+    color: #ff6b00 !important;
+  }
+
+  .code-pkg {
+    color: #ffffff !important;
+  }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Installing the Kit</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    Get up and running with CitruSS UI in seconds. We support multiple installation vectors to suit any project setup.
+  </p>
+
+  <h2>1. Package Manager (Recommended)</h2>
+  <p>Install the CitruSS package to import components into your build pipelines (Webpack, Vite, Rollup, etc.).</p>
+
+  <div className="citruss-terminal-card">
+    <div className="citruss-terminal-hdr">
+      <div className="citruss-term-dot term-red"></div>
+      <div className="citruss-term-dot term-yellow"></div>
+      <div className="citruss-term-dot term-green"></div>
+      <span className="citruss-terminal-title">bash</span>
+    </div>
+    <pre>
+      <code>
+        <span className="code-cmd">npm</span> install <span className="code-pkg">citruss-ui</span>
+      </code>
+    </pre>
+  </div>
+
+  <p>Alternatively, if you use Yarn or PNPM:</p>
+
+  <div className="citruss-terminal-card">
+    <div className="citruss-terminal-hdr">
+      <div className="citruss-term-dot term-red"></div>
+      <div className="citruss-term-dot term-yellow"></div>
+      <div className="citruss-term-dot term-green"></div>
+      <span className="citruss-terminal-title">bash</span>
+    </div>
+    <pre>
+      <code>
+        <span className="code-cmd">yarn</span> add <span className="code-pkg">citruss-ui</span><br />
+        <span className="code-comment"># OR</span><br />
+        <span className="code-cmd">pnpm</span> add <span className="code-pkg">citruss-ui</span>
+      </code>
+    </pre>
+  </div>
+
+  <h2>2. Direct Integration & CDN</h2>
+  <p>For quick prototypes or lightweight server-rendered setups, include the compiled distribution assets directly in your HTML header:</p>
+
+  <div className="citruss-terminal-card">
+    <div className="citruss-terminal-hdr">
+      <div className="citruss-term-dot term-red"></div>
+      <div className="citruss-term-dot term-yellow"></div>
+      <div className="citruss-term-dot term-green"></div>
+      <span className="citruss-terminal-title">index.html</span>
+    </div>
+    <pre>
+      <code>
+        &lt;<span className="code-cmd">link</span> rel="stylesheet" href="https://cdn.jsdelivr.net/npm/citruss-ui/dist/citruss.css" /&gt;<br />
+        &lt;<span className="code-cmd">script</span> src="https://cdn.jsdelivr.net/npm/citruss-ui/dist/citruss.js"&gt;&lt;/<span className="code-cmd">script</span>&gt;
+      </code>
+    </pre>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Credits" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-credits-list {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .credit-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .credit-title {
+    font-weight: 700;
+    color: #ff6b00;
+  }
+
+  .credit-desc {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+  }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Credits</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    CitruSS UI is built upon outstanding open-source tools, specifications, and layout engines. We would like to recognize and credit their developers:
+  </p>
+
+  <div className="citruss-credits-list">
+    <div className="credit-item">
+      <span className="credit-title">Storybook</span>
+      <span className="credit-desc">Outstanding UI component isolation workshop and documentation engine.</span>
+    </div>
+
+    <div className="credit-item">
+      <span className="credit-title">Vite</span>
+      <span className="credit-desc">Ultra-fast frontend build tooling and local dev server setup.</span>
+    </div>
+
+    <div className="credit-item">
+      <span className="credit-title">Sass (SCSS)</span>
+      <span className="credit-desc">Robust CSS preprocessor enabling our structured nesting and theme tokens.</span>
+    </div>
+
+    <div className="credit-item">
+      <span className="credit-title">Google Fonts (Outfit & Material Symbols)</span>
+      <span className="credit-desc">Gorgeous typography and comprehensive, rounded visual assets.</span>
+    </div>
+  </div>
+</div>

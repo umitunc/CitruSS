@@ -1,0 +1,106 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Design resources" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 40px !important;
+    background-color: #0b0f19 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(255, 107, 0, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(163, 230, 53, 0.15) 0px, transparent 50%) !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-resource-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .citruss-resource-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 107, 0, 0.3);
+  }
+
+  .resource-info {
+    flex: 1;
+  }
+
+  .resource-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #ffffff;
+  }
+
+  .resource-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .resource-btn {
+    background: linear-gradient(135deg, #ff6b00 0%, #ff8a00 100%);
+    color: #ffffff !important;
+    text-decoration: none !important;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+
+  .resource-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35);
+  }
+`}</style>
+
+<div className="citruss-doc-container">
+  <h1>Design Resources</h1>
+  <p style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px' }}>
+    Access design source files, palette libraries, and styling tokens to accelerate your layout designs and prototypes.
+  </p>
+
+  <div className="citruss-resource-card">
+    <div className="resource-info">
+      <h3 className="resource-title">Figma UI Kit & Component Library</h3>
+      <p className="resource-desc">Duplicate the comprehensive Figma file containing all frosted glass layers, cards, inputs, buttons, and layouts.</p>
+    </div>
+    <a href="#" className="resource-btn">Get Figma File</a>
+  </div>
+
+  <div className="citruss-resource-card">
+    <div className="resource-info">
+      <h3 className="resource-title">CitruSS Style Tokens (JSON / SCSS)</h3>
+      <p className="resource-desc">Raw design token definitions including HSL color coordinates, border radii sizes, and backdrop blur variables.</p>
+    </div>
+    <a href="#" className="resource-btn">Explore Tokens</a>
+  </div>
+
+  <div className="citruss-resource-card">
+    <div className="resource-info">
+      <h3 className="resource-title">Mesh Gradient Vector Pack</h3>
+      <p className="resource-desc">A collection of custom vector assets and radial CSS settings configured for dark mode and soft pastel themes.</p>
+    </div>
+    <a href="#" className="resource-btn">Download Asset Pack</a>
+  </div>
+</div>
