@@ -1109,31 +1109,11 @@ export const TabbedSettings = () => {
   useEffect(() => {
     initDashboardInteractions();
 
-    // Tab Navigation switching script
-    const tabs = document.querySelectorAll('.settings-tab-btn');
-    const sections = document.querySelectorAll('.settings-tab-section');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = tab.getAttribute('data-tab-target');
-
-        tabs.forEach(t => t.classList.remove('active'));
-        sections.forEach(s => s.style.display = 'none');
-
-        tab.classList.add('active');
-        const activeSection = document.getElementById(targetId);
-        if (activeSection) {
-          activeSection.style.display = 'block';
-        }
-
-        window.CitruSS.toast({
-          title: 'Section Switched',
-          message: `Switched settings category to ${tab.textContent.trim()}`,
-          type: 'info'
-        });
-      });
-    });
+    // Initialize standard CitruSS Tabs
+    const tabsWrapper = document.getElementById('settings-tabs-nav');
+    if (tabsWrapper && window.CitruSS?.Tabs) {
+      new window.CitruSS.Tabs(tabsWrapper);
+    }
   }, []);
 
   return `
@@ -1144,99 +1124,102 @@ export const TabbedSettings = () => {
         ${getNavbarHTML('Tabbed Config Center')}
 
         <div class="citruss-dashboard-content">
-          <div class="citruss-row">
+          <div class="citruss-tabs-container">
             
-            <div class="citruss-col-12">
-              <div class="citruss-card" style="padding: 0; overflow: hidden; margin-bottom: 24px;">
-                <div class="citruss-tabs-nav" style="display: flex; gap: 4px; border-bottom: 1px solid var(--citruss-glass-border); padding: 8px 16px; background: rgba(0,0,0,0.15);">
-                  <button class="citruss-btn btn-sm settings-tab-btn active" data-tab-target="tab-account" style="background: transparent; border: none; font-weight:700;">
-                    <span class="citruss-icon icon-sm icon-rounded" style="margin-right: 6px;">person</span> Account Details
-                  </button>
-                  <button class="citruss-btn btn-sm settings-tab-btn" data-tab-target="tab-security" style="background: transparent; border: none; font-weight:700;">
-                    <span class="citruss-icon icon-sm icon-rounded" style="margin-right: 6px;">lock</span> Security Guard
-                  </button>
-                  <button class="citruss-btn btn-sm settings-tab-btn" data-tab-target="tab-integrations" style="background: transparent; border: none; font-weight:700;">
-                    <span class="citruss-icon icon-sm icon-rounded" style="margin-right: 6px;">api</span> Integrations & Tokens
-                  </button>
-                </div>
-              </div>
+            <!-- Standard CitruSS Tab Navigation Buttons -->
+            <div class="citruss-tabs-wrapper" id="settings-tabs-nav" style="margin-bottom: 24px;">
+              <button class="citruss-tab-link active" data-target="#tab-account" style="display: flex; align-items: center; gap: 8px;">
+                <span class="citruss-icon" style="font-size: 18px;">person</span>
+                <span>Account Details</span>
+              </button>
+              <button class="citruss-tab-link" data-target="#tab-security" style="display: flex; align-items: center; gap: 8px;">
+                <span class="citruss-icon" style="font-size: 18px;">lock</span>
+                <span>Security Guard</span>
+              </button>
+              <button class="citruss-tab-link" data-target="#tab-integrations" style="display: flex; align-items: center; gap: 8px;">
+                <span class="citruss-icon" style="font-size: 18px;">api</span>
+                <span>Integrations & Tokens</span>
+              </button>
             </div>
 
-            <!-- Tab 1: Account -->
-            <div class="citruss-col-12 settings-tab-section" id="tab-account" style="display: block;">
-              <div class="citruss-card" style="padding: 24px;">
-                <div class="card-content">
-                  <h3 style="font-weight:800; font-size:1.2rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
-                    <span class="citruss-icon icon-orange">manage_accounts</span> Public Profile
-                  </h3>
-                  <div class="citruss-row">
-                    <div class="citruss-col-12 citruss-col-md-6 citruss-mb-md">
-                      <div class="citruss-input-wrapper">
-                        <label class="citruss-label">Display Name</label>
-                        <input type="text" class="citruss-input" value="Ecem Tuncgil">
+            <!-- Standard CitruSS Tab Content Panes -->
+            <div style="padding-top: 8px;">
+              <!-- Tab 1: Account -->
+              <div class="citruss-tab-pane active" id="tab-account">
+                <div class="citruss-card" style="padding: 24px;">
+                  <div class="card-content">
+                    <h3 style="font-weight:800; font-size:1.2rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+                      <span class="citruss-icon icon-orange">manage_accounts</span> Public Profile
+                    </h3>
+                    <div class="citruss-row">
+                      <div class="citruss-col-12 citruss-col-md-6 citruss-mb-md">
+                        <div class="citruss-input-wrapper">
+                          <label class="citruss-label">Display Name</label>
+                          <input type="text" class="citruss-input" value="Ecem Tuncgil">
+                        </div>
+                      </div>
+                      <div class="citruss-col-12 citruss-col-md-6 citruss-mb-md">
+                        <div class="citruss-input-wrapper">
+                          <label class="citruss-label">Developer Role</label>
+                          <input type="text" class="citruss-input" value="Principal Glassmorphic Architect">
+                        </div>
                       </div>
                     </div>
-                    <div class="citruss-col-12 citruss-col-md-6 citruss-mb-md">
-                      <div class="citruss-input-wrapper">
-                        <label class="citruss-label">Developer Role</label>
-                        <input type="text" class="citruss-input" value="Principal Glassmorphic Architect">
-                      </div>
+                    <div class="citruss-input-wrapper citruss-mb-lg">
+                      <label class="citruss-label">Bio Details</label>
+                      <textarea class="citruss-input" style="min-height: 80px; resize: vertical;">Building zero-dependency fluid glass UI systems for web and electron desktop applications.</textarea>
                     </div>
+                    <button class="citruss-btn btn-primary btn-sm">Save Profile</button>
                   </div>
-                  <div class="citruss-input-wrapper citruss-mb-lg">
-                    <label class="citruss-label">Bio Details</label>
-                    <textarea class="citruss-input" style="min-height: 80px; resize: vertical;">Building zero-dependency fluid glass UI systems for web and electron desktop applications.</textarea>
-                  </div>
-                  <button class="citruss-btn btn-primary btn-sm">Save Profile</button>
                 </div>
               </div>
-            </div>
 
-            <!-- Tab 2: Security -->
-            <div class="citruss-col-12 settings-tab-section" id="tab-security" style="display: none;">
-              <div class="citruss-card" style="padding: 24px;">
-                <div class="card-content">
-                  <h3 style="font-weight:800; font-size:1.2rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
-                    <span class="citruss-icon icon-orange">lock</span> Credential Upgrades
-                  </h3>
-                  <div class="citruss-input-wrapper citruss-mb-md">
-                    <label class="citruss-label">Current Authentication Key</label>
-                    <input type="password" class="citruss-input" value="********">
+              <!-- Tab 2: Security -->
+              <div class="citruss-tab-pane" id="tab-security">
+                <div class="citruss-card" style="padding: 24px;">
+                  <div class="card-content">
+                    <h3 style="font-weight:800; font-size:1.2rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+                      <span class="citruss-icon icon-orange">lock</span> Credential Upgrades
+                    </h3>
+                    <div class="citruss-input-wrapper citruss-mb-md">
+                      <label class="citruss-label">Current Authentication Key</label>
+                      <input type="password" class="citruss-input" value="********">
+                    </div>
+                    <div class="citruss-input-wrapper citruss-mb-lg">
+                      <label class="citruss-label">New Password Generation</label>
+                      <input type="password" class="citruss-input" placeholder="Type secure passphrase...">
+                    </div>
+                    <button class="citruss-btn btn-primary btn-sm">Update Password</button>
                   </div>
-                  <div class="citruss-input-wrapper citruss-mb-lg">
-                    <label class="citruss-label">New Password Generation</label>
-                    <input type="password" class="citruss-input" placeholder="Type secure passphrase...">
-                  </div>
-                  <button class="citruss-btn btn-primary btn-sm">Update Password</button>
                 </div>
               </div>
-            </div>
 
-            <!-- Tab 3: Integrations -->
-            <div class="citruss-col-12 settings-tab-section" id="tab-integrations" style="display: none;">
-              <div class="citruss-card" style="padding: 24px;">
-                <div class="card-content">
-                  <h3 style="font-weight:800; font-size:1.2rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
-                    <span class="citruss-icon icon-orange">api</span> API Gateway Configurations
-                  </h3>
-                  <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; border:1px solid var(--citruss-glass-border);">
-                      <div>
-                        <div style="font-weight:700;">GitHub Gateway Connection</div>
-                        <div style="font-size:0.8rem; color:var(--citruss-text-muted);">Deploy directly to staging pages repository</div>
+              <!-- Tab 3: Integrations -->
+              <div class="citruss-tab-pane" id="tab-integrations">
+                <div class="citruss-card" style="padding: 24px;">
+                  <div class="card-content">
+                    <h3 style="font-weight:800; font-size:1.2rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+                      <span class="citruss-icon icon-orange">api</span> API Gateway Configurations
+                    </h3>
+                    <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:24px;">
+                      <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; border:1px solid var(--citruss-glass-border);">
+                        <div>
+                          <div style="font-weight:700;">GitHub Gateway Connection</div>
+                          <div style="font-size:0.8rem; color:var(--citruss-text-muted);">Deploy directly to staging pages repository</div>
+                        </div>
+                        <span class="citruss-badge badge-success">Active</span>
                       </div>
-                      <span class="citruss-badge badge-success">Active</span>
-                    </div>
 
-                    <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; border:1px solid var(--citruss-glass-border);">
-                      <div>
-                        <div style="font-weight:700;">NPM Package Auto-Sync</div>
-                        <div style="font-size:0.8rem; color:var(--citruss-text-muted);">Sync tags upon new releases bundles</div>
+                      <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:rgba(255,255,255,0.02); border-radius:8px; border:1px solid var(--citruss-glass-border);">
+                        <div>
+                          <div style="font-weight:700;">NPM Package Auto-Sync</div>
+                          <div style="font-size:0.8rem; color:var(--citruss-text-muted);">Sync tags upon new releases bundles</div>
+                        </div>
+                        <span class="citruss-badge badge-danger">Not Hooked</span>
                       </div>
-                      <span class="citruss-badge badge-danger">Not Hooked</span>
                     </div>
+                    <button class="citruss-btn btn-primary btn-sm">Add Connection</button>
                   </div>
-                  <button class="citruss-btn btn-primary btn-sm">Add Connection</button>
                 </div>
               </div>
             </div>
