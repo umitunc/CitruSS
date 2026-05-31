@@ -1,0 +1,217 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+/* Base Icon Class */
+.citruss-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 1;
+  user-select: none;
+  font-family: 'Material Symbols Outlined', 'Material Symbols Rounded', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* default */
+  width: 1em;
+  height: 1em;
+  @include transition-all(0.3s);
+
+  /* Force rounded if explicitly chosen */
+  &.icon-rounded {
+    font-family: 'Material Symbols Rounded', sans-serif;
+  }
+}
+
+/* Sizing Utilities */
+.citruss-icon {
+  &.icon-sm {
+    font-size: 16px;
+  }
+  &.icon-md {
+    font-size: 24px;
+  }
+  &.icon-lg {
+    font-size: 32px;
+  }
+  &.icon-xl {
+    font-size: 48px;
+  }
+}
+
+/* Color & Gradient Utilities */
+.citruss-icon {
+  &.icon-orange {
+    color: var(--citruss-orange);
+  }
+  &.icon-lime {
+    color: var(--citruss-lime);
+  }
+  &.icon-lemon {
+    color: var(--citruss-lemon);
+  }
+  &.icon-danger {
+    color: var(--citruss-danger);
+  }
+  &.icon-info {
+    color: var(--citruss-info);
+  }
+
+  /* Premium Gradients */
+  &.icon-gradient-orange {
+    background: linear-gradient(135deg, var(--citruss-orange), var(--citruss-tangerine));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &.icon-gradient-lime {
+    background: linear-gradient(135deg, var(--citruss-lime), #00b894);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  &.icon-gradient-lemon {
+    background: linear-gradient(135deg, var(--citruss-lemon), #eccc68);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Glassmorphic Icon Badge (Bubble container) */
+.citruss-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  background: var(--citruss-glass-bg);
+  backdrop-filter: blur(12px) saturate(var(--citruss-glass-saturate));
+  border: 1px solid var(--citruss-glass-border);
+  box-shadow: 
+    inset 0 1px 0 0 var(--citruss-glass-highlight),
+    0 8px 24px 0 rgba(0, 0, 0, 0.15);
+  @include transition-all(0.35s);
+
+  &.badge-sm {
+    width: 36px;
+    height: 36px;
+    .citruss-icon { font-size: 18px; }
+  }
+
+  &.badge-lg {
+    width: 64px;
+    height: 64px;
+    .citruss-icon { font-size: 32px; }
+  }
+
+  &.badge-xl {
+    width: 80px;
+    height: 80px;
+    .citruss-icon { font-size: 40px; }
+  }
+
+  /* Variations with specific neon halos */
+  &.badge-orange {
+    background: rgba(255, 107, 0, 0.1);
+    border-color: rgba(255, 107, 0, 0.35);
+    box-shadow: 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      0 8px 24px 0 rgba(255, 107, 0, 0.15);
+    
+    .citruss-icon {
+      color: var(--citruss-tangerine);
+    }
+
+    &:hover {
+      background: rgba(255, 107, 0, 0.18);
+      border-color: rgba(255, 107, 0, 0.5);
+      @include hover-glow(var(--citruss-orange), 0.25);
+    }
+  }
+
+  &.badge-lime {
+    background: rgba(29, 209, 161, 0.1);
+    border-color: rgba(29, 209, 161, 0.35);
+    box-shadow: 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      0 8px 24px 0 rgba(29, 209, 161, 0.15);
+
+    .citruss-icon {
+      color: var(--citruss-lime);
+    }
+
+    &:hover {
+      background: rgba(29, 209, 161, 0.18);
+      border-color: rgba(29, 209, 161, 0.5);
+      @include hover-glow(var(--citruss-lime), 0.25);
+    }
+  }
+
+  &.badge-lemon {
+    background: rgba(254, 202, 87, 0.1);
+    border-color: rgba(254, 202, 87, 0.35);
+    box-shadow: 
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+      0 8px 24px 0 rgba(254, 202, 87, 0.15);
+
+    .citruss-icon {
+      color: var(--citruss-lemon);
+    }
+
+    &:hover {
+      background: rgba(254, 202, 87, 0.18);
+      border-color: rgba(254, 202, 87, 0.5);
+      @include hover-glow(var(--citruss-lemon), 0.25);
+    }
+  }
+
+  /* Interaction Hover zoom */
+  &:hover {
+    transform: scale(1.08) translateY(-2px);
+    border-color: var(--citruss-glass-border-hover);
+    background: var(--citruss-glass-bg-hover);
+  }
+}
+
+/* Micro-Animations */
+.icon-spin {
+  animation: citruss-spin 2s linear infinite;
+}
+
+.icon-pulse {
+  animation: citruss-pulse 2s ease-in-out infinite;
+}
+
+.icon-float {
+  animation: citruss-float 3s ease-in-out infinite;
+}
+
+/* Keyframes */
+@keyframes citruss-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes citruss-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+@keyframes citruss-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}

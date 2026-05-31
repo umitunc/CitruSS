@@ -116,6 +116,41 @@
     font-size: 1rem;
     border-radius: var(--citruss-radius-lg);
   }
+
+  /* Icon-Only Buttons */
+  &.btn-icon {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    flex-shrink: 0;
+    
+    &.btn-sm {
+      width: 34px;
+      height: 34px;
+    }
+    
+    &.btn-lg {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  /* Fully Circular Button */
+  &.btn-circle {
+    border-radius: 50% !important;
+  }
+
+  /* Micro-interactions for icons inside buttons on hover */
+  .citruss-icon {
+    font-size: 1.15em;
+    @include transition-all(0.25s var(--citruss-spring-bezier));
+  }
+
+  &:hover {
+    .citruss-icon {
+      transform: scale(1.15);
+    }
+  }
 }
 
 /* Button Group */
@@ -158,4 +193,8 @@
   height: 56px;
   border-radius: 50% !important;
   box-shadow: 0 10px 30px rgb(0 0 0 / 40%) !important;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }

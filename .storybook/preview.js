@@ -1,10 +1,10 @@
 import '../src/citruss.scss';
 import '../src/js/index.js';
 
-// Load Outfit font from Google Fonts dynamically in storybook
+// Load Outfit and Material Symbols from Google Fonts dynamically in storybook
 const fontLink = document.createElement('link');
 fontLink.rel = 'stylesheet';
-fontLink.href = 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap';
+fontLink.href = 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap';
 document.head.appendChild(fontLink);
 
 // Load PrismJS theme (Tomorrow Night) and add dynamic highlight loop

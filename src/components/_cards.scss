@@ -79,4 +79,60 @@
       color: var(--citruss-danger);
     }
   }
+
+  /* Absolute Positioned Top-Right Icon */
+  .card-top-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    color: var(--citruss-text-muted);
+    opacity: 0.5;
+    font-size: 28px;
+    z-index: 2;
+    @include transition-all(0.35s var(--citruss-spring-bezier));
+  }
+
+  /* Card Header with Icon Badge */
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--citruss-text-main);
+    }
+  }
+
+  /* Card Actions at bottom */
+  .card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--citruss-glass-border);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Hover micro-interactions */
+  &:hover {
+    .card-top-icon {
+      opacity: 0.95;
+      transform: scale(1.2) rotate(8deg);
+      color: var(--citruss-tangerine);
+    }
+    
+    &.card-lime:hover {
+      .card-top-icon {
+        color: var(--citruss-lime);
+      }
+    }
+  }
 }
