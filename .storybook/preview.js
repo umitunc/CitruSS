@@ -38,16 +38,75 @@ if (typeof window !== 'undefined') {
       background: transparent !important;
     }
     
-    .citruss-code-wrapper pre,
-    .citruss-getstarted-container pre {
-      background: rgba(10, 15, 30, 0.7) !important;
-      backdrop-filter: blur(12px);
+    .citruss-code-wrapper {
       border: 1px solid var(--citruss-glass-border) !important;
       border-radius: 12px !important;
-      box-shadow: inset 0 0 20px rgba(255, 107, 0, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+      background: rgba(9, 13, 26, 0.45) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      overflow: hidden !important;
+      margin-top: 32px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    }
+    
+    [data-theme="light"] .citruss-code-wrapper {
+      background: rgba(255, 255, 255, 0.35) !important;
+      border: 1px solid rgba(15, 23, 42, 0.12) !important;
+    }
+
+    .citruss-code-wrapper summary {
+      padding: 12px 18px !important;
+      cursor: pointer !important;
+      color: var(--citruss-orange) !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      user-select: none !important;
+      outline: none !important;
+      background: rgba(255, 255, 255, 0.02) !important;
+      transition: background 0.2s !important;
+    }
+
+    [data-theme="light"] .citruss-code-wrapper summary {
+      color: #e25c00 !important; /* Higher contrast orange for light backgrounds */
+      background: rgba(15, 23, 42, 0.02) !important;
+    }
+
+    .citruss-code-wrapper summary:hover {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    [data-theme="light"] .citruss-code-wrapper summary:hover {
+      background: rgba(15, 23, 42, 0.04) !important;
+    }
+
+    /* Inside wrapper holder container containing pre */
+    .citruss-code-wrapper > div {
+      padding: 0 !important;
+      border-top: 1px solid var(--citruss-glass-border) !important;
+      background: #090d16 !important; /* ALWAYS SOLID DARK FOR CONTRAST LEGIBILITY */
+    }
+
+    [data-theme="light"] .citruss-code-wrapper > div {
+      border-top: 1px solid rgba(15, 23, 42, 0.12) !important;
+    }
+
+    .citruss-code-wrapper pre,
+    .citruss-getstarted-container pre {
+      background: #090d16 !important;
+      backdrop-filter: blur(12px);
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: inset 0 0 20px rgba(255, 107, 0, 0.02) !important;
       padding: 18px !important;
       position: relative;
       overflow: hidden;
+      margin: 0 !important;
+    }
+    
+    .citruss-getstarted-container pre {
+      border: 1px solid var(--citruss-glass-border) !important;
+      border-radius: 12px !important;
+      box-shadow: inset 0 0 20px rgba(255, 107, 0, 0.05), 0 8px 32px rgba(0, 0, 0, 0.3) !important;
     }
     
     /* Neon glow top accent border */

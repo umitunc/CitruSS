@@ -78,6 +78,11 @@
   /* Typography & Text (Light) */
   --citruss-text-main: #0f172a;
   --citruss-text-muted: #627288;
+  
+  /* High contrast colors for light mode readability */
+  --citruss-lime: #0f766e;
+  --citruss-success: #0f766e;
+  --citruss-danger: #c2292b;
 }
 
 /* Trigger Light Mode explicitly via DOM Attribute */
