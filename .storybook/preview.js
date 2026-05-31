@@ -392,7 +392,21 @@ const preview = {
   decorators: [
     (story, context) => {
       const bg = context.globals.backgrounds;
-      const theme = bg?.value === '#f4f6fa' ? 'light' : 'dark';
+      
+      // Determine theme based on saved background if it exists, otherwise fall back to storybook backgrounds global
+      let theme = 'dark';
+      if (typeof window !== 'undefined') {
+        const savedBg = window.localStorage.getItem('citruss-storybook-bg');
+        if (savedBg) {
+          const isLightBg = savedBg === 'solid-light' || savedBg === 'mesh-amber' || savedBg.includes('light');
+          theme = isLightBg ? 'light' : 'dark';
+        } else {
+          theme = bg?.value === '#f4f6fa' ? 'light' : 'dark';
+        }
+      } else {
+        theme = bg?.value === '#f4f6fa' ? 'light' : 'dark';
+      }
+      
       document.documentElement.setAttribute('data-theme', theme);
       
       // Sync theme with parent window so that Docs view and Storybook manager shells change themes together
@@ -408,7 +422,16 @@ const preview = {
 
   initialGlobals: {
     backgrounds: {
-      value: 'dark'
+      get value() {
+        if (typeof window !== 'undefined') {
+          const savedBg = window.localStorage.getItem('citruss-storybook-bg');
+          if (savedBg) {
+            const isLightBg = savedBg === 'solid-light' || savedBg === 'mesh-amber' || savedBg.includes('light');
+            return isLightBg ? 'light' : 'dark';
+          }
+        }
+        return 'dark';
+      }
     }
   }
 };

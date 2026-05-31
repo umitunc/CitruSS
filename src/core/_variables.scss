@@ -57,32 +57,31 @@
   --citruss-spacing-xl: 32px;
 }
 
-/* === LIGHT MODE ALTERNATIVE === */
 @mixin light-theme-properties {
-  --citruss-bg-main: #f0f2f8;
+  --citruss-bg-main: #f4f6fa;
   --citruss-bg-surface: rgba(255, 255, 255, 0.45);
   
-  /* Liquid Glass Configuration (Light) */
-  --citruss-glass-bg: rgba(15, 23, 42, 0.03);
-  --citruss-glass-bg-hover: rgba(15, 23, 42, 0.06);
-  --citruss-glass-border: rgba(15, 23, 42, 0.09);
-  --citruss-glass-border-hover: rgba(15, 23, 42, 0.18);
-  --citruss-glass-blur: 20px;
-  --citruss-glass-saturate: 160%;
-  --citruss-glass-contrast: 95%;
+  /* Liquid Glass Configuration (Light) - Premium White Frosted Glass */
+  --citruss-glass-bg: rgba(255, 255, 255, 0.45);
+  --citruss-glass-bg-hover: rgba(255, 255, 255, 0.6);
+  --citruss-glass-border: rgba(255, 255, 255, 0.45);
+  --citruss-glass-border-hover: rgba(255, 255, 255, 0.65);
+  --citruss-glass-blur: 24px;
+  --citruss-glass-saturate: 180%;
+  --citruss-glass-contrast: 100%;
   --citruss-glass-shadow: rgba(15, 23, 42, 0.08);
-  --citruss-glass-glow: 0 0 25px 0 rgba(15, 23, 42, 0.02);
-  --citruss-glass-highlight: rgba(255, 255, 255, 0.65);
-  --citruss-glass-highlight-hover: rgba(255, 255, 255, 0.85);
+  --citruss-glass-glow: 0 0 25px 0 rgba(255, 255, 255, 0.25);
+  --citruss-glass-highlight: rgba(255, 255, 255, 0.85);
+  --citruss-glass-highlight-hover: rgba(255, 255, 255, 0.95);
   
   /* Typography & Text (Light) */
   --citruss-text-main: #0f172a;
-  --citruss-text-muted: #627288;
+  --citruss-text-muted: #475569;
   
   /* High contrast colors for light mode readability */
-  --citruss-lime: #0f766e;
-  --citruss-success: #0f766e;
-  --citruss-danger: #c2292b;
+  --citruss-lime: #0d9488;
+  --citruss-success: #0d9488;
+  --citruss-danger: #e11d48;
 }
 
 /* Trigger Light Mode explicitly via DOM Attribute */

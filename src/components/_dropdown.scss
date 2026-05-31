@@ -39,6 +39,10 @@
       border: 1px solid var(--citruss-glass-border);
       border-radius: 4px;
       
+      [data-theme="light"] & {
+        background: rgba(255, 107, 0, 0.08);
+      }
+      
       .remove-btn {
         font-weight: 700;
         color: var(--citruss-text-muted);
@@ -71,6 +75,11 @@
 
     @include transition-all(0.25s);
     
+    [data-theme="light"] & {
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.12);
+    }
+    
     &.active {
       visibility: visible;
       opacity: 1;
@@ -90,10 +99,18 @@
         border: 1px solid var(--citruss-glass-border);
         border-radius: 4px;
         
+        [data-theme="light"] & {
+          background: rgba(15, 23, 42, 0.02);
+        }
+        
         &:focus {
           background: rgb(255 255 255 / 4%);
           border-color: var(--citruss-tangerine);
           outline: none;
+          
+          [data-theme="light"] & {
+            background: rgba(15, 23, 42, 0.04);
+          }
         }
       }
     }
@@ -117,12 +134,20 @@
       &:hover, &.highlighted {
         color: var(--citruss-tangerine);
         background: rgb(255 255 255 / 4%);
+        
+        [data-theme="light"] & {
+          background: rgba(15, 23, 42, 0.04);
+        }
       }
       
       &.selected {
         font-weight: 700;
         color: var(--citruss-tangerine);
         background: rgb(255 159 67 / 10%);
+        
+        [data-theme="light"] & {
+          background: rgba(255, 107, 0, 0.08);
+        }
         
         &::after {
           font-size: 0.8rem;
