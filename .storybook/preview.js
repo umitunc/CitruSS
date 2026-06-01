@@ -408,6 +408,26 @@ if (typeof window !== 'undefined') {
     }
   };
 
+  // Sync background selector when theme is toggled via CitruSSThemeToggle
+  document.addEventListener('citruss-theme-change', (e) => {
+    const theme = e.detail.theme;
+    const selectEl = document.getElementById('citruss-global-bg-select');
+    if (selectEl) {
+      const currentBg = selectEl.value;
+      const isCurrentBgLight = currentBg === 'solid-light' || currentBg === 'mesh-amber' || currentBg.includes('light') || currentBg.includes('pastel');
+      
+      if (theme === 'light' && !isCurrentBgLight) {
+        selectEl.value = 'img-minimalist-pastel';
+        localStorage.setItem('citruss-storybook-bg', 'img-minimalist-pastel');
+        applyBackground('img-minimalist-pastel');
+      } else if (theme === 'dark' && isCurrentBgLight) {
+        selectEl.value = 'img-dark-neon-mesh';
+        localStorage.setItem('citruss-storybook-bg', 'img-dark-neon-mesh');
+        applyBackground('img-dark-neon-mesh');
+      }
+    }
+  });
+
   // Run on load and periodically in case Storybook reinstantiates the body/shell
   if (document.readyState === 'complete') {
     injectBgSelector();
