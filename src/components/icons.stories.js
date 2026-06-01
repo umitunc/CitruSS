@@ -230,7 +230,7 @@ export const IconGallery = () => {
       -webkit-backdrop-filter: blur(14px) saturate(180%);
       border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 16px;
-      padding: 20px 12px;
+      padding: 16px 12px;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -238,9 +238,8 @@ export const IconGallery = () => {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 12px;
       user-select: none;
-      min-height: 120px;
+      min-height: 80px;
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
     }
     .gallery-icon-card:hover {
@@ -373,7 +372,7 @@ export const IconGallery = () => {
       </div>
 
       <!-- Grid of Icons -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 16px; margin-bottom: 32px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 16px; margin-bottom: 32px;">
         ${visibleIcons.map(icon => {
           // generate HTML for icon markup dynamically
           const sizeClass = selectedSize !== 'md' ? `icon-${selectedSize}` : '';
@@ -389,11 +388,10 @@ export const IconGallery = () => {
           }
 
           return `
-            <div class="gallery-icon-card" data-icon-name="${icon}" data-html-copy="${iconHTML.replace(/"/g, '&quot;')}">
+            <div class="gallery-icon-card" data-citruss-tooltip="${icon}" data-citruss-tooltip-pos="top" data-icon-name="${icon}" data-html-copy="${iconHTML.replace(/"/g, '&quot;')}">
               <div style="flex: 1; display: flex; align-items: center; justify-content: center; min-height: 50px;">
                 ${iconHTML}
               </div>
-              <div class="gallery-icon-name" title="${icon}">${icon}</div>
             </div>
           `;
         }).join('')}
