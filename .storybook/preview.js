@@ -225,6 +225,47 @@ if (typeof window !== 'undefined') {
       background: #ffffff !important;
       color: #0f172a !important;
     }
+
+    /* Theme-aware modal code styling */
+    .citruss-code-modal {
+      background: #090d16 !important;
+      border: 1px solid var(--citruss-glass-border) !important;
+    }
+    .citruss-code-modal pre {
+      background: #090d16 !important;
+    }
+    .citruss-code-modal code {
+      color: #e2e8f0 !important;
+    }
+
+    [data-theme="light"] .citruss-code-modal {
+      background: #f8fafc !important;
+      border: 1px solid rgba(15, 23, 42, 0.12) !important;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+    }
+    [data-theme="light"] .citruss-code-modal pre {
+      background: #f8fafc !important;
+    }
+    [data-theme="light"] .citruss-code-modal code {
+      color: #0f172a !important;
+    }
+
+    /* Light Theme Token Overrides for Modal and Code Blocks */
+    [data-theme="light"] .citruss-code-modal .token.punctuation {
+      color: #475569 !important;
+    }
+    [data-theme="light"] .citruss-code-modal .token.tag,
+    [data-theme="light"] .citruss-code-modal .token.property,
+    [data-theme="light"] .citruss-code-modal .token.attr-name {
+      color: #0284c7 !important; /* Elegant blue for HTML tags/attributes in light mode */
+    }
+    [data-theme="light"] .citruss-code-modal .token.attr-value,
+    [data-theme="light"] .citruss-code-modal .token.string {
+      color: #0f766e !important; /* Deep teal for attribute values/strings */
+    }
+    [data-theme="light"] .citruss-code-modal .token.comment {
+      color: #64748b !important;
+    }
   `;
   document.head.appendChild(customPrismStyle);
 
@@ -435,7 +476,138 @@ if (typeof window !== 'undefined') {
     window.addEventListener('load', injectBgSelector);
   }
   setInterval(injectBgSelector, 1000);
+
+  // Double click to view source code in Fire Modal and copy to clipboard
+  window.addEventListener('dblclick', (e) => {
+    // Avoid double click triggering inside an already open swal/modal or background selector
+    if (e.target.closest('.citruss-swal-container') || e.target.closest('#citruss-bg-controller-root') || e.target.closest('.modal-box')) {
+      return;
+    }
+
+    // Try to find the closest CitruSS component
+    let componentEl = e.target.closest([
+      '.citruss-card',
+      '.citruss-btn',
+      '.citruss-badge',
+      '.citruss-alert',
+      '.citruss-avatar',
+      '.citruss-breadcrumb',
+      '.citruss-breadcrumbs',
+      '.citruss-carousel-container',
+      '.citruss-carousel',
+      '.citruss-context-menu',
+      '.citruss-drawer',
+      '.citruss-dropdown',
+      '.citruss-list-group',
+      '.citruss-modal',
+      '.citruss-pagination',
+      '.citruss-progress',
+      '.citruss-segmented-control',
+      '.segmented-control',
+      '.citruss-sidebar',
+      '.citruss-liquid-slider-wrapper',
+      '.citruss-slider-wrapper',
+      '.citruss-table',
+      '.citruss-tabs-wrapper',
+      '.citruss-timeline',
+      '.citruss-tooltip-trigger',
+      '.citruss-treeview',
+      '.citruss-wizard-container'
+    ].join(', '));
+
+    // Fallback to classes starting with component patterns
+    if (!componentEl) {
+      componentEl = e.target.closest('[class*="citruss-"], [class*="slider-"], [class*="segmented-"], [class*="breadcrumbs"], [class*="carousel"], [class*="wizard"], [class*="accordion"]');
+    }
+
+    // Fallback to non-layout clicked elements
+    if (!componentEl && e.target !== document.body && e.target !== document.documentElement && !e.target.id?.includes('root')) {
+      componentEl = e.target;
+    }
+
+    if (!componentEl) return;
+
+    // Format HTML code
+    const rawHtml = componentEl.outerHTML;
+    
+    // Clean and prettify HTML
+    const formatHTML = (html) => {
+      let formatted = '';
+      let reg = /(>)(<)(\/*)/g;
+      html = html.replace(reg, '$1\r\n$2$3');
+      let pad = 0;
+      html.split('\r\n').forEach((line) => {
+        let indent = 0;
+        if (line.match(/.+<\/\w[^>]*>$/)) {
+          indent = 0;
+        } else if (line.match(/^<\/\w/)) {
+          if (pad !== 0) {
+            pad -= 1;
+          }
+        } else if (line.match(/^<\w[^>]*[^\/]>$/) || line.match(/^<\w[^>]*>/)) {
+          indent = 1;
+        } else {
+          indent = 0;
+        }
+        
+        let padding = '';
+        for (let i = 0; i < pad; i++) {
+          padding += '  ';
+        }
+        formatted += padding + line + '\r\n';
+        pad += indent;
+      });
+      return formatted.trim();
+    };
+
+    const formattedCode = formatHTML(rawHtml);
+
+    // Copy to Clipboard
+    navigator.clipboard.writeText(formattedCode).then(() => {
+      console.log('Component source code copied!');
+    }).catch(err => {
+      console.error('Failed to copy code: ', err);
+    });
+
+    // Escape code for HTML injection
+    const escapedCode = formattedCode
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+
+    // Fire the CitruSS modal
+    if (window.CitruSS && typeof window.CitruSS.fire === 'function') {
+      window.CitruSS.fire({
+        title: 'Component Source Code',
+        text: `
+          <div style="text-align: left; margin-top: 12px; font-family: 'Outfit', sans-serif;">
+            <div style="font-size: 0.85rem; color: var(--citruss-lime); margin-bottom: 12px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+              <span class="material-symbols-rounded" style="font-size: 16px; color: var(--citruss-lime);">check_circle</span>
+              Source code successfully copied to clipboard!
+            </div>
+            <div class="citruss-code-wrapper citruss-code-modal" style="margin-top: 8px !important; margin-bottom: 24px !important; max-height: 320px; overflow-y: auto; text-align: left; border-radius: 12px;">
+              <pre class="language-html" style="margin: 0 !important; padding: 16px !important; max-height: 300px; overflow: auto;"><code class="language-html" style="white-space: pre; font-size: 0.8rem !important; line-height: 1.5 !important; font-family: 'Fira Code', 'Courier New', monospace !important; background: transparent !important;">${escapedCode}</code></pre>
+            </div>
+          </div>
+        `,
+        icon: 'success',
+        confirmButtonText: 'Great!'
+      });
+
+      // Expand SWAL box container dynamically for wider display of code
+      setTimeout(() => {
+        const swalBox = document.querySelector('.citruss-swal-box');
+        if (swalBox) {
+          swalBox.style.maxWidth = '640px';
+          swalBox.style.width = '90%';
+        }
+      }, 30);
+    }
+  });
 }
+
 
 /** @type { import('@storybook/html-vite').Preview } */
 const preview = {
