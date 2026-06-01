@@ -67,6 +67,19 @@ You need **Node.js** (v18 or higher) installed on your system to run the develop
    npm install
    ```
 
+### 🌐 Direct Integration & CDN
+
+If you prefer to use the library instantly without installing any local packages, you can load CitruSS directly from the jsDelivr CDN:
+
+```html
+<!-- CitruSS Vibrant Frosted Glassmorphism Stylesheet -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/umitunc/CitruSS/dist/citruss.css" />
+
+<!-- CitruSS Interactive Vanilla JS Companion Script -->
+<script src="https://cdn.jsdelivr.net/gh/umitunc/CitruSS/dist/citruss.min.js"></script>
+```
+
+
 ---
 
 ## 🛠️ Available Scripts

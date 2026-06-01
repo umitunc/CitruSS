@@ -1,0 +1,12 @@
+# Exclude everything by default
+*
+
+# Include only these folders/files
+!dist/
+!src/
+!package.json
+!README.md
+
+# Ignore specific files inside included directories if any
+src/**/*.stories.js
+src/getting-started/
