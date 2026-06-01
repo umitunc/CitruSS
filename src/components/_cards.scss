@@ -8,6 +8,11 @@
   padding: 24px;
   overflow: hidden;
   border-radius: var(--citruss-radius-lg);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 
   @include transition-all(0.4s);
   

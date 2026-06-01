@@ -13,6 +13,25 @@
     0 12px 40px 0 rgba(0, 0, 0, 0.25),
     0 1px 3px 0 rgba(0, 0, 0, 0.15) !important;
 
+  .card-top-icon {
+    color: var(--citruss-tangerine) !important;
+  }
+  
+  .metric-value {
+    font-size: 1.8rem !important;
+    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.4)) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  p {
+    font-size: 0.85rem !important;
+    opacity: 0.8 !important;
+    margin-top: 8px !important;
+    line-height: 1.4 !important;
+  }
+
   [data-theme="light"] & {
     background-color: rgba(255, 255, 255, 0.3) !important; /* Slightly more visible white glass */
     border: 1px solid rgba(15, 23, 42, 0.08) !important;
@@ -55,6 +74,25 @@
     color: #94a3b8;
   }
 
+  .card-top-icon {
+    color: #60a5fa !important;
+  }
+  
+  .metric-value {
+    font-size: 1.8rem !important;
+    background: linear-gradient(135deg, #38bdf8, #818cf8) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  p {
+    font-size: 0.85rem !important;
+    opacity: 0.8 !important;
+    margin-top: 8px !important;
+    line-height: 1.4 !important;
+  }
+
   [data-theme="light"] & {
     background-color: rgba(15, 23, 42, 0.68) !important; /* Deep elegant charcoal slate in light mode */
     border: 1px solid rgba(255, 255, 255, 0.12) !important;
@@ -82,10 +120,23 @@
     0 10px 30px 0 rgba(15, 23, 42, 0.06),
     0 1px 3px 0 rgba(15, 23, 42, 0.03) !important;
   
-  /* Text adjustments inside light glass */
-  color: #0f172a;
-  .metric-title {
-    color: #475569;
+  .card-top-icon {
+    color: #f59e0b !important;
+  }
+  
+  .metric-value {
+    font-size: 1.8rem !important;
+    background: linear-gradient(135deg, #0f172a, #334155) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+  
+  p {
+    font-size: 0.85rem !important;
+    opacity: 0.8 !important;
+    margin-top: 8px !important;
+    line-height: 1.4 !important;
   }
 }
 
@@ -165,6 +216,40 @@
   .citruss-icon {
     color: inherit !important;
   }
+  
+  .card-top-icon {
+    color: #fff !important;
+    opacity: 0.95;
+  }
+
+  .metric-title {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .metric-value {
+    font-size: 1.8rem !important;
+    background: linear-gradient(135deg, #fff, rgba(255, 255, 255, 0.6)) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  p {
+    font-size: 0.85rem !important;
+    opacity: 0.9 !important;
+    margin-top: 8px !important;
+    line-height: 1.5 !important;
+    color: #fff !important;
+  }
+
+  .card-actions {
+    border-top-color: rgba(255, 255, 255, 0.15) !important;
+    margin-top: 16px !important;
+    
+    .citruss-btn.glass-mirror {
+      color: #fff !important;
+    }
+  }
 
   [data-theme="dark"] & {
     color: #f5f3ff !important;
@@ -221,6 +306,59 @@
   .citruss-icon {
     color: inherit !important;
   }
+  
+  .card-top-icon {
+    color: #ffda79 !important;
+    opacity: 0.95;
+  }
+
+  .metric-title {
+    color: rgba(255, 255, 255, 0.8) !important;
+    
+    [data-theme="light"] & {
+      color: rgba(124, 45, 18, 0.8) !important;
+    }
+  }
+
+  .metric-value {
+    font-size: 1.8rem !important;
+    background: linear-gradient(135deg, #fff, #ffda79) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    
+    [data-theme="light"] & {
+      background: linear-gradient(135deg, #7c2d12, #c2410c) !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+  }
+
+  p {
+    font-size: 0.85rem !important;
+    opacity: 0.9 !important;
+    margin-top: 8px !important;
+    line-height: 1.5 !important;
+    color: #ffedd5 !important;
+    
+    [data-theme="light"] & {
+      color: #7c2d12 !important;
+    }
+  }
+
+  .card-actions {
+    border-top-color: rgba(255, 255, 255, 0.15) !important;
+    margin-top: 16px !important;
+    
+    .citruss-btn.glass-mirror {
+      color: #fff !important;
+      
+      [data-theme="light"] & {
+        color: #7c2d12 !important;
+      }
+    }
+  }
 
   [data-theme="dark"] & {
     color: #ffedd5 !important;
@@ -276,6 +414,59 @@
   .citruss-icon {
     color: inherit !important;
   }
+  
+  .card-top-icon {
+    color: #00f2fe !important;
+    opacity: 0.95;
+  }
+
+  .metric-title {
+    color: rgba(255, 255, 255, 0.8) !important;
+    
+    [data-theme="light"] & {
+      color: rgba(15, 118, 110, 0.8) !important;
+    }
+  }
+
+  .metric-value {
+    font-size: 1.8rem !important;
+    background: linear-gradient(135deg, #fff, #00f2fe) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    
+    [data-theme="light"] & {
+      background: linear-gradient(135deg, #0f766e, #0d9488) !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+  }
+
+  p {
+    font-size: 0.85rem !important;
+    opacity: 0.9 !important;
+    margin-top: 8px !important;
+    line-height: 1.5 !important;
+    color: #ecfeff !important;
+    
+    [data-theme="light"] & {
+      color: #0f766e !important;
+    }
+  }
+
+  .card-actions {
+    border-top-color: rgba(255, 255, 255, 0.15) !important;
+    margin-top: 16px !important;
+    
+    .citruss-btn.glass-mirror {
+      color: #fff !important;
+      
+      [data-theme="light"] & {
+        color: #0f766e !important;
+      }
+    }
+  }
 
   [data-theme="dark"] & {
     color: #ecfeff !important;
@@ -318,6 +509,21 @@
 
   .citruss-icon {
     color: inherit !important;
+  }
+  
+  .metric-value {
+    font-size: 1.8rem !important;
+  }
+
+  p {
+    font-size: 0.85rem !important;
+    margin-top: 8px !important;
+    line-height: 1.5 !important;
+    color: var(--citruss-text-muted) !important;
+  }
+
+  .card-actions {
+    margin-top: 16px !important;
   }
 
   [data-theme="light"] & {
@@ -395,6 +601,59 @@
   .citruss-icon {
     color: inherit !important;
   }
+  
+  .card-top-icon {
+    color: #fff !important;
+    opacity: 0.95;
+  }
+
+  .metric-title {
+    color: rgba(255, 255, 255, 0.8) !important;
+    
+    [data-theme="light"] & {
+      color: rgba(74, 4, 78, 0.8) !important;
+    }
+  }
+
+  .metric-value {
+    font-size: 1.8rem !important;
+    background: linear-gradient(135deg, #fff, #ff7675) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    
+    [data-theme="light"] & {
+      background: linear-gradient(135deg, #4a044e, #701a75) !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+  }
+
+  p {
+    font-size: 0.85rem !important;
+    opacity: 0.9 !important;
+    margin-top: 8px !important;
+    line-height: 1.5 !important;
+    color: #fff0f6 !important;
+    
+    [data-theme="light"] & {
+      color: #4a044e !important;
+    }
+  }
+
+  .card-actions {
+    border-top-color: rgba(255, 255, 255, 0.15) !important;
+    margin-top: 16px !important;
+    
+    .citruss-btn.glass-mirror {
+      color: #fff !important;
+      
+      [data-theme="light"] & {
+        color: #4a044e !important;
+      }
+    }
+  }
 
   [data-theme="dark"] & {
     color: #fff0f6 !important;
@@ -443,6 +702,59 @@
 
   .citruss-icon {
     color: inherit !important;
+  }
+  
+  .card-top-icon {
+    color: #f368e0 !important;
+    opacity: 0.95;
+  }
+
+  .metric-title {
+    color: rgba(255, 255, 255, 0.8) !important;
+    
+    [data-theme="light"] & {
+      color: rgba(15, 23, 42, 0.8) !important;
+    }
+  }
+
+  .metric-value {
+    font-size: 1.8rem !important;
+    background: linear-gradient(135deg, #fff, #54a0ff) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    
+    [data-theme="light"] & {
+      background: linear-gradient(135deg, #0f172a, #54a0ff) !important;
+      background-clip: text !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+  }
+
+  p {
+    font-size: 0.85rem !important;
+    opacity: 0.9 !important;
+    margin-top: 8px !important;
+    line-height: 1.5 !important;
+    color: #fff !important;
+    
+    [data-theme="light"] & {
+      color: #0f172a !important;
+    }
+  }
+
+  .card-actions {
+    border-top-color: rgba(255, 255, 255, 0.15) !important;
+    margin-top: 16px !important;
+    
+    .citruss-btn.glass-mirror {
+      color: #fff !important;
+      
+      [data-theme="light"] & {
+        color: #0f172a !important;
+      }
+    }
   }
   
   [data-theme="light"] & {
