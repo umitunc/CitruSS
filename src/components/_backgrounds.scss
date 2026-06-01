@@ -442,3 +442,19 @@
   background-size: 200% 200%;
   animation: mesh-pulse 30s infinite ease-in-out;
 }
+
+/* Premium Image Background Utility Classes */
+.citruss-bg-minimalist-pastel {
+  background: url("/images/backgrounds/bg_minimalist_pastel.png") no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+
+.citruss-bg-dark-neon-mesh {
+  background: url("/images/backgrounds/bg_dark_neon_mesh.png") no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+
+.citruss-bg-glass-spheres-cubes {
+  background: url("/images/backgrounds/bg_glass_spheres_cubes.png") no-repeat center center fixed !important;
+  background-size: cover !important;
+}
