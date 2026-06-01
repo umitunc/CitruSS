@@ -6,14 +6,14 @@ export default {
 
 const modalHTML = `
 <!-- Static HTML Modal Panel -->
-<div id="demo-static-modal" class="citruss-modal">
-  <div class="modal-box">
+<div id="demo-static-modal" class="citruss-modal-backdrop">
+  <div class="citruss-modal">
     <div class="modal-header">
-      <h4>Static Glass Modal</h4>
+      <h4 class="modal-title">Static Glass Modal</h4>
       <button class="modal-close">✕</button>
     </div>
     <div class="modal-body">
-      This modal is located directly in your HTML tree and managed via CSS classes.
+      This modal is a static modal box located directly in your HTML tree and managed via CSS classes. It features a fully customizable body structure.
     </div>
     <div class="modal-footer">
       <button class="citruss-btn modal-close">Cancel</button>
@@ -25,13 +25,15 @@ const modalHTML = `
 
 const modalJS = `
 // Show modal
-const modal = document.getElementById('demo-static-modal');
-modal.style.display = 'flex';
+const backdrop = document.getElementById('demo-static-modal');
+const modal = backdrop.querySelector('.citruss-modal');
+
+backdrop.classList.add('active');
 setTimeout(() => modal.classList.add('show'), 20);
 
 // Close modal
 modal.classList.remove('show');
-setTimeout(() => modal.style.display = 'none', 300);
+setTimeout(() => backdrop.classList.remove('active'), 300);
 `.trim();
 
 export const ModalsAndDialogs = () => {
@@ -61,17 +63,22 @@ export const ModalsAndDialogs = () => {
     const btnOpenModal = document.getElementById('demo-btn-modal');
     const modalEl = document.getElementById('demo-static-modal');
     if (btnOpenModal && modalEl) {
+      const modalBox = modalEl.querySelector('.citruss-modal');
       const modalCloseBtns = modalEl.querySelectorAll('.modal-close');
       
       btnOpenModal.onclick = () => {
-        modalEl.style.display = 'flex';
-        setTimeout(() => modalEl.classList.add('show'), 20);
+        modalEl.classList.add('active');
+        if (modalBox) {
+          setTimeout(() => modalBox.classList.add('show'), 20);
+        }
       };
       
       modalCloseBtns.forEach(btn => {
         btn.onclick = () => {
-          modalEl.classList.remove('show');
-          setTimeout(() => modalEl.style.display = 'none', 300);
+          if (modalBox) {
+            modalBox.classList.remove('show');
+          }
+          setTimeout(() => modalEl.classList.remove('active'), 300);
         };
       });
     }
@@ -97,16 +104,16 @@ export const ModalsAndDialogs = () => {
       </div>
 
       <!-- STATIC CSS MODAL PANEL -->
-      <div id="demo-static-modal" class="citruss-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 99999;">
-        <div class="modal-box" style="background: var(--citruss-app-content-bg, #0b0f19); border: 1px solid var(--citruss-glass-border); border-radius: 16px; width: 450px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
-          <div class="modal-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <h4 style="margin: 0; color: var(--citruss-text-main); font-weight: 800; font-size: 1.2rem;">Static Glass Modal</h4>
-            <button class="modal-close" style="background: none; border: none; color: var(--citruss-text-main); font-size: 1.2rem; cursor: pointer;">✕</button>
+      <div id="demo-static-modal" class="citruss-modal-backdrop">
+        <div class="citruss-modal">
+          <div class="modal-header">
+            <h4 class="modal-title">Static Glass Modal</h4>
+            <button class="modal-close">✕</button>
           </div>
-          <div class="modal-body" style="color: var(--citruss-text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 24px;">
+          <div class="modal-body">
             This modal is a static modal box located directly in your HTML tree and managed via CSS classes. It features a fully customizable body structure.
           </div>
-          <div class="modal-footer" style="display: flex; gap: 12px; justify-content: flex-end;">
+          <div class="modal-footer">
             <button class="citruss-btn modal-close">Cancel</button>
             <button class="citruss-btn btn-primary modal-close">Save Changes</button>
           </div>
