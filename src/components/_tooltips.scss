@@ -11,8 +11,6 @@
   
   &::before {
     position: absolute;
-    bottom: 125%;
-    left: 50%;
     z-index: 1100;
     padding: 6px 12px;
     font-size: 0.75rem;
@@ -28,15 +26,77 @@
     border-radius: 6px;
     box-shadow: 0 5px 15px rgb(0 0 0 / 35%);
     opacity: 0;
-    transform: translateX(-50%) translateY(4px);
 
     @include transition-all(0.2s);
   }
-  
-  &:hover::before {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+
+  // Default / Top
+  &,
+  &[data-citruss-tooltip-pos="top"],
+  &.tooltip-top {
+    &::before {
+      bottom: 125%;
+      left: 50%;
+      right: auto;
+      top: auto;
+      transform: translateX(-50%) translateY(4px);
+    }
+    &:hover::before {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  // Bottom
+  &[data-citruss-tooltip-pos="bottom"],
+  &.tooltip-bottom {
+    &::before {
+      top: 125%;
+      left: 50%;
+      right: auto;
+      bottom: auto;
+      transform: translateX(-50%) translateY(-4px);
+    }
+    &:hover::before {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+
+  // Left
+  &[data-citruss-tooltip-pos="left"],
+  &.tooltip-left {
+    &::before {
+      right: 125%;
+      top: 50%;
+      left: auto;
+      bottom: auto;
+      transform: translateY(-50%) translateX(4px);
+    }
+    &:hover::before {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  // Right
+  &[data-citruss-tooltip-pos="right"],
+  &.tooltip-right {
+    &::before {
+      left: 125%;
+      top: 50%;
+      right: auto;
+      bottom: auto;
+      transform: translateY(-50%) translateX(-4px);
+    }
+    &:hover::before {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
   }
 }
 
