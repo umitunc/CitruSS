@@ -39,10 +39,14 @@ export const StandardButtons = ({ theme = 'primary', label = 'Interactive Action
   const sizeClass = size === 'sm' ? 'btn-sm' : size === 'lg' ? 'btn-lg' : '';
   const themeClass = theme !== 'default' ? `btn-${theme}` : '';
   return `
-    <div style="padding: 20px;">
-      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 12px;">Button Varieties:</h4>
+    <div style="padding: 20px; font-family: 'Outfit', sans-serif;">
+      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 12px;">Interactive Preview (Use Controls):</h4>
       <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
         <button class="citruss-btn ${themeClass} ${sizeClass}">${label}</button>
+      </div>
+
+      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px;">Button Varieties:</h4>
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
         <button class="citruss-btn btn-primary ${sizeClass}">Orange Primary</button>
         <button class="citruss-btn btn-success ${sizeClass}">Lime Success</button>
         <button class="citruss-btn btn-danger ${sizeClass}">Danger Button</button>
@@ -50,7 +54,7 @@ export const StandardButtons = ({ theme = 'primary', label = 'Interactive Action
       </div>
 
       <!-- Code Example Block -->
-      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden;">
         <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
           💻 View HTML Code Example
         </summary>
@@ -72,16 +76,29 @@ StandardButtons.parameters = {
 
 export const ButtonGroups = () => {
   return `
-    <div style="padding: 20px;">
-      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 12px;">Button Group:</h4>
+    <div style="padding: 20px; font-family: 'Outfit', sans-serif;">
+      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 12px;">Standard Button Group:</h4>
       <div class="citruss-btn-group" style="margin-bottom: 24px;">
         <button class="citruss-btn active">Dashboard</button>
         <button class="citruss-btn">Analytics</button>
         <button class="citruss-btn">Settings</button>
       </div>
 
+      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px;">Icon Button Group:</h4>
+      <div class="citruss-btn-group" style="margin-bottom: 24px;">
+        <button class="citruss-btn active" title="Grid View">
+          <span class="citruss-icon">grid_view</span>
+        </button>
+        <button class="citruss-btn" title="List View">
+          <span class="citruss-icon">list</span>
+        </button>
+        <button class="citruss-btn" title="Map View">
+          <span class="citruss-icon">map</span>
+        </button>
+      </div>
+
       <!-- Code Example Block -->
-      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden; font-family: 'Outfit', sans-serif;">
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden;">
         <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
           💻 View HTML Code Example
         </summary>
@@ -211,5 +228,147 @@ IconButtons.parameters = {
     },
   },
 };
+
+const stateButtonsHTML = `
+<!-- Disabled State -->
+<button class="citruss-btn btn-primary" disabled style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">Disabled Primary</button>
+<button class="citruss-btn" disabled style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">Disabled Neutral</button>
+
+<!-- Loading State with Glass Spinner -->
+<button class="citruss-btn btn-primary" style="position: relative; pointer-events: none;">
+  <span class="citruss-spinner"></span>
+  Processing...
+</button>
+<button class="citruss-btn btn-success" style="position: relative; pointer-events: none;">
+  <span class="citruss-spinner"></span>
+  Uploading...
+</button>
+`.trim();
+
+export const ButtonStates = () => {
+  return `
+    <div style="padding: 20px; font-family: 'Outfit', sans-serif;">
+      <style>
+        .citruss-spinner {
+          width: 16px;
+          height: 16px;
+          border: 2px solid rgba(255, 255, 255, 0.2);
+          border-top-color: #fff;
+          border-radius: 50%;
+          animation: citruss-spin 0.8s linear infinite;
+          display: inline-block;
+        }
+        @keyframes citruss-spin {
+          to { transform: rotate(360deg); }
+        }
+      </style>
+
+      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 12px;">Disabled Buttons:</h4>
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
+        <button class="citruss-btn btn-primary" disabled style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">Disabled Primary</button>
+        <button class="citruss-btn btn-success" disabled style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">Disabled Success</button>
+        <button class="citruss-btn btn-danger" disabled style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">Disabled Danger</button>
+        <button class="citruss-btn" disabled style="opacity: 0.5; cursor: not-allowed; pointer-events: none;">Disabled Glass</button>
+      </div>
+
+      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-top: 24px; margin-bottom: 12px;">Loading States:</h4>
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
+        <button class="citruss-btn btn-primary" style="position: relative; pointer-events: none; gap: 8px;">
+          <span class="citruss-spinner"></span> Processing...
+        </button>
+        <button class="citruss-btn btn-success" style="position: relative; pointer-events: none; gap: 8px;">
+          <span class="citruss-spinner"></span> Saving Details...
+        </button>
+        <button class="citruss-btn btn-danger" style="position: relative; pointer-events: none; gap: 8px;">
+          <span class="citruss-spinner"></span> Deleting...
+        </button>
+        <button class="citruss-btn" style="position: relative; pointer-events: none; gap: 8px;">
+          <span class="citruss-spinner" style="border-top-color: var(--citruss-orange)"></span> Loading...
+        </button>
+      </div>
+
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML Code Example
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto;">
+          <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.85rem; line-height: 1.5;">${stateButtonsHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+        </div>
+      </details>
+    </div>
+  `;
+};
+
+ButtonStates.parameters = {
+  docs: {
+    source: {
+      code: stateButtonsHTML,
+    },
+  },
+};
+
+const customButtonsHTML = `
+<!-- Neon Glow Accented Glass Buttons -->
+<button class="citruss-btn" style="border-color: rgba(0, 242, 254, 0.4); text-shadow: 0 0 10px rgba(0, 242, 254, 0.5); box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);">
+  <span class="citruss-icon" style="color: #00f2fe;">electric_bolt</span>
+  Cyan Neon Glow
+</button>
+
+<button class="citruss-btn" style="border-color: rgba(224, 86, 253, 0.4); text-shadow: 0 0 10px rgba(224, 86, 253, 0.5); box-shadow: 0 0 15px rgba(224, 86, 253, 0.2);">
+  <span class="citruss-icon" style="color: #e056fd;">magic_button</span>
+  Purple Velvet Glow
+</button>
+`.trim();
+
+export const PremiumStyles = () => {
+  return `
+    <div style="padding: 20px; font-family: 'Outfit', sans-serif;">
+      <h4 style="color: var(--citruss-text-muted); font-size: 0.9rem; margin-bottom: 12px;">Neon Glow & Premium Custom Accent Glass:</h4>
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 24px;">
+        
+        <!-- Cyan Glow -->
+        <button class="citruss-btn" style="border-color: rgba(0, 242, 254, 0.45); text-shadow: 0 0 8px rgba(0, 242, 254, 0.6); box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 0 15px rgba(0, 242, 254, 0.15); transition: all 0.3s ease;">
+          <span class="citruss-icon" style="color: #00f2fe;">electric_bolt</span> Cyan Pulse
+        </button>
+
+        <!-- Purple Glow -->
+        <button class="citruss-btn" style="border-color: rgba(224, 86, 253, 0.45); text-shadow: 0 0 8px rgba(224, 86, 253, 0.6); box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 0 15px rgba(224, 86, 253, 0.15); transition: all 0.3s ease;">
+          <span class="citruss-icon" style="color: #e056fd;">magic_button</span> Purple Magic
+        </button>
+
+        <!-- Pink Glow -->
+        <button class="citruss-btn" style="border-color: rgba(255, 75, 75, 0.45); text-shadow: 0 0 8px rgba(255, 75, 75, 0.6); box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 0 15px rgba(255, 75, 75, 0.15); transition: all 0.3s ease;">
+          <span class="citruss-icon" style="color: #ff4757;">favorite</span> Heartbeat
+        </button>
+
+        <!-- Golden Glow -->
+        <button class="citruss-btn" style="border-color: rgba(255, 218, 121, 0.45); text-shadow: 0 0 8px rgba(255, 218, 121, 0.6); box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 0 15px rgba(255, 218, 121, 0.15); transition: all 0.3s ease;">
+          <span class="citruss-icon" style="color: #ffda79;">star</span> Legendary Star
+        </button>
+
+      </div>
+
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML Code Example
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto;">
+          <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.85rem; line-height: 1.5;">${customButtonsHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+        </div>
+      </details>
+    </div>
+  `;
+};
+
+PremiumStyles.parameters = {
+  docs: {
+    source: {
+      code: customButtonsHTML,
+    },
+  },
+};
+
 
 
