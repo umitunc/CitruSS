@@ -409,32 +409,32 @@ export const LiquidAndGlassEffects = () => {
         
         <!-- Aurora -->
         <button class="citruss-btn glass-aurora" style="font-weight: 700; letter-spacing: 0.02em;">
-          <span class="citruss-icon" style="color: rgba(255,255,255,0.95)">ac_unit</span> Shifting Aurora
+          <span class="citruss-icon">ac_unit</span> Shifting Aurora
         </button>
 
         <!-- Lava -->
         <button class="citruss-btn glass-liquid-lava" style="font-weight: 700; letter-spacing: 0.02em;">
-          <span class="citruss-icon" style="color: #ffda79">local_fire_department</span> Liquid Lava
+          <span class="citruss-icon">local_fire_department</span> Liquid Lava
         </button>
 
         <!-- Ocean -->
         <button class="citruss-btn glass-liquid-ocean" style="font-weight: 700; letter-spacing: 0.02em;">
-          <span class="citruss-icon" style="color: #00f2fe">water</span> Liquid Ocean
+          <span class="citruss-icon">water</span> Liquid Ocean
         </button>
 
         <!-- Chrome Mirror -->
         <button class="citruss-btn glass-mirror" style="font-weight: 700; letter-spacing: 0.02em;">
-          <span class="citruss-icon" style="color: var(--citruss-tangerine)">brightness_high</span> Chrome Mirror
+          <span class="citruss-icon">brightness_high</span> Chrome Mirror
         </button>
 
         <!-- Holographic -->
         <button class="citruss-btn glass-holographic" style="font-weight: 700; letter-spacing: 0.02em;">
-          <span class="citruss-icon" style="color: #fff">filter_vintage</span> Holographic Prism
+          <span class="citruss-icon">filter_vintage</span> Holographic Prism
         </button>
 
         <!-- Cyber Neon Flow -->
         <button class="citruss-btn glass-neon-flow" style="font-weight: 700; letter-spacing: 0.02em;">
-          <span class="citruss-icon" style="color: #f368e0">waves</span> Cyber Neon Flow
+          <span class="citruss-icon">waves</span> Cyber Neon Flow
         </button>
 
       </div>

@@ -153,13 +153,24 @@
   animation: liquid-aurora 8s ease infinite !important;
   backdrop-filter: blur(20px) saturate(180%) contrast(1.1) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) contrast(1.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.25) !important;
-  color: var(--citruss-text-main) !important;
+  border: 1px solid rgba(224, 86, 253, 0.35) !important;
+  color: #3b0764 !important; /* Premium deep violet for outstanding readability */
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
   
   box-shadow: 
     inset 0 1.5px 0 0 rgba(255, 255, 255, 0.3),
     0 15px 35px 0 rgba(224, 86, 253, 0.15),
     0 4px 12px 0 rgba(0, 0, 0, 0.15) !important;
+
+  .citruss-icon {
+    color: inherit !important;
+  }
+
+  [data-theme="dark"] & {
+    color: #f5f3ff !important;
+    text-shadow: 0 1px 8px rgba(59, 7, 100, 0.4);
+    border-color: rgba(255, 255, 255, 0.25) !important;
+  }
 
   &:hover {
     border-color: rgba(0, 242, 254, 0.6) !important;
@@ -199,12 +210,23 @@
   animation: liquid-lava 6s ease-in-out infinite !important;
   backdrop-filter: blur(25px) saturate(200%) !important;
   -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
-  border: 1px solid rgba(255, 159, 67, 0.45) !important;
-  color: #fff !important;
+  border: 1px solid rgba(255, 107, 0, 0.45) !important;
+  color: #7c2d12 !important; /* Premium deep dark orange-red for contrast */
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.45);
   
   box-shadow: 
     inset 0 1.5px 0 0 rgba(255, 255, 255, 0.4),
     0 15px 35px 0 rgba(255, 107, 0, 0.25) !important;
+
+  .citruss-icon {
+    color: inherit !important;
+  }
+
+  [data-theme="dark"] & {
+    color: #ffedd5 !important;
+    text-shadow: 0 1px 8px rgba(124, 45, 18, 0.6);
+    border-color: rgba(255, 159, 67, 0.45) !important;
+  }
 
   &:hover {
     border-color: rgba(255, 71, 87, 0.8) !important;
@@ -243,12 +265,23 @@
   animation: liquid-ocean 7s ease-in-out infinite !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border: 1px solid rgba(0, 242, 254, 0.4) !important;
-  color: #fff !important;
+  border: 1px solid rgba(0, 242, 254, 0.45) !important;
+  color: #0f766e !important; /* Premium deep dark teal for readability */
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
   
   box-shadow: 
     inset 0 1.5px 0 0 rgba(255, 255, 255, 0.3),
     0 12px 30px 0 rgba(9, 132, 227, 0.2) !important;
+
+  .citruss-icon {
+    color: inherit !important;
+  }
+
+  [data-theme="dark"] & {
+    color: #ecfeff !important;
+    text-shadow: 0 1px 8px rgba(15, 118, 110, 0.6);
+    border-color: rgba(0, 242, 254, 0.4) !important;
+  }
 
   &:hover {
     border-color: rgba(29, 209, 161, 0.8) !important;
@@ -282,6 +315,10 @@
     0 2px 4px 0 rgba(0, 0, 0, 0.12) !important;
   
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+  .citruss-icon {
+    color: inherit !important;
+  }
 
   [data-theme="light"] & {
     background: linear-gradient(135deg, 
@@ -348,11 +385,22 @@
   backdrop-filter: blur(18px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(18px) saturate(190%) !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
-  color: #fff !important;
+  color: #4a044e !important; /* Premium deep violet-burgundy for readability */
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
   
   box-shadow: 
     inset 0 1.5px 0 0 rgba(255, 255, 255, 0.4),
     0 15px 35px 0 rgba(255, 0, 128, 0.15) !important;
+
+  .citruss-icon {
+    color: inherit !important;
+  }
+
+  [data-theme="dark"] & {
+    color: #fff0f6 !important;
+    text-shadow: 0 1px 8px rgba(76, 5, 25, 0.6);
+    border-color: rgba(255, 255, 255, 0.35) !important;
+  }
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.75) !important;
@@ -391,11 +439,17 @@
   border: 1px solid rgba(84, 160, 255, 0.45) !important;
   color: #fff !important;
   animation: neon-flow-glow 4s ease-in-out infinite !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+
+  .citruss-icon {
+    color: inherit !important;
+  }
   
   [data-theme="light"] & {
     background-color: rgba(255, 255, 255, 0.6) !important;
     color: #0f172a !important;
     border: 1px solid rgba(84, 160, 255, 0.55) !important;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
   }
 
   &:hover {
