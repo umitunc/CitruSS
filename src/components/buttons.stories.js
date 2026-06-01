@@ -370,5 +370,96 @@ PremiumStyles.parameters = {
   },
 };
 
+const liquidButtonsHTML = `
+<!-- Liquid & Advanced Glass Button Variations -->
+<button class="citruss-btn glass-aurora">
+  <span class="citruss-icon">ac_unit</span> Shifting Aurora
+</button>
+
+<button class="citruss-btn glass-liquid-lava">
+  <span class="citruss-icon">local_fire_department</span> Liquid Lava
+</button>
+
+<button class="citruss-btn glass-liquid-ocean">
+  <span class="citruss-icon">water</span> Liquid Ocean
+</button>
+
+<button class="citruss-btn glass-mirror">
+  <span class="citruss-icon">brightness_high</span> Specular Mirror
+</button>
+
+<button class="citruss-btn glass-holographic">
+  <span class="citruss-icon">filter_vintage</span> Holographic Prism
+</button>
+
+<button class="citruss-btn glass-neon-flow">
+  <span class="citruss-icon">waves</span> Cyber Neon Flow
+</button>
+`.trim();
+
+export const LiquidAndGlassEffects = () => {
+  return `
+    <div style="padding: 20px; font-family: 'Outfit', sans-serif;">
+      <h3 style="font-weight: 800; color: var(--citruss-text-main); margin-bottom: 8px; font-size: 1.6rem;">Liquid & Glass Button Effects</h3>
+      <p style="color: var(--citruss-text-muted); margin-bottom: 24px; font-size: 0.95rem;">
+        Highly immersive fluid animations and high-gloss specular glass styling that responds organically on interactives.
+      </p>
+      
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 32px;">
+        
+        <!-- Aurora -->
+        <button class="citruss-btn glass-aurora" style="font-weight: 700; letter-spacing: 0.02em;">
+          <span class="citruss-icon" style="color: rgba(255,255,255,0.95)">ac_unit</span> Shifting Aurora
+        </button>
+
+        <!-- Lava -->
+        <button class="citruss-btn glass-liquid-lava" style="font-weight: 700; letter-spacing: 0.02em;">
+          <span class="citruss-icon" style="color: #ffda79">local_fire_department</span> Liquid Lava
+        </button>
+
+        <!-- Ocean -->
+        <button class="citruss-btn glass-liquid-ocean" style="font-weight: 700; letter-spacing: 0.02em;">
+          <span class="citruss-icon" style="color: #00f2fe">water</span> Liquid Ocean
+        </button>
+
+        <!-- Chrome Mirror -->
+        <button class="citruss-btn glass-mirror" style="font-weight: 700; letter-spacing: 0.02em;">
+          <span class="citruss-icon" style="color: var(--citruss-tangerine)">brightness_high</span> Chrome Mirror
+        </button>
+
+        <!-- Holographic -->
+        <button class="citruss-btn glass-holographic" style="font-weight: 700; letter-spacing: 0.02em;">
+          <span class="citruss-icon" style="color: #fff">filter_vintage</span> Holographic Prism
+        </button>
+
+        <!-- Cyber Neon Flow -->
+        <button class="citruss-btn glass-neon-flow" style="font-weight: 700; letter-spacing: 0.02em;">
+          <span class="citruss-icon" style="color: #f368e0">waves</span> Cyber Neon Flow
+        </button>
+
+      </div>
+
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML Code Example
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto;">
+          <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.85rem; line-height: 1.5;">${liquidButtonsHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+        </div>
+      </details>
+    </div>
+  `;
+};
+
+LiquidAndGlassEffects.parameters = {
+  docs: {
+    source: {
+      code: liquidButtonsHTML,
+    },
+  },
+};
+
+
 
 

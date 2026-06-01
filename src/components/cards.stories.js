@@ -304,4 +304,176 @@ GlassmorphicVariations.parameters = {
   },
 };
 
+const liquidCardsHTML = `
+<!-- Shifting Aurora Glass Card -->
+<div class="citruss-card glass-aurora">
+  <span class="citruss-icon card-top-icon">bubble_chart</span>
+  <div class="card-content">
+    <div class="metric-title">Aurora Fluid</div>
+    <div class="metric-value">Shift Glow</div>
+    <p>Elegant shifting multi-colored gradient aura background flowing smoothly.</p>
+  </div>
+</div>
+
+<!-- Liquid Lava Card -->
+<div class="citruss-card glass-liquid-lava">
+  <span class="citruss-icon card-top-icon">local_fire_department</span>
+  <div class="card-content">
+    <div class="metric-title">Magma Flow</div>
+    <div class="metric-value">Liquid Lava</div>
+    <p>Active glowing fluid warm gradient that mimics volcanic heat flow.</p>
+  </div>
+</div>
+
+<!-- Chrome Specular Mirror Card -->
+<div class="citruss-card glass-mirror">
+  <span class="citruss-icon card-top-icon">filter_hdr</span>
+  <div class="card-content">
+    <div class="metric-title">Chrome Reflection</div>
+    <div class="metric-value">Reflective Mirror</div>
+    <p>Premium specular highlights, extreme glass contrast, and bevel shadows.</p>
+  </div>
+</div>
+`.trim();
+
+export const LiquidAndGlassCards = () => {
+  return `
+    <div style="padding: 40px; max-width: 1100px; margin: 0 auto; min-height: 100vh; font-family: 'Outfit', sans-serif;">
+      <h2 style="font-weight: 800; color: var(--citruss-text-main); margin-bottom: 8px; font-size: 1.8rem;">Liquid & Glass Cards</h2>
+      <p style="color: var(--citruss-text-muted); margin-bottom: 32px; font-size: 1rem;">
+        Elevate your interface with fluid animation matrices, extreme reflections, and futuristic neon border-glow dynamics.
+      </p>
+
+      <div class="citruss-row" style="margin-bottom: 32px;">
+        
+        <!-- Aurora Card -->
+        <div class="citruss-col-12 citruss-col-md-4 citruss-mb-md">
+          <div class="citruss-card glass-aurora" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <span class="citruss-icon card-top-icon" style="color: #fff">bubble_chart</span>
+            <div class="card-content">
+              <div class="metric-title" style="color: rgba(255,255,255,0.7)">Aurora Flow</div>
+              <div class="metric-value" style="font-size: 1.8rem; background: linear-gradient(135deg, #fff, rgba(255,255,255,0.6)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Shift Glow</div>
+              <p style="font-size: 0.85rem; opacity: 0.9; margin-top: 8px; line-height: 1.5;">
+                Animate your components with a smooth organic light movement transitioning across the palette.
+              </p>
+            </div>
+            <div class="card-actions" style="border-top-color: rgba(255,255,255,0.15); margin-top: 16px;">
+              <button class="citruss-btn btn-sm glass-mirror" style="color: #fff;">Explore Flow</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lava Card -->
+        <div class="citruss-col-12 citruss-col-md-4 citruss-mb-md">
+          <div class="citruss-card glass-liquid-lava" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <span class="citruss-icon card-top-icon" style="color: #ffda79">local_fire_department</span>
+            <div class="card-content">
+              <div class="metric-title" style="color: rgba(255,255,255,0.8)">Volcanic Fusion</div>
+              <div class="metric-value" style="font-size: 1.8rem; background: linear-gradient(135deg, #fff, #ffda79); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Lava Magma</div>
+              <p style="font-size: 0.85rem; opacity: 0.9; margin-top: 8px; line-height: 1.5;">
+                Deep glowing warm aesthetics that feel energetic, alive, and interactive.
+              </p>
+            </div>
+            <div class="card-actions" style="border-top-color: rgba(255,255,255,0.15); margin-top: 16px;">
+              <button class="citruss-btn btn-sm glass-mirror" style="color: #fff;">Ignite Engine</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ocean Card -->
+        <div class="citruss-col-12 citruss-col-md-4 citruss-mb-md">
+          <div class="citruss-card glass-liquid-ocean" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <span class="citruss-icon card-top-icon" style="color: #00f2fe">water</span>
+            <div class="card-content">
+              <div class="metric-title" style="color: rgba(255,255,255,0.8)">Abyssal Depth</div>
+              <div class="metric-value" style="font-size: 1.8rem; background: linear-gradient(135deg, #fff, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Deep Ocean</div>
+              <p style="font-size: 0.85rem; opacity: 0.9; margin-top: 8px; line-height: 1.5;">
+                Flowing cool wave patterns that resemble active ocean tides underneath polished ice glass.
+              </p>
+            </div>
+            <div class="card-actions" style="border-top-color: rgba(255,255,255,0.15); margin-top: 16px;">
+              <button class="citruss-btn btn-sm glass-mirror" style="color: #fff;">Dive In</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="citruss-row" style="margin-bottom: 32px;">
+        
+        <!-- Mirror Chrome Card -->
+        <div class="citruss-col-12 citruss-col-md-4 citruss-mb-md">
+          <div class="citruss-card glass-mirror" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <span class="citruss-icon card-top-icon">filter_hdr</span>
+            <div class="card-content">
+              <div class="metric-title">Specular Contrast</div>
+              <div class="metric-value" style="font-size: 1.8rem;">Reflective Chrome</div>
+              <p style="font-size: 0.85rem; margin-top: 8px; line-height: 1.5; color: var(--citruss-text-muted);">
+                Advanced high-contrast frosted glass with extreme specular reflections, sharp bevels, and heavy contrast controls.
+              </p>
+            </div>
+            <div class="card-actions" style="margin-top: 16px;">
+              <button class="citruss-btn btn-sm btn-primary">Mirror View</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Holographic Card -->
+        <div class="citruss-col-12 citruss-col-md-4 citruss-mb-md">
+          <div class="citruss-card glass-holographic" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <span class="citruss-icon card-top-icon" style="color: #fff">filter_vintage</span>
+            <div class="card-content">
+              <div class="metric-title" style="color: rgba(255,255,255,0.8)">Prismatic Hue</div>
+              <div class="metric-value" style="font-size: 1.8rem; background: linear-gradient(135deg, #fff, #ff7675); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Hologram Prism</div>
+              <p style="font-size: 0.85rem; opacity: 0.9; margin-top: 8px; line-height: 1.5;">
+                A shifting spectral refraction effect that moves through a dynamic color sequence to capture the viewer's eye.
+              </p>
+            </div>
+            <div class="card-actions" style="border-top-color: rgba(255,255,255,0.15); margin-top: 16px;">
+              <button class="citruss-btn btn-sm glass-mirror" style="color: #fff;">Shift Color</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cyber Neon Flow Card -->
+        <div class="citruss-col-12 citruss-col-md-4 citruss-mb-md">
+          <div class="citruss-card glass-neon-flow" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <span class="citruss-icon card-top-icon" style="color: #f368e0">waves</span>
+            <div class="card-content">
+              <div class="metric-title" style="color: rgba(255,255,255,0.8)">Neon Cyberpunk</div>
+              <div class="metric-value" style="font-size: 1.8rem; background: linear-gradient(135deg, #fff, #54a0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Neon Flow</div>
+              <p style="font-size: 0.85rem; opacity: 0.9; margin-top: 8px; line-height: 1.5;">
+                Features dynamic double-layered neon flow shadows that pulse softly in the background.
+              </p>
+            </div>
+            <div class="card-actions" style="border-top-color: rgba(255,255,255,0.15); margin-top: 16px;">
+              <button class="citruss-btn btn-sm glass-mirror" style="color: #fff;">Activate</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Code Example Block -->
+      <details class="citruss-code-wrapper" style="margin-top: 32px; border: 1px solid var(--citruss-glass-border); border-radius: 12px; background: rgba(0,0,0,0.2); overflow: hidden;">
+        <summary style="padding: 12px 16px; cursor: pointer; color: var(--citruss-orange); font-weight: 600; font-size: 0.9rem; user-select: none; outline: none;">
+          💻 View HTML Code Example
+        </summary>
+        <div style="padding: 16px; border-top: 1px solid var(--citruss-glass-border); background: var(--citruss-bg-surface); overflow-x: auto;">
+          <pre style="margin: 0; white-space: pre-wrap;"><code style="font-family: monospace; color: var(--citruss-text-main); font-size: 0.85rem; line-height: 1.5;">${liquidCardsHTML.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+        </div>
+      </details>
+    </div>
+  `;
+};
+
+LiquidAndGlassCards.parameters = {
+  docs: {
+    source: {
+      code: liquidCardsHTML,
+    },
+  },
+};
+
+
 
