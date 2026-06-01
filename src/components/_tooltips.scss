@@ -3,6 +3,11 @@
 
 [data-citruss-tooltip] {
   position: relative;
+  overflow: visible !important;
+
+  &.citruss-btn::after {
+    display: none;
+  }
   
   &::before {
     position: absolute;
@@ -15,6 +20,7 @@
     color: var(--citruss-text-main);
     white-space: nowrap;
     visibility: hidden;
+    pointer-events: none;
     content: attr(data-citruss-tooltip);
     background: rgb(14 18 32 / 95%);
     backdrop-filter: blur(10px);
