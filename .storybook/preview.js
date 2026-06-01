@@ -313,7 +313,11 @@ if (typeof window !== 'undefined') {
           </optgroup>
           <optgroup label="Premium Images">
             <option value="img-minimalist-pastel">Minimalist Pastel (Light)</option>
+            <option value="img-light-fluid">Fluid Waves (Light)</option>
+            <option value="img-light-amber">Soft Amber (Light)</option>
             <option value="img-dark-neon-mesh">Dark Neon Mesh</option>
+            <option value="img-dark-cyber">Cyber Grid (Dark)</option>
+            <option value="img-dark-luxury">Emerald Luxury (Dark)</option>
             <option value="img-glass-spheres-cubes">Glass Spheres & Cubes</option>
           </optgroup>
         </select>
@@ -353,8 +357,16 @@ if (typeof window !== 'undefined') {
       bgStyle = 'radial-gradient(circle at 10% 20%, rgba(254, 202, 87, 0.4) 0%, transparent 50%), radial-gradient(circle at 90% 80%, rgba(255, 159, 67, 0.3) 0%, transparent 50%), #f8fafc';
     } else if (value === 'img-minimalist-pastel') {
       bgStyle = 'url("/images/backgrounds/bg_minimalist_pastel.png") no-repeat center center fixed';
+    } else if (value === 'img-light-fluid') {
+      bgStyle = 'url("/images/backgrounds/bg_light_fluid.png") no-repeat center center fixed';
+    } else if (value === 'img-light-amber') {
+      bgStyle = 'url("/images/backgrounds/bg_light_amber.png") no-repeat center center fixed';
     } else if (value === 'img-dark-neon-mesh') {
       bgStyle = 'url("/images/backgrounds/bg_dark_neon_mesh.png") no-repeat center center fixed';
+    } else if (value === 'img-dark-cyber') {
+      bgStyle = 'url("/images/backgrounds/bg_dark_cyber.png") no-repeat center center fixed';
+    } else if (value === 'img-dark-luxury') {
+      bgStyle = 'url("/images/backgrounds/bg_dark_luxury.png") no-repeat center center fixed';
     } else if (value === 'img-glass-spheres-cubes') {
       bgStyle = 'url("/images/backgrounds/bg_glass_spheres_cubes.png") no-repeat center center fixed';
     }
