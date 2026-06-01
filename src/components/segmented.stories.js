@@ -6,67 +6,109 @@ export default {
 
 export const LiquidGlassSegmented = () => {
   useEffect(() => {
-    const segmented = document.querySelector('.citruss-segmented-control');
-    if (!segmented) return;
+    document.querySelectorAll('.citruss-segmented-control').forEach(seg => {
+      const items = seg.querySelectorAll('.segmented-item');
+      const indicator = seg.querySelector('.segmented-indicator-glass');
+      const count = items.length;
 
-    const items = segmented.querySelectorAll('.segmented-item');
-    const indicator = segmented.querySelector('.segmented-indicator-glass');
+      // Position helper — computes left offset for segment index
+      const positionIndicator = (idx) => {
+        const segW = 100 / count;
+        indicator.style.left = `calc(${segW * idx}% + 3px)`;
+        indicator.style.width = `calc(${segW}% - 3px)`;
+      };
 
-    items.forEach((item, index) => {
-      item.addEventListener('click', () => {
-        // Toggle text active colors
-        items.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
+      items.forEach((item, idx) => {
+        item.addEventListener('click', () => {
+          // Skip if already active
+          if (item.classList.contains('active')) return;
 
-        // Toggle glass active and morphing styles
-        indicator.classList.add('active');
-        indicator.classList.add('morphing');
+          // Update text states
+          items.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
 
-        // Dynamic coordinate calculation
-        const percentLeft = index * 50; // Dynamic calculations for 2 segments
-        indicator.style.left = `calc(${percentLeft}% + 4px)`;
+          // Activate glass morphing during transition
+          indicator.classList.add('active');
+          indicator.classList.add('morphing');
 
-        // Reset morphing/glass state back to solid after transition complete
-        setTimeout(() => {
-          indicator.classList.remove('active');
-          indicator.classList.remove('morphing');
-        }, 350); // Matches the 0.35s transition duration defined in CSS
+          // Slide to target segment
+          positionIndicator(idx);
+
+          // After transition completes, snap back to solid
+          setTimeout(() => {
+            indicator.classList.remove('active');
+            indicator.classList.remove('morphing');
+          }, 400);
+        });
       });
     });
   }, []);
 
   return `
-    <div style="padding: 80px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; gap: 24px; font-family: 'Inter', sans-serif; position: relative;">
+    <div style="padding: 80px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 420px; gap: 48px; position: relative;">
       
-      <!-- SVG LIQUID FILTER DEFINITION -->
-      <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" width="0" height="0">
+      <!-- SVG Liquid Lens Filter -->
+      <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
         <defs>
           <filter id="mini-liquid-lens">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+            <feColorMatrix in="blur" mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo" />
             <feComposite in="SourceGraphic" in2="goo" operator="atop" />
           </filter>
         </defs>
       </svg>
 
-      <!-- Apple Design Aesthetic Segmented Control -->
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        <div class="citruss-segmented-control-wrapper">
-          <div class="citruss-segmented-control">
-            <!-- Items -->
-            <button class="segmented-item active">For You</button>
-            <button class="segmented-item">Library</button>
-            
-            <!-- Sliding Indicator -->
-            <div class="segmented-indicator-glass">
-              <div class="segmented-indicator-filter"></div>
-              <div class="segmented-indicator-overlay"></div>
-              <div class="segmented-indicator-specular"></div>
-            </div>
+      <div style="text-align: center;">
+        <h3 style="margin: 0 0 6px; font-family: -apple-system, 'SF Pro Display', 'Outfit', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--citruss-text-main); letter-spacing: -0.02em;">
+          Segmented Control
+        </h3>
+        <p style="margin: 0; color: var(--citruss-text-muted); font-size: 0.85rem; font-family: -apple-system, 'SF Pro Text', 'Inter', sans-serif; max-width: 420px;">
+          Solid indicator pill at rest. Switching tabs morphs it into translucent Liquid Glass before it settles back.
+        </p>
+      </div>
+
+      <!-- 2-segment example -->
+      <div class="citruss-segmented-control-wrapper">
+        <div class="citruss-segmented-control">
+          <button class="segmented-item active">For You</button>
+          <button class="segmented-item">Library</button>
+          <div class="segmented-indicator-glass">
+            <div class="segmented-indicator-filter"></div>
+            <div class="segmented-indicator-overlay"></div>
+            <div class="segmented-indicator-specular"></div>
           </div>
         </div>
       </div>
-      
+
+      <!-- 3-segment example -->
+      <div class="citruss-segmented-control-wrapper">
+        <div class="citruss-segmented-control">
+          <button class="segmented-item active">All</button>
+          <button class="segmented-item">Music</button>
+          <button class="segmented-item">Podcasts</button>
+          <div class="segmented-indicator-glass">
+            <div class="segmented-indicator-filter"></div>
+            <div class="segmented-indicator-overlay"></div>
+            <div class="segmented-indicator-specular"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-segment example -->
+      <div class="citruss-segmented-control-wrapper">
+        <div class="citruss-segmented-control">
+          <button class="segmented-item active">Day</button>
+          <button class="segmented-item">Week</button>
+          <button class="segmented-item">Month</button>
+          <button class="segmented-item">Year</button>
+          <div class="segmented-indicator-glass">
+            <div class="segmented-indicator-filter"></div>
+            <div class="segmented-indicator-overlay"></div>
+            <div class="segmented-indicator-specular"></div>
+          </div>
+        </div>
+      </div>
     </div>
   `;
 };
@@ -75,29 +117,24 @@ LiquidGlassSegmented.parameters = {
   docs: {
     source: {
       code: `
-<!-- SVG Liquid Lens Filter -->
-<svg style="position: absolute; width: 0; height: 0;" width="0" height="0">
-  <defs>
-    <filter id="mini-liquid-lens">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
-      <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-    </filter>
-  </defs>
-</svg>
-
-<!-- Segmented Control Markup -->
+<!-- 2-segment -->
 <div class="citruss-segmented-control">
   <button class="segmented-item active">For You</button>
   <button class="segmented-item">Library</button>
-  
   <div class="segmented-indicator-glass">
     <div class="segmented-indicator-filter"></div>
     <div class="segmented-indicator-overlay"></div>
     <div class="segmented-indicator-specular"></div>
   </div>
 </div>
-      `.trim(),
+
+<!-- 3-segment -->
+<div class="citruss-segmented-control">
+  <button class="segmented-item active">All</button>
+  <button class="segmented-item">Music</button>
+  <button class="segmented-item">Podcasts</button>
+  <div class="segmented-indicator-glass">...</div>
+</div>`.trim(),
     },
   },
 };

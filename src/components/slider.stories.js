@@ -17,51 +17,40 @@ export const LiquidGlassSlider = () => {
     
     const updateSlider = (clientX) => {
       const rect = track.getBoundingClientRect();
-      let percentage = ((clientX - rect.left) / rect.width) * 100;
-      percentage = Math.max(0, Math.min(100, percentage));
+      let pct = ((clientX - rect.left) / rect.width) * 100;
+      pct = Math.max(0, Math.min(100, pct));
       
-      progress.style.width = `${percentage}%`;
-      thumb.style.left = `${percentage}%`;
+      progress.style.width = `${pct}%`;
+      thumb.style.left = `${pct}%`;
       
-      if (valBadge) {
-        valBadge.textContent = `${Math.round(percentage)}%`;
-      }
+      if (valBadge) valBadge.textContent = `${Math.round(pct)}%`;
     };
     
-    const onMouseDown = (e) => {
+    // ── Mouse ──
+    const onDown = (e) => {
       isDragging = true;
       thumb.classList.add('active');
       updateSlider(e.clientX);
-      document.addEventListener('mousemove', onMouseMove);
-      document.addEventListener('mouseup', onMouseUp);
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', onUp);
     };
-    
-    const onMouseMove = (e) => {
-      if (!isDragging) return;
-      updateSlider(e.clientX);
-    };
-    
-    const onMouseUp = () => {
+    const onMove = (e) => { if (isDragging) updateSlider(e.clientX); };
+    const onUp = () => {
       isDragging = false;
       thumb.classList.remove('active');
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
     };
     
-    // Touch support
+    // ── Touch ──
     const onTouchStart = (e) => {
       isDragging = true;
       thumb.classList.add('active');
       updateSlider(e.touches[0].clientX);
-      document.addEventListener('touchmove', onTouchMove);
+      document.addEventListener('touchmove', onTouchMove, { passive: true });
       document.addEventListener('touchend', onTouchEnd);
     };
-    
-    const onTouchMove = (e) => {
-      if (!isDragging) return;
-      updateSlider(e.touches[0].clientX);
-    };
-    
+    const onTouchMove = (e) => { if (isDragging) updateSlider(e.touches[0].clientX); };
     const onTouchEnd = () => {
       isDragging = false;
       thumb.classList.remove('active');
@@ -69,41 +58,54 @@ export const LiquidGlassSlider = () => {
       document.removeEventListener('touchend', onTouchEnd);
     };
     
-    track.addEventListener('mousedown', onMouseDown);
-    track.addEventListener('touchstart', onTouchStart);
+    track.addEventListener('mousedown', onDown);
+    track.addEventListener('touchstart', onTouchStart, { passive: true });
   }, []);
 
   return `
-    <div style="padding: 80px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; gap: 24px; font-family: 'Inter', sans-serif; position: relative;">
+    <div style="padding: 80px 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 340px; gap: 32px; position: relative;">
       
-      <!-- SVG LIQUID FILTER DEFINITION -->
-      <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" width="0" height="0">
+      <!-- SVG Liquid Lens Filter -->
+      <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" aria-hidden="true">
         <defs>
           <filter id="mini-liquid-lens">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+            <feColorMatrix in="blur" mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo" />
             <feComposite in="SourceGraphic" in2="goo" operator="atop" />
           </filter>
         </defs>
       </svg>
 
-      <!-- Apple Design Aesthetic - Solid in rest, Glass on sliding -->
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        <div class="citruss-liquid-slider-wrapper">
-          <div class="slider-track-wrapper">
-            <div class="slider-container">
-              <div class="slider-progress" style="width: 50%;"></div>
-              <div class="slider-thumb-glass" style="left: 50%;">
-                <div class="slider-thumb-glass-filter"></div>
-                <div class="slider-thumb-glass-overlay"></div>
-                <div class="slider-thumb-glass-specular"></div>
-              </div>
+      <div style="text-align: center;">
+        <h3 style="margin: 0 0 6px; font-family: -apple-system, 'SF Pro Display', 'Outfit', sans-serif; font-weight: 700; font-size: 1.4rem; color: var(--citruss-text-main); letter-spacing: -0.02em;">
+          Liquid Glass Slider
+        </h3>
+        <p style="margin: 0; color: var(--citruss-text-muted); font-size: 0.85rem; font-family: -apple-system, 'SF Pro Text', 'Inter', sans-serif; max-width: 400px;">
+          Solid knob at rest. Grab &amp; drag to see it morph into translucent frosted glass.
+        </p>
+      </div>
+
+      <div class="citruss-liquid-slider-wrapper">
+        <div class="slider-track-wrapper">
+          <div class="slider-container">
+            <div class="slider-progress" style="width: 50%;"></div>
+            <div class="slider-thumb-glass" style="left: 50%;">
+              <div class="slider-thumb-glass-filter"></div>
+              <div class="slider-thumb-glass-overlay"></div>
+              <div class="slider-thumb-glass-specular"></div>
             </div>
           </div>
         </div>
-        <div class="slider-value-badge" style="font-size: 0.95rem; font-weight: 700; color: var(--citruss-text-main); text-shadow: 0 2px 4px rgba(0,0,0,0.25); font-family: 'Inter', sans-serif;">50%</div>
       </div>
-      
+
+      <span class="slider-value-badge" style="
+        font-family: -apple-system, 'SF Pro Text', 'Inter', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--citruss-text-muted);
+        letter-spacing: 0.02em;
+      ">50%</span>
     </div>
   `;
 };
@@ -112,18 +114,6 @@ LiquidGlassSlider.parameters = {
   docs: {
     source: {
       code: `
-<!-- SVG Liquid Lens Filter -->
-<svg style="position: absolute; width: 0; height: 0;" width="0" height="0">
-  <defs>
-    <filter id="mini-liquid-lens">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
-      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
-      <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-    </filter>
-  </defs>
-</svg>
-
-<!-- Slider Markup -->
 <div class="citruss-liquid-slider-wrapper">
   <div class="slider-track-wrapper">
     <div class="slider-container">
@@ -135,8 +125,7 @@ LiquidGlassSlider.parameters = {
       </div>
     </div>
   </div>
-</div>
-      `.trim(),
+</div>`.trim(),
     },
   },
 };
