@@ -1,0 +1,156 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+/* Apple Design Language - State Transitioning Liquid Glass Segmented Control */
+
+.citruss-segmented-control-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 440px;
+  padding: 40px;
+  background: transparent;
+  user-select: none;
+}
+
+.citruss-segmented-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+  width: 320px;
+  height: 50px;
+  z-index: 1;
+}
+
+.segmented-item {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 3;
+  transition: color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &.active {
+    color: #000000;
+  }
+}
+
+/* Fluid indicator showing behind active segment */
+.segmented-indicator-glass {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px); /* For 2 segments, dynamically adjusted via JS for N segments */
+  height: calc(100% - 8px);
+  border-radius: 999px;
+  z-index: 2;
+  background-color: #ffffff;
+  box-shadow: 0 1px 8px 0 rgba(0, 30, 63, 0.08), 0 0 2px 0 rgba(0, 9, 20, 0.06);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  
+  /* Transition timings specifically tuned for Apple's fluid spring effect */
+  transition: 
+    left 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    width 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+    border-color 0.25s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  /* Horizontal stretching morph */
+  &.morphing {
+    transform: scaleX(1.08);
+  }
+}
+
+/* Inner liquid glass filters */
+.segmented-indicator-filter,
+.segmented-indicator-overlay,
+.segmented-indicator-specular {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+}
+
+.segmented-indicator-filter {
+  z-index: 0;
+  backdrop-filter: blur(8px) contrast(1.25);
+  -webkit-backdrop-filter: blur(8px) contrast(1.25);
+  filter: url(#mini-liquid-lens);
+}
+
+.segmented-indicator-overlay {
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.segmented-indicator-specular {
+  z-index: 2;
+  border-radius: inherit;
+  box-shadow:
+    inset 1px 1px 0 rgba(69, 168, 243, 0.2),
+    inset 1px 3px 0 rgba(28, 63, 90, 0.05),
+    inset 0 0 22px rgba(255, 255, 255, 0.6),
+    inset -1px -1px 0 rgba(69, 168, 243, 0.12);
+}
+
+/* During active transitions/hover: transforms into Liquid Glass */
+.segmented-indicator-glass.active {
+  background-color: transparent;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.2);
+
+  .segmented-indicator-filter,
+  .segmented-indicator-overlay,
+  .segmented-indicator-specular {
+    opacity: 1;
+  }
+}
+
+/* Dark mode configurations */
+[data-theme="dark"] {
+  .citruss-segmented-control {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .segmented-item {
+    color: rgba(255, 255, 255, 0.5);
+
+    &.active {
+      color: #ffffff;
+    }
+  }
+
+  .segmented-indicator-glass {
+    background-color: #1c1c1e;
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .segmented-indicator-glass.active {
+    background-color: transparent;
+    border-color: rgba(255, 255, 255, 0.15);
+    
+    .segmented-indicator-overlay {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+}

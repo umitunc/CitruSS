@@ -30,6 +30,7 @@ export const LiquidGlassSlider = () => {
     
     const onMouseDown = (e) => {
       isDragging = true;
+      thumb.classList.add('active');
       updateSlider(e.clientX);
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
@@ -42,6 +43,7 @@ export const LiquidGlassSlider = () => {
     
     const onMouseUp = () => {
       isDragging = false;
+      thumb.classList.remove('active');
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
     };
@@ -49,6 +51,7 @@ export const LiquidGlassSlider = () => {
     // Touch support
     const onTouchStart = (e) => {
       isDragging = true;
+      thumb.classList.add('active');
       updateSlider(e.touches[0].clientX);
       document.addEventListener('touchmove', onTouchMove);
       document.addEventListener('touchend', onTouchEnd);
@@ -61,6 +64,7 @@ export const LiquidGlassSlider = () => {
     
     const onTouchEnd = () => {
       isDragging = false;
+      thumb.classList.remove('active');
       document.removeEventListener('touchmove', onTouchMove);
       document.removeEventListener('touchend', onTouchEnd);
     };
@@ -70,7 +74,7 @@ export const LiquidGlassSlider = () => {
   }, []);
 
   return `
-    <div style="padding: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; gap: 40px; background-color: #f8f8f8; font-family: 'Inter', sans-serif;">
+    <div style="padding: 80px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; gap: 24px; font-family: 'Inter', sans-serif; position: relative;">
       
       <!-- SVG LIQUID FILTER DEFINITION -->
       <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" width="0" height="0">
@@ -83,8 +87,8 @@ export const LiquidGlassSlider = () => {
         </defs>
       </svg>
 
-      <!-- Apple Design Aesthetic Container -->
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <!-- Apple Design Aesthetic - Solid in rest, Glass on sliding -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
         <div class="citruss-liquid-slider-wrapper">
           <div class="slider-track-wrapper">
             <div class="slider-container">
@@ -97,7 +101,7 @@ export const LiquidGlassSlider = () => {
             </div>
           </div>
         </div>
-        <div class="slider-value-badge" style="font-size: 0.85rem; font-weight: 600; color: #3681ee; font-family: 'Inter', sans-serif;">50%</div>
+        <div class="slider-value-badge" style="font-size: 0.95rem; font-weight: 700; color: var(--citruss-text-main); text-shadow: 0 2px 4px rgba(0,0,0,0.25); font-family: 'Inter', sans-serif;">50%</div>
       </div>
       
     </div>
