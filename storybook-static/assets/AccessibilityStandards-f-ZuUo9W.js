@@ -1,4 +1,4 @@
-import{O as i,w as a}from"./index-Dt8ME-QP.js";import{a as s}from"./index-BTANtrXd.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-hSpA13Iw.js";function e(r){const t={p:"p",...i(),...r.components};return a.jsxs(a.Fragment,{children:[a.jsx(s,{title:"Getting Started/Accessibility standards"}),`
+import{O as i,w as a}from"./index-BE8O6Mn_.js";import{a as s}from"./index-DGdFm7sy.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-CgkO_K3A.js";function e(r){const t={p:"p",...i(),...r.components};return a.jsxs(a.Fragment,{children:[a.jsx(s,{title:"Getting Started/Accessibility standards"}),`
 `,a.jsx("style",{children:`
 .citruss-doc-container {
   color: var(--citruss-text-main, #ffffff) !important;

@@ -1,4 +1,4 @@
-import{O as a,w as t}from"./index-Dt8ME-QP.js";import{a as s}from"./index-BTANtrXd.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-hSpA13Iw.js";function i(e){const r={p:"p",...a(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(s,{title:"Getting Started/Credits"}),`
+import{O as a,w as t}from"./index-BE8O6Mn_.js";import{a as s}from"./index-DGdFm7sy.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-CgkO_K3A.js";function i(e){const r={p:"p",...a(),...e.components};return t.jsxs(t.Fragment,{children:[t.jsx(s,{title:"Getting Started/Credits"}),`
 `,t.jsx("style",{children:`
 .citruss-doc-container {
   color: var(--citruss-text-main, #ffffff) !important;

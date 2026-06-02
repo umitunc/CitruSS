@@ -58,6 +58,72 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  /* --- METALLIC CHROME & MINERALS --- */
+  &.gradient-silver {
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 25%, #94a3b8 50%, #cbd5e1 75%, #f1f5f9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &.gradient-gold {
+    background: linear-gradient(135deg, #ffe066 0%, #f59f00 35%, #d9480f 70%, #ffe066 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &.gradient-copper {
+    background: linear-gradient(135deg, #f08c00 0%, #d9480f 50%, #862e01 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* --- NEON & VIBRANT CYBER --- */
+  &.gradient-neon-cyan {
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &.gradient-neon-purple {
+    background: linear-gradient(135deg, #f355da 0%, #7000ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* --- NATURE & ELEMENTAL --- */
+  &.gradient-aurora {
+    background: linear-gradient(135deg, #02aab0 0%, #00cdac 50%, #a8ff78 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &.gradient-sunset {
+    background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &.gradient-ocean {
+    background: linear-gradient(135deg, #20e2d7 0%, #f9fea5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &.gradient-volcano {
+    background: linear-gradient(135deg, #f857a6 0%, #ff5858 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
 
 /* Glassmorphic Glow Typography */

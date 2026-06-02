@@ -8,9 +8,14 @@ const a={title:"Style Guide/Typography"},r=`
 <p class="citruss-subtitle">This is a Display Subtitle</p>
 <p class="citruss-lead">This is a lead body paragraph using the Inter typeface.</p>
 
-<!-- Gradient Text -->
-<span class="citruss-text-gradient">Orange Citrus Gradient</span>
-<span class="citruss-text-gradient gradient-lime">Lime Citrus Gradient</span>
+<!-- Gradient Text (Metals, Neon & Nature) -->
+<span class="citruss-text-gradient">CitruSS Orange</span>
+<span class="citruss-text-gradient gradient-lime">Lime Citrus</span>
+<span class="citruss-text-gradient gradient-silver">Platinum Silver</span>
+<span class="citruss-text-gradient gradient-gold">Liquid Gold</span>
+<span class="citruss-text-gradient gradient-neon-cyan">Electric Neon Cyan</span>
+<span class="citruss-text-gradient gradient-aurora">Northern Aurora</span>
+<span class="citruss-text-gradient gradient-sunset">Tropical Sunset</span>
 
 <!-- Glowing Text -->
 <span class="citruss-text-glow">Vibrant Orange Glow</span>
@@ -103,10 +108,32 @@ const a={title:"Style Guide/Typography"},r=`
 
             <!-- Gradient Typography -->
             <div>
-              <span style="font-size: 0.75rem; color: var(--citruss-text-muted); font-family: monospace; display: block; margin-bottom: 6px;">.citruss-text-gradient / .gradient-lime</span>
+              <span style="font-size: 0.75rem; color: var(--citruss-text-muted); font-family: monospace; display: block; margin-bottom: 6px;">.citruss-text-gradient / .gradient-[theme]</span>
+              
+              <!-- Minerals & Metals -->
+              <h5 style="color: var(--citruss-text-main); font-size: 0.85rem; margin: 12px 0 8px 0; font-family: monospace; text-transform: uppercase;">✨ Minerals & Metallic Chrome</h5>
+              <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;">
+                <h2 class="citruss-h2 citruss-text-gradient gradient-silver" style="margin: 0;">Silver Platinum</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-gold" style="margin: 0;">Liquid Gold</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-copper" style="margin: 0;">Sunset Copper</h2>
+              </div>
+
+              <!-- Cyber Neon -->
+              <h5 style="color: var(--citruss-text-main); font-size: 0.85rem; margin: 12px 0 8px 0; font-family: monospace; text-transform: uppercase;">⚡ Cyber Neon Vibes</h5>
+              <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;">
+                <h2 class="citruss-h2 citruss-text-gradient gradient-neon-cyan" style="margin: 0;">Electric Cyan</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-neon-purple" style="margin: 0;">Deep Cyber Purple</h2>
+              </div>
+
+              <!-- Nature Elements -->
+              <h5 style="color: var(--citruss-text-main); font-size: 0.85rem; margin: 12px 0 8px 0; font-family: monospace; text-transform: uppercase;">🍃 Inspired by Nature & Elements</h5>
               <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                <h2 class="citruss-h2 citruss-text-gradient" style="margin: 0;">CitruSS Premium Orange</h2>
-                <h2 class="citruss-h2 citruss-text-gradient gradient-lime" style="margin: 0;">Vibrant Citrus Lime</h2>
+                <h2 class="citruss-h2 citruss-text-gradient" style="margin: 0;">CitruSS Orange</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-lime" style="margin: 0;">Vibrant Lime</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-aurora" style="margin: 0;">Northern Aurora</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-sunset" style="margin: 0;">Tropical Sunset</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-ocean" style="margin: 0;">Lagoon Ocean</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-volcano" style="margin: 0;">Magma Volcano</h2>
               </div>
             </div>
 
@@ -266,10 +293,32 @@ const a={title:"Style Guide/Typography"},r=`
 
             <!-- Gradient Typography -->
             <div>
-              <span style="font-size: 0.75rem; color: var(--citruss-text-muted); font-family: monospace; display: block; margin-bottom: 6px;">.citruss-text-gradient / .gradient-lime</span>
+              <span style="font-size: 0.75rem; color: var(--citruss-text-muted); font-family: monospace; display: block; margin-bottom: 6px;">.citruss-text-gradient / .gradient-[theme]</span>
+              
+              <!-- Minerals & Metals -->
+              <h5 style="color: var(--citruss-text-main); font-size: 0.85rem; margin: 12px 0 8px 0; font-family: monospace; text-transform: uppercase;">✨ Minerals & Metallic Chrome</h5>
+              <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;">
+                <h2 class="citruss-h2 citruss-text-gradient gradient-silver" style="margin: 0;">Silver Platinum</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-gold" style="margin: 0;">Liquid Gold</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-copper" style="margin: 0;">Sunset Copper</h2>
+              </div>
+
+              <!-- Cyber Neon -->
+              <h5 style="color: var(--citruss-text-main); font-size: 0.85rem; margin: 12px 0 8px 0; font-family: monospace; text-transform: uppercase;">⚡ Cyber Neon Vibes</h5>
+              <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 16px;">
+                <h2 class="citruss-h2 citruss-text-gradient gradient-neon-cyan" style="margin: 0;">Electric Cyan</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-neon-purple" style="margin: 0;">Deep Cyber Purple</h2>
+              </div>
+
+              <!-- Nature Elements -->
+              <h5 style="color: var(--citruss-text-main); font-size: 0.85rem; margin: 12px 0 8px 0; font-family: monospace; text-transform: uppercase;">🍃 Inspired by Nature & Elements</h5>
               <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                <h2 class="citruss-h2 citruss-text-gradient" style="margin: 0;">CitruSS Premium Orange</h2>
-                <h2 class="citruss-h2 citruss-text-gradient gradient-lime" style="margin: 0;">Vibrant Citrus Lime</h2>
+                <h2 class="citruss-h2 citruss-text-gradient" style="margin: 0;">CitruSS Orange</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-lime" style="margin: 0;">Vibrant Lime</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-aurora" style="margin: 0;">Northern Aurora</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-sunset" style="margin: 0;">Tropical Sunset</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-ocean" style="margin: 0;">Lagoon Ocean</h2>
+                <h2 class="citruss-h2 citruss-text-gradient gradient-volcano" style="margin: 0;">Magma Volcano</h2>
               </div>
             </div>
 
