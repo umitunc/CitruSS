@@ -1,5 +1,4 @@
 node_modules/
-storybook-static/
 .DS_Store
 *.log
 npm-debug.log*

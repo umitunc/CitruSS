@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>storybook - Storybook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    
+    <style>
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-regular.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-italic.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-bold.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-bold-italic.woff2') format('woff2');
+      }
+    </style>
+
+    <link href="./sb-manager/runtime.js" rel="modulepreload" />
+
+    
+    <link href="./sb-addons/storybook-core-server-presets-0/common-manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/links-1/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/chromatic-com-storybook-2/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/docs-3/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/storybook-4/manager-bundle.js" rel="modulepreload" />
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+
+<style>
+  /* Adjust CitruSS brand logo to fit beautifully side-by-side with text */
+  img[src*="citruss_logo_transparent.png"],
+  .sidebar-header img,
+  [data-testid="sidebar-brand-image"],
+  .css-114r54w img {
+    height: 48px !important;
+    max-height: 48px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* Style the brand link to act as a premium flex container */
+  a[href*="github.com/umitunc/CitruSS"],
+  [data-testid="sidebar-brand-link"],
+  .sidebar-header a {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    text-decoration: none !important;
+    padding: 4px 8px !important;
+    border-radius: 8px !important;
+    transition: background 0.2s ease !important;
+  }
+
+  /* Custom styled container for title and slogan */
+  .brand-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    pointer-events: none;
+  }
+
+  .brand-title {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #ff9f43 0%, #ff6b00 50%, #ff5252 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+  }
+
+  .brand-slogan {
+    font-size: 10px;
+    font-weight: 500;
+    color: #a3a9b6;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+    margin-top: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+</style>
+
+<script>
+  (function() {
+    function injectBrandInfo() {
+      const img = document.querySelector('img[src*="citruss_logo_transparent.png"]');
+      if (img) {
+        // Find the parent element (usually a or div)
+        const parent = img.parentElement;
+        if (parent && !parent.querySelector('.brand-text-container')) {
+          const container = document.createElement('div');
+          container.className = 'brand-text-container';
+
+          const title = document.createElement('div');
+          title.className = 'brand-title';
+          title.innerText = 'CitruSS';
+
+          const slogan = document.createElement('div');
+          slogan.className = 'brand-slogan';
+          slogan.innerText = 'Vibrant Glassmorphic UI';
+
+          container.appendChild(title);
+          container.appendChild(slogan);
+          parent.appendChild(container);
+        }
+      }
+    }
+
+    // Run immediately and also poll to ensure it catches dynamic rendering
+    injectBrandInfo();
+    const interval = setInterval(injectBrandInfo, 100);
+
+    // Stop polling after 10 seconds to save CPU, but register MutationObserver for resilient rendering
+    setTimeout(() => {
+      clearInterval(interval);
+      
+      const observer = new MutationObserver((mutations) => {
+        injectBrandInfo();
+      });
+      
+      if (document.body) {
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+      }
+    }, 10000);
+  })();
+</script>
+
+
+<script>window.__CHROMATIC_STORYBOOK_ID__ = "175db0a202d2c1a45611323246d7ed79e1b9ec41c99eebd11cede18e502a60d2";</script> 
+
+    <style>
+      #storybook-root[hidden] {
+        display: none !important;
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    <div id="root"></div>
+
+    
+    <script>
+      
+        
+          window['FEATURES'] = {
+  "actions": true,
+  "argTypeTargetsV7": true,
+  "backgrounds": true,
+  "changeDetection": true,
+  "componentsManifest": false,
+  "controls": true,
+  "disallowImplicitActionsInRenderV8": true,
+  "highlight": true,
+  "interactions": true,
+  "legacyDecoratorFileOrder": false,
+  "measure": true,
+  "outline": true,
+  "sidebarOnboardingChecklist": true,
+  "viewport": true
+};
+        
+      
+        
+          window['REFS'] = {};
+        
+      
+        
+          window['LOGLEVEL'] = "info";
+        
+      
+        
+          window['DOCS_OPTIONS'] = {
+  "defaultName": "Docs"
+};
+        
+      
+        
+          window['CONFIG_TYPE'] = "PRODUCTION";
+        
+      
+        
+      
+        
+      
+        
+          window['TAGS_OPTIONS'] = {};
+        
+      
+        
+          window['STORYBOOK_BUILDER'] = "vite";
+        
+      
+        
+          window['STORYBOOK_FRAMEWORK'] = "html-vite";
+        
+      
+        
+          window['STORYBOOK_RENDERER'] = "html";
+        
+      
+        
+      
+    </script>
+    
+
+    <script type="module">
+      import './sb-manager/globals-runtime.js';
+
+      
+        import './sb-addons/storybook-core-server-presets-0/common-manager-bundle.js';
+      
+        import './sb-addons/links-1/manager-bundle.js';
+      
+        import './sb-addons/chromatic-com-storybook-2/manager-bundle.js';
+      
+        import './sb-addons/docs-3/manager-bundle.js';
+      
+        import './sb-addons/storybook-4/manager-bundle.js';
+      
+
+      import './sb-manager/runtime.js';
+    </script>
+  </body>
+</html>
