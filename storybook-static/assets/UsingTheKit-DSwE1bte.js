@@ -1,4 +1,4 @@
-import{O as a,w as s}from"./index-BE8O6Mn_.js";import{a as i}from"./index-DGdFm7sy.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-CgkO_K3A.js";function e(t){const r={p:"p",...a(),...t.components};return s.jsxs(s.Fragment,{children:[s.jsx(i,{title:"Getting Started/Using the Kit"}),`
+import{O as a,w as s}from"./index-DqkXPhuf.js";import{a as i}from"./index-D515mFra.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-DPoSv9Md.js";function e(t){const r={p:"p",...a(),...t.components};return s.jsxs(s.Fragment,{children:[s.jsx(i,{title:"Getting Started/Using the Kit"}),`
 `,s.jsx("style",{children:`
 .citruss-doc-container {
   color: var(--citruss-text-main, #ffffff) !important;

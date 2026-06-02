@@ -125,6 +125,39 @@ To use the glassmorphic card component in your markup:
 
 ---
 
+## 📱 App Screen Layout (Optional)
+
+For web applications and desktop shells (such as those built with **Electron.js**), maintaining a window-bound layout is a core UX best practice. 
+
+The `.citruss-app-layout` classes provide an **optional, opt-in layout structure** that locks the viewport height (`100vh`), prevents document body-level scrolling, and delegates independent scrolling to inner content areas:
+
+```html
+<div class="citruss-app-layout">
+  <!-- Fixed Header -->
+  <header class="layout-header">
+    <div class="citruss-navbar">...</div>
+  </header>
+
+  <!-- Content Wrapper -->
+  <div class="layout-content-wrapper">
+    <!-- Optional Sidebar -->
+    <aside class="layout-sidebar">...</aside>
+
+    <!-- Main Scrollable Content -->
+    <main class="layout-content">
+      <!-- Your scrollable view/cards here -->
+    </main>
+  </div>
+
+  <!-- Fixed Footer -->
+  <footer class="layout-footer">...</footer>
+</div>
+```
+
+*Note: This layout is completely optional and customizable. Use it if your application demands viewport optimization and window-level scroll suppression.*
+
+---
+
 ## 📝 License
 
 This project is licensed under the **MIT** License. See the `package.json` file for more details.

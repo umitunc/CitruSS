@@ -1,0 +1,151 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/App Screen Layout" />
+
+<style>{`
+  .citruss-doc-container {
+    color: var(--citruss-text-main, #ffffff) !important;
+    font-family: "Outfit", "Inter", sans-serif !important;
+    padding: 20px 0 !important;
+    background: transparent !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .citruss-doc-container h1,
+  .citruss-doc-container h2,
+  .citruss-doc-container h3,
+  .citruss-doc-container h4 {
+    color: #ffffff !important;
+  }
+
+  [data-theme="light"] .citruss-doc-container h1,
+  [data-theme="light"] .citruss-doc-container h2,
+  [data-theme="light"] .citruss-doc-container h3,
+  [data-theme="light"] .citruss-doc-container h4 {
+    color: #0f172a !important;
+  }
+
+  .citruss-tech-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.2px, transparent 0);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(circle at center, black 75%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  [data-theme="light"] .citruss-tech-dots {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1.2px, transparent 0);
+  }
+
+  .citruss-code-card {
+    background-color: rgba(17, 25, 40, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.08),
+      0 12px 36px rgba(0,0,0,0.4) !important;
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+  }
+
+  [data-theme="light"] .citruss-code-card {
+    background-color: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 
+      inset 0 1.5px 0 0 rgba(255, 255, 255, 0.85),
+      0 12px 30px 0 rgba(15, 23, 42, 0.08) !important;
+  }
+
+  .citruss-code-card:hover {
+    border-color: rgba(255, 107, 0, 0.4) !important;
+    background-color: rgba(17, 25, 40, 0.55) !important;
+  }
+
+  [data-theme="light"] .citruss-code-card:hover {
+    border-color: rgba(255, 107, 0, 0.55) !important;
+    background-color: rgba(255, 255, 255, 0.55) !important;
+  }
+
+  code {
+    font-family: 'Fira Code', 'Courier New', monospace !important;
+    font-size: 0.9rem !important;
+  }
+
+  .keyword { color: #f43f5e; }
+  .string { color: #10b981; }
+  .comment { color: #6b7280; font-style: italic; }
+  .function { color: #3b82f6; }
+  .tag { color: #e11d48; }
+  .attr { color: #d97706; }
+`}</style>
+
+<div className="citruss-doc-container">
+  <div className="citruss-tech-dots" />
+  
+  <h1>App Screen Layout (Optional)</h1>
+  <div style={{ fontSize: '1.1rem', color: 'rgba(255, 255, 255, 0.8)', marginBottom: '32px', position: 'relative', zIndex: '2' }}>
+    Learn how to build window-optimized, viewport-bound application layouts with fixed headers/footers and independent content scrolling.
+  </div>
+
+  <h2>Introduction & Best Practices</h2>
+  <p>
+    When building desktop applications (e.g., using Electron.js) or web dashboards, a common design challenge is managing scroll behavior. 
+    Instead of allowing the entire window or document body to scroll, modern UX patterns favor a **fixed viewport screen structure**:
+  </p>
+  <ul>
+    <li>The main application fits exactly 100% of the screen height (<code>100vh</code>).</li>
+    <li>The **Header** and **Footer** remain static, locked in place.</li>
+    <li>The **Content** area expands to fill the remaining screen space and handles its own internal overflow.</li>
+  </ul>
+  <p>
+    CitruSS UI provides <code>.citruss-app-layout</code> as an **optional, opt-in** structural pattern. You are not forced to use it, but it provides a plug-and-play setup for applications that demand this specific layout.
+  </p>
+
+  <h2>HTML Markup Structure</h2>
+  <p>Apply the following classes to establish the layout:</p>
+
+  <div className="citruss-code-card">
+    <pre>
+      <code>
+        &lt;<span className="keyword">div</span> <span className="attr">class</span>=<span className="string">"citruss-app-layout"</span>&gt;<br />
+        &nbsp;&nbsp;<span className="comment">&lt;!-- Fixed Header --&gt;</span><br />
+        &nbsp;&nbsp;&lt;<span className="keyword">header</span> <span className="attr">class</span>=<span className="string">"layout-header"</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="keyword">div</span> <span className="attr">class</span>=<span className="string">"citruss-navbar"</span>&gt;...&lt;/<span className="keyword">div</span>&gt;<br />
+        &nbsp;&nbsp;&lt;/<span className="keyword">header</span>&gt;<br /><br />
+        
+        &nbsp;&nbsp;<span className="comment">&lt;!-- Layout Content Wrapper --&gt;</span><br />
+        &nbsp;&nbsp;&lt;<span className="keyword">div</span> <span className="attr">class</span>=<span className="string">"layout-content-wrapper"</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span className="comment">&lt;!-- Optional Sidebar --&gt;</span><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="keyword">aside</span> <span className="attr">class</span>=<span className="string">"layout-sidebar"</span>&gt;...&lt;/<span className="keyword">aside</span>&gt;<br /><br />
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;<span className="comment">&lt;!-- Scrollable Content Area --&gt;</span><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="keyword">main</span> <span className="attr">class</span>=<span className="string">"layout-content"</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="keyword">div</span> <span className="attr">class</span>=<span className="string">"citruss-card"</span>&gt;...&lt;/<span className="keyword">div</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span className="keyword">main</span>&gt;<br />
+        &nbsp;&nbsp;&lt;/<span className="keyword">div</span>&gt;<br /><br />
+        
+        &nbsp;&nbsp;<span className="comment">&lt;!-- Fixed Footer --&gt;</span><br />
+        &nbsp;&nbsp;&lt;<span className="keyword">footer</span> <span className="attr">class</span>=<span className="string">"layout-footer"</span>&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span className="keyword">div</span> <span className="attr">class</span>=<span className="string">"citruss-footer-content"</span>&gt;...&lt;/<span className="keyword">div</span>&gt;<br />
+        &nbsp;&nbsp;&lt;/<span className="keyword">footer</span>&gt;<br />
+        &lt;/<span className="keyword">div</span>&gt;
+      </code>
+    </pre>
+  </div>
+
+  <h2>Key Features</h2>
+  <ul>
+    <li><strong>Zero Body Scroll:</strong> Disables viewport scrolling to provide a native application feel.</li>
+    <li><strong>Independent Sub-Scrolling:</strong> Sidebars and Main Content areas scroll independently, keeping navigation accessible at all times.</li>
+    <li><strong>Nested Flex Box:</strong> Uses optimized flexbox rules with <code>min-height: 0</code> to bypass browser calculation bugs.</li>
+    <li><strong>Glassmorphic Scrollbars:</strong> Content elements automatically inherit modern, semi-transparent scrollbar designs that adapt dynamically to dark and light modes.</li>
+  </ul>
+</div>

@@ -164,6 +164,28 @@ The theme configuration is auto-detected via OS settings. To toggle theme states
 CitruSS.ThemeToggle.toggle(); // Alternates between 'dark' and 'light' modes
 ```
 
+
+### 📱 App Screen Layout (Optional / Window-Bound Frame)
+To build a viewport-optimized UI (100vh height, fixed header/footer, and independent content scrolling without global window scroll), use the optional layout frame:
+```html
+<div class="citruss-app-layout">
+  <!-- Fixed Header -->
+  <header class="layout-header">
+    <div class="citruss-navbar">...</div>
+  </header>
+  
+  <div class="layout-content-wrapper">
+    <!-- Optional Sidebar -->
+    <aside class="layout-sidebar">...</aside>
+    <!-- Independent Scrollable Main Content -->
+    <main class="layout-content">...</main>
+  </div>
+  
+  <!-- Fixed Footer -->
+  <footer class="layout-footer">...</footer>
+</div>
+```
+
 ---
 
 ## 🚀 4. Golden Rules for AI-Assisted Writing

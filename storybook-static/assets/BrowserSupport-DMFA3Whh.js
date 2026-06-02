@@ -1,4 +1,4 @@
-import{O as a,w as t}from"./index-BE8O6Mn_.js";import{a as i}from"./index-DGdFm7sy.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-CgkO_K3A.js";function s(r){const e={p:"p",...a(),...r.components};return t.jsxs(t.Fragment,{children:[t.jsx(i,{title:"Getting Started/Browser support"}),`
+import{O as a,w as t}from"./index-DqkXPhuf.js";import{a as i}from"./index-D515mFra.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-DPoSv9Md.js";function s(r){const e={p:"p",...a(),...r.components};return t.jsxs(t.Fragment,{children:[t.jsx(i,{title:"Getting Started/Browser support"}),`
 `,t.jsx("style",{children:`
 .citruss-doc-container {
   color: var(--citruss-text-main, #ffffff) !important;

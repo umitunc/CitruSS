@@ -1,4 +1,4 @@
-import{O as i,w as e}from"./index-BE8O6Mn_.js";import{a as o}from"./index-DGdFm7sy.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-CgkO_K3A.js";function r(t){const a={p:"p",...i(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Getting Started/Support and Feedback"}),`
+import{O as i,w as e}from"./index-DqkXPhuf.js";import{a as o}from"./index-D515mFra.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-DPoSv9Md.js";function r(t){const a={p:"p",...i(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"Getting Started/Support and Feedback"}),`
 `,e.jsx("style",{children:`
 .citruss-doc-container {
   color: var(--citruss-text-main, #ffffff) !important;

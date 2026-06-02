@@ -1,0 +1,105 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+/**
+ * CitruSS App Screen Layout
+ * An optional, highly-optimized screen structure designed to fit perfectly within the window.
+ * Keeps Header and Footer fixed and makes the Content area scrollable inside.
+ * Prevents body-level scrolling for desktop/Electron.js apps or layout-bound web designs.
+ */
+.citruss-app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden; /* Prevent global window scrolling */
+  position: relative;
+  
+  .layout-header {
+    flex-shrink: 0;
+    z-index: 10;
+    width: 100%;
+  }
+  
+  .layout-content-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    min-height: 0; /* Important fix for nested flex layout scrolling */
+    width: 100%;
+  }
+
+  .layout-sidebar {
+    flex-shrink: 0;
+    overflow-y: auto;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    
+    /* Scrollbar integration */
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 99px;
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+    
+    [data-theme="light"] &::-webkit-scrollbar-thumb {
+      background: rgba(15, 23, 42, 0.1);
+      &:hover {
+        background: rgba(15, 23, 42, 0.2);
+      }
+    }
+  }
+
+  .layout-content {
+    flex: 1;
+    overflow-y: auto;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--citruss-spacing-lg);
+    
+    /* Scrollbar integration matching dashboard design */
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      margin: 8px 0;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 99px;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      
+      &:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border: 2px solid transparent;
+        background-clip: padding-box;
+      }
+    }
+    
+    [data-theme="light"] &::-webkit-scrollbar-thumb {
+      background: rgba(15, 23, 42, 0.12);
+      
+      &:hover {
+        background: rgba(15, 23, 42, 0.25);
+      }
+    }
+  }
+  
+  .layout-footer {
+    flex-shrink: 0;
+    z-index: 10;
+    width: 100%;
+  }
+}
