@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/pgutrunc/citruss.truncgil.com
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R storybook-static/* $DEPLOYPATH
