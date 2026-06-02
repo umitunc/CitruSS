@@ -1,0 +1,126 @@
+@import "../core/variables";
+@import "../core/mixins";
+
+/* ==========================================
+   CitruSS UI — Typography & Text Styling
+   Vibrant Frosted Glassmorphism Ecosystem
+   ========================================== */
+
+/* Headings Utility Classes */
+.citruss-h1, .citruss-h2, .citruss-h3, .citruss-h4, .citruss-h5, .citruss-h6 {
+  font-family: var(--citruss-font-display);
+  font-weight: 700;
+  color: var(--citruss-text-main);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.citruss-h1 { font-size: 2.5rem; font-weight: 800; }
+.citruss-h2 { font-size: 2rem; font-weight: 800; }
+.citruss-h3 { font-size: 1.75rem; }
+.citruss-h4 { font-size: 1.5rem; }
+.citruss-h5 { font-size: 1.25rem; }
+.citruss-h6 { font-size: 1rem; }
+
+/* Subtitle & Lead Paragraphs */
+.citruss-lead {
+  font-family: var(--citruss-font-body);
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--citruss-text-main);
+  opacity: 0.9;
+}
+
+.citruss-subtitle {
+  font-family: var(--citruss-font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--citruss-text-muted);
+}
+
+.citruss-muted {
+  color: var(--citruss-text-muted) !important;
+}
+
+/* Premium Gradient Text Effects */
+.citruss-text-gradient {
+  background: linear-gradient(135deg, var(--citruss-orange) 0%, var(--citruss-tangerine) 50%, var(--citruss-lemon) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  
+  &.gradient-lime {
+    background: linear-gradient(135deg, var(--citruss-tangerine) 0%, var(--citruss-lemon) 40%, var(--citruss-lime) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Glassmorphic Glow Typography */
+.citruss-text-glow {
+  color: #fff;
+  text-shadow: 
+    0 0 10px rgba(255, 107, 0, 0.45),
+    0 0 20px rgba(255, 107, 0, 0.2);
+  
+  &.glow-tangerine {
+    text-shadow: 
+      0 0 10px rgba(255, 159, 67, 0.45),
+      0 0 20px rgba(255, 159, 67, 0.2);
+  }
+  
+  &.glow-lime {
+    color: #fff;
+    text-shadow: 
+      0 0 10px rgba(29, 209, 161, 0.5),
+      0 0 20px rgba(29, 209, 161, 0.25);
+  }
+}
+
+/* Glassmorphic Underline / Highlight */
+.citruss-text-highlight {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: 2px;
+    height: 35%;
+    background: linear-gradient(90deg, rgba(255, 107, 0, 0.2), rgba(254, 202, 87, 0.25));
+    backdrop-filter: blur(2px);
+    border-radius: 4px;
+    z-index: -1;
+  }
+  
+  &.highlight-lime::after {
+    background: linear-gradient(90deg, rgba(29, 209, 161, 0.25), rgba(254, 202, 87, 0.2));
+  }
+}
+
+/* Fluid Typography Scales */
+.fs-xs   { font-size: 0.75rem !important; }
+.fs-sm   { font-size: 0.875rem !important; }
+.fs-base { font-size: 1rem !important; }
+.fs-lg   { font-size: 1.125rem !important; }
+.fs-xl   { font-size: 1.25rem !important; }
+.fs-2xl  { font-size: 1.5rem !important; }
+.fs-3xl  { font-size: 1.875rem !important; }
+.fs-4xl  { font-size: 2.25rem !important; }
+.fs-5xl  { font-size: 3rem !important; }
+
+/* Font Weight Helpers */
+.fw-light     { font-weight: 300 !important; }
+.fw-normal    { font-weight: 400 !important; }
+.fw-medium    { font-weight: 500 !important; }
+.fw-semibold  { font-weight: 600 !important; }
+.fw-bold      { font-weight: 700 !important; }
+.fw-extrabold { font-weight: 800 !important; }
+.fw-black     { font-weight: 900 !important; }

@@ -1,4 +1,4 @@
-import{O as i,w as e}from"./index-DXfLLBIj.js";import{a}from"./index-IVzAXdWM.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-D55dljvC.js";function s(t){const n={p:"p",...i(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(a,{title:"Getting Started/What's new"}),`
+import{O as i,w as e}from"./index-Dt8ME-QP.js";import{a}from"./index-BTANtrXd.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-hSpA13Iw.js";function s(t){const n={p:"p",...i(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(a,{title:"Getting Started/What's new"}),`
 `,e.jsx("style",{children:`
 .citruss-doc-container {
   color: var(--citruss-text-main, #ffffff) !important;

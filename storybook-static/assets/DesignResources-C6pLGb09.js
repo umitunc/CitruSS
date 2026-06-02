@@ -1,4 +1,4 @@
-import{O as o,w as r}from"./index-DXfLLBIj.js";import{a as s}from"./index-IVzAXdWM.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-D55dljvC.js";function a(e){const t={p:"p",...o(),...e.components};return r.jsxs(r.Fragment,{children:[r.jsx(s,{title:"Getting Started/Design resources"}),`
+import{O as o,w as r}from"./index-Dt8ME-QP.js";import{a as s}from"./index-BTANtrXd.js";import"./preload-helper-C1FmrZbK.js";import"./iframe-hSpA13Iw.js";function a(e){const t={p:"p",...o(),...e.components};return r.jsxs(r.Fragment,{children:[r.jsx(s,{title:"Getting Started/Design resources"}),`
 `,r.jsx("style",{children:`
 .citruss-doc-container {
   color: var(--citruss-text-main, #ffffff) !important;
