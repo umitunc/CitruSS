@@ -19,6 +19,31 @@ export const DefaultAppLayout = () => {
         themeBtn.innerText = nextTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
       });
     }
+
+    // Glass opacity slider interaction
+    const slider = document.getElementById('layout-opacity-slider');
+    const label = document.getElementById('layout-opacity-value');
+    const classVal = document.getElementById('opacity-class-value');
+    const appLayout = document.querySelector('.citruss-app-layout');
+
+    if (slider && appLayout) {
+      const updateOpacity = (val) => {
+        appLayout.style.setProperty('--citruss-glass-opacity', `${val}%`);
+        if (label) label.innerText = `${val}%`;
+        if (classVal) classVal.innerText = `${val}%`;
+      };
+
+      // Set initial value from ComputedStyle or default to 35
+      const rootStyles = getComputedStyle(document.documentElement);
+      const initialOpacityStr = rootStyles.getPropertyValue('--citruss-glass-opacity') || '35%';
+      const initialVal = parseFloat(initialOpacityStr) || 35;
+      slider.value = initialVal;
+      updateOpacity(initialVal);
+
+      slider.addEventListener('input', (e) => {
+        updateOpacity(e.target.value);
+      });
+    }
   }, []);
 
   return `
@@ -35,6 +60,12 @@ export const DefaultAppLayout = () => {
             CitruSS <span>App Frame</span>
           </a>
           <div class="citruss-d-flex citruss-align-items-center citruss-gap-md">
+            <!-- Glass Opacity Slider -->
+            <div class="citruss-d-flex citruss-align-items-center citruss-gap-sm" style="background: var(--citruss-glass-bg-hover); padding: 4px 12px; border-radius: 999px; border: 1px solid var(--citruss-glass-border);">
+              <span class="citruss-icon" style="font-size: 16px; color: var(--citruss-tangerine);">opacity</span>
+              <span style="font-size: 0.75rem; font-weight: 600; min-width: 32px; text-align: center;" id="layout-opacity-value">35%</span>
+              <input type="range" id="layout-opacity-slider" min="0" max="100" value="35" style="width: 100px; accent-color: var(--citruss-orange); cursor: pointer; height: 4px; padding: 0; margin: 0;">
+            </div>
             <button class="citruss-btn btn-sm" id="layout-theme-toggle">☀️ Light Mode</button>
             <button class="citruss-btn btn-sm btn-primary">
               <span class="citruss-icon" style="margin-right: 4px;">widgets</span>
@@ -56,6 +87,15 @@ export const DefaultAppLayout = () => {
               <div class="card-content">
                 <p>This layout uses the <code>.citruss-app-layout</code> class to prevent browser-level scrolling. The header and footer are fixed in place, while the main content area has its own independent scrolling context.</p>
                 <p>Resize your browser window or Storybook panel to see how the layout optimizes space. The content area scrollbar is styled to match the dark/light modes.</p>
+                
+                <div style="margin-top: 20px; padding: 16px; background: rgba(0, 0, 0, 0.2); border-radius: 8px; border: 1px solid var(--citruss-glass-border);">
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--citruss-tangerine); margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                    <span class="citruss-icon">code</span> Active Glassmorphism Configuration
+                  </div>
+                  <pre style="margin: 0; font-family: monospace; font-size: 0.85rem; color: var(--citruss-text-main);"><span style="color: var(--citruss-lime);">.citruss-app-layout</span> {
+  <span style="color: var(--citruss-info);">--citruss-glass-opacity</span>: <span id="opacity-class-value" style="color: var(--citruss-orange); font-weight: bold;">35%</span>;
+}</pre>
+                </div>
               </div>
             </div>
 
