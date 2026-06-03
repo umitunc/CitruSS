@@ -7,6 +7,8 @@ export default {
   },
 };
 
+
+
 export const DefaultAppLayout = () => {
   useEffect(() => {
     // Basic theme toggle interaction support
@@ -20,28 +22,28 @@ export const DefaultAppLayout = () => {
       });
     }
 
-    // Glass opacity slider interaction
-    const slider = document.getElementById('layout-opacity-slider');
-    const label = document.getElementById('layout-opacity-value');
-    const classVal = document.getElementById('opacity-class-value');
+    // Glass blur slider interaction
+    const slider = document.getElementById('layout-blur-slider');
+    const label = document.getElementById('layout-blur-value');
+    const classVal = document.getElementById('blur-class-value');
     const appLayout = document.querySelector('.citruss-app-layout');
 
     if (slider && appLayout) {
-      const updateOpacity = (val) => {
-        appLayout.style.setProperty('--citruss-glass-opacity', `${val}%`);
-        if (label) label.innerText = `${val}%`;
-        if (classVal) classVal.innerText = `${val}%`;
+      const updateBlur = (val) => {
+        appLayout.style.setProperty('--citruss-glass-blur', `${val}px`);
+        if (label) label.innerText = `${val}px`;
+        if (classVal) classVal.innerText = `${val}px`;
       };
 
-      // Set initial value from ComputedStyle or default to 35
+      // Set initial value from ComputedStyle or default to 24px
       const rootStyles = getComputedStyle(document.documentElement);
-      const initialOpacityStr = rootStyles.getPropertyValue('--citruss-glass-opacity') || '35%';
-      const initialVal = parseFloat(initialOpacityStr) || 35;
+      const initialBlurStr = rootStyles.getPropertyValue('--citruss-glass-blur') || '24px';
+      const initialVal = parseInt(initialBlurStr) || 24;
       slider.value = initialVal;
-      updateOpacity(initialVal);
+      updateBlur(initialVal);
 
       slider.addEventListener('input', (e) => {
-        updateOpacity(e.target.value);
+        updateBlur(e.target.value);
       });
     }
   }, []);
@@ -60,11 +62,11 @@ export const DefaultAppLayout = () => {
             CitruSS <span>App Frame</span>
           </a>
           <div class="citruss-d-flex citruss-align-items-center citruss-gap-md">
-            <!-- Glass Opacity Slider -->
+            <!-- Glass Blur Slider -->
             <div class="citruss-d-flex citruss-align-items-center citruss-gap-sm" style="background: var(--citruss-glass-bg-hover); padding: 4px 12px; border-radius: 999px; border: 1px solid var(--citruss-glass-border);">
-              <span class="citruss-icon" style="font-size: 16px; color: var(--citruss-tangerine);">opacity</span>
-              <span style="font-size: 0.75rem; font-weight: 600; min-width: 32px; text-align: center;" id="layout-opacity-value">35%</span>
-              <input type="range" id="layout-opacity-slider" min="0" max="100" value="35" style="width: 100px; accent-color: var(--citruss-orange); cursor: pointer; height: 4px; padding: 0; margin: 0;">
+              <span class="citruss-icon" style="font-size: 16px; color: var(--citruss-tangerine);">blur_on</span>
+              <span style="font-size: 0.75rem; font-weight: 600; min-width: 40px; text-align: center;" id="layout-blur-value">24px</span>
+              <input type="range" id="layout-blur-slider" min="0" max="60" value="24" style="width: 100px; accent-color: var(--citruss-orange); cursor: pointer; height: 4px; padding: 0; margin: 0;">
             </div>
             <button class="citruss-btn btn-sm" id="layout-theme-toggle">☀️ Light Mode</button>
             <button class="citruss-btn btn-sm btn-primary">
@@ -93,7 +95,7 @@ export const DefaultAppLayout = () => {
                     <span class="citruss-icon">code</span> Active Glassmorphism Configuration
                   </div>
                   <pre style="margin: 0; font-family: monospace; font-size: 0.85rem; color: var(--citruss-text-main);"><span style="color: var(--citruss-lime);">.citruss-app-layout</span> {
-  <span style="color: var(--citruss-info);">--citruss-glass-opacity</span>: <span id="opacity-class-value" style="color: var(--citruss-orange); font-weight: bold;">35%</span>;
+  <span style="color: var(--citruss-info);">--citruss-glass-blur</span>: <span id="blur-class-value" style="color: var(--citruss-orange); font-weight: bold;">24px</span>;
 }</pre>
                 </div>
               </div>
