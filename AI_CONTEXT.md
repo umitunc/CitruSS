@@ -165,6 +165,31 @@ CitruSS.ThemeToggle.toggle(); // Alternates between 'dark' and 'light' modes
 ```
 
 
+### 🌐 Navigation Bar & Brand Logo (`.citruss-navbar`)
+The navigation bar is a sticky frosted-glass header supporting brand logos, app icons, and menu links:
+```html
+<nav class="citruss-navbar">
+  <!-- Brand logo & name -->
+  <a href="#" class="citruss-logo-area">
+    <!-- Supports img, svg, or font icon (.citruss-logo-icon) -->
+    <svg class="citruss-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
+      <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    CitruSS <span>App</span>
+  </a>
+
+  <!-- Navigation items -->
+  <div class="citruss-nav-links">
+    <a href="#" class="nav-item active">Dashboard</a>
+    <a href="#" class="nav-item">Settings</a>
+  </div>
+</nav>
+```
+*Note: Brand icons auto-scale, rotate slightly (`-5deg`), and gain an orange glow effect on hover.*
+
+
 ### 📱 App Screen Layout (Optional / Window-Bound Frame)
 To build a viewport-optimized UI (100vh height, fixed header/footer, and independent content scrolling without global window scroll), use the optional layout frame:
 ```html

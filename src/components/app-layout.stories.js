@@ -26,9 +26,14 @@ export const DefaultAppLayout = () => {
       <!-- Fixed Header -->
       <header class="layout-header">
         <nav class="citruss-navbar">
-          <div class="citruss-logo-area">
-            🍊 CitruSS <span>App Frame</span>
-          </div>
+          <a href="#" class="citruss-logo-area">
+            <svg class="citruss-logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            CitruSS <span>App Frame</span>
+          </a>
           <div class="citruss-d-flex citruss-align-items-center citruss-gap-md">
             <button class="citruss-btn btn-sm" id="layout-theme-toggle">☀️ Light Mode</button>
             <button class="citruss-btn btn-sm btn-primary">
