@@ -83,6 +83,13 @@
 }
 
 /* Custom Select Dropdown Styling */
+.citruss-select {
+  option {
+    color: var(--citruss-text-main);
+    background-color: var(--citruss-bg-main);
+  }
+}
+
 .citruss-select-wrapper {
   position: relative;
   width: 100%;
@@ -91,11 +98,6 @@
     padding-right: 40px;
     appearance: none;
     cursor: pointer;
-
-    option {
-      color: var(--citruss-text-main);
-      background: var(--citruss-bg-surface);
-    }
   }
 
   &::after {
