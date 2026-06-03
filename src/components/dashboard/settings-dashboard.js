@@ -76,9 +76,32 @@ export const renderUserSettings = (useEffect) => {
                       <label style="position:relative; display:inline-block; width:50px; height:26px;">
                         <input type="checkbox" style="opacity:0; width:0; height:0;">
                         <span style="position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#ccc; border-radius:34px; transition:0.4s;">
-                          <span style="position:absolute; content:''; height:18px; width:18px; left:4px; bottom:4px; background:white; border-radius:50%; transition:0.4s;"></span>
+                           <span style="position:absolute; content:''; height:18px; width:18px; left:4px; bottom:4px; background:white; border-radius:50%; transition:0.4s;"></span>
                         </span>
                       </label>
+                    </div>
+                  </div>
+
+                  <hr style="border: 0; border-top: 1px solid var(--citruss-glass-border); margin: 24px 0;">
+
+                  <h4 style="font-weight:800; font-size:1.05rem; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+                    <span class="citruss-icon icon-orange">opacity</span> UI Glass Customization
+                  </h4>
+
+                  <div style="display:flex; flex-direction:column; gap:16px; margin-bottom: 24px;">
+                    <div>
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                        <div>
+                          <div style="font-weight:700; font-size:0.9rem; color:var(--citruss-text-main);">Glass Opacity / Transmission</div>
+                          <div style="font-size:0.8rem; color:var(--citruss-text-muted);">Adjust transparency percentage dynamically for all glass surfaces</div>
+                        </div>
+                        <span id="glass-opacity-value" style="font-weight:700; font-size:1rem; color:var(--citruss-tangerine);">35%</span>
+                      </div>
+                      <div style="display: flex; align-items: center; gap: 12px;">
+                        <span class="citruss-icon icon-sm" style="color:var(--citruss-text-muted);">blur_on</span>
+                        <input type="range" id="glass-opacity-slider" min="0" max="100" value="35" style="flex: 1; accent-color: var(--citruss-orange); cursor: pointer; height: 6px; border-radius: 999px;">
+                        <span class="citruss-icon icon-sm" style="color:var(--citruss-text-muted);">blur_off</span>
+                      </div>
                     </div>
                   </div>
 

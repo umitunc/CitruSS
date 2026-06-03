@@ -58,6 +58,40 @@ export const initDashboardInteractions = () => {
       });
     };
   }
+
+  // Glass Opacity Sliders Binding
+  const opacitySliders = [
+    { slider: document.getElementById('glass-opacity-slider'), label: document.getElementById('glass-opacity-value') },
+    { slider: document.getElementById('glass-opacity-slider-tab'), label: document.getElementById('glass-opacity-value-tab') }
+  ];
+
+  // Function to update the opacity value globally
+  const updateGlassOpacity = (val) => {
+    // Set custom property on document element so it acts as the base variables
+    document.documentElement.style.setProperty('--citruss-glass-opacity', `${val}%`);
+    
+    // Sync all sliders and labels
+    opacitySliders.forEach(item => {
+      if (item.slider) item.slider.value = val;
+      if (item.label) item.label.textContent = `${val}%`;
+    });
+  };
+
+  // Get current opacity from root styles or default to 35
+  const rootStyles = getComputedStyle(document.documentElement);
+  const initialOpacityStr = rootStyles.getPropertyValue('--citruss-glass-opacity') || '35%';
+  const initialOpacityVal = parseFloat(initialOpacityStr) || 35;
+
+  opacitySliders.forEach(item => {
+    if (item.slider) {
+      item.slider.value = initialOpacityVal;
+      if (item.label) item.label.textContent = `${initialOpacityVal}%`;
+      
+      item.slider.oninput = (e) => {
+        updateGlassOpacity(e.target.value);
+      };
+    }
+  });
 };
 
 // Bind navigation click events dynamically inside Storybook preview to allow SPA feel

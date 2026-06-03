@@ -14,7 +14,7 @@
   border-right: none;
   border-left: none;
 
-  @include glass-panel(var(--citruss-glass-blur), rgba(255, 255, 255, 0.02), var(--citruss-glass-border));
+  @include glass-panel(var(--citruss-glass-blur), var(--citruss-glass-bg), var(--citruss-glass-border));
   
   /* Support Electron custom window dragging */
   &.electron-drag {
@@ -110,7 +110,7 @@
   gap: var(--citruss-spacing-md);
   flex-wrap: wrap;
 
-  @include glass-panel(var(--citruss-glass-blur), rgba(255, 255, 255, 0.01), var(--citruss-glass-border));
+  @include glass-panel(var(--citruss-glass-blur), var(--citruss-glass-bg), var(--citruss-glass-border));
   border-bottom: none;
   border-right: none;
   border-left: none;

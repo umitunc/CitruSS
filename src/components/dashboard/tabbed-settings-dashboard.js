@@ -37,6 +37,10 @@ export const renderTabbedSettings = (useEffect) => {
                 <span class="citruss-icon" style="font-size: 18px;">api</span>
                 <span>Integrations & Tokens</span>
               </button>
+              <button class="citruss-tab-link" data-target="#tab-customization" style="display: flex; align-items: center; gap: 8px;">
+                <span class="citruss-icon" style="font-size: 18px;">opacity</span>
+                <span>Glass Customization</span>
+              </button>
             </div>
 
             <!-- Standard CitruSS Tab Content Panes -->
@@ -116,6 +120,32 @@ export const renderTabbedSettings = (useEffect) => {
                       </div>
                     </div>
                     <button class="citruss-btn btn-primary btn-sm">Add Connection</button>
+                  </div>
+              </div>
+              
+              <!-- Tab 4: Customization -->
+              <div class="citruss-tab-pane" id="tab-customization">
+                <div class="citruss-card" style="padding: 24px;">
+                  <div class="card-content">
+                    <h3 style="font-weight:800; font-size:1.2rem; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+                      <span class="citruss-icon icon-orange">opacity</span> UI Glass Customization
+                    </h3>
+                    <div style="display:flex; flex-direction:column; gap:16px; margin-bottom: 24px;">
+                      <div>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                          <div>
+                            <div style="font-weight:700; font-size:0.9rem; color:var(--citruss-text-main);">Glass Opacity / Transmission</div>
+                            <div style="font-size:0.8rem; color:var(--citruss-text-muted);">Adjust transparency percentage dynamically for all glass surfaces</div>
+                          </div>
+                          <span id="glass-opacity-value-tab" style="font-weight:700; font-size:1rem; color:var(--citruss-tangerine);">35%</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                          <span class="citruss-icon icon-sm" style="color:var(--citruss-text-muted);">blur_on</span>
+                          <input type="range" id="glass-opacity-slider-tab" min="0" max="100" value="35" style="flex: 1; accent-color: var(--citruss-orange); cursor: pointer; height: 6px; border-radius: 999px;">
+                          <span class="citruss-icon icon-sm" style="color:var(--citruss-text-muted);">blur_off</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

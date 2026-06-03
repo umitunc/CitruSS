@@ -12,7 +12,7 @@
   border-bottom: none;
   border-left: none;
 
-  @include glass-panel(var(--citruss-glass-blur), rgba(255, 255, 255, 0.015), var(--citruss-glass-border));
+  @include glass-panel(var(--citruss-glass-blur), var(--citruss-glass-bg), var(--citruss-glass-border));
   @include transition-all(0.3s);
   
   .sidebar-header {
