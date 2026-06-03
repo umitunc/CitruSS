@@ -75,10 +75,26 @@ export const DefaultAppLayout = () => {
       </div>
 
       <!-- Fixed Footer -->
-      <footer class="layout-footer" style="background: rgba(0, 0, 0, 0.2); border-top: 1px solid var(--citruss-glass-border); padding: 12px var(--citruss-spacing-lg);">
-        <div class="citruss-d-flex citruss-justify-content-between citruss-align-items-center" style="font-size: 0.85rem; color: var(--citruss-text-muted);">
-          <div>© 2026 Truncgil Technology. All rights reserved.</div>
-          <div>Status: <span class="citruss-badge badge-success" style="font-size: 0.75rem; margin: 0 4px;">Optimized</span></div>
+      <footer class="layout-footer">
+        <div class="citruss-footer">
+          <div class="footer-left" style="font-size: 0.85rem; color: var(--citruss-text-muted);">
+            <span>© 2026 Truncgil Technology</span>
+            <span class="citruss-badge badge-success" style="font-size: 0.75rem;">Optimized</span>
+          </div>
+          
+          <div class="footer-center">
+            <!-- Inline controls: search input and select dropdown -->
+            <input type="text" class="citruss-input" placeholder="Quick search..." style="width: 150px; padding: 4px 8px; font-size: 0.8rem; height: auto;" />
+            <select class="citruss-select" style="padding: 4px 8px; font-size: 0.8rem; height: auto; border-radius: 6px;">
+              <option>v1.0.0 (Latest)</option>
+              <option>v0.9.0 (Beta)</option>
+            </select>
+          </div>
+
+          <div class="footer-right">
+            <button class="citruss-btn btn-sm btn-icon btn-circle" style="width: 28px; height: 28px; min-height: auto;"><span class="citruss-icon" style="font-size: 14px;">refresh</span></button>
+            <button class="citruss-btn btn-sm" style="padding: 4px 8px; font-size: 0.8rem; min-height: auto;">Support</button>
+          </div>
         </div>
       </footer>
     </div>

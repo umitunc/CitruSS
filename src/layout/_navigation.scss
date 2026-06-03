@@ -99,3 +99,49 @@
     }
   }
 }
+
+/* Flex-based layout-footer component for side-by-side elements, inputs, dropdowns, and buttons */
+.citruss-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: var(--citruss-spacing-sm) var(--citruss-spacing-lg);
+  gap: var(--citruss-spacing-md);
+  flex-wrap: wrap;
+
+  @include glass-panel(var(--citruss-glass-blur), rgba(255, 255, 255, 0.01), var(--citruss-glass-border));
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    display: flex;
+    align-items: center;
+    gap: var(--citruss-spacing-md);
+    flex-wrap: wrap;
+  }
+
+  /* Inline form styling inside footer */
+  .citruss-btn,
+  .citruss-input,
+  .citruss-select,
+  .citruss-badge {
+    margin: 0;
+  }
+
+  /* Support Electron window dragging for footers */
+  &.electron-drag {
+    -webkit-app-region: drag;
+    
+    .citruss-btn, 
+    input, 
+    select, 
+    a,
+    .interactive {
+      -webkit-app-region: no-drag;
+    }
+  }
+}

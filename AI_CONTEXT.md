@@ -207,7 +207,20 @@ To build a viewport-optimized UI (100vh height, fixed header/footer, and indepen
   </div>
   
   <!-- Fixed Footer -->
-  <footer class="layout-footer">...</footer>
+  <footer class="layout-footer">
+    <div class="citruss-footer">
+      <div class="footer-left">
+        <span>© 2026 Truncgil</span>
+      </div>
+      <div class="footer-center">
+        <!-- Any side-by-side elements, inputs, select dropdowns -->
+        <input type="text" class="citruss-input" placeholder="Search..." />
+      </div>
+      <div class="footer-right">
+        <button class="citruss-btn btn-sm">Support</button>
+      </div>
+    </div>
+  </footer>
 </div>
 ```
 
