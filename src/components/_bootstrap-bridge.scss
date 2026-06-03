@@ -1,0 +1,282 @@
+/* ==========================================================================
+   CitruSS UI Kit: Bootstrap & Custom Admin Bridge
+   ========================================================================== */
+
+/* 1. Global typography and body adjustments */
+body {
+  font-family: var(--citruss-font-family) !important;
+  color: var(--citruss-text-main) !important;
+  background-color: var(--citruss-bg-main) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--citruss-font-display) !important;
+  color: var(--citruss-text-main) !important;
+}
+
+/* 2. Card components transition to frosted glass */
+.card,
+.auth-card {
+  background: var(--citruss-glass-bg) !important;
+  backdrop-filter: blur(var(--citruss-glass-blur)) saturate(var(--citruss-glass-saturate)) contrast(var(--citruss-glass-contrast)) !important;
+  -webkit-backdrop-filter: blur(var(--citruss-glass-blur)) saturate(var(--citruss-glass-saturate)) contrast(var(--citruss-glass-contrast)) !important;
+  border: 1px solid var(--citruss-glass-border) !important;
+  border-radius: var(--citruss-radius-md) !important;
+  box-shadow: 
+    inset 0 1px 0 0 var(--citruss-glass-highlight),
+    0 8px 32px 0 var(--citruss-glass-shadow) !important;
+  transition: transform 0.3s var(--citruss-spring-bezier), border-color 0.3s ease, box-shadow 0.3s ease !important;
+
+  &:hover {
+    background: var(--citruss-glass-bg-hover) !important;
+    border-color: var(--citruss-glass-border-hover) !important;
+    box-shadow: 
+      inset 0 1px 0 0 var(--citruss-glass-highlight-hover),
+      0 12px 40px 0 var(--citruss-glass-shadow) !important;
+  }
+
+  .card-header,
+  .card-footer {
+    background: transparent !important;
+    border-bottom: 1px solid var(--citruss-glass-border) !important;
+    color: var(--citruss-text-main) !important;
+  }
+}
+
+/* 3. Button adjustments */
+.btn {
+  display: inline-flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 22px;
+  font-family: var(--citruss-font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--citruss-text-main);
+  cursor: pointer;
+  background: var(--citruss-glass-bg);
+  backdrop-filter: blur(16px) saturate(var(--citruss-glass-saturate)) contrast(var(--citruss-glass-contrast));
+  -webkit-backdrop-filter: blur(16px) saturate(var(--citruss-glass-saturate)) contrast(var(--citruss-glass-contrast));
+  border: 1px solid var(--citruss-glass-border) !important;
+  border-radius: var(--citruss-radius-md) !important;
+  box-shadow: 
+    inset 0 1px 0 0 var(--citruss-glass-highlight),
+    0 4px 12px 0 rgba(0, 0, 0, 0.15);
+  transition: all 0.35s var(--citruss-spring-bezier) !important;
+  position: relative;
+  overflow: hidden;
+
+  i, .material-icons, .material-symbols-outlined, svg {
+    font-size: 1.1em !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    transition: transform 0.25s var(--citruss-spring-bezier);
+  }
+
+  &:hover {
+    background: var(--citruss-glass-bg-hover);
+    border-color: var(--citruss-glass-border-hover) !important;
+    color: var(--citruss-text-main);
+    box-shadow: 
+      inset 0 1px 0 0 var(--citruss-glass-highlight-hover),
+      0 6px 18px 0 rgba(0, 0, 0, 0.2);
+
+    i, .material-icons, .material-symbols-outlined, svg {
+      transform: scale(1.15);
+    }
+  }
+
+  &:active {
+    transform: scale(0.94) !important;
+  }
+
+  /* Color themes mapping */
+  &.btn-primary {
+    background: linear-gradient(135deg, rgba(255, 107, 0, 0.22), rgba(255, 159, 67, 0.22)) !important;
+    border: 1px solid rgba(255, 159, 67, 0.35) !important;
+    color: var(--citruss-orange, #ff6b00) !important;
+
+    [data-theme="light"] & {
+      color: #c2410c !important;
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.08), rgba(255, 159, 67, 0.18)) !important;
+      border: 1px solid rgba(255, 107, 0, 0.16) !important;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.35), rgba(255, 159, 67, 0.35)) !important;
+      box-shadow: 0 0 20px rgba(255, 107, 0, 0.2) !important;
+    }
+  }
+
+  &.btn-success {
+    color: var(--citruss-lime, #1dd1a1) !important;
+    background: linear-gradient(135deg, rgba(29, 209, 161, 0.12), rgba(29, 209, 161, 0.22)) !important;
+    border: 1px solid rgba(29, 209, 161, 0.35) !important;
+
+    [data-theme="light"] & {
+      color: #0d7658 !important;
+      background: linear-gradient(135deg, rgba(15, 118, 88, 0.08), rgba(15, 118, 88, 0.18)) !important;
+      border: 1px solid rgba(15, 118, 88, 0.3) !important;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, rgba(29, 209, 161, 0.28), rgba(29, 209, 161, 0.38)) !important;
+      box-shadow: 0 0 20px rgba(29, 209, 161, 0.2) !important;
+    }
+  }
+
+  &.btn-danger {
+    color: var(--citruss-danger, #ff5e57) !important;
+    background: linear-gradient(135deg, rgba(255, 94, 87, 0.12), rgba(255, 94, 87, 0.22)) !important;
+    border: 1px solid rgba(255, 94, 87, 0.35) !important;
+
+    [data-theme="light"] & {
+      color: #b91c1c !important;
+      background: linear-gradient(135deg, rgba(185, 28, 28, 0.08), rgba(185, 28, 28, 0.18)) !important;
+      border: 1px solid rgba(185, 28, 28, 0.3) !important;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, rgba(255, 94, 87, 0.28), rgba(255, 94, 87, 0.38)) !important;
+      box-shadow: 0 0 20px rgba(255, 94, 87, 0.2) !important;
+    }
+  }
+
+  &.btn-sm,
+  &.btn-group-sm > .btn {
+    padding: 6px 14px !important;
+    font-size: 0.8rem !important;
+    border-radius: var(--citruss-radius-sm) !important;
+  }
+
+  &.btn-lg,
+  &.btn-group-lg > .btn {
+    padding: 14px 30px !important;
+    font-size: 1rem !important;
+    border-radius: var(--citruss-radius-lg) !important;
+  }
+}
+
+/* 4. Form inputs, select and select2 styling */
+.form-control,
+.table-sm input,
+.table-sm select,
+.data-tables input,
+.data-tables select,
+.new-form input,
+.new-form select {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--citruss-glass-border) !important;
+  border-radius: var(--citruss-radius-sm) !important;
+  color: var(--citruss-text-main) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  padding: 8px 14px !important;
+  transition: all 0.3s ease !important;
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: var(--citruss-orange) !important;
+    box-shadow: 0 0 12px rgba(255, 107, 0, 0.25) !important;
+    outline: none !important;
+  }
+}
+
+/* Select2 compatibility */
+.select2-container--default .select2-selection--single,
+.table-sm .select2-selection,
+.data-tables .select2-selection,
+.new-form .select2-selection {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--citruss-glass-border) !important;
+  border-radius: var(--citruss-radius-sm) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  color: var(--citruss-text-main) !important;
+  height: auto !important;
+  padding: 4px 8px !important;
+
+  .select2-selection__rendered {
+    color: var(--citruss-text-main) !important;
+  }
+
+  .select2-selection__arrow b {
+    border-color: var(--citruss-text-muted) transparent transparent transparent !important;
+  }
+}
+
+/* 5. Modals transition to frosted glass */
+.modal-content {
+  background: var(--citruss-glass-bg) !important;
+  backdrop-filter: blur(var(--citruss-glass-blur)) saturate(var(--citruss-glass-saturate)) contrast(var(--citruss-glass-contrast)) !important;
+  -webkit-backdrop-filter: blur(var(--citruss-glass-blur)) saturate(var(--citruss-glass-saturate)) contrast(var(--citruss-glass-contrast)) !important;
+  border: 1px solid var(--citruss-glass-border) !important;
+  border-radius: var(--citruss-radius-lg) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4) !important;
+  color: var(--citruss-text-main) !important;
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--citruss-glass-border) !important;
+  background: transparent !important;
+  border-top-left-radius: var(--citruss-radius-lg) !important;
+  border-top-right-radius: var(--citruss-radius-lg) !important;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--citruss-glass-border) !important;
+}
+
+/* 6. Tables styling compatibility */
+.table,
+.table-sm,
+.dx-datagrid,
+.table-bordered {
+  color: var(--citruss-text-main) !important;
+  background: transparent !important;
+
+  th, td {
+    border-color: var(--citruss-glass-border) !important;
+    background: transparent !important;
+    vertical-align: middle !important;
+  }
+
+  thead th {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 2px solid var(--citruss-glass-border) !important;
+    color: var(--citruss-text-main) !important;
+    font-weight: 700;
+  }
+}
+
+/* 7. Dropdown menus and lists */
+.dropdown-menu,
+.new-form .dropdown-menu,
+.table-sm .dropdown-menu {
+  background: var(--citruss-glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(var(--citruss-glass-saturate)) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(var(--citruss-glass-saturate)) !important;
+  border: 1px solid var(--citruss-glass-border) !important;
+  border-radius: var(--citruss-radius-sm) !important;
+  box-shadow: 0 10px 30px var(--citruss-glass-shadow) !important;
+
+  .dropdown-item {
+    color: var(--citruss-text-main) !important;
+    transition: background 0.2s ease;
+
+    &:hover,
+    &:focus {
+      background: var(--citruss-glass-bg-hover) !important;
+      color: var(--citruss-text-main) !important;
+    }
+  }
+}
+
+/* 8. Tab pane content alignment */
+.tab-pane {
+  background: transparent !important;
+  border: none !important;
+  padding: 15px 0;
+}
