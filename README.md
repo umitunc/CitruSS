@@ -158,6 +158,64 @@ The `.citruss-app-layout` classes provide an **optional, opt-in layout structure
 
 ---
 
+## 🌉 Bootstrap 4 & Admin Theme Bridge
+
+If you are migrating or styling an existing Bootstrap 4 app (including custom admin dashboards, datagrids, and select2 structures), you can load the built-in Bootstrap bridge. It maps original classes (`.card`, `.btn`, `.form-control`, `.dropdown-menu`, `.modal-content`, `.table-sm`, etc.) directly to CitruSS variables and styles.
+
+To load the bridge, load the core CitruSS styles first, then configure your stylesheets:
+```html
+<!-- Load CitruSS System Assets -->
+<link rel="stylesheet" href="path/to/dist/citruss.css" />
+
+<!-- All Bootstrap 4 elements (.btn, .card, etc.) will automatically adopt the Citrus aesthetic -->
+```
+
+---
+
+## 🎛️ Customizing Glassmorphic Transparency (CSS Variable Overrides)
+
+You can easily adjust the intensity of the frosted glass blur, transparency, saturation, and contrast. Simply override the following CSS variables at the `:root` level or within a custom scope (such as inside a specific selector or theme definition):
+
+```css
+:root {
+  /* Transparency value of the background glass layer (Default: 3.5% for Dark mode) */
+  --citruss-glass-opacity: 5%;
+  
+  /* Background blur radius (Default: 24px) */
+  --citruss-glass-blur: 30px;
+  
+  /* Glass Saturation (Default: 180%) */
+  --citruss-glass-saturate: 200%;
+  
+  /* Glass Contrast (Default: 100%) */
+  --citruss-glass-contrast: 105%;
+  
+  /* Glass Border Color (Default: rgba(255, 255, 255, 0.08)) */
+  --citruss-glass-border: rgba(255, 255, 255, 0.12);
+  
+  /* Glass Hover Border Color (Default: rgba(255, 255, 255, 0.2)) */
+  --citruss-glass-border-hover: rgba(255, 255, 255, 0.25);
+}
+
+/* Light mode overrides */
+[data-theme="light"] {
+  /* Default light opacity is 45% for high readability */
+  --citruss-glass-opacity: 35%;
+  --citruss-glass-blur: 20px;
+}
+```
+
+### Component-Specific Override Example
+If you only want a specific card to be highly transparent:
+```css
+.my-custom-card {
+  --citruss-glass-opacity: 1%; /* Extremely transparent */
+  --citruss-glass-blur: 10px;  /* Minimal blur */
+}
+```
+
+---
+
 ## 📝 License
 
 This project is licensed under the **MIT** License. See the `package.json` file for more details.
