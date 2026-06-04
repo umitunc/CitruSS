@@ -226,7 +226,116 @@ To build a viewport-optimized UI (100vh height, fixed header/footer, and indepen
 
 ---
 
-## 🚀 4. Golden Rules for AI-Assisted Writing
+## 🖥️ 4. Electron.js Application Best Practices
+
+When building Electron.js desktop applications with CitruSS, strictly follow these practices to ensure the window structure, frameless titlebar, and dark/light modes behave perfectly:
+
+### 1. Frameless Windows (`frame: false` & Custom Titlebar)
+To deliver a premium frosted glass design, you must disable the native OS window frame and use the built-in CitruSS titlebar.
+
+**Main Process Configuration (`main.js`):**
+```javascript
+const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
+
+function createWindow() {
+  const win = new BrowserWindow({
+    width: 1200,
+    height: 800,
+    frame: false, // Disables native titlebar and border
+    transparent: true, // Crucial for glassmorphism bleed effects
+    webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: false,
+      contextIsolation: true
+    }
+  });
+
+  // Wire IPC handlers for custom titlebar buttons
+  ipcMain.on('window-minimize', () => win.minimize());
+  ipcMain.on('window-maximize', () => {
+    if (win.isMaximized()) {
+      win.unmaximize();
+    } else {
+      win.maximize();
+    }
+  });
+  ipcMain.on('window-close', () => win.close());
+}
+```
+
+**Preload Script (`preload.js`):**
+```javascript
+const { contextBridge, ipcRenderer } = require('electron');
+
+contextBridge.exposeInMainWorld('electronAPI', {
+  minimize: () => ipcRenderer.send('window-minimize'),
+  maximize: () => ipcRenderer.send('window-maximize'),
+  close: () => ipcRenderer.send('window-close')
+});
+```
+
+**Renderer Process HTML Structure:**
+```html
+<div class="citruss-app-layout">
+  <!-- Frameless Window Titlebar -->
+  <div class="citruss-window-titlebar">
+    <div class="window-title">CitruSS Application Title</div>
+    <div class="window-controls">
+      <div class="control-btn btn-minimize" id="win-minimize" title="Minimize"></div>
+      <div class="control-btn btn-maximize" id="win-maximize" title="Maximize"></div>
+      <div class="control-btn btn-close" id="win-close" title="Close"></div>
+    </div>
+  </div>
+
+  <header class="layout-header">
+    <div class="citruss-navbar">
+      <!-- Your CitruSS Navbar Here -->
+    </div>
+  </header>
+  
+  <div class="layout-content-wrapper">
+    <main class="layout-content">
+      <!-- Scrollable Main Content -->
+    </main>
+  </div>
+</div>
+```
+
+**Renderer Process JavaScript (`renderer.js`):**
+```javascript
+// Bind click events to IPC bridge
+document.getElementById('win-minimize').addEventListener('click', () => {
+  window.electronAPI.minimize();
+});
+document.getElementById('win-maximize').addEventListener('click', () => {
+  window.electronAPI.maximize();
+});
+document.getElementById('win-close').addEventListener('click', () => {
+  window.electronAPI.close();
+});
+```
+
+### 2. Electron Dark & Light Mode Syncing
+Electron apps must respect the system theme or user selection. CitruSS applies styles based on the `data-theme` attribute on the `<html>` element.
+
+```javascript
+// Sync theme on initial load and dynamically when OS theme changes
+function syncTheme() {
+  const currentTheme = CitruSS.ThemeToggle.getCurrentTheme(); // 'dark' or 'light'
+  document.documentElement.setAttribute('data-theme', currentTheme);
+}
+
+// Listen to OS theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  const newTheme = e.matches ? 'dark' : 'light';
+  CitruSS.ThemeToggle.applyTheme(newTheme);
+});
+```
+
+---
+
+## 🚀 5. Golden Rules for AI-Assisted Writing
 1. **Never write inline custom glassmorphic rules** like `backdrop-filter: blur(10px)`. Just write `.glass` or `.citruss-card`.
 2. **Never install custom modal/toast libraries** (like SweetAlert or Toastify). `CitruSS.fire()` and `CitruSS.toast()` are built-in, lightweight, and match the design aesthetic perfectly.
 3. Always check if the active page has `dist/citruss.css` and `dist/citruss.min.js` linked properly.
