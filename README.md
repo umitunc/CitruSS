@@ -73,10 +73,11 @@ If you prefer to use the library instantly without installing any local packages
 
 ```html
 <!-- CitruSS Vibrant Frosted Glassmorphism Stylesheet -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/umitunc/CitruSS/dist/citruss.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/umitunc/CitruSS@1.0.0/dist/citruss.css" />
 
 <!-- CitruSS Interactive Vanilla JS Companion Script -->
-<script src="https://cdn.jsdelivr.net/gh/umitunc/CitruSS/dist/citruss.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/umitunc/CitruSS@1.0.0/dist/citruss.min.js"></script>
+
 ```
 
 
