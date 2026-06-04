@@ -1,3 +1,9 @@
+/*!
+ * CitruSS UI Kit v1.0.0
+ * Built on: 2026-06-04T12:57:51.279Z
+ * (c) 2026 Truncgil Technology
+ * Released under the MIT License.
+ */
 const h = {
   fire: function({ title: a, text: t, icon: e = "info", showCancelButton: s = !1, confirmButtonText: i = "OK", cancelButtonText: r = "Cancel" }) {
     return new Promise((n) => {
